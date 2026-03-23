@@ -40,28 +40,77 @@
     overflow-x: hidden;
   }
 
-  /* ── Nav ── */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    backdrop-filter: blur(20px);
-    background: rgba(250, 250, 250, 0.9);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem; height: 50px;
-    display: flex; align-items: center; justify-content: space-between;
+  /* ── Timeline Nav (right side) ── */
+  .timeline-nav {
+    position: fixed; right: 0; top: 0; bottom: 0; z-index: 100;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 1rem 0;
+    pointer-events: none;
   }
-  .nav-title {
-    font-family: var(--serif); font-size: 0.85rem; font-weight: 600;
-    color: var(--accent); letter-spacing: 0.02em;
+  .timeline-inner {
+    display: flex; flex-direction: column; align-items: flex-end;
+    position: relative; pointer-events: auto;
   }
-  .nav-dots { display: flex; gap: 7px; align-items: center; }
-  .nav-dot {
+  .timeline-inner::before {
+    content: ''; position: absolute; right: 11px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    display: flex; align-items: center; gap: 0; cursor: pointer;
+    padding: 5px 0; position: relative; border: none; background: none;
+    font-family: var(--mono); text-align: right;
+    transition: color 0.25s, font-size 0.25s, font-weight 0.25s, opacity 0.25s;
+    font-size: 0.55rem;
+  }
+  .timeline-label {
+    font-size: 1em; line-height: 1.35;
+    padding: 4px 12px 4px 14px;
+    max-width: 14rem;
+    white-space: normal;
+    transition: inherit;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(10px);
+    border-radius: 3px 0 0 3px;
+    border: 1px solid transparent;
+    color: rgba(42, 42, 42, 0.45);
+  }
+  .timeline-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--border); cursor: pointer;
-    transition: all 0.3s; border: none; padding: 0;
+    background: var(--border); flex-shrink: 0;
+    transition: all 0.25s; position: relative; z-index: 2;
+    margin-right: 8px;
   }
-  .nav-dot:hover { background: var(--text-muted); transform: scale(1.3); }
-  .nav-dot.active { background: var(--accent); transform: scale(1.5); }
-  .nav-counter { font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); }
+  .timeline-item.future {
+    font-size: 0.5rem;
+  }
+  .timeline-item.future .timeline-label {
+    color: rgba(42, 42, 42, 0.28);
+    border-color: transparent;
+  }
+  .timeline-item.past .timeline-label {
+    color: rgba(42, 42, 42, 0.42);
+    border-color: transparent;
+  }
+  .timeline-item.active {
+    font-size: 1rem;
+  }
+  .timeline-item.active .timeline-label {
+    color: var(--accent);
+    font-weight: 600;
+    border-color: var(--border);
+  }
+  .timeline-item:hover .timeline-dot {
+    background: var(--text-muted); transform: scale(1.4);
+  }
+  .timeline-item.active .timeline-dot {
+    background: var(--accent); transform: scale(1.7);
+    box-shadow: 0 0 0 3px rgba(26,26,26,0.1);
+  }
+  .timeline-item.future:hover .timeline-label,
+  .timeline-item.past:hover .timeline-label {
+    color: rgba(42, 42, 42, 0.55);
+    border-color: var(--border-light);
+  }
 
   /* ── Slide ── */
   .slides { scroll-snap-type: y mandatory; overflow-y: auto; height: 100vh; }
@@ -69,7 +118,7 @@
   .slide {
     min-height: 100vh; scroll-snap-align: start;
     display: flex; flex-direction: column; justify-content: center;
-    padding: 70px 2rem 2rem; max-width: 1000px; margin: 0 auto;
+    padding: 2rem 3rem 2rem 2rem; max-width: 1000px; margin: 0 auto;
   }
 
   /* ── Title Slide ── */
@@ -372,12 +421,12 @@
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    .slide { padding: 65px 1.2rem 1.5rem; }
+    .slide { padding: 1.5rem 1.2rem; }
+    .timeline-nav { display: none; }
     .project-grid, .tool-cards { grid-template-columns: 1fr; }
     .project-card[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
     .project-card[style*="grid-template-columns"] .project-card-img { height: 200px !important; }
     .persona-grid { grid-template-columns: 1fr; }
-    .nav { padding: 0 1rem; }
     .kb-hint { display: none; }
     .iframe-wrap iframe { height: 600px; }
     .img-row img { height: 110px; width: 110px; }
@@ -387,10 +436,8 @@
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-title">我如何使用 LLM — 阿亂</div>
-  <div class="nav-dots" id="navDots"></div>
-  <div class="nav-counter" id="navCounter">1 / 12</div>
+<nav class="timeline-nav" id="timelineNav">
+  <div class="timeline-inner" id="timelineInner"></div>
 </nav>
 
 <div class="kb-hint">
@@ -456,7 +503,7 @@
 
     <div class="project-grid" style="grid-template-columns: 1fr;">
       <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
-        <img class="project-card-img" src="https://aluanwang.com/wp-content/uploads/2025/05/cw-image-resizer.cwg_-1024x682.jpg" alt="Mercedes-Maybach × Art Taipei" style="width:100%; height:100%; object-fit:cover;">
+        <img class="project-card-img" src="assets/mercedes-maybach-art-taipei-2024-banner.png" alt="Mercedes-Maybach EQS SUV 於 Art Taipei 2024 展場，白色幾何展間與 Maybach 品牌牆" style="width:100%; height:100%; object-fit:cover;">
         <div class="project-card-body">
           <div class="pname">Mercedes-Maybach × Art Taipei 2024</div>
           <div class="psub">臺北國際藝術博覽會｜數位生成藝術裝置</div>
@@ -471,11 +518,27 @@
           <span class="ptag tag-html">Art Taipei 2024</span>
         </div>
       </div>
+
+      <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
+        <img class="project-card-img" src="assets/inaugural-2024-nft-banner.png" alt="中華民國第十六任總統副總統就職慶典主視覺：線條肖像與橘黃藍綠斜線色帶" style="width:100%; height:100%; object-fit:cover;">
+        <div class="project-card-body">
+          <div class="pname">總統就職典禮 × 生成式 NFT</div>
+          <div class="psub">2024 · 520 就職紀念｜akaSwap</div>
+          <div class="pdesc" style="max-width:none">
+            2024 年總統就職典禮，主視覺以橘、黃、藍、綠四色線段象徵自由、民主、自信、友善。<br><br>
+            與 akaSwap 合作開發<strong>AI 風格轉換系統</strong>——民眾自拍後，演算法即時將肖像轉化為就職主視覺的彩色線段風格，並自動鑄造為 Tezos 鏈上的 NFT。<br><br>
+            每一張臉都成為國家敘事的一部分——生成藝術不再只是畫廊裡的物件，而是<strong>十萬人共同參與的集體創作</strong>。
+          </div>
+          <span class="ptag tag-json">AI 風格轉換</span>
+          <span class="ptag tag-md">NFT 鑄造</span>
+          <span class="ptag tag-html">Tezos 區塊鏈</span>
+        </div>
+      </div>
     </div>
 
     <div class="highlight-box">
-      藝術不是裝飾品牌，品牌也不是贊助藝術——<br>
-      當演算法的有機紋理與 Maybach 的精密工藝並置，兩者共享同一種語言：<strong>在結構中尋找自由</strong>。
+      從 Maybach 展間到總統就職典禮——生成藝術的邊界不斷擴張。<br>
+      <strong>演算法是語言，結構是骨架，而每一次互動都是一次不可逆的共同創作。</strong>
     </div>
   </section>
 
@@ -515,7 +578,7 @@
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
-      <iframe src="https://openprocessing.org/sketch/2048187/embed/?plusEmbedHash=8c2372a8&userID=40395&plusEmbedTitle=true&plusEmbedFullscreen=true&show=sketch" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <iframe class="lazy-embed" title="Good Vibrations 即時演示" src="about:blank" data-src="https://openprocessing.org/sketch/2048187/embed/?plusEmbedHash=8c2372a8&userID=40395&plusEmbedTitle=true&plusEmbedFullscreen=true&show=sketch" sandbox="allow-scripts allow-same-origin"></iframe>
       <a class="iframe-link" href="https://openprocessing.org/sketch/2048187" target="_blank" rel="noopener noreferrer">↗ 在 OpenProcessing 開啟完整 Sketch</a>
     </div>
 
@@ -616,7 +679,7 @@
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
-      <iframe src="https://inkfield-production.up.railway.app/?_w:700_h:500" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://inkfield-production.up.railway.app/?_w:700_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
       <a class="iframe-link" href="https://inkfield-production.up.railway.app/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
     </div>
 
@@ -648,7 +711,7 @@
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
-      <iframe src="https://polypaths.up.railway.app/mono.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <iframe class="lazy-embed" title="PolyPaths 即時演示" src="about:blank" data-src="https://polypaths.up.railway.app/mono.html" sandbox="allow-scripts allow-same-origin"></iframe>
       <a class="iframe-link" href="https://polypaths.up.railway.app/mono.html" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 PolyPaths（mono）</a>
     </div>
   </section>
@@ -761,11 +824,19 @@
 <script>
 (function() {
   const slides = document.querySelectorAll('.slide');
-  const navDotsEl = document.getElementById('navDots');
-  const navCounter = document.getElementById('navCounter');
+  const slidesRoot = document.getElementById('slides');
+  const timelineInner = document.getElementById('timelineInner');
   const kbUp = document.getElementById('kbUp');
   const kbDown = document.getElementById('kbDown');
   const total = slides.length;
+
+  function slideNavTitle(slide, i) {
+    const label = slide.querySelector('.section-label');
+    if (label) return label.textContent.replace(/\s+/g, ' ').trim();
+    if (slide.classList.contains('slide-title')) return '00 — 開場';
+    if (slide.classList.contains('slide-closing')) return '11 — 結語';
+    return `${String(i).padStart(2, '0')} —`;
+  }
 
   let cur = 0;
 
@@ -777,39 +848,78 @@
 
   function goPrev() {
     cur = Math.max(cur - 1, 0);
+    updateTimelineState(cur);
     slides[cur].scrollIntoView({ behavior: 'smooth' });
     syncKbButtons();
   }
   function goNext() {
     cur = Math.min(cur + 1, total - 1);
+    updateTimelineState(cur);
     slides[cur].scrollIntoView({ behavior: 'smooth' });
     syncKbButtons();
   }
 
+  // Build timeline items（標題與各頁 .section-label 同步）
   for (let i = 0; i < total; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'nav-dot';
-    dot.addEventListener('click', () => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'timeline-item';
+    const lab = document.createElement('span');
+    lab.className = 'timeline-label';
+    lab.textContent = slideNavTitle(slides[i], i);
+    const dot = document.createElement('span');
+    dot.className = 'timeline-dot';
+    item.appendChild(lab);
+    item.appendChild(dot);
+    item.addEventListener('click', () => {
       cur = i;
+      updateTimelineState(i);
       syncKbButtons();
       slides[i].scrollIntoView({ behavior: 'smooth' });
     });
-    navDotsEl.appendChild(dot);
+    timelineInner.appendChild(item);
   }
-  const dots = document.querySelectorAll('.nav-dot');
+  const items = document.querySelectorAll('.timeline-item');
+
+  function updateTimelineState(idx) {
+    items.forEach((item, i) => {
+      item.classList.toggle('active', i === idx);
+      item.classList.toggle('past', i < idx);
+      item.classList.toggle('future', i > idx);
+    });
+  }
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const idx = Array.from(slides).indexOf(e.target);
         cur = idx;
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-        navCounter.textContent = `${idx + 1} / ${total}`;
+        updateTimelineState(idx);
         syncKbButtons();
       }
     });
   }, { threshold: 0.4 });
   slides.forEach(s => obs.observe(s));
+
+  updateTimelineState(0);
+
+  // iframe 捲到該頁才載入（root 為投影片捲動容器）
+  document.querySelectorAll('iframe.lazy-embed[data-src]').forEach(iframe => {
+    const slide = iframe.closest('.slide');
+    if (!slide || !slidesRoot) return;
+    const io = new IntersectionObserver((entries, ob) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const url = iframe.getAttribute('data-src');
+        if (url && iframe.dataset.iframeLoaded !== '1') {
+          iframe.src = url;
+          iframe.dataset.iframeLoaded = '1';
+        }
+        ob.unobserve(slide);
+      });
+    }, { root: slidesRoot, threshold: 0.15, rootMargin: '0px' });
+    io.observe(slide);
+  });
 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {

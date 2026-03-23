@@ -126,8 +126,7 @@
 
   .title-bg {
     position: absolute; inset: 0; z-index: 0;
-    background: url('https://aluanwang.com/wp-content/uploads/2025/08/a2.jpg') center/cover;
-    opacity: 0.08;
+    background: url('assets/cover.jpeg') center/cover;
   }
 
   .slide-title > *:not(.title-bg) { position: relative; z-index: 1; }
@@ -138,18 +137,43 @@
     margin-bottom: 1.8rem;
     color: var(--accent);
     letter-spacing: 0.02em;
+    background: rgba(255,255,255,0.88); padding: 0.5rem 1.2rem; display: inline-block;
   }
-  .subtitle { font-size: 1.05rem; color: var(--text-dim); line-height: 2; margin-bottom: 2rem; }
+  .subtitle {
+    font-size: 1.05rem; color: var(--text-dim); line-height: 2; margin-bottom: 2rem;
+    background: rgba(255,255,255,0.88); padding: 0.4rem 1rem; display: inline-block;
+  }
   .subtitle strong { color: var(--text); font-weight: 600; }
   .core-quote {
     font-size: 1.05rem; color: var(--text); padding: 1rem 1.8rem;
     border-left: 3px solid var(--accent);
-    background: var(--card); display: inline-block; max-width: 580px; font-weight: 400;
+    background: rgba(255,255,255,0.92); display: inline-block; max-width: 580px; font-weight: 400;
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     font-family: var(--serif); font-style: italic;
   }
   .scroll-hint { margin-top: 2.5rem; font-size: 0.75rem; color: var(--text-muted); animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  /* ── Language Toggle ── */
+  .en { display: none; }
+  html[lang="en"] .en { display: inline; }
+  html[lang="en"] .en-block { display: block; }
+  html[lang="en"] .en-flex { display: flex; }
+  html[lang="en"] .zh { display: none; }
+  html[lang="en"] p.zh, html[lang="en"] div.zh, html[lang="en"] li.zh { display: none; }
+  html[lang="en"] p.en, html[lang="en"] div.en, html[lang="en"] li.en { display: block; }
+  .lang-toggle {
+    position: fixed; top: 1rem; right: 1rem; z-index: 200;
+    display: flex; gap: 0; border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; font-family: var(--mono); font-size: 0.7rem;
+    background: rgba(250,250,250,0.95); backdrop-filter: blur(10px);
+  }
+  .lang-btn {
+    padding: 4px 10px; cursor: pointer; border: none; background: none;
+    color: var(--text-muted); transition: all 0.2s; font-family: inherit; font-size: inherit;
+  }
+  .lang-btn.active { background: var(--accent); color: #fff; font-weight: 600; }
+  .lang-btn:hover:not(.active) { color: var(--text); background: var(--surface); }
 
   /* ── Section ── */
   .section-label {
@@ -459,6 +483,11 @@
   <div class="timeline-inner" id="timelineInner"></div>
 </nav>
 
+<div class="lang-toggle" id="langToggle">
+  <button class="lang-btn active" data-lang="zh-Hant">中文</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
 <div class="kb-hint">
   <button type="button" class="kb" id="kbUp" aria-label="上一頁">↑</button>
   <button type="button" class="kb" id="kbDown" aria-label="下一頁">↓</button>
@@ -470,14 +499,14 @@
   <!-- ═══ 0: Title ═══ -->
   <section class="slide slide-title" id="slide-0">
     <div class="title-bg"></div>
-    <h1>我如何使用 LLM<br>從結構到創作的工作方法論</h1>
+    <h1><span class="zh">我如何使用 LLM<br>從結構到創作的工作方法論</span><span class="en">How I Use LLMs<br>A Methodology from Structure to Creation</span></h1>
     <div class="subtitle">
       <strong>王新仁（阿亂）</strong><br>
-      生成式藝術家・創意程式設計師・akaSwap 共同創辦人<br>
-      工具：Claude Code / Cursor / Cowork
+      <span class="zh">生成式藝術家・創意程式設計師・akaSwap 共同創辦人</span><span class="en">Generative Artist · Creative Coder · Co-founder of akaSwap</span><br>
+      <span class="zh">工具：Claude Code / Cursor / Cowork</span><span class="en">Tools: Claude Code / Cursor / Cowork</span>
     </div>
-    <div class="core-quote">作品只是表象，背後都是結構。<br>留下錨點，讓一切可以被索引。</div>
-    <div class="scroll-hint">↓ 向下滾動開始</div>
+    <div class="core-quote"><span class="zh">作品只是表象，背後都是結構。<br>留下錨點，讓一切可以被索引。</span><span class="en">The work is just the surface. Structure is what lies beneath.<br>Leave anchors. Make everything indexable.</span></div>
+    <div class="scroll-hint"><span class="zh">↓ 向下滾動開始</span><span class="en">↓ Scroll to begin</span></div>
   </section>
 
   <!-- ═══ 1: Artist Bio ═══ -->
@@ -488,15 +517,23 @@
     <div class="bio-layout">
       <div class="bio-photo-stack">
         <img class="bio-photo main" src="https://aluanwang.com/wp-content/uploads/2025/08/a1.jpg" alt="Aluan Wang" onerror="this.style.background='var(--surface-2)'">
-        <img class="bio-photo secondary" src="https://aluanwang.com/wp-content/uploads/2025/05/cw-image-resizer.cwg_-1024x682.jpg" alt="Exhibition" onerror="this.style.display='none'">
+        <img class="bio-photo secondary" src="https://aluanwang.com/wp-content/uploads/2021/07/DSC_8894.jpg" alt="Exhibition" onerror="this.style.display='none'">
       </div>
       <div>
         <div class="bio-statement">
-          我創作的是隨時間記錄人類意圖的生成系統。<br>
-          在我的作品中，繪畫不再是靜態圖像，而是一段持續展開的過程。<br>
-          在演算法的縫隙之中，留下人類的痕跡。
+          <span class="zh">Ileivoivm——「aluan wang」經 Affine Cipher 加密後的產物。</span>
+          <span class="en">Ileivoivm — the result of running "aluan wang" through an Affine Cipher.</span>
         </div>
-        <div class="bio-tags">
+        <div style="font-family:var(--mono); font-size:0.8rem; background:var(--surface); padding:0.6rem 1rem; border-radius:6px; margin:0.5rem 0; border-left:3px solid var(--accent-color); line-height:1.8">
+          <span style="color:var(--text-muted)">INPUT</span>&nbsp;&nbsp; <strong>aluan wang</strong><br>
+          <span style="color:var(--text-muted)">CIPHER</span>&nbsp; Affine (slope=5, intercept=8)<br>
+          <span style="color:var(--text-muted)">OUTPUT</span>&nbsp; <strong style="color:var(--accent-color)">ileiv oivm</strong> → <strong style="color:var(--accent-color)">Ileivoivm</strong>
+        </div>
+        <div class="bio-statement" style="margin-top:0.3rem">
+          <span class="zh">我創作的是隨時間記錄人類意圖的生成系統。<br>在演算法的縫隙之中，留下人類的痕跡。</span>
+          <span class="en">I build generative systems that record human intention over time.<br>In the gaps between algorithms, I leave human traces.</span>
+        </div>
+        <div class="bio-tags zh">
           <span class="bio-tag">生成式藝術家</span>
           <span class="bio-tag">創意程式設計師</span>
           <span class="bio-tag">akaSwap 共同創辦人</span>
@@ -504,36 +541,49 @@
           <span class="bio-tag">台灣首位 Art Blocks 藝術家</span>
           <span class="bio-tag">台灣首位 verse.works 長篇藝術家</span>
         </div>
-        <p style="font-size:0.85rem">1982 年生於台中。超過 15 年數位與生成藝術經驗。作品展出於國立台灣美術館、尊彩藝術中心、新加坡藝術科學博物館等。兩度獲台北數位藝術節首獎（2012、2015）。以演算法與程式語言為媒介，在混沌與秩序之間探索自然的原始語言。</p>
+        <div class="bio-tags en">
+          <span class="bio-tag">Generative Artist</span>
+          <span class="bio-tag">Creative Coder</span>
+          <span class="bio-tag">Co-founder, akaSwap</span>
+          <span class="bio-tag">MFA, New Media Art, TNUA</span>
+          <span class="bio-tag">First Taiwanese artist on Art Blocks</span>
+          <span class="bio-tag">First Taiwanese artist on verse.works</span>
+        </div>
+        <p class="zh" style="font-size:0.85rem">1982 年生於台中。超過 15 年數位與生成藝術經驗。作品展出於國立台灣美術館、尊彩藝術中心、新加坡藝術科學博物館等。兩度獲台北數位藝術節首獎（2012、2015）。</p>
+        <p class="en" style="font-size:0.85rem">Born 1982, Taichung. 15+ years in digital and generative art. Exhibited at National Taiwan Museum of Fine Arts, Liang Gallery, ArtScience Museum Singapore. Two-time Grand Prize winner at Taipei Digital Art Festival (2012, 2015).</p>
       </div>
     </div>
 
     <div class="bio-highlights">
-      <div class="bio-hl"><div class="bio-hl-num">15+</div><div class="bio-hl-label">年數位藝術經驗</div></div>
-      <div class="bio-hl"><div class="bio-hl-num">Art Blocks</div><div class="bio-hl-label">台灣首位藝術家</div></div>
-      <div class="bio-hl"><div class="bio-hl-num">2×</div><div class="bio-hl-label">台北數位藝術節首獎</div></div>
+      <div class="bio-hl"><div class="bio-hl-num">15+</div><div class="bio-hl-label"><span class="zh">年數位藝術經驗</span><span class="en">Years in Digital Art</span></div></div>
+      <div class="bio-hl"><div class="bio-hl-num">Art Blocks</div><div class="bio-hl-label"><span class="zh">台灣首位藝術家</span><span class="en">First Taiwanese Artist</span></div></div>
+      <div class="bio-hl"><div class="bio-hl-num">2×</div><div class="bio-hl-label"><span class="zh">台北數位藝術節首獎</span><span class="en">Taipei Digital Art Grand Prize</span></div></div>
     </div>
   </section>
 
   <!-- ═══ 2: Cases ═══ -->
   <section class="slide" id="slide-2">
     <div class="section-label">02 — Selected Cases</div>
-    <h2>藝術合作案例</h2>
+    <h2><span class="zh">藝術合作案例</span><span class="en">Art Collaborations</span></h2>
 
     <div class="project-grid" style="grid-template-columns: 1fr;">
       <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
         <img class="project-card-img" src="assets/mercedes-maybach-art-taipei-2024-banner.png" alt="Mercedes-Maybach EQS SUV 於 Art Taipei 2024 展場，白色幾何展間與 Maybach 品牌牆" style="width:100%; height:100%; object-fit:cover;">
         <div class="project-card-body">
-          <div class="pname">Mercedes-Maybach × Art Taipei 2024</div>
-          <div class="psub">臺北國際藝術博覽會｜數位生成藝術裝置</div>
-          <div class="pdesc" style="max-width:none">
+          <div class="pname"><span class="zh">Mercedes-Maybach × Art Taipei 2024</span><span class="en">Mercedes-Maybach × Art Taipei 2024</span></div>
+          <div class="psub"><span class="zh">臺北國際藝術博覽會｜數位生成藝術裝置</span><span class="en">Taipei International Art Fair | Generative Art Installation</span></div>
+          <div class="pdesc zh" style="max-width:none">
             台灣賓士以「Welcome to Beyond」為題，攜手 Mercedes-Maybach EQS 680 SUV 進駐 Art Taipei。<br><br>
-            展區核心為數位生成藝術作品<strong>《春分》</strong>——以兩層演算法圖層的堆疊，將季節遞嬗與自然循環轉譯為流動的視覺語彙。觀眾透過互動螢幕觸發畫面生成，鏡面裝置在現實與虛幻之間折射出無限延伸的空間。<br><br>
-            每一次觸碰都觸發一次獨一無二的生成——觀眾不是觀看者，而是共同創作者。<br>
-            當頂級工藝遇上生成演算——機械的精密與演算法的有機，在同一個展間對話。
+            展區核心為數位生成藝術作品<strong>《春分》</strong>——兩層演算法圖層堆疊，季節遞嬗與自然循環轉譯為流動的視覺語彙。<br><br>
+            觀眾透過互動螢幕觸發畫面生成。鏡面裝置在現實與虛幻之間折射出無限延伸的空間。
           </div>
-          <span class="ptag tag-json">生成式藝術</span>
-          <span class="ptag tag-md">互動裝置</span>
+          <div class="pdesc en" style="max-width:none">
+            Mercedes-Benz Taiwan brought the Maybach EQS 680 SUV to Art Taipei under the theme "Welcome to Beyond."<br><br>
+            The centerpiece was a generative artwork, <strong>Spring Equinox</strong> — two algorithmic layers stacked, translating seasonal cycles into flowing visual language.<br><br>
+            Visitors triggered real-time generation through interactive screens. Mirrored installations refracted infinite space between reality and illusion.
+          </div>
+          <span class="ptag tag-json"><span class="zh">生成式藝術</span><span class="en">Generative Art</span></span>
+          <span class="ptag tag-md"><span class="zh">互動裝置</span><span class="en">Interactive Installation</span></span>
           <span class="ptag tag-html">Art Taipei 2024</span>
         </div>
       </div>
@@ -541,36 +591,90 @@
       <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
         <img class="project-card-img" src="assets/inaugural-2024-nft-banner.png" alt="中華民國第十六任總統副總統就職慶典主視覺：線條肖像與橘黃藍綠斜線色帶" style="width:100%; height:100%; object-fit:cover;">
         <div class="project-card-body">
-          <div class="pname">總統就職典禮 × 生成式 NFT</div>
-          <div class="psub">2024 · 520 就職紀念｜akaSwap</div>
-          <div class="pdesc" style="max-width:none">
+          <div class="pname"><span class="zh">總統就職典禮 × 生成式 NFT</span><span class="en">Presidential Inauguration × Generative NFT</span></div>
+          <div class="psub"><span class="zh">2024 · 520 就職紀念｜akaSwap</span><span class="en">2024 · Inauguration Commemoration | akaSwap</span></div>
+          <div class="pdesc zh" style="max-width:none">
             2024 年總統就職典禮，主視覺以橘、黃、藍、綠四色線段象徵自由、民主、自信、友善。<br><br>
             與 akaSwap 合作開發<strong>AI 風格轉換系統</strong>——民眾自拍後，演算法即時將肖像轉化為就職主視覺的彩色線段風格，並自動鑄造為 Tezos 鏈上的 NFT。<br><br>
-            每一張臉都成為國家敘事的一部分——生成藝術不再只是畫廊裡的物件，而是<strong>十萬人共同參與的集體創作</strong>。
+            每一張臉都成為國家敘事的一部分。<strong>十萬人共同參與的集體創作。</strong>
           </div>
-          <span class="ptag tag-json">AI 風格轉換</span>
-          <span class="ptag tag-md">NFT 鑄造</span>
-          <span class="ptag tag-html">Tezos 區塊鏈</span>
+          <div class="pdesc en" style="max-width:none">
+            The 2024 Presidential Inauguration key visual used orange, yellow, blue, and green lines to symbolize freedom, democracy, confidence, and kindness.<br><br>
+            In collaboration with akaSwap, we built an <strong>AI style-transfer system</strong> — selfies were algorithmically transformed into the inauguration's colored-line aesthetic, then auto-minted as NFTs on Tezos.<br><br>
+            Every face became part of a national narrative. <strong>A collective creation by 100,000 people.</strong>
+          </div>
+          <span class="ptag tag-json"><span class="zh">AI 風格轉換</span><span class="en">AI Style Transfer</span></span>
+          <span class="ptag tag-md"><span class="zh">NFT 鑄造</span><span class="en">NFT Minting</span></span>
+          <span class="ptag tag-html"><span class="zh">Tezos 區塊鏈</span><span class="en">Tezos Blockchain</span></span>
         </div>
       </div>
     </div>
 
-    </div>
-
     <div class="highlight-box">
-      從 Maybach 展間到總統就職典禮——生成藝術的邊界不斷擴張。<br>
-      <strong>演算法是語言，結構是骨架，而每一次互動都是一次不可逆的共同創作。</strong>
+      <span class="zh">Maybach 展間。總統府前。<br>
+      <strong>演算法是語言，結構是骨架。</strong></span><span class="en">The Maybach showroom. The Presidential Office.<br>
+      <strong>Algorithms are the language. Structure is the skeleton.</strong></span>
     </div>
   </section>
 
-  <!-- ═══ 3: GeoPunk ═══ -->
+  <!-- ═══ 3: Pure Data ═══ -->
   <section class="slide" id="slide-3">
-    <div class="section-label">03 — Deep Dive · 地景 · 2021</div>
-    <h2>GeoPunk — 地誌龐克</h2>
+    <div class="section-label">03 — 從取樣開始，從濾波結束</div>
+    <h2><span class="zh">從取樣開始，從濾波結束</span><span class="en">Start with Sampling, End with Filtering</span></h2>
 
-    <p>「地誌龐克」系列重新探索地理空間的定義——以「龐克」為名，挑戰與質疑現有世界的疆界切分概念。這是我最早的區塊鏈生成藝術作品。</p>
+    <p class="zh">早期用 Pure Data 創作。Pd 是圖像化的程式語言，其中有個功能叫<strong>陣列（array）</strong>。</p>
+    <p class="en">I started making work with Pure Data. Pd is a visual programming language with a core feature: the <strong>array</strong>.</p>
 
-    <p>160 組散落世界各地的 GPS 座標被封裝進一份 JSON。程式隨機抽取經緯度，向 Google Maps 拉取衛星影像，再透過自訂 GLSL shader 將地表紋理<strong>位移、撕裂、重組</strong>——拓撲成一座從未存在的地景雕塑。</p>
+    <p class="zh">一排格子，每格存一個數值。關鍵在於怎麼讀：</p>
+    <p class="en">A row of cells, each holding a number. The key is how you read it:</p>
+
+    <div class="project-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="project-card"><div class="project-card-body">
+        <div class="pname"><span class="zh">照順序讀</span><span class="en">Read sequentially</span></div><div class="pdesc"><span class="zh">一段聲音</span><span class="en">A sound clip</span></div>
+      </div></div>
+      <div class="project-card"><div class="project-card-body">
+        <div class="pname"><span class="zh">慢速讀</span><span class="en">Read slowly</span></div><div class="pdesc"><span class="zh">聲音變低、變長</span><span class="en">Pitch drops, duration stretches</span></div>
+      </div></div>
+      <div class="project-card"><div class="project-card-body">
+        <div class="pname"><span class="zh">快速讀</span><span class="en">Read fast</span></div><div class="pdesc"><span class="zh">聲音變高、壓縮</span><span class="en">Pitch rises, time compresses</span></div>
+      </div></div>
+      <div class="project-card"><div class="project-card-body">
+        <div class="pname"><span class="zh">亂數跳讀，限制大三度</span><span class="en">Random jumps, capped at major thirds</span></div><div class="pdesc"><span class="zh">和諧的旋律</span><span class="en">A harmonious melody</span></div>
+      </div></div>
+      <div class="project-card"><div class="project-card-body">
+        <div class="pname"><span class="zh">當 MIDI 譜讀</span><span class="en">Read as MIDI score</span></div><div class="pdesc"><span class="zh">一首曲子</span><span class="en">A composition</span></div>
+      </div></div>
+      <div class="project-card"><div class="project-card-body">
+        <div class="pname"><span class="zh">當封包讀</span><span class="en">Read as envelope</span></div><div class="pdesc"><span class="zh">一個音色的形狀</span><span class="en">The shape of a timbre</span></div>
+      </div></div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="zh">資料沒變，容器沒變。變的是讀取的方式。<br>
+      <strong>建立資料集只是開始。設定讀取的方法，才有意思。</strong></span><span class="en">The data didn't change. The container didn't change. Only the way you read it did.<br>
+      <strong>Building the dataset is just the start. Designing how to read it — that's where it gets interesting.</strong></span>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">EARLY WORK — Pure Data</div>
+      <iframe class="lazy-embed" title="Aluan Wang - Pure Data 早期作品" src="about:blank" data-src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F223237066&show_artwork=true&color=%232d6a4f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" allow="autoplay" style="height:166px"></iframe>
+      <a class="iframe-link" href="https://soundcloud.com/aluan-wang/2odzjdlixyct" target="_blank" rel="noopener noreferrer">↗ 在 SoundCloud 開啟</a>
+    </div>
+
+    <p class="zh" style="margin-top:1rem">後來我做的很多作品，本質上都在做同一件事：替同一份資料發明新的讀法。</p>
+    <p class="en" style="margin-top:1rem">Most of my work since then has been doing the same thing: inventing new ways to read the same data.</p>
+  </section>
+
+  <!-- ═══ 4: GeoPunk ═══ -->
+  <section class="slide" id="slide-4">
+    <div class="section-label">04 — Deep Dive · 地景 · 2021</div>
+    <h2><span class="zh">GeoPunk — 地誌龐克</span><span class="en">GeoPunk — Territorial Punk</span></h2>
+
+    <p class="zh">Paths 系列（Path to the Past / Future / End）的番外篇。我最早的區塊鏈生成藝術作品。<br>「地誌龐克」——重新探索地理空間的定義。以「龐克」為名，挑戰疆界切分。</p>
+    <p class="en">A spin-off from the Paths series (Path to the Past / Future / End). My earliest blockchain generative artwork.<br>"GeoPunk" — redefining geographic space. Named "punk" to challenge how borders are drawn.</p>
+
+    <p class="zh">159 個地址橫跨北京、台灣、美國、英國、加拿大。GPS 座標封裝進 JSON，聲音與敘述以<strong>摩斯電碼</strong>加密。程式隨機抽取經緯度，拉取衛星影像，GLSL shader 將地表紋理<strong>位移、撕裂、重組</strong>。</p>
+    <p class="en">159 addresses spanning Beijing, Taiwan, the US, UK, and Canada. GPS coordinates packed into JSON, sound and narrative encrypted in <strong>Morse code</strong>. The program randomly picks coordinates, fetches satellite imagery, and GLSL shaders <strong>displace, tear, and reassemble</strong> the terrain.</p>
 
     <div class="flow">
       <div class="flow-node">JSON 座標</div>
@@ -582,6 +686,8 @@
       <div class="flow-node">3D 幾何體</div>
       <div class="flow-arrow">→</div>
       <div class="flow-node">🏔 地景雕塑</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-node">摩斯電碼</div>
     </div>
 
     <img class="img-wide" src="assets/geopunk-banner.jpg" alt="GeoPunk：衛星地貌經 shader 位移生成的 3D 地景雕塑" onerror="this.style.display='none'">
@@ -593,18 +699,23 @@
     </div>
 
     <div class="highlight-box">
-      <strong>每一件作品都是一次對地球表面的儀式性採樣</strong>——國界消融，衛星的凝視經演算法轉譯，成為無法被複製的數位地層。<br>
-      錐體、立方體、十字架三種幾何骨架，承載著真實地球的光譜。160 editions。
+      <span class="zh"><strong>每一件作品都是一次對地球表面的儀式性採樣。</strong><br>
+      國界消融，衛星的凝視經演算法轉譯，成為無法被複製的數位地層。<br><br>
+      同一份座標，可以被讀成地景，也可以被讀成敘事。</span><span class="en"><strong>Each piece is a ritual sampling of the Earth's surface.</strong><br>
+      Borders dissolve. Satellite gazes, translated by algorithms, become irreplicable digital strata.<br><br>
+      The same coordinates can be read as landscape — or as narrative.</span>
     </div>
   </section>
 
   <!-- ═══ 4: Good Vibrations ═══ -->
-  <section class="slide" id="slide-4">
-    <div class="section-label">04 — Origin · 2021</div>
-    <h2>作品背後都是結構</h2>
+  <section class="slide" id="slide-5">
+    <div class="section-label">05 — Origin · 2021</div>
+    <h2><span class="zh">作品背後都是結構</span><span class="en">Behind Every Piece Lies Structure</span></h2>
 
-    <p><strong>Good Vibrations</strong> — 我的第一件長篇生成藝術作品。表面上是旋轉的圓弧與線段互動，交叉觸發聲音。</p>
-    <p>但按下隱藏快捷鍵 <strong>A+S+D+F</strong>，畫面會切換成「樂譜模式」，揭示每個 token 背後的音樂結構。</p>
+    <p class="zh"><strong>Good Vibrations</strong> — Art Blocks 上的第一件長篇生成藝術作品。台灣首位登上該平台的藝術家。旋轉的圓弧與線段互動，交叉觸發聲音。</p>
+    <p class="en"><strong>Good Vibrations</strong> — my first long-form generative work on Art Blocks. The first Taiwanese artist on the platform. Spinning arcs and lines interact, triggering sound at every crossing.</p>
+    <p class="zh">按下 <strong>A+S+D+F</strong>，畫面切成「樂譜模式」，揭示每個 token 背後的音樂結構。後來空投 <strong>B-side</strong> 給所有持有者——每張對應背後的聲響與視覺邏輯。一張樂譜，一份菜單。</p>
+    <p class="en">Press <strong>A+S+D+F</strong> and the canvas flips to "score mode," revealing the musical structure behind each token. Later I airdropped a <strong>B-side</strong> to every holder — each one mapping to its sonic and visual logic. One score, one recipe.</p>
 
     <div class="img-row">
       <img src="https://aluanwang.com/wp-content/uploads/2021/09/0_GV-300x300.png" alt="GV #0">
@@ -628,8 +739,11 @@
     </div>
 
     <div class="highlight-box">
-      如果作品的本質是結構，那結構本身就可以被記錄、被還原、被重新生成。<br>
-      → 這成為我跟 LLM 協作的核心方法論。
+      <span class="zh">作品的本質是結構。<br>
+      結構可以被記錄、被還原、被重新生成。<br><br>
+      同一份 hash，可以被讀成視覺，也可以被讀成樂譜。</span><span class="en">The essence of a work is its structure.<br>
+      Structure can be recorded, restored, regenerated.<br><br>
+      The same hash can be read as visuals — or as a musical score.</span>
     </div>
 
     <div class="iframe-wrap">
@@ -640,55 +754,88 @@
 
   </section>
 
-  <!-- ═══ 4: 方法論 ═══ -->
-  <section class="slide" id="slide-5">
-    <div class="section-label">05 — Methodology</div>
-    <h2>核心方法論：JSON 作為記憶層</h2>
+  <!-- ═══ 5: Chaos 三部曲 ═══ -->
+  <section class="slide" id="slide-6">
+    <div class="section-label">06 — Deep Dive · 混沌 · 2021–22</div>
+    <h2><span class="zh">Chaos 三部曲：作品吃作品</span><span class="en">The Chaos Trilogy: Art Feeding on Art</span></h2>
 
-    <p>LLM 的上下文有限、記憶會斷。我的解法：<strong>主動建立外部記憶</strong>——用 JSON 和 .md 把重要資訊結構化，讓 LLM 每次都能從錨點重新理解脈絡。</p>
+    <p class="zh">GeoPunk 取樣地球。Chaos 取樣自己。<br>作品以前作為原料，層層遞迴，生成新的混沌。</p>
+    <p class="en">GeoPunk sampled the Earth. Chaos sampled itself.<br>Each piece consumes its predecessors, recursing layer by layer into new chaos.</p>
 
-    <div class="highlight-box">用結構化資料（JSON + Markdown）建立人與機器之間的協作協議。</div>
+    <img class="img-wide" src="assets/chaos_series.png" alt="Chaos 三部曲：Research #22、Memory #3、Culture #158" onerror="this.style.display='none'">
 
     <div class="project-grid">
       <div class="project-card">
-        <img class="project-card-img" src="assets/seven-gates-card.png" alt="《修仙-七玄關》封面">
         <div class="project-card-body">
-          <div class="pname">《修仙-七玄關》</div>
-          <div class="psub">小說創作</div>
-          <div class="pdesc">JSON 記錄故事結構——每段附帶 analysis（場景、角色、情緒、伏筆），讓 LLM 回溯前文確保連貫性。</div>
-          <span class="ptag tag-json">JSON 故事資料庫</span>
-          <span class="ptag tag-md">.md 角色設定</span>
-          <span class="ptag tag-html">互動式網頁</span>
+          <div class="pname">Chaos Research</div>
+          <div class="psub"><span class="zh">2021.12 · fxhash（Tezos）</span><span class="en">2021.12 · fxhash (Tezos)</span></div>
+          <div class="pdesc"><span class="zh">在 Perlin Noise 流場之上疊加一層神秘訊號——源自我自己的 NFT 收藏。收藏品經變形，成為粒子、顏色、造型的隱藏基底。藏在 IPFS 程式碼裡。</span><span class="en">A hidden signal layered on top of Perlin Noise flow fields — sourced from my own NFT collection. Collected works, transformed, became the secret foundation for particles, colors, and forms. Buried in the IPFS code.</span></div>
+          <span class="ptag tag-json"><span class="zh">自我取樣</span><span class="en">Self-sampling</span></span>
+          <span class="ptag tag-md"><span class="zh">IPFS 隱藏檔</span><span class="en">Hidden IPFS files</span></span>
         </div>
       </div>
       <div class="project-card">
-        <img class="project-card-img" src="assets/inkfield-banner.png" alt="InkField 墨域—水墨筆觸示意" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#0a0a0a)'; this.style.height='140px';">
         <div class="project-card-body">
-          <div class="pname">InkField 墨域</div>
-          <div class="psub">數位水墨引擎</div>
-          <div class="pdesc">JSON 只記錄事件（非像素）。99.9% 重播一致性。AI Agent 可直接生成 JSON 來畫畫。</div>
-          <span class="ptag tag-json">JSON 事件序列</span>
-          <span class="ptag tag-md">CLAUDE.md</span>
+          <div class="pname">Chaos Memory</div>
+          <div class="psub">2022.04 · fxhash</div>
+          <div class="pdesc"><span class="zh">按 <strong>Q / W / E / R</strong> 切換長方形、正方形、圓形。IPFS 裡藏著透納的畫作局部、Research 的圖片、Memory 自身。加密回文：ILEIVOIVM。</span><span class="en">Press <strong>Q / W / E / R</strong> to toggle rectangles, squares, circles. Hidden in IPFS: fragments of Turner paintings, Research images, and Memory itself. Encrypted palindrome: ILEIVOIVM.</span></div>
+          <span class="ptag tag-json"><span class="zh">透納取樣</span><span class="en">Turner sampling</span></span>
+          <span class="ptag tag-md"><span class="zh">自我遞迴</span><span class="en">Self-recursion</span></span>
         </div>
       </div>
       <div class="project-card">
-        <img class="project-card-img" src="https://aluanwang.com/wp-content/uploads/2025/08/a7.jpg" alt="PolyPaths">
         <div class="project-card-body">
-          <div class="pname">PolyPaths 植徑集</div>
-          <div class="psub">人機互動生成藝術</div>
-          <div class="pdesc">觀眾畫路徑→系統記錄→壓縮成 hash→解碼還原 JSON→植物生成骨架。</div>
-          <span class="ptag tag-json">路徑→hash→JSON</span>
+          <div class="pname">Chaos Culture</div>
+          <div class="psub">2022.05 · Art Basel HK</div>
+          <div class="pdesc"><span class="zh">再次萃取 Research 與 Memory。圓形構圖如培養皿，等高線如俯視衛星地圖。巴塞爾藝博會香港現場發表。三幕劇的終章。</span><span class="en">Research and Memory distilled once more. Circular compositions like petri dishes, contour lines like satellite maps. Premiered at Art Basel Hong Kong. The final act of a three-part play.</span></div>
+          <span class="ptag tag-json"><span class="zh">再次取樣</span><span class="en">Re-sampling</span></span>
+          <span class="ptag tag-html">Art Basel HK</span>
         </div>
       </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-node">我的收藏</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Research<br><span style="font-size:0.7em">自我取樣</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Memory<br><span style="font-size:0.7em">+ 透納 + 自身</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Culture<br><span style="font-size:0.7em">再次萃取</span></div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="zh">Research、Memory、Culture。<br>
+      取樣與萃取，本質上與加密解密相近。<br><br>
+      同一份前作，可以被讀成素材，也可以被讀成下一件作品。</span><span class="en">Research, Memory, Culture.<br>
+      Sampling and distilling are, at their core, akin to encryption and decryption.<br><br>
+      The same prior work can be read as raw material — or as the next piece.</span>
+    </div>
+  </section>
+
+  <!-- ═══ 7: 方法論 ═══ -->
+  <section class="slide" id="slide-7">
+    <div class="section-label">07 — Methodology</div>
+
+    <h2><span class="zh">JSON 作為記憶層</span><span class="en">JSON as the Memory Layer</span></h2>
+
+    <p class="zh" style="font-size:1.2rem; text-align:center; margin:2rem 0">LLM 的上下文有限，記憶會斷。<br>JSON 和 .md 就是錨點。</p>
+    <p class="en" style="font-size:1.2rem; text-align:center; margin:2rem 0">LLM context is finite. Memory breaks.<br>JSON and .md are the anchors.</p>
+
+    <div style="display:flex; justify-content:center; gap:3rem; margin:2rem 0; font-family:var(--serif); font-size:1.5rem; font-weight:600; color:var(--accent)">
+      <span><span class="zh">故事</span><span class="en">Story</span></span>
+      <span><span class="zh">筆觸</span><span class="en">Brushstroke</span></span>
+      <span><span class="zh">行為</span><span class="en">Behavior</span></span>
     </div>
   </section>
 
   <!-- ═══ 5: JSON 深入 ═══ -->
-  <section class="slide" id="slide-6">
-    <div class="section-label">06 — Deep Dive · 小說</div>
-    <h2>JSON 實例：故事的外部記憶</h2>
+  <section class="slide" id="slide-8">
+    <div class="section-label">08 — Deep Dive · 小說</div>
+    <h2><span class="zh">《修仙-七玄關》：故事的外部記憶</span><span class="en">Seven Gates: External Memory for a Novel</span></h2>
 
-    <p>寫長篇小說最大的問題是連貫性。LLM 無法記住幾萬字的前文，所以我建了結構化的場景資料庫：</p>
+    <p class="zh">一個橫跨宗教、犯罪與超自然的長篇小說。角色在第三章說的話不能跟第一章矛盾，伏筆埋了就要收。</p>
+    <p class="en">A long-form novel spanning religion, crime, and the supernatural. What a character says in chapter three can't contradict chapter one. Every foreshadowing must pay off.</p>
 
     <div class="code-block">
       <div class="code-label">story-structured.json</div>
@@ -711,9 +858,10 @@
 }</pre>
     </div>
 
-    <p>每個段落附帶 <strong>analysis</strong>。LLM 寫第五章時，可回溯所有前面的 analysis，確保情緒曲線連貫、伏筆被正確延續。</p>
+    <p class="zh">每個段落附帶 <strong>analysis</strong>。寫第五章時回溯前面所有 analysis，情緒曲線連貫，伏筆正確延續。</p>
+    <p class="en">Every segment carries an <strong>analysis</strong>. When writing chapter five, I trace back through all prior analyses — emotional arcs stay coherent, foreshadowing threads continue correctly.</p>
 
-    <div class="highlight-box">關鍵心得：不要期待 LLM 記住一切，主動幫它建索引。</div>
+    <div class="highlight-box"><span class="zh">不要期待 LLM 記住一切。主動幫它建索引。</span><span class="en">Don't expect the LLM to remember everything. Build the index for it.</span></div>
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
@@ -723,11 +871,12 @@
   </section>
 
   <!-- ═══ 6: InkField iframe ═══ -->
-  <section class="slide" id="slide-7">
-    <div class="section-label">07 — Deep Dive · 水墨</div>
-    <h2>InkField：AI 用 JSON 畫水墨</h2>
+  <section class="slide" id="slide-9">
+    <div class="section-label">09 — Deep Dive · 水墨</div>
+    <h2><span class="zh">InkField：AI 用 JSON 畫水墨</span><span class="en">InkField: AI Paints Ink Wash via JSON</span></h2>
 
-    <p>InkField 的錄製系統只記錄<strong>事件</strong>（筆觸參數+種子值），不記錄像素。雙種子確定性系統達到 99.9% 一致性。一幅作品 JSON 通常 < 100KB。</p>
+    <p class="zh">AI 可以畫一幅水墨。不是操作滑鼠，不是生成像素——是輸出一份 JSON，引擎還原成完整畫作。</p>
+    <p class="en">AI can paint ink wash. Not by moving a mouse, not by generating pixels — by outputting a JSON file that the engine renders into a complete painting.</p>
 
     <div class="flow">
       <div class="flow-node">AI 生成 JSON</div>
@@ -745,15 +894,21 @@
       <a class="iframe-link" href="https://inkfield-production.up.railway.app/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
     </div>
 
-    <p style="margin-top:0.8rem">我用 <strong>Claude Code</strong> 開發此專案，搭配 <strong>CLAUDE.md</strong> 管理規範，doc/ 目錄保留 TECHNICAL_6~10.md 記錄每次迭代。</p>
+    <p class="zh" style="margin-top:0.8rem">錄製系統只記錄事件（筆觸參數 + 種子值），不記錄像素。雙種子確定性系統，99.9% 一致性。一幅作品 < 100KB。</p>
+    <p class="en" style="margin-top:0.8rem">The recording system captures events (stroke parameters + seed values), not pixels. Dual-seed deterministic system, 99.9% consistency. One painting &lt; 100KB.</p>
+    <p class="zh" style="font-size:0.85rem; color:var(--text-dim)">Claude Code 開發，CLAUDE.md 管理規範，doc/ 保留每次迭代的技術文檔。</p>
+    <p class="en" style="font-size:0.85rem; color:var(--text-dim)">Built with Claude Code. CLAUDE.md governs project specs. doc/ preserves technical docs from every iteration.</p>
   </section>
 
   <!-- ═══ 7: PolyPaths iframe ═══ -->
-  <section class="slide" id="slide-8">
-    <div class="section-label">08 — Deep Dive · 植物</div>
-    <h2>PolyPaths：觀眾的行為就是 DNA</h2>
+  <section class="slide" id="slide-10">
+    <div class="section-label">10 — Deep Dive · 植物</div>
+    <h2><span class="zh">PolyPaths：觀眾不知道自己正在被記錄</span><span class="en">PolyPaths: The Audience Doesn't Know They're Being Recorded</span></h2>
 
-    <p>觀眾在介面上畫路徑，以為只是在互動。但系統在背後<strong>完整記錄了他們的一舉一動</strong>。</p>
+    <p class="zh">觀眾在介面上畫路徑，以為只是在互動。他們不知道每一筆都被記下來了。</p>
+    <p class="en">Visitors draw paths on the interface, thinking they're just interacting. They don't realize every stroke is being recorded.</p>
+    <p class="zh">路徑壓縮成 hash，塞進 URL。任何人拿到這串 URL，就能還原完整的繪製過程——然後長出一棵植物。</p>
+    <p class="en">Paths get compressed into a hash, embedded in the URL. Anyone with that URL can replay the entire drawing process — and grow a plant from it.</p>
 
     <div class="flow">
       <div class="flow-node">觀眾畫路徑</div>
@@ -779,98 +934,133 @@
   </section>
 
   <!-- ═══ 8: 工具鏈 ═══ -->
-  <section class="slide" id="slide-9">
-    <div class="section-label">09 — Toolchain</div>
-    <h2>我的 LLM 工具鏈</h2>
+  <section class="slide" id="slide-11">
+    <div class="section-label">11 — Toolchain</div>
+    <h2><span class="zh">我的 LLM 工具鏈</span><span class="en">My LLM Toolchain</span></h2>
 
     <div class="tool-cards">
       <div class="tool-card">
         <h3>Claude Code</h3>
-        <p>深度開發與專案管理</p>
+        <p><span class="zh">深度開發與專案管理</span><span class="en">Deep development & project management</span></p>
         <ul class="feature-list">
-          <li><strong>CLAUDE.md</strong> — 專案規範，每次啟動自動讀取</li>
-          <li>先用 <strong>.md 規劃架構</strong>，再展開實作</li>
-          <li><strong>doc/</strong> 目錄保留歷史技術文檔</li>
+          <li class="zh"><strong>CLAUDE.md</strong> — 專案規範，每次啟動自動讀取</li>
+          <li class="en"><strong>CLAUDE.md</strong> — project spec, auto-loaded on every launch</li>
+          <li class="zh">先用 <strong>.md 規劃架構</strong>，再展開實作</li>
+          <li class="en">Plan architecture in <strong>.md first</strong>, then implement</li>
+          <li class="zh"><strong>doc/</strong> 目錄保留歷史技術文檔</li>
+          <li class="en"><strong>doc/</strong> directory preserves technical docs from every iteration</li>
         </ul>
       </div>
       <div class="tool-card">
         <h3>Cursor</h3>
-        <p>即時編碼與快速迭代</p>
+        <p><span class="zh">即時編碼與快速迭代</span><span class="en">Real-time coding & rapid iteration</span></p>
         <ul class="feature-list">
-          <li>寫 <strong>shader</strong>、調視覺參數、debug</li>
-          <li><strong>Inline edit</strong> 邊看 code 邊跟 LLM 對話</li>
-          <li>適合快速來回修改的場景</li>
+          <li class="zh">寫 <strong>shader</strong>、調視覺參數、debug</li>
+          <li class="en">Write <strong>shaders</strong>, tweak visual parameters, debug</li>
+          <li class="zh"><strong>Inline edit</strong> 邊看 code 邊跟 LLM 對話</li>
+          <li class="en"><strong>Inline edit</strong> — talk to the LLM while reading code</li>
+          <li class="zh">適合快速來回修改的場景</li>
+          <li class="en">Ideal for fast back-and-forth edits</li>
         </ul>
       </div>
       <div class="tool-card">
         <h3>Cowork</h3>
-        <p>文件處理與日常工作流</p>
+        <p><span class="zh">文件處理與日常工作流</span><span class="en">Documents & daily workflows</span></p>
         <ul class="feature-list">
-          <li>整理文件、生成報告、處理素材</li>
-          <li>非程式碼的工作場景</li>
-          <li>散落經驗 → 結構化教學文件</li>
+          <li class="zh">整理文件、生成報告、處理素材</li>
+          <li class="en">Organize files, generate reports, process assets</li>
+          <li class="zh">非程式碼的工作場景</li>
+          <li class="en">Non-code work scenarios</li>
+          <li class="zh">散落經驗 → 結構化教學文件</li>
+          <li class="en">Scattered experience → structured teaching docs</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- ═══ 9: 數位分身 ═══ -->
-  <section class="slide" id="slide-10">
-    <div class="section-label">10 — Digital Twin</div>
-    <h2>最後一層：用 .md 建立數位分身</h2>
+  <section class="slide" id="slide-12">
+    <div class="section-label">12 — Digital Twin</div>
+    <h2><span class="zh">最後一層：用 .md 建立數位分身</span><span class="en">The Final Layer: Building a Digital Twin with .md</span></h2>
 
-    <p>我把 Facebook、X、Threads 上的所有發言下載下來，整理成一份<strong>「寫作風格指南」.md</strong>：</p>
+    <p class="zh">我把 Facebook、X、Threads 上的所有發言下載下來，整理成一份<strong>「寫作風格指南」.md</strong>：</p>
+    <p class="en">I downloaded all my posts from Facebook, X, and Threads, and distilled them into a <strong>"writing style guide" .md</strong>:</p>
 
     <div class="persona-grid">
       <div class="persona-card">
-        <div class="pname">核心人格設定</div>
-        <div class="pdesc">身份標籤、人格維度（焦慮的實踐者、浪漫的工程師、傲嬌的推廣者）、生涯軌跡</div>
+        <div class="pname"><span class="zh">核心人格設定</span><span class="en">Core Persona</span></div>
+        <div class="pdesc"><span class="zh">身份標籤、人格維度（焦慮的實踐者、浪漫的工程師、傲嬌的推廣者）、生涯軌跡</span><span class="en">Identity tags, personality axes (anxious practitioner, romantic engineer, tsundere evangelist), career arc</span></div>
       </div>
       <div class="persona-card">
-        <div class="pname">寫作語法公式</div>
-        <div class="pdesc">技術體悟型、藝術哲學型、生活廢文型、市場喊話型——各有結構模板</div>
+        <div class="pname"><span class="zh">寫作語法公式</span><span class="en">Writing Formulas</span></div>
+        <div class="pdesc"><span class="zh">技術體悟型、藝術哲學型、生活廢文型、市場喊話型——各有結構模板</span><span class="en">Tech-epiphany mode, art-philosophy mode, shitpost mode, market-rally mode — each with its own structural template</span></div>
       </div>
       <div class="persona-card">
-        <div class="pname">關鍵詞彙與口頭禪</div>
-        <div class="pdesc">情緒助詞、稱謂系統、技術術語、標點 / Emoji 習慣</div>
+        <div class="pname"><span class="zh">關鍵詞彙與口頭禪</span><span class="en">Key Vocabulary & Catchphrases</span></div>
+        <div class="pdesc"><span class="zh">情緒助詞、稱謂系統、技術術語、標點 / Emoji 習慣</span><span class="en">Mood particles, naming conventions, technical jargon, punctuation & emoji habits</span></div>
       </div>
       <div class="persona-card">
-        <div class="pname">句型風格</div>
-        <div class="pdesc">反問句、極端對比、擬人化、動漫梗、中英夾雜規則</div>
+        <div class="pname"><span class="zh">句型風格</span><span class="en">Sentence Patterns</span></div>
+        <div class="pdesc"><span class="zh">反問句、極端對比、擬人化、動漫梗、中英夾雜規則</span><span class="en">Rhetorical questions, extreme contrasts, personification, anime references, code-switching rules</span></div>
       </div>
     </div>
 
     <div class="highlight-box">
-      這份文件讓 LLM 可以 index 我的思考方式、表達習慣、價值觀。<br>
-      它不只是助理，更接近一個「模擬我的 agent」——理解我會怎麼想、怎麼說、怎麼決策。
+      <span class="zh">LLM 可以 index 我的思考方式、表達習慣、價值觀。<br>
+      它不再是助理。它是一個模擬我的 agent。</span><span class="en">The LLM can index my way of thinking, my habits of expression, my values.<br>
+      It's no longer an assistant. It's an agent that simulates me.</span>
     </div>
   </section>
 
   <!-- ═══ 10: 總結 ═══ -->
-  <section class="slide" id="slide-11">
-    <div class="section-label">11 — Summary</div>
-    <h2>總結：留下錨點，讓一切可以被 index</h2>
+  <section class="slide" id="slide-13">
+    <div class="section-label">13 — Summary</div>
+    <h2><span class="zh">留下錨點，讓一切可以被 index</span><span class="en">Leave Anchors. Make Everything Indexable.</span></h2>
 
-    <div class="big-quote">留下很多錨點，讓它可以被 index，<br>最後透過 meta 生成一個人，以及衍伸的作品。</div>
-
-    <table class="data-table">
-      <thead><tr><th>層級</th><th>做法</th><th>目的</th></tr></thead>
-      <tbody>
-        <tr><td>作品層</td><td>hash → seed → 確定性生成</td><td>每件作品可還原、可重播</td></tr>
-        <tr><td>記憶層</td><td>JSON 記錄結構（場景 / 事件 / 路徑）</td><td>讓 LLM 保持連貫，突破上下文限制</td></tr>
-        <tr><td>協作層</td><td>.md 規劃架構，CLAUDE.md 管理規範</td><td>讓 LLM 理解專案脈絡</td></tr>
-        <tr><td>人格層</td><td>社群發言 → 風格指南 .md</td><td>讓 LLM 理解「我」，成為數位分身</td></tr>
-      </tbody>
-    </table>
+    <div class="zh" style="display:flex; flex-direction:column; gap:1.5rem; max-width:500px; margin:2rem auto;">
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">作品層</span>
+        <span style="color:var(--text-dim)">可重播</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">記憶層</span>
+        <span style="color:var(--text-dim)">可索引</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">協作層</span>
+        <span style="color:var(--text-dim)">可延續</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">人格層</span>
+        <span style="color:var(--text-dim)">可模擬</span>
+      </div>
+    </div>
+    <div class="en en-flex" style="display:none; flex-direction:column; gap:1.5rem; max-width:500px; margin:2rem auto;">
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Work</span>
+        <span style="color:var(--text-dim)">Replayable</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Memory</span>
+        <span style="color:var(--text-dim)">Indexable</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Collab</span>
+        <span style="color:var(--text-dim)">Continuable</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
+        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Persona</span>
+        <span style="color:var(--text-dim)">Simulable</span>
+      </div>
+    </div>
   </section>
 
   <!-- ═══ 11: Closing ═══ -->
-  <section class="slide slide-closing" id="slide-12">
+  <section class="slide slide-closing" id="slide-14">
     <div class="closing-statement">
-      結構不是限制，結構是自由。<br><br>
-      當你把一切都結構化之後，<br>
-      LLM 才能真正成為你的延伸——<br>
-      不只是工具，而是一個<em>理解你、能替你思考的 agent</em>。
+      <span class="zh">結構不是限制，結構是自由。<br><br>
+      當我不在場時，<br>別人會怎麼重組我？</span><span class="en">Structure is not constraint. Structure is freedom.<br><br>
+      When I'm no longer present,<br>how will others reassemble me?</span>
     </div>
     <div class="hashtags">
       <span>#VibeCoding</span>
@@ -878,7 +1068,7 @@
       <span>#LLM</span>
       <span>#當我不在場時別人會怎麼重組我</span>
     </div>
-    <div class="author">阿亂｜王新仁｜2026</div>
+    <div class="author"><span class="zh">阿亂｜王新仁｜2026</span><span class="en">Aluan Wang | 2026</span></div>
   </section>
 
 </div>
@@ -992,6 +1182,22 @@
   if (kbUp) kbUp.addEventListener('click', goPrev);
   if (kbDown) kbDown.addEventListener('click', goNext);
   syncKbButtons();
+
+  // ── Language Toggle ──
+  const langToggle = document.getElementById('langToggle');
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+    langToggle.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+  langToggle.addEventListener('click', e => {
+    const btn = e.target.closest('.lang-btn');
+    if (btn) setLang(btn.dataset.lang);
+  });
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang) setLang(savedLang);
 })();
 </script>
 

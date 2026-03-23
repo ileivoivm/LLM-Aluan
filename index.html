@@ -244,14 +244,13 @@
   .img-row img:hover { transform: scale(1.05); }
 
   /* ── Artist bio ── */
-  .bio-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items: start; margin: 1rem 0; }
+  .bio-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items: stretch; margin: 1rem 0; }
   .bio-photo-stack { display: flex; flex-direction: column; gap: 10px; }
   .bio-photo {
     width: 100%; border-radius: 4px; border: 1px solid var(--border);
     object-fit: cover;
   }
-  .bio-photo.main { height: 200px; }
-  .bio-photo.secondary { height: 120px; opacity: 0.85; }
+  .bio-photo.main { height: 100%; }
   .bio-statement {
     font-family: var(--serif);
     font-size: 1.15rem; font-weight: 400; color: var(--text);
@@ -501,7 +500,7 @@
     <div class="title-bg"></div>
     <h1><span class="zh">我如何使用 LLM<br>從結構到創作的工作方法論</span><span class="en">How I Use LLMs<br>A Methodology from Structure to Creation</span></h1>
     <div class="subtitle">
-      <strong>王新仁（阿亂）</strong><br>
+      <strong>王新仁 ｜ Aluan</strong><br>
       <span class="zh">生成式藝術家・創意程式設計師・akaSwap 共同創辦人</span><span class="en">Generative Artist · Creative Coder · Co-founder of akaSwap</span><br>
       <span class="zh">工具：Claude Code / Cursor / Cowork</span><span class="en">Tools: Claude Code / Cursor / Cowork</span>
     </div>
@@ -509,15 +508,14 @@
     <div class="scroll-hint"><span class="zh">↓ 向下滾動開始</span><span class="en">↓ Scroll to begin</span></div>
   </section>
 
-  <!-- ═══ 1: Artist Bio ═══ -->
+  <!-- ═══ 1a: Artist Identity ═══ -->
   <section class="slide" id="slide-1">
     <div class="section-label">01 — About the Artist</div>
-    <h2>王新仁（阿亂）</h2>
+    <h2>王新仁 ｜ Aluan Wang</h2>
 
     <div class="bio-layout">
       <div class="bio-photo-stack">
-        <img class="bio-photo main" src="https://aluanwang.com/wp-content/uploads/2025/08/a1.jpg" alt="Aluan Wang" onerror="this.style.background='var(--surface-2)'">
-        <img class="bio-photo secondary" src="https://aluanwang.com/wp-content/uploads/2021/07/DSC_8894.jpg" alt="Exhibition" onerror="this.style.display='none'">
+        <img class="bio-photo main" src="https://aluanwang.com/wp-content/uploads/2021/07/1019%E7%B8%BD%E7%B5%B1%E6%96%87%E5%8C%96%E7%8D%8E%E8%AB%96%E5%A3%87-152.jpg" alt="Aluan Wang" onerror="this.style.background='var(--surface-2)'">
       </div>
       <div>
         <div class="bio-statement">
@@ -528,10 +526,6 @@
           <span style="color:var(--text-muted)">INPUT</span>&nbsp;&nbsp; <strong>aluan wang</strong><br>
           <span style="color:var(--text-muted)">CIPHER</span>&nbsp; Affine (slope=5, intercept=8)<br>
           <span style="color:var(--text-muted)">OUTPUT</span>&nbsp; <strong style="color:var(--accent-color)">ileiv oivm</strong> → <strong style="color:var(--accent-color)">Ileivoivm</strong>
-        </div>
-        <div class="bio-statement" style="margin-top:0.3rem">
-          <span class="zh">我創作的是隨時間記錄人類意圖的生成系統。<br>在演算法的縫隙之中，留下人類的痕跡。</span>
-          <span class="en">I build generative systems that record human intention over time.<br>In the gaps between algorithms, I leave human traces.</span>
         </div>
         <div class="bio-tags zh">
           <span class="bio-tag">生成式藝術家</span>
@@ -552,6 +546,22 @@
         <p class="zh" style="font-size:0.85rem">1982 年生於台中。超過 15 年數位與生成藝術經驗。作品展出於國立台灣美術館、尊彩藝術中心、新加坡藝術科學博物館等。兩度獲台北數位藝術節首獎（2012、2015）。</p>
         <p class="en" style="font-size:0.85rem">Born 1982, Taichung. 15+ years in digital and generative art. Exhibited at National Taiwan Museum of Fine Arts, Liang Gallery, ArtScience Museum Singapore. Two-time Grand Prize winner at Taipei Digital Art Festival (2012, 2015).</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══ 1b: Artist Statement ═══ -->
+  <section class="slide" id="slide-1b">
+    <div class="section-label">01 — Statement</div>
+
+    <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2021/07/DSC_8894.jpg" alt="Exhibition" style="max-height:280px; object-fit:cover; border-radius:8px; margin-bottom:1.5rem;" onerror="this.style.display='none'">
+
+    <div class="bio-statement" style="font-size:1.4rem; line-height:2.2; max-width:680px; margin:2rem auto; text-align:center;">
+      <span class="zh">我不創造圖像，我建構的是能記住決策如何發生的系統。<br><br>
+      在我的作品裡，繪畫存在於時間之中，而不是形式之上。<br><br>
+      你所看到的不是結果，而是人類意圖殘留下來的痕跡。</span>
+      <span class="en">I don't create images — I build systems that remember how decisions were made.<br><br>
+      In my work, painting exists in time, not in form.<br><br>
+      What you see is not the outcome, but the residue of human intention.</span>
     </div>
 
     <div class="bio-highlights">
@@ -802,6 +812,21 @@
       <div class="flow-node">Memory<br><span style="font-size:0.7em">+ 透納 + 自身</span></div>
       <div class="flow-arrow">→</div>
       <div class="flow-node">Culture<br><span style="font-size:0.7em">再次萃取</span></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin:1.5rem 0;">
+      <div class="iframe-wrap" style="margin:0;">
+        <div class="iframe-label">Chaos Research · LIVE</div>
+        <iframe class="lazy-embed" title="Chaos Research" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz/?cid=QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz&fxhash=onuLCEvez82KSGwx8YSqNKHyAaFs6hPjPTssYUNfRtYcN2PFUKZ&fxminter=tz1LeF4MnbPgy3VTjfhtjjbjKtW9CQKgJtqi&fxiteration=204&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
+      </div>
+      <div class="iframe-wrap" style="margin:0;">
+        <div class="iframe-label">Chaos Memory · LIVE</div>
+        <iframe class="lazy-embed" title="Chaos Memory" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT/?cid=QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT&fxhash=ooDG93qCTyNLHyg7GAaMnWp8o8mbb8vfYtdpxKXJiaujh4eJWPj&fxminter=tz1b4sbpCVGQEcgQLVUFWiXgdcwYv1gKXhWu&fxiteration=245&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
+      </div>
+      <div class="iframe-wrap" style="margin:0;">
+        <div class="iframe-label">Chaos Culture · LIVE</div>
+        <iframe class="lazy-embed" title="Chaos Culture" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj/?cid=QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj&fxhash=op5RasCtsN4QaR5aGQLfGBpUsDcy78PALcBcm9khnpQgB4nvw3D&fxminter=tz1PQRJ8wVtFgkZWGfJ6JajjjtJDYUNuKqKc&fxiteration=1000&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
+      </div>
     </div>
 
     <div class="highlight-box">
@@ -1069,6 +1094,24 @@
       <span>#當我不在場時別人會怎麼重組我</span>
     </div>
     <div class="author"><span class="zh">阿亂｜王新仁｜2026</span><span class="en">Aluan Wang | 2026</span></div>
+  </section>
+
+  <!-- ═══ Links ═══ -->
+  <section class="slide" id="slide-links">
+    <div class="section-label">Links</div>
+    <h2><span class="zh">延伸閱讀</span><span class="en">Further Reading</span></h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin:1.5rem auto; max-width:1100px;">
+      <div class="iframe-wrap" style="margin:0;">
+        <iframe src="https://platform.twitter.com/embed/Tweet.html?id=1962322191569313818&theme=light" style="width:100%; height:500px; border:none; border-radius:8px;"></iframe>
+      </div>
+      <div class="iframe-wrap" style="margin:0;">
+        <iframe src="https://platform.twitter.com/embed/Tweet.html?id=1881863451959837126&theme=light" style="width:100%; height:500px; border:none; border-radius:8px;"></iframe>
+      </div>
+      <div class="iframe-wrap" style="margin:0;">
+        <iframe src="https://platform.twitter.com/embed/Tweet.html?id=2031203327548314061&theme=light" style="width:100%; height:500px; border:none; border-radius:8px;"></iframe>
+      </div>
+    </div>
   </section>
 
 </div>

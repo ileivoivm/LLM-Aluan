@@ -428,9 +428,28 @@
     .project-card[style*="grid-template-columns"] .project-card-img { height: 200px !important; }
     .persona-grid { grid-template-columns: 1fr; }
     .kb-hint { display: none; }
-    .iframe-wrap iframe { height: 600px; }
+    .iframe-wrap iframe { height: 350px; }
     .img-row img { height: 110px; width: 110px; }
     h2::after { display: none; }
+    .flow { font-size: 0.75rem; gap: 0.3rem; }
+    .flow-node { padding: 0.3rem 0.6rem; }
+    .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .code-block pre { font-size: 0.7rem; }
+    .big-quote { font-size: 1rem; padding: 1rem; }
+    .closing-statement { font-size: clamp(1rem, 4vw, 1.4rem); }
+  }
+  @media (max-width: 480px) {
+    .slide { padding: 1.2rem 1rem; }
+    .bio-highlights { grid-template-columns: 1fr; gap: 0.5rem; }
+    .bio-photo-stack { flex-direction: column; }
+    .bio-photo.main, .bio-photo.secondary { width: 100%; height: 160px; }
+    .iframe-wrap iframe { height: 280px; }
+    .flow { justify-content: center; }
+    .flow-arrow { font-size: 0.8rem; }
+    .img-row { gap: 6px; }
+    .img-row img { height: 90px; width: 90px; }
+    .subtitle { font-size: 0.9rem; }
+    h2 { font-size: 1.4rem; }
   }
 </style>
 </head>

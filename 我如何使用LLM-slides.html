@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我如何使用 LLM：從結構到創作的工作方法論</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1e1e1e;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --text-muted: #555;
+    --accent: #f97316;
+    --accent-dim: rgba(249, 115, 22, 0.15);
+    --accent-2: #38bdf8;
+    --accent-3: #a78bfa;
+    --accent-4: #34d399;
+    --code-bg: #1a1a2e;
+    --mono: 'JetBrains Mono', 'Consolas', monospace;
+    --sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Navigation ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(10, 10, 10, 0.85);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+
+  .nav-dot:hover { background: var(--text-dim); transform: scale(1.3); }
+  .nav-dot.active { background: var(--accent); transform: scale(1.4); }
+
+  .nav-counter {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* ── Slide Container ── */
+  .slides {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 2rem 3rem;
+    max-width: 960px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideIn 0.6s ease forwards;
+  }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Slide 0: Title ── */
+  .slide-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-title h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .slide-title .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    line-height: 2;
+    margin-bottom: 2.5rem;
+  }
+
+  .slide-title .subtitle strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .slide-title .core-quote {
+    font-size: 1.15rem;
+    color: var(--accent);
+    padding: 1.2rem 2rem;
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    border-radius: 12px;
+    background: var(--accent-dim);
+    display: inline-block;
+    max-width: 600px;
+    font-weight: 500;
+  }
+
+  .scroll-hint {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── Section headers ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--accent-2);
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    max-width: 720px;
+  }
+
+  p strong { color: var(--text); font-weight: 600; }
+
+  /* ── Highlight box ── */
+  .highlight-box {
+    background: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: 1.05rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── Code block ── */
+  .code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .code-block .code-label {
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .code-block pre {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    white-space: pre-wrap;
+  }
+
+  .code-block pre .key { color: var(--accent-2); }
+  .code-block pre .str { color: var(--accent-4); }
+  .code-block pre .comment { color: var(--text-muted); }
+  .code-block pre .arrow { color: var(--accent); }
+
+  /* ── Flow diagram ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+  }
+
+  .flow-node {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .flow-arrow { color: var(--accent); font-size: 1.1rem; }
+
+  /* ── Project cards ── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .project-card .project-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .project-card .project-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-card .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .project-card .project-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-top: 0.8rem;
+    margin-right: 0.3rem;
+  }
+
+  .tag-json { background: rgba(249, 115, 22, 0.15); color: var(--accent); }
+  .tag-md { background: rgba(56, 189, 248, 0.15); color: var(--accent-2); }
+  .tag-html { background: rgba(167, 139, 250, 0.15); color: var(--accent-3); }
+
+  /* ── List items ── */
+  .feature-list {
+    list-style: none;
+    margin: 1rem 0;
+  }
+
+  .feature-list li {
+    padding: 0.6rem 0 0.6rem 1.8rem;
+    position: relative;
+    font-size: 1rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature-list li:last-child { border-bottom: none; }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .feature-list li strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── Table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .data-table th {
+    background: var(--surface-2);
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table td {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td:first-child { color: var(--accent); font-weight: 600; font-family: var(--mono); font-size: 0.85rem; }
+
+  /* ── Tool cards ── */
+  .tool-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border-top: 3px solid var(--accent);
+  }
+
+  .tool-card:nth-child(2) { border-top-color: var(--accent-2); }
+  .tool-card:nth-child(3) { border-top-color: var(--accent-3); }
+
+  .tool-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .tool-card:nth-child(1) h3 { color: var(--accent); }
+  .tool-card:nth-child(2) h3 { color: var(--accent-2); }
+  .tool-card:nth-child(3) h3 { color: var(--accent-3); }
+
+  .tool-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 0.8rem;
+  }
+
+  .tool-card .tool-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── Big quote ── */
+  .big-quote {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    color: var(--text);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    background: linear-gradient(135deg, var(--accent-dim), transparent);
+    border-radius: 0 14px 14px 0;
+    margin: 2rem 0;
+    line-height: 1.6;
+  }
+
+  /* ── Closing slide ── */
+  .slide-closing {
+    text-align: center;
+  }
+
+  .closing-statement {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closing-statement em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hashtags {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .hashtags span { margin: 0 0.5rem; }
+
+  .author {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  /* ── Keyboard hint ── */
+  .keyboard-hint {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    z-index: 100;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .key-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .slide { padding: 80px 1.5rem 2rem; }
+    .project-grid, .tool-cards { grid-template-columns: 1fr; }
+    .nav { padding: 0 1rem; }
+    .keyboard-hint { display: none; }
+    .flow { font-size: 0.75rem; }
+    .flow-node { padding: 0.4rem 0.7rem; }
+  }
+
+  /* ── Animate on scroll ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-title">我如何使用 LLM — 阿亂</div>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="nav-counter" id="navCounter">1 / 7</div>
+</nav>
+
+<!-- Keyboard hint -->
+<div class="keyboard-hint">
+  <div class="key-badge">↑</div>
+  <div class="key-badge">↓</div>
+  <span>切換投影片</span>
+</div>
+
+<div class="slides" id="slides">
+
+  <!-- ═══════ Slide 0: Title ═══════ -->
+  <section class="slide slide-title" id="slide-0">
+    <h1>我如何使用 LLM<br>從結構到創作的工作方法論</h1>
+    <div class="subtitle">
+      <strong>王新仁（阿亂）</strong><br>
+      生成式藝術家・創意程式設計師・akaSwap 共同創辦人<br>
+      工具：Claude Code / Cursor / Cowork
+    </div>
+    <div class="core-quote">
+      作品只是表象，背後都是結構。<br>留下錨點，讓一切可以被 index。
+    </div>
+    <div class="scroll-hint">↓ 向下滾動或按方向鍵開始</div>
+  </section>
+
+  <!-- ═══════ Slide 1: 起源 ═══════ -->
+  <section class="slide" id="slide-1">
+    <div class="section-label">01 — Origin</div>
+    <h2>從 2021 年開始的思考：<br>作品背後都是結構</h2>
+
+    <p>2021 年，我發表了第一件長篇生成藝術作品 <strong>Good Vibrations</strong>。表面上是視覺動態藝術——旋轉的圓弧與線段互動，交叉時觸發聲音。</p>
+
+    <p>但我在裡面埋了一個隱藏機制：同時按下 <strong>A+S+D+F</strong>，畫面會切換成「樂譜模式」，揭示每個 token 背後的音樂結構。</p>
+
+    <div class="flow">
+      <div class="flow-node">tokenData.hash</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">seed</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">確定性隨機數</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">所有參數</div>
+    </div>
+
+    <p>每個 token 都是一首獨特的曲子，但只有知道快捷鍵的人才看得到樂譜。</p>
+
+    <div class="highlight-box">
+      如果作品的本質是結構，那結構本身就可以被記錄、被還原、被重新生成。<br>
+      這個思考，後來成為我跟 LLM 協作的核心方法論。
+    </div>
+  </section>
+
+  <!-- ═══════ Slide 2: 方法論 ═══════ -->
+  <section class="slide" id="slide-2">
+    <div class="section-label">02 — Methodology</div>
+    <h2>核心方法論：<br>JSON 作為記憶層</h2>
+
+    <p>LLM 的上下文有限、記憶會斷。我的解法不是依賴模型記住一切，而是<strong>主動建立外部記憶</strong>——用 JSON 和 .md 檔案把所有重要資訊結構化，讓 LLM 每次都能從這些錨點重新理解脈絡。</p>
+
+    <div class="highlight-box">
+      用結構化資料（JSON + Markdown）建立人與機器之間的協作協議。
+    </div>
+
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-name">《修仙-七玄關》</div>
+        <div class="project-sub">小說創作</div>
+        <div class="project-desc">JSON 記錄故事結構——每個段落附帶 analysis（場景、角色、情緒、伏筆），讓 LLM 回溯前文確保連貫性。</div>
+        <span class="project-tag tag-json">JSON 故事資料庫</span>
+        <span class="project-tag tag-md">.md 角色設定</span>
+        <span class="project-tag tag-html">互動式網頁</span>
+      </div>
+      <div class="project-card">
+        <div class="project-name">InkField 墨域</div>
+        <div class="project-sub">數位水墨引擎</div>
+        <div class="project-desc">JSON 只記錄事件，不記錄像素。雙種子確定性系統達到 99.9% 重播一致性。AI Agent 可直接生成 JSON 來畫畫。</div>
+        <span class="project-tag tag-json">JSON 事件序列</span>
+        <span class="project-tag tag-md">CLAUDE.md</span>
+      </div>
+      <div class="project-card">
+        <div class="project-name">PolyPaths 植徑集</div>
+        <div class="project-sub">人機互動生成藝術</div>
+        <div class="project-desc">觀眾畫路徑，系統在背後完整記錄。路徑壓縮成 hash 放在 URL 裡，解碼後還原為植物生成的骨架。</div>
+        <span class="project-tag tag-json">路徑→hash→JSON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Slide 3: JSON 深入 ═══════ -->
+  <section class="slide" id="slide-3">
+    <div class="section-label">03 — Deep Dive</div>
+    <h2>JSON 結構實例：<br>小說的外部記憶</h2>
+
+    <p>寫長篇小說最大的問題是連貫性。LLM 沒辦法記住幾萬字的前文，所以我建了一套結構：</p>
+
+    <div class="code-block">
+      <div class="code-label">story-structured.json</div>
+      <pre>{
+  <span class="key">"chapter_1"</span>: {
+    <span class="key">"segments"</span>: {
+      <span class="key">"segment_1"</span>: {
+        <span class="key">"title"</span>: <span class="str">"序曲－雨中的電話"</span>,
+        <span class="key">"summary"</span>: <span class="str">"林承祐在深夜接到命案報告..."</span>,
+        <span class="key">"content"</span>: <span class="str">"（完整文本）"</span>,
+        <span class="key">"analysis"</span>: {
+          <span class="key">"setting"</span>: <span class="str">"嘉義市區"</span>,
+          <span class="key">"characters"</span>: [<span class="str">"林承祐"</span>, <span class="str">"小陳"</span>],
+          <span class="key">"emotional_tone"</span>: <span class="str">"孤獨、麻木、恐懼"</span>,
+          <span class="key">"foreshadowing"</span>: <span class="str">"宗教案件的陰影重現"</span>
+        }
+      }
+    }
+  }
+}</pre>
+    </div>
+
+    <p>每個段落除了完整文本，還附帶 <strong>analysis</strong>。當 LLM 寫第五章時，它可以回溯前面所有 analysis，確保情緒曲線連貫、伏筆被正確延續。</p>
+
+    <div class="highlight-box">
+      關鍵心得：不要期待 LLM 記住一切，主動幫它建索引。
+    </div>
+  </section>
+
+  <!-- ═══════ Slide 4: 工具鏈 ═══════ -->
+  <section class="slide" id="slide-4">
+    <div class="section-label">04 — Toolchain</div>
+    <h2>我的 LLM 工具鏈</h2>
+
+    <div class="tool-cards">
+      <div class="tool-card">
+        <h3>Claude Code</h3>
+        <p>深度開發與專案管理</p>
+        <div class="tool-detail">
+          <ul class="feature-list">
+            <li><strong>CLAUDE.md</strong> 記錄專案規範，每次啟動自動讀取</li>
+            <li>先用 <strong>.md 規劃架構</strong>，再展開實作</li>
+            <li><strong>doc/ 目錄</strong>保留歷史技術文檔，記錄迭代演進</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <h3>Cursor</h3>
+        <p>即時編碼與快速迭代</p>
+        <div class="tool-detail">
+          <ul class="feature-list">
+            <li>寫 <strong>shader</strong>、調整視覺參數、debug</li>
+            <li><strong>Inline edit</strong> 邊看程式碼邊跟 LLM 對話</li>
+            <li>適合需要快速來回修改的場景</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <h3>Cowork 模式</h3>
+        <p>文件處理與日常工作流</p>
+        <div class="tool-detail">
+          <ul class="feature-list">
+            <li>整理文件、生成報告、處理素材</li>
+            <li>非程式碼的工作場景</li>
+            <li>把散落的經驗整理成教學文件</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Slide 5: 數位分身 ═══════ -->
+  <section class="slide" id="slide-5">
+    <div class="section-label">05 — Digital Twin</div>
+    <h2>最後一層：<br>用 .md 建立你的數位分身</h2>
+
+    <p>我做的最後一件事，可能也是最重要的一件事：<strong>把自己結構化。</strong></p>
+
+    <p>我下載了 Facebook、X（Twitter）、Threads 上的所有發言，整理成一份「寫作風格指南」.md：</p>
+
+    <div class="project-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="project-card">
+        <div class="project-name">核心人格設定</div>
+        <div class="project-desc">身份標籤、人格維度（焦慮的實踐者、浪漫的工程師、傲嬌的推廣者）、生涯軌跡</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">寫作語法公式</div>
+        <div class="project-desc">技術體悟型、藝術哲學型、生活廢文型、市場喊話型——不同情境的結構模板</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">關鍵詞彙與口頭禪</div>
+        <div class="project-desc">情緒助詞、稱謂系統、技術術語、標點與 Emoji 習慣</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">句型風格</div>
+        <div class="project-desc">反問句、極端對比、擬人化、動漫梗、中英夾雜規則</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      這份文件讓 LLM 可以 index 我的思考方式、表達習慣、價值觀。<br>
+      它不只是助理，更接近一個「模擬我的 agent」。
+    </div>
+  </section>
+
+  <!-- ═══════ Slide 6: 總結 ═══════ -->
+  <section class="slide" id="slide-6">
+    <div class="section-label">06 — Summary</div>
+    <h2>總結：留下錨點，讓一切可以被 index</h2>
+
+    <div class="big-quote">
+      留下很多錨點，讓它可以被 index，<br>最後透過 meta 生成一個人，以及衍伸的作品。
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>層級</th><th>做法</th><th>目的</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>作品層</td><td>hash → seed → 確定性生成</td><td>每件作品可還原、可重播</td></tr>
+        <tr><td>記憶層</td><td>JSON 記錄結構（場景/事件/路徑）</td><td>讓 LLM 保持連貫，突破上下文限制</td></tr>
+        <tr><td>協作層</td><td>.md 規劃架構，CLAUDE.md 管理規範</td><td>讓 LLM 理解專案脈絡</td></tr>
+        <tr><td>人格層</td><td>社群發言 → 風格指南 .md</td><td>讓 LLM 理解「我」，成為數位分身</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════ Slide 7: Closing ═══════ -->
+  <section class="slide slide-closing" id="slide-7">
+    <div class="closing-statement">
+      結構不是限制，結構是自由。<br><br>
+      當你把一切都結構化之後，<br>
+      LLM 才能真正成為你的延伸——<br>
+      不只是工具，而是一個<em>理解你、能替你思考的 agent</em>。
+    </div>
+    <div class="hashtags">
+      <span>#VibeCoding</span>
+      <span>#GenArt</span>
+      <span>#LLM</span>
+      <span>#當我不在場時別人會怎麼重組我</span>
+    </div>
+    <div class="author">阿亂｜王新仁｜2026</div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const navDotsEl = document.getElementById('navDots');
+  const navCounter = document.getElementById('navCounter');
+  const total = slides.length;
+
+  // Create nav dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.dataset.index = i;
+    dot.addEventListener('click', () => {
+      slides[i].scrollIntoView({ behavior: 'smooth' });
+    });
+    navDotsEl.appendChild(dot);
+  }
+
+  const dots = document.querySelectorAll('.nav-dot');
+
+  // Intersection Observer for active slide
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        navCounter.textContent = `${idx + 1} / ${total}`;
+
+        // Animate children
+        entry.target.querySelectorAll('.fade-up').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 120);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // Keyboard navigation
+  let currentSlide = 0;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      currentSlide = Math.min(currentSlide + 1, total - 1);
+      slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      currentSlide = Math.max(currentSlide - 1, 0);
+      slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Update currentSlide on scroll
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        currentSlide = Array.from(slides).indexOf(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => scrollObserver.observe(s));
+})();
+</script>
+
+</body>
+</html>

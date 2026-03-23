@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我如何使用 LLM：從結構到創作的工作方法論</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --surface: #f6f8fa;
+    --surface-2: #eef1f5;
+    --border: #d0d7de;
+    --border-light: #e8e8e8;
+    --text: #2a2a2a;
+    --text-dim: #555;
+    --text-muted: #888;
+    --accent: #1a1a1a;
+    --accent-color: #2d6a4f;
+    --accent-2: #1a5276;
+    --accent-3: #6c3483;
+    --accent-4: #2d6a4f;
+    --accent-dim: rgba(0, 0, 0, 0.04);
+    --code-bg: #f6f8fa;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    --sans: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif;
+    --serif: 'Noto Serif TC', 'Source Han Serif TC', Georgia, 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    overflow-x: hidden;
+  }
+
+  /* ── Nav ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(250, 250, 250, 0.9);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; height: 50px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-title {
+    font-family: var(--serif); font-size: 0.85rem; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.02em;
+  }
+  .nav-dots { display: flex; gap: 7px; align-items: center; }
+  .nav-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--border); cursor: pointer;
+    transition: all 0.3s; border: none; padding: 0;
+  }
+  .nav-dot:hover { background: var(--text-muted); transform: scale(1.3); }
+  .nav-dot.active { background: var(--accent); transform: scale(1.5); }
+  .nav-counter { font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); }
+
+  /* ── Slide ── */
+  .slides { scroll-snap-type: y mandatory; overflow-y: auto; height: 100vh; }
+
+  .slide {
+    min-height: 100vh; scroll-snap-align: start;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 70px 2rem 2rem; max-width: 1000px; margin: 0 auto;
+  }
+
+  /* ── Title Slide ── */
+  .slide-title { text-align: center; align-items: center; position: relative; }
+
+  .title-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: url('https://aluanwang.com/wp-content/uploads/2025/08/a2.jpg') center/cover;
+    opacity: 0.08;
+  }
+
+  .slide-title > *:not(.title-bg) { position: relative; z-index: 1; }
+
+  .slide-title h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.25;
+    margin-bottom: 1.8rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .subtitle { font-size: 1.05rem; color: var(--text-dim); line-height: 2; margin-bottom: 2rem; }
+  .subtitle strong { color: var(--text); font-weight: 600; }
+  .core-quote {
+    font-size: 1.05rem; color: var(--text); padding: 1rem 1.8rem;
+    border-left: 3px solid var(--accent);
+    background: var(--card); display: inline-block; max-width: 580px; font-weight: 400;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    font-family: var(--serif); font-style: italic;
+  }
+  .scroll-hint { margin-top: 2.5rem; font-size: 0.75rem; color: var(--text-muted); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  /* ── Section ── */
+  .section-label {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.8rem;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 1.2rem; line-height: 1.3;
+    color: var(--accent); letter-spacing: 0.02em;
+  }
+  h2::after {
+    content: ""; display: inline-block; vertical-align: middle;
+    width: clamp(80px, 15vw, 240px); margin-left: 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  }
+  h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--accent); }
+  p { font-size: 1rem; color: var(--text-dim); margin-bottom: 0.9rem; max-width: 720px; }
+  p strong { color: var(--text); font-weight: 600; }
+
+  /* ── Highlight ── */
+  .highlight-box {
+    background: var(--card); border-left: 3px solid var(--accent);
+    padding: 1rem 1.3rem; border-radius: 0 4px 4px 0;
+    margin: 1.2rem 0; font-size: 1rem; color: var(--text); font-weight: 400;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  /* ── Code ── */
+  .code-block {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px;
+    padding: 1.3rem; margin: 1.2rem 0; overflow-x: auto; position: relative;
+  }
+  .code-block .code-label {
+    position: absolute; top: 0.5rem; right: 0.8rem;
+    font-family: var(--mono); font-size: 0.6rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .code-block pre {
+    font-family: var(--mono); font-size: 0.8rem; line-height: 1.7;
+    color: #24292f; white-space: pre-wrap;
+  }
+  .code-block pre .key { color: var(--accent-2); }
+  .code-block pre .str { color: var(--accent-4); }
+
+  /* ── Flow ── */
+  .flow {
+    display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    margin: 1.2rem 0; font-family: var(--mono); font-size: 0.85rem;
+  }
+  .flow-node {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 0.4rem 0.9rem; border-radius: 4px; color: var(--text); white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .flow-arrow { color: var(--accent); font-size: 1rem; }
+
+  /* ── Image gallery row ── */
+  .img-row {
+    display: flex; gap: 10px; margin: 1.2rem 0; overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .img-row img {
+    height: 140px; width: 140px; object-fit: cover;
+    border-radius: 4px; border: 1px solid var(--border);
+    flex-shrink: 0; transition: transform 0.3s;
+  }
+  .img-row img:hover { transform: scale(1.05); }
+
+  /* ── Artist bio ── */
+  .bio-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items: start; margin: 1rem 0; }
+  .bio-photo-stack { display: flex; flex-direction: column; gap: 10px; }
+  .bio-photo {
+    width: 100%; border-radius: 4px; border: 1px solid var(--border);
+    object-fit: cover;
+  }
+  .bio-photo.main { height: 200px; }
+  .bio-photo.secondary { height: 120px; opacity: 0.85; }
+  .bio-statement {
+    font-family: var(--serif);
+    font-size: 1.15rem; font-weight: 400; color: var(--text);
+    line-height: 1.9; margin-bottom: 1rem; font-style: italic;
+    padding-left: 1rem; border-left: 3px solid var(--accent);
+  }
+  .bio-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 1rem 0; }
+  .bio-tag {
+    font-family: var(--mono); font-size: 0.7rem; padding: 0.3rem 0.7rem;
+    border-radius: 3px; background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .bio-highlights {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin: 1rem 0;
+  }
+  .bio-hl {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    padding: 0.8rem; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .bio-hl-num { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+  .bio-hl-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.2rem; }
+  @media (max-width: 768px) {
+    .bio-layout { grid-template-columns: 1fr; }
+    .bio-photo-stack { flex-direction: row; }
+    .bio-photo.main, .bio-photo.secondary { height: 140px; width: 50%; }
+    .bio-highlights { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Wide image ── */
+  .img-wide {
+    width: 100%; max-height: 260px; object-fit: cover;
+    border-radius: 4px; border: 1px solid var(--border);
+    margin: 1.2rem 0;
+  }
+
+  /* ── Iframe container ── */
+  .iframe-wrap {
+    position: relative; width: 100%; border-radius: 4px;
+    overflow: hidden; border: 1px solid var(--border);
+    margin: 1rem 0; background: var(--card);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .iframe-wrap iframe {
+    width: 100%; height: 380px; border: none; display: block;
+  }
+  .iframe-label {
+    position: absolute; top: 10px; right: 12px;
+    font-family: var(--mono); font-size: 0.6rem;
+    background: rgba(255,255,255,0.9); color: var(--text-muted);
+    padding: 3px 10px; border-radius: 3px; z-index: 2;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+  .iframe-link {
+    display: block; text-align: center; padding: 8px;
+    font-family: var(--mono); font-size: 0.7rem;
+    color: var(--text-dim); text-decoration: none;
+    background: var(--surface); border-top: 1px solid var(--border);
+  }
+  .iframe-link:hover { color: var(--accent); }
+
+  /* ── Project cards ── */
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+  .project-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .project-card-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+  .project-card-body { padding: 1.2rem; }
+  .project-card .pname { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .project-card .psub { font-size: 0.75rem; color: var(--text-muted); font-family: var(--mono); margin-bottom: 0.6rem; }
+  .project-card .pdesc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+  .ptag {
+    display: inline-block; font-family: var(--mono); font-size: 0.65rem;
+    padding: 0.15rem 0.5rem; border-radius: 3px; margin-top: 0.6rem; margin-right: 0.2rem;
+  }
+  .tag-json { background: rgba(0,0,0,0.06); color: var(--text); }
+  .tag-md { background: rgba(26,82,118,0.1); color: var(--accent-2); }
+  .tag-html { background: rgba(108,52,131,0.1); color: var(--accent-3); }
+
+  /* ── Feature list ── */
+  .feature-list { list-style: none; margin: 0.8rem 0; }
+  .feature-list li {
+    padding: 0.5rem 0 0.5rem 1.5rem; position: relative;
+    font-size: 0.95rem; color: var(--text-dim); border-bottom: 1px solid var(--border-light);
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li::before {
+    content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  }
+  .feature-list li strong { color: var(--text); font-weight: 600; }
+
+  /* ── Tool cards ── */
+  .tool-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+  .tool-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    padding: 1.3rem; border-left: 3px solid var(--accent);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .tool-card:nth-child(2) { border-left-color: var(--accent-2); }
+  .tool-card:nth-child(3) { border-left-color: var(--accent-3); }
+  .tool-card h3 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+  .tool-card:nth-child(1) h3 { color: var(--accent); }
+  .tool-card:nth-child(2) h3 { color: var(--accent-2); }
+  .tool-card:nth-child(3) h3 { color: var(--accent-3); }
+  .tool-card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.6rem; }
+
+  /* ── Data table ── */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    margin: 1.2rem 0; font-size: 0.92em;
+  }
+  .data-table th {
+    background: var(--surface); padding: 0.7rem 1rem; text-align: left;
+    font-size: 0.8rem; font-weight: 600; color: var(--text);
+    border-bottom: 2px solid var(--border);
+  }
+  .data-table td {
+    padding: 0.7rem 1rem; font-size: 0.9rem; color: var(--text-dim);
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(0,0,0,0.015); }
+  .data-table td:first-child {
+    font-family: var(--serif); color: var(--text); font-weight: 600; font-size: 0.85rem;
+  }
+
+  /* ── Big quote ── */
+  .big-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 400; color: var(--text);
+    padding: 1.5rem; border-left: 3px solid var(--accent);
+    background: var(--card);
+    border-radius: 0 4px 4px 0; margin: 1.5rem 0; line-height: 1.8;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  /* ── Persona grid ── */
+  .persona-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin: 1.2rem 0; }
+  .persona-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.1rem;
+    border-left: 3px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .persona-card:nth-child(1) { border-left-color: var(--accent); }
+  .persona-card:nth-child(2) { border-left-color: var(--accent-2); }
+  .persona-card:nth-child(3) { border-left-color: var(--accent-3); }
+  .persona-card:nth-child(4) { border-left-color: var(--accent-4); }
+  .persona-card .pname { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .persona-card .pdesc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* ── Closing ── */
+  .slide-closing { text-align: center; }
+  .closing-statement {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; line-height: 1.8;
+    margin-bottom: 2rem; max-width: 680px; margin-left: auto; margin-right: auto;
+    color: var(--accent);
+  }
+  .closing-statement em {
+    font-style: normal; font-weight: 700;
+    border-bottom: 2px solid var(--accent);
+  }
+  .hashtags { font-family: var(--mono); font-size: 0.8rem; color: var(--text-muted); }
+  .hashtags span { margin: 0 0.4rem; }
+  .author { margin-top: 2rem; font-size: 0.85rem; color: var(--text-dim); }
+
+  /* ── Keyboard hint ── */
+  .kb-hint {
+    position: fixed; bottom: 1.2rem; right: 1.5rem;
+    font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); z-index: 100;
+    display: flex; gap: 0.6rem; align-items: center;
+  }
+  .kb { display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 5px;
+    background: var(--card); font-size: 0.7rem; color: var(--text-dim);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .slide { padding: 65px 1.2rem 1.5rem; }
+    .project-grid, .tool-cards { grid-template-columns: 1fr; }
+    .persona-grid { grid-template-columns: 1fr; }
+    .nav { padding: 0 1rem; }
+    .kb-hint { display: none; }
+    .iframe-wrap iframe { height: 280px; }
+    .img-row img { height: 110px; width: 110px; }
+    h2::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-title">我如何使用 LLM — 阿亂</div>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="nav-counter" id="navCounter">1 / 10</div>
+</nav>
+
+<div class="kb-hint">
+  <div class="kb">↑</div><div class="kb">↓</div><span>切換頁面</span>
+</div>
+
+<div class="slides" id="slides">
+
+  <!-- ═══ 0: Title ═══ -->
+  <section class="slide slide-title" id="slide-0">
+    <div class="title-bg"></div>
+    <h1>我如何使用 LLM<br>從結構到創作的工作方法論</h1>
+    <div class="subtitle">
+      <strong>王新仁（阿亂）</strong><br>
+      生成式藝術家・創意程式設計師・akaSwap 共同創辦人<br>
+      工具：Claude Code / Cursor / Cowork
+    </div>
+    <div class="core-quote">作品只是表象，背後都是結構。<br>留下錨點，讓一切可以被 index。</div>
+    <div class="scroll-hint">↓ 向下滾動開始</div>
+  </section>
+
+  <!-- ═══ 1: Artist Bio ═══ -->
+  <section class="slide" id="slide-1">
+    <div class="section-label">01 — About the Artist</div>
+    <h2>王新仁（阿亂）</h2>
+
+    <div class="bio-layout">
+      <div class="bio-photo-stack">
+        <img class="bio-photo main" src="https://aluanwang.com/wp-content/uploads/2025/08/a1.jpg" alt="Aluan Wang" onerror="this.style.background='var(--surface-2)'">
+        <img class="bio-photo secondary" src="https://aluanwang.com/wp-content/uploads/2025/05/cw-image-resizer.cwg_-1024x682.jpg" alt="Exhibition" onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="bio-statement">
+          我創作的是隨時間記錄人類意圖的生成系統。<br>
+          在我的作品中，繪畫不再是靜態圖像，而是一段持續展開的過程。<br>
+          在演算法的縫隙之中，留下人類的痕跡。
+        </div>
+        <div class="bio-tags">
+          <span class="bio-tag">生成式藝術家</span>
+          <span class="bio-tag">創意程式設計師</span>
+          <span class="bio-tag">akaSwap 共同創辦人</span>
+          <span class="bio-tag">北藝大新媒體藝術碩士</span>
+          <span class="bio-tag">台灣首位 Art Blocks 藝術家</span>
+          <span class="bio-tag">台灣首位 verse.works 長篇藝術家</span>
+        </div>
+        <p style="font-size:0.85rem">1982 年生於台中。超過 15 年數位與生成藝術經驗。作品展出於國立台灣美術館、尊彩藝術中心、新加坡藝術科學博物館等。兩度獲台北數位藝術節首獎（2012、2015）。以演算法與程式語言為媒介，在混沌與秩序之間探索自然的原始語言。</p>
+      </div>
+    </div>
+
+    <div class="bio-highlights">
+      <div class="bio-hl"><div class="bio-hl-num">15+</div><div class="bio-hl-label">年數位藝術經驗</div></div>
+      <div class="bio-hl"><div class="bio-hl-num">Art Blocks</div><div class="bio-hl-label">台灣首位藝術家</div></div>
+      <div class="bio-hl"><div class="bio-hl-num">2×</div><div class="bio-hl-label">台北數位藝術節首獎</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 2: Good Vibrations ═══ -->
+  <section class="slide" id="slide-2">
+    <div class="section-label">02 — Origin · 2021</div>
+    <h2>作品背後都是結構</h2>
+
+    <p><strong>Good Vibrations</strong> — 我的第一件長篇生成藝術作品。表面上是旋轉的圓弧與線段互動，交叉觸發聲音。</p>
+    <p>但按下隱藏快捷鍵 <strong>A+S+D+F</strong>，畫面會切換成「樂譜模式」，揭示每個 token 背後的音樂結構。</p>
+
+    <div class="img-row">
+      <img src="https://aluanwang.com/wp-content/uploads/2021/09/0_GV-300x300.png" alt="GV #0">
+      <img src="https://aluanwang.com/wp-content/uploads/2021/09/74_GV-300x300.png" alt="GV #74">
+      <img src="https://aluanwang.com/wp-content/uploads/2021/09/4_GV-300x300.png" alt="GV #4">
+      <img src="https://aluanwang.com/wp-content/uploads/2021/09/135_GV-300x300.png" alt="GV #135">
+      <img src="https://aluanwang.com/wp-content/uploads/2021/09/1011_GV.png" alt="GV #1011">
+      <img src="https://aluanwang.com/wp-content/uploads/2021/09/920_GV.png" alt="GV #920">
+    </div>
+
+    <div class="flow">
+      <div class="flow-node">hash</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">seed</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">確定性隨機數</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">所有參數</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">🎵 獨特的曲子</div>
+    </div>
+
+    <div class="highlight-box">
+      如果作品的本質是結構，那結構本身就可以被記錄、被還原、被重新生成。<br>
+      → 這成為我跟 LLM 協作的核心方法論。
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe src="https://aluanwang.com/long-form/goodvibrations/" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://aluanwang.com/long-form/goodvibrations/" target="_blank">↗ 在新視窗開啟完整頁面</a>
+    </div>
+  </section>
+
+  <!-- ═══ 3: 方法論 ═══ -->
+  <section class="slide" id="slide-3">
+    <div class="section-label">03 — Methodology</div>
+    <h2>核心方法論：JSON 作為記憶層</h2>
+
+    <p>LLM 的上下文有限、記憶會斷。我的解法：<strong>主動建立外部記憶</strong>——用 JSON 和 .md 把重要資訊結構化，讓 LLM 每次都能從錨點重新理解脈絡。</p>
+
+    <div class="highlight-box">用結構化資料（JSON + Markdown）建立人與機器之間的協作協議。</div>
+
+    <div class="project-grid">
+      <div class="project-card">
+        <img class="project-card-img" src="https://aluanwang.com/wp-content/uploads/2021/09/991_GV.png" alt="七玄關" style="filter: hue-rotate(180deg) brightness(0.7);">
+        <div class="project-card-body">
+          <div class="pname">《修仙-七玄關》</div>
+          <div class="psub">小說創作</div>
+          <div class="pdesc">JSON 記錄故事結構——每段附帶 analysis（場景、角色、情緒、伏筆），讓 LLM 回溯前文確保連貫性。</div>
+          <span class="ptag tag-json">JSON 故事資料庫</span>
+          <span class="ptag tag-md">.md 角色設定</span>
+          <span class="ptag tag-html">互動式網頁</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <img class="project-card-img" src="https://inkfield-production.up.railway.app/tech/assets/banner.jpg" alt="InkField"  onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#0a0a0a)'; this.style.height='140px';">
+        <div class="project-card-body">
+          <div class="pname">InkField 墨域</div>
+          <div class="psub">數位水墨引擎</div>
+          <div class="pdesc">JSON 只記錄事件（非像素）。99.9% 重播一致性。AI Agent 可直接生成 JSON 來畫畫。</div>
+          <span class="ptag tag-json">JSON 事件序列</span>
+          <span class="ptag tag-md">CLAUDE.md</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <img class="project-card-img" src="https://aluanwang.com/wp-content/uploads/2025/08/a7.jpg" alt="PolyPaths">
+        <div class="project-card-body">
+          <div class="pname">PolyPaths 植徑集</div>
+          <div class="psub">人機互動生成藝術</div>
+          <div class="pdesc">觀眾畫路徑→系統記錄→壓縮成 hash→解碼還原 JSON→植物生成骨架。</div>
+          <span class="ptag tag-json">路徑→hash→JSON</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4: JSON 深入 ═══ -->
+  <section class="slide" id="slide-4">
+    <div class="section-label">04 — Deep Dive · 小說</div>
+    <h2>JSON 實例：故事的外部記憶</h2>
+
+    <p>寫長篇小說最大的問題是連貫性。LLM 無法記住幾萬字的前文，所以我建了結構化的場景資料庫：</p>
+
+    <div class="code-block">
+      <div class="code-label">story-structured.json</div>
+      <pre>{
+  <span class="key">"chapter_1"</span>: {
+    <span class="key">"segments"</span>: {
+      <span class="key">"segment_1"</span>: {
+        <span class="key">"title"</span>: <span class="str">"序曲－雨中的電話"</span>,
+        <span class="key">"summary"</span>: <span class="str">"林承祐在深夜接到命案報告..."</span>,
+        <span class="key">"content"</span>: <span class="str">"（完整文本）"</span>,
+        <span class="key">"analysis"</span>: {
+          <span class="key">"setting"</span>:        <span class="str">"嘉義市區"</span>,
+          <span class="key">"characters"</span>:     [<span class="str">"林承祐"</span>, <span class="str">"小陳"</span>],
+          <span class="key">"emotional_tone"</span>: <span class="str">"孤獨、麻木、恐懼"</span>,
+          <span class="key">"foreshadowing"</span>:  <span class="str">"宗教案件的陰影重現"</span>
+        }
+      }
+    }
+  }
+}</pre>
+    </div>
+
+    <p>每個段落附帶 <strong>analysis</strong>。LLM 寫第五章時，可回溯所有前面的 analysis，確保情緒曲線連貫、伏筆被正確延續。</p>
+
+    <div class="highlight-box">關鍵心得：不要期待 LLM 記住一切，主動幫它建索引。</div>
+  </section>
+
+  <!-- ═══ 5: InkField iframe ═══ -->
+  <section class="slide" id="slide-5">
+    <div class="section-label">05 — Deep Dive · 水墨</div>
+    <h2>InkField：AI 用 JSON 畫水墨</h2>
+
+    <p>InkField 的錄製系統只記錄<strong>事件</strong>（筆觸參數+種子值），不記錄像素。雙種子確定性系統達到 99.9% 一致性。一幅作品 JSON 通常 < 100KB。</p>
+
+    <div class="flow">
+      <div class="flow-node">AI 生成 JSON</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">事件序列</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">引擎還原</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">完整水墨畫作</div>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">INKFIELD TECH DOCS</div>
+      <iframe src="https://inkfield-production.up.railway.app/tech/index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://inkfield-production.up.railway.app/tech/index.html" target="_blank">↗ 開啟 InkField 技術文件</a>
+    </div>
+
+    <p style="margin-top:0.8rem">我用 <strong>Claude Code</strong> 開發此專案，搭配 <strong>CLAUDE.md</strong> 管理規範，doc/ 目錄保留 TECHNICAL_6~10.md 記錄每次迭代。</p>
+  </section>
+
+  <!-- ═══ 6: PolyPaths iframe ═══ -->
+  <section class="slide" id="slide-6">
+    <div class="section-label">06 — Deep Dive · 植物</div>
+    <h2>PolyPaths：觀眾的行為就是 DNA</h2>
+
+    <p>觀眾在介面上畫路徑，以為只是在互動。但系統在背後<strong>完整記錄了他們的一舉一動</strong>。</p>
+
+    <div class="flow">
+      <div class="flow-node">觀眾畫路徑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">系統記錄</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">壓縮成 hash</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">URL #data_&lt;hash&gt;</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">還原 JSON</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">生成植物</div>
+    </div>
+
+    <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2025/08/polypathsbanner.jpg" alt="PolyPaths Banner" onerror="this.style.display='none'">
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe src="https://aluanwang.com/long-form/polypaths/" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://aluanwang.com/long-form/polypaths/" target="_blank">↗ 開啟 PolyPaths 完整頁面</a>
+    </div>
+  </section>
+
+  <!-- ═══ 7: 工具鏈 ═══ -->
+  <section class="slide" id="slide-7">
+    <div class="section-label">07 — Toolchain</div>
+    <h2>我的 LLM 工具鏈</h2>
+
+    <div class="tool-cards">
+      <div class="tool-card">
+        <h3>Claude Code</h3>
+        <p>深度開發與專案管理</p>
+        <ul class="feature-list">
+          <li><strong>CLAUDE.md</strong> — 專案規範，每次啟動自動讀取</li>
+          <li>先用 <strong>.md 規劃架構</strong>，再展開實作</li>
+          <li><strong>doc/</strong> 目錄保留歷史技術文檔</li>
+        </ul>
+      </div>
+      <div class="tool-card">
+        <h3>Cursor</h3>
+        <p>即時編碼與快速迭代</p>
+        <ul class="feature-list">
+          <li>寫 <strong>shader</strong>、調視覺參數、debug</li>
+          <li><strong>Inline edit</strong> 邊看 code 邊跟 LLM 對話</li>
+          <li>適合快速來回修改的場景</li>
+        </ul>
+      </div>
+      <div class="tool-card">
+        <h3>Cowork</h3>
+        <p>文件處理與日常工作流</p>
+        <ul class="feature-list">
+          <li>整理文件、生成報告、處理素材</li>
+          <li>非程式碼的工作場景</li>
+          <li>散落經驗 → 結構化教學文件</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 8: 數位分身 ═══ -->
+  <section class="slide" id="slide-8">
+    <div class="section-label">08 — Digital Twin</div>
+    <h2>最後一層：用 .md 建立數位分身</h2>
+
+    <p>我把 Facebook、X、Threads 上的所有發言下載下來，整理成一份<strong>「寫作風格指南」.md</strong>：</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="pname">核心人格設定</div>
+        <div class="pdesc">身份標籤、人格維度（焦慮的實踐者、浪漫的工程師、傲嬌的推廣者）、生涯軌跡</div>
+      </div>
+      <div class="persona-card">
+        <div class="pname">寫作語法公式</div>
+        <div class="pdesc">技術體悟型、藝術哲學型、生活廢文型、市場喊話型——各有結構模板</div>
+      </div>
+      <div class="persona-card">
+        <div class="pname">關鍵詞彙與口頭禪</div>
+        <div class="pdesc">情緒助詞、稱謂系統、技術術語、標點 / Emoji 習慣</div>
+      </div>
+      <div class="persona-card">
+        <div class="pname">句型風格</div>
+        <div class="pdesc">反問句、極端對比、擬人化、動漫梗、中英夾雜規則</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      這份文件讓 LLM 可以 index 我的思考方式、表達習慣、價值觀。<br>
+      它不只是助理，更接近一個「模擬我的 agent」——理解我會怎麼想、怎麼說、怎麼決策。
+    </div>
+  </section>
+
+  <!-- ═══ 9: 總結 ═══ -->
+  <section class="slide" id="slide-9">
+    <div class="section-label">09 — Summary</div>
+    <h2>總結：留下錨點，讓一切可以被 index</h2>
+
+    <div class="big-quote">留下很多錨點，讓它可以被 index，<br>最後透過 meta 生成一個人，以及衍伸的作品。</div>
+
+    <table class="data-table">
+      <thead><tr><th>層級</th><th>做法</th><th>目的</th></tr></thead>
+      <tbody>
+        <tr><td>作品層</td><td>hash → seed → 確定性生成</td><td>每件作品可還原、可重播</td></tr>
+        <tr><td>記憶層</td><td>JSON 記錄結構（場景 / 事件 / 路徑）</td><td>讓 LLM 保持連貫，突破上下文限制</td></tr>
+        <tr><td>協作層</td><td>.md 規劃架構，CLAUDE.md 管理規範</td><td>讓 LLM 理解專案脈絡</td></tr>
+        <tr><td>人格層</td><td>社群發言 → 風格指南 .md</td><td>讓 LLM 理解「我」，成為數位分身</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══ 10: Closing ═══ -->
+  <section class="slide slide-closing" id="slide-10">
+    <div class="closing-statement">
+      結構不是限制，結構是自由。<br><br>
+      當你把一切都結構化之後，<br>
+      LLM 才能真正成為你的延伸——<br>
+      不只是工具，而是一個<em>理解你、能替你思考的 agent</em>。
+    </div>
+    <div class="hashtags">
+      <span>#VibeCoding</span>
+      <span>#GenArt</span>
+      <span>#LLM</span>
+      <span>#當我不在場時別人會怎麼重組我</span>
+    </div>
+    <div class="author">阿亂｜王新仁｜2026</div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const navDotsEl = document.getElementById('navDots');
+  const navCounter = document.getElementById('navCounter');
+  const total = slides.length;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    navDotsEl.appendChild(dot);
+  }
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(slides).indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        navCounter.textContent = `${idx + 1} / ${total}`;
+      }
+    });
+  }, { threshold: 0.4 });
+  slides.forEach(s => obs.observe(s));
+
+  let cur = 0;
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault(); cur = Math.min(cur + 1, total - 1);
+      slides[cur].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault(); cur = Math.max(cur - 1, 0);
+      slides[cur].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  const scrollObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) cur = Array.from(slides).indexOf(e.target); });
+  }, { threshold: 0.4 });
+  slides.forEach(s => scrollObs.observe(s));
+})();
+</script>
+
+</body>
+</html>

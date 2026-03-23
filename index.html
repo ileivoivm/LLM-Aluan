@@ -555,15 +555,52 @@
       </div>
     </div>
 
+    </div>
+
     <div class="highlight-box">
       從 Maybach 展間到總統就職典禮——生成藝術的邊界不斷擴張。<br>
       <strong>演算法是語言，結構是骨架，而每一次互動都是一次不可逆的共同創作。</strong>
     </div>
   </section>
 
-  <!-- ═══ 3: Good Vibrations ═══ -->
+  <!-- ═══ 3: GeoPunk ═══ -->
   <section class="slide" id="slide-3">
-    <div class="section-label">03 — Origin · 2021</div>
+    <div class="section-label">03 — Deep Dive · 地景 · 2021</div>
+    <h2>GeoPunk — 地誌龐克</h2>
+
+    <p>「地誌龐克」系列重新探索地理空間的定義——以「龐克」為名，挑戰與質疑現有世界的疆界切分概念。這是我最早的區塊鏈生成藝術作品。</p>
+
+    <p>160 組散落世界各地的 GPS 座標被封裝進一份 JSON。程式隨機抽取經緯度，向 Google Maps 拉取衛星影像，再透過自訂 GLSL shader 將地表紋理<strong>位移、撕裂、重組</strong>——拓撲成一座從未存在的地景雕塑。</p>
+
+    <div class="flow">
+      <div class="flow-node">JSON 座標</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">衛星影像</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">GLSL Shader</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">3D 幾何體</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">🏔 地景雕塑</div>
+    </div>
+
+    <img class="img-wide" src="assets/geopunk-banner.jpg" alt="GeoPunk：衛星地貌經 shader 位移生成的 3D 地景雕塑" onerror="this.style.display='none'">
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe class="lazy-embed" title="GeoPunk 即時演示" src="about:blank" data-src="https://ipfs.io/ipfs/QmeRxmM1xbSUmwo3nibQVBo8TK7oUujT2AifCkpqggGp7z/?&creator=tz1cbhmVZuFTKHcACSFpg5ER1bGVGkanhrbW&objkt=28393&viewer=undefined" allow="webgl; accelerometer" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+      <a class="iframe-link" href="https://ipfs.io/ipfs/QmeRxmM1xbSUmwo3nibQVBo8TK7oUujT2AifCkpqggGp7z/?&creator=tz1cbhmVZuFTKHcACSFpg5ER1bGVGkanhrbW&objkt=28393&viewer=undefined" target="_blank" rel="noopener noreferrer">↗ 在 IPFS 開啟 GeoPunk</a>
+    </div>
+
+    <div class="highlight-box">
+      <strong>每一件作品都是一次對地球表面的儀式性採樣</strong>——國界消融，衛星的凝視經演算法轉譯，成為無法被複製的數位地層。<br>
+      錐體、立方體、十字架三種幾何骨架，承載著真實地球的光譜。160 editions。
+    </div>
+  </section>
+
+  <!-- ═══ 4: Good Vibrations ═══ -->
+  <section class="slide" id="slide-4">
+    <div class="section-label">04 — Origin · 2021</div>
     <h2>作品背後都是結構</h2>
 
     <p><strong>Good Vibrations</strong> — 我的第一件長篇生成藝術作品。表面上是旋轉的圓弧與線段互動，交叉觸發聲音。</p>
@@ -604,8 +641,8 @@
   </section>
 
   <!-- ═══ 4: 方法論 ═══ -->
-  <section class="slide" id="slide-4">
-    <div class="section-label">04 — Methodology</div>
+  <section class="slide" id="slide-5">
+    <div class="section-label">05 — Methodology</div>
     <h2>核心方法論：JSON 作為記憶層</h2>
 
     <p>LLM 的上下文有限、記憶會斷。我的解法：<strong>主動建立外部記憶</strong>——用 JSON 和 .md 把重要資訊結構化，讓 LLM 每次都能從錨點重新理解脈絡。</p>
@@ -647,8 +684,8 @@
   </section>
 
   <!-- ═══ 5: JSON 深入 ═══ -->
-  <section class="slide" id="slide-5">
-    <div class="section-label">05 — Deep Dive · 小說</div>
+  <section class="slide" id="slide-6">
+    <div class="section-label">06 — Deep Dive · 小說</div>
     <h2>JSON 實例：故事的外部記憶</h2>
 
     <p>寫長篇小說最大的問題是連貫性。LLM 無法記住幾萬字的前文，所以我建了結構化的場景資料庫：</p>
@@ -677,11 +714,17 @@
     <p>每個段落附帶 <strong>analysis</strong>。LLM 寫第五章時，可回溯所有前面的 analysis，確保情緒曲線連貫、伏筆被正確延續。</p>
 
     <div class="highlight-box">關鍵心得：不要期待 LLM 記住一切，主動幫它建索引。</div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe class="lazy-embed" title="修仙-七玄關 互動式小說" src="about:blank" data-src="https://ileivoivm.github.io/Be_God/overview.html" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/Be_God/overview.html" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟《修仙-七玄關》</a>
+    </div>
   </section>
 
   <!-- ═══ 6: InkField iframe ═══ -->
-  <section class="slide" id="slide-6">
-    <div class="section-label">06 — Deep Dive · 水墨</div>
+  <section class="slide" id="slide-7">
+    <div class="section-label">07 — Deep Dive · 水墨</div>
     <h2>InkField：AI 用 JSON 畫水墨</h2>
 
     <p>InkField 的錄製系統只記錄<strong>事件</strong>（筆觸參數+種子值），不記錄像素。雙種子確定性系統達到 99.9% 一致性。一幅作品 JSON 通常 < 100KB。</p>
@@ -706,8 +749,8 @@
   </section>
 
   <!-- ═══ 7: PolyPaths iframe ═══ -->
-  <section class="slide" id="slide-7">
-    <div class="section-label">07 — Deep Dive · 植物</div>
+  <section class="slide" id="slide-8">
+    <div class="section-label">08 — Deep Dive · 植物</div>
     <h2>PolyPaths：觀眾的行為就是 DNA</h2>
 
     <p>觀眾在介面上畫路徑，以為只是在互動。但系統在背後<strong>完整記錄了他們的一舉一動</strong>。</p>
@@ -736,8 +779,8 @@
   </section>
 
   <!-- ═══ 8: 工具鏈 ═══ -->
-  <section class="slide" id="slide-8">
-    <div class="section-label">08 — Toolchain</div>
+  <section class="slide" id="slide-9">
+    <div class="section-label">09 — Toolchain</div>
     <h2>我的 LLM 工具鏈</h2>
 
     <div class="tool-cards">
@@ -772,8 +815,8 @@
   </section>
 
   <!-- ═══ 9: 數位分身 ═══ -->
-  <section class="slide" id="slide-9">
-    <div class="section-label">09 — Digital Twin</div>
+  <section class="slide" id="slide-10">
+    <div class="section-label">10 — Digital Twin</div>
     <h2>最後一層：用 .md 建立數位分身</h2>
 
     <p>我把 Facebook、X、Threads 上的所有發言下載下來，整理成一份<strong>「寫作風格指南」.md</strong>：</p>
@@ -804,8 +847,8 @@
   </section>
 
   <!-- ═══ 10: 總結 ═══ -->
-  <section class="slide" id="slide-10">
-    <div class="section-label">10 — Summary</div>
+  <section class="slide" id="slide-11">
+    <div class="section-label">11 — Summary</div>
     <h2>總結：留下錨點，讓一切可以被 index</h2>
 
     <div class="big-quote">留下很多錨點，讓它可以被 index，<br>最後透過 meta 生成一個人，以及衍伸的作品。</div>
@@ -822,7 +865,7 @@
   </section>
 
   <!-- ═══ 11: Closing ═══ -->
-  <section class="slide slide-closing" id="slide-11">
+  <section class="slide slide-closing" id="slide-12">
     <div class="closing-statement">
       結構不是限制，結構是自由。<br><br>
       當你把一切都結構化之後，<br>
@@ -922,10 +965,8 @@
 
   updateTimelineState(0);
 
-  // iframe 捲到該頁才載入（root 為投影片捲動容器）
+  // iframe 捲到該頁才載入（直接觀察 iframe 元素，用 viewport 作為 root）
   document.querySelectorAll('iframe.lazy-embed[data-src]').forEach(iframe => {
-    const slide = iframe.closest('.slide');
-    if (!slide || !slidesRoot) return;
     const io = new IntersectionObserver((entries, ob) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -934,10 +975,10 @@
           iframe.src = url;
           iframe.dataset.iframeLoaded = '1';
         }
-        ob.unobserve(slide);
+        ob.unobserve(iframe);
       });
-    }, { root: slidesRoot, threshold: 0.15, rootMargin: '0px' });
-    io.observe(slide);
+    }, { root: null, threshold: 0, rootMargin: '200px' });
+    io.observe(iframe);
   });
 
   document.addEventListener('keydown', e => {

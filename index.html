@@ -210,7 +210,7 @@
 
   /* ── Wide image ── */
   .img-wide {
-    width: 100%; max-height: 260px; object-fit: cover;
+    width: 100%; max-height: 600px; object-fit: cover;
     border-radius: 4px; border: 1px solid var(--border);
     margin: 1.2rem 0;
   }
@@ -223,7 +223,7 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .iframe-wrap iframe {
-    width: 100%; height: 380px; border: none; display: block;
+    width: 100%; height: 600px; border: none; display: block;
   }
   .iframe-label {
     position: absolute; top: 10px; right: 12px;
@@ -358,19 +358,28 @@
     font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); z-index: 100;
     display: flex; gap: 0.6rem; align-items: center;
   }
-  .kb { display: inline-flex; align-items: center; justify-content: center;
+  .kb {
+    display: inline-flex; align-items: center; justify-content: center;
     width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 5px;
     background: var(--card); font-size: 0.7rem; color: var(--text-dim);
+    cursor: pointer; padding: 0; font-family: inherit; line-height: 1;
+    -webkit-tap-highlight-color: transparent;
   }
+  .kb:hover { border-color: var(--accent); color: var(--accent); }
+  .kb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .kb:disabled { opacity: 0.35; cursor: not-allowed; }
+  .kb:disabled:hover { border-color: var(--border); color: var(--text-dim); }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .slide { padding: 65px 1.2rem 1.5rem; }
     .project-grid, .tool-cards { grid-template-columns: 1fr; }
+    .project-card[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    .project-card[style*="grid-template-columns"] .project-card-img { height: 200px !important; }
     .persona-grid { grid-template-columns: 1fr; }
     .nav { padding: 0 1rem; }
     .kb-hint { display: none; }
-    .iframe-wrap iframe { height: 280px; }
+    .iframe-wrap iframe { height: 600px; }
     .img-row img { height: 110px; width: 110px; }
     h2::after { display: none; }
   }
@@ -381,11 +390,13 @@
 <nav class="nav">
   <div class="nav-title">我如何使用 LLM — 阿亂</div>
   <div class="nav-dots" id="navDots"></div>
-  <div class="nav-counter" id="navCounter">1 / 10</div>
+  <div class="nav-counter" id="navCounter">1 / 12</div>
 </nav>
 
 <div class="kb-hint">
-  <div class="kb">↑</div><div class="kb">↓</div><span>切換頁面</span>
+  <button type="button" class="kb" id="kbUp" aria-label="上一頁">↑</button>
+  <button type="button" class="kb" id="kbDown" aria-label="下一頁">↓</button>
+  <span>切換頁面</span>
 </div>
 
 <div class="slides" id="slides">
@@ -399,7 +410,7 @@
       生成式藝術家・創意程式設計師・akaSwap 共同創辦人<br>
       工具：Claude Code / Cursor / Cowork
     </div>
-    <div class="core-quote">作品只是表象，背後都是結構。<br>留下錨點，讓一切可以被 index。</div>
+    <div class="core-quote">作品只是表象，背後都是結構。<br>留下錨點，讓一切可以被索引。</div>
     <div class="scroll-hint">↓ 向下滾動開始</div>
   </section>
 
@@ -438,9 +449,39 @@
     </div>
   </section>
 
-  <!-- ═══ 2: Good Vibrations ═══ -->
+  <!-- ═══ 2: Cases ═══ -->
   <section class="slide" id="slide-2">
-    <div class="section-label">02 — Origin · 2021</div>
+    <div class="section-label">02 — Selected Cases</div>
+    <h2>藝術合作案例</h2>
+
+    <div class="project-grid" style="grid-template-columns: 1fr;">
+      <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
+        <img class="project-card-img" src="https://aluanwang.com/wp-content/uploads/2025/05/cw-image-resizer.cwg_-1024x682.jpg" alt="Mercedes-Maybach × Art Taipei" style="width:100%; height:100%; object-fit:cover;">
+        <div class="project-card-body">
+          <div class="pname">Mercedes-Maybach × Art Taipei 2024</div>
+          <div class="psub">臺北國際藝術博覽會｜數位生成藝術裝置</div>
+          <div class="pdesc" style="max-width:none">
+            台灣賓士以「Welcome to Beyond」為題，攜手 Mercedes-Maybach EQS 680 SUV 進駐 Art Taipei。<br><br>
+            展區核心為數位生成藝術作品<strong>《春分》</strong>——以兩層演算法圖層的堆疊，將季節遞嬗與自然循環轉譯為流動的視覺語彙。觀眾透過互動螢幕觸發畫面生成，鏡面裝置在現實與虛幻之間折射出無限延伸的空間。<br><br>
+            每一次觸碰都觸發一次獨一無二的生成——觀眾不是觀看者，而是共同創作者。<br>
+            當頂級工藝遇上生成演算——機械的精密與演算法的有機，在同一個展間對話。
+          </div>
+          <span class="ptag tag-json">生成式藝術</span>
+          <span class="ptag tag-md">互動裝置</span>
+          <span class="ptag tag-html">Art Taipei 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      藝術不是裝飾品牌，品牌也不是贊助藝術——<br>
+      當演算法的有機紋理與 Maybach 的精密工藝並置，兩者共享同一種語言：<strong>在結構中尋找自由</strong>。
+    </div>
+  </section>
+
+  <!-- ═══ 3: Good Vibrations ═══ -->
+  <section class="slide" id="slide-3">
+    <div class="section-label">03 — Origin · 2021</div>
     <h2>作品背後都是結構</h2>
 
     <p><strong>Good Vibrations</strong> — 我的第一件長篇生成藝術作品。表面上是旋轉的圓弧與線段互動，交叉觸發聲音。</p>
@@ -474,14 +515,15 @@
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
-      <iframe src="https://aluanwang.com/long-form/goodvibrations/" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://aluanwang.com/long-form/goodvibrations/" target="_blank">↗ 在新視窗開啟完整頁面</a>
+      <iframe src="https://openprocessing.org/sketch/2048187/embed/?plusEmbedHash=8c2372a8&userID=40395&plusEmbedTitle=true&plusEmbedFullscreen=true&show=sketch" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://openprocessing.org/sketch/2048187" target="_blank" rel="noopener noreferrer">↗ 在 OpenProcessing 開啟完整 Sketch</a>
     </div>
+
   </section>
 
-  <!-- ═══ 3: 方法論 ═══ -->
-  <section class="slide" id="slide-3">
-    <div class="section-label">03 — Methodology</div>
+  <!-- ═══ 4: 方法論 ═══ -->
+  <section class="slide" id="slide-4">
+    <div class="section-label">04 — Methodology</div>
     <h2>核心方法論：JSON 作為記憶層</h2>
 
     <p>LLM 的上下文有限、記憶會斷。我的解法：<strong>主動建立外部記憶</strong>——用 JSON 和 .md 把重要資訊結構化，讓 LLM 每次都能從錨點重新理解脈絡。</p>
@@ -490,7 +532,7 @@
 
     <div class="project-grid">
       <div class="project-card">
-        <img class="project-card-img" src="https://aluanwang.com/wp-content/uploads/2021/09/991_GV.png" alt="七玄關" style="filter: hue-rotate(180deg) brightness(0.7);">
+        <img class="project-card-img" src="assets/seven-gates-card.png" alt="《修仙-七玄關》封面">
         <div class="project-card-body">
           <div class="pname">《修仙-七玄關》</div>
           <div class="psub">小說創作</div>
@@ -501,7 +543,7 @@
         </div>
       </div>
       <div class="project-card">
-        <img class="project-card-img" src="https://inkfield-production.up.railway.app/tech/assets/banner.jpg" alt="InkField"  onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#0a0a0a)'; this.style.height='140px';">
+        <img class="project-card-img" src="assets/inkfield-banner.png" alt="InkField 墨域—水墨筆觸示意" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#0a0a0a)'; this.style.height='140px';">
         <div class="project-card-body">
           <div class="pname">InkField 墨域</div>
           <div class="psub">數位水墨引擎</div>
@@ -522,9 +564,9 @@
     </div>
   </section>
 
-  <!-- ═══ 4: JSON 深入 ═══ -->
-  <section class="slide" id="slide-4">
-    <div class="section-label">04 — Deep Dive · 小說</div>
+  <!-- ═══ 5: JSON 深入 ═══ -->
+  <section class="slide" id="slide-5">
+    <div class="section-label">05 — Deep Dive · 小說</div>
     <h2>JSON 實例：故事的外部記憶</h2>
 
     <p>寫長篇小說最大的問題是連貫性。LLM 無法記住幾萬字的前文，所以我建了結構化的場景資料庫：</p>
@@ -555,9 +597,9 @@
     <div class="highlight-box">關鍵心得：不要期待 LLM 記住一切，主動幫它建索引。</div>
   </section>
 
-  <!-- ═══ 5: InkField iframe ═══ -->
-  <section class="slide" id="slide-5">
-    <div class="section-label">05 — Deep Dive · 水墨</div>
+  <!-- ═══ 6: InkField iframe ═══ -->
+  <section class="slide" id="slide-6">
+    <div class="section-label">06 — Deep Dive · 水墨</div>
     <h2>InkField：AI 用 JSON 畫水墨</h2>
 
     <p>InkField 的錄製系統只記錄<strong>事件</strong>（筆觸參數+種子值），不記錄像素。雙種子確定性系統達到 99.9% 一致性。一幅作品 JSON 通常 < 100KB。</p>
@@ -573,17 +615,17 @@
     </div>
 
     <div class="iframe-wrap">
-      <div class="iframe-label">INKFIELD TECH DOCS</div>
-      <iframe src="https://inkfield-production.up.railway.app/tech/index.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://inkfield-production.up.railway.app/tech/index.html" target="_blank">↗ 開啟 InkField 技術文件</a>
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe src="https://inkfield-production.up.railway.app/?_w:700_h:500" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://inkfield-production.up.railway.app/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
     </div>
 
     <p style="margin-top:0.8rem">我用 <strong>Claude Code</strong> 開發此專案，搭配 <strong>CLAUDE.md</strong> 管理規範，doc/ 目錄保留 TECHNICAL_6~10.md 記錄每次迭代。</p>
   </section>
 
-  <!-- ═══ 6: PolyPaths iframe ═══ -->
-  <section class="slide" id="slide-6">
-    <div class="section-label">06 — Deep Dive · 植物</div>
+  <!-- ═══ 7: PolyPaths iframe ═══ -->
+  <section class="slide" id="slide-7">
+    <div class="section-label">07 — Deep Dive · 植物</div>
     <h2>PolyPaths：觀眾的行為就是 DNA</h2>
 
     <p>觀眾在介面上畫路徑，以為只是在互動。但系統在背後<strong>完整記錄了他們的一舉一動</strong>。</p>
@@ -606,14 +648,14 @@
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
-      <iframe src="https://aluanwang.com/long-form/polypaths/" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://aluanwang.com/long-form/polypaths/" target="_blank">↗ 開啟 PolyPaths 完整頁面</a>
+      <iframe src="https://polypaths.up.railway.app/mono.html" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://polypaths.up.railway.app/mono.html" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 PolyPaths（mono）</a>
     </div>
   </section>
 
-  <!-- ═══ 7: 工具鏈 ═══ -->
-  <section class="slide" id="slide-7">
-    <div class="section-label">07 — Toolchain</div>
+  <!-- ═══ 8: 工具鏈 ═══ -->
+  <section class="slide" id="slide-8">
+    <div class="section-label">08 — Toolchain</div>
     <h2>我的 LLM 工具鏈</h2>
 
     <div class="tool-cards">
@@ -647,9 +689,9 @@
     </div>
   </section>
 
-  <!-- ═══ 8: 數位分身 ═══ -->
-  <section class="slide" id="slide-8">
-    <div class="section-label">08 — Digital Twin</div>
+  <!-- ═══ 9: 數位分身 ═══ -->
+  <section class="slide" id="slide-9">
+    <div class="section-label">09 — Digital Twin</div>
     <h2>最後一層：用 .md 建立數位分身</h2>
 
     <p>我把 Facebook、X、Threads 上的所有發言下載下來，整理成一份<strong>「寫作風格指南」.md</strong>：</p>
@@ -679,9 +721,9 @@
     </div>
   </section>
 
-  <!-- ═══ 9: 總結 ═══ -->
-  <section class="slide" id="slide-9">
-    <div class="section-label">09 — Summary</div>
+  <!-- ═══ 10: 總結 ═══ -->
+  <section class="slide" id="slide-10">
+    <div class="section-label">10 — Summary</div>
     <h2>總結：留下錨點，讓一切可以被 index</h2>
 
     <div class="big-quote">留下很多錨點，讓它可以被 index，<br>最後透過 meta 生成一個人，以及衍伸的作品。</div>
@@ -697,8 +739,8 @@
     </table>
   </section>
 
-  <!-- ═══ 10: Closing ═══ -->
-  <section class="slide slide-closing" id="slide-10">
+  <!-- ═══ 11: Closing ═══ -->
+  <section class="slide slide-closing" id="slide-11">
     <div class="closing-statement">
       結構不是限制，結構是自由。<br><br>
       當你把一切都結構化之後，<br>
@@ -719,15 +761,39 @@
 <script>
 (function() {
   const slides = document.querySelectorAll('.slide');
-  const container = document.getElementById('slides');
   const navDotsEl = document.getElementById('navDots');
   const navCounter = document.getElementById('navCounter');
+  const kbUp = document.getElementById('kbUp');
+  const kbDown = document.getElementById('kbDown');
   const total = slides.length;
+
+  let cur = 0;
+
+  function syncKbButtons() {
+    if (!kbUp || !kbDown) return;
+    kbUp.disabled = cur <= 0;
+    kbDown.disabled = cur >= total - 1;
+  }
+
+  function goPrev() {
+    cur = Math.max(cur - 1, 0);
+    slides[cur].scrollIntoView({ behavior: 'smooth' });
+    syncKbButtons();
+  }
+  function goNext() {
+    cur = Math.min(cur + 1, total - 1);
+    slides[cur].scrollIntoView({ behavior: 'smooth' });
+    syncKbButtons();
+  }
 
   for (let i = 0; i < total; i++) {
     const dot = document.createElement('button');
     dot.className = 'nav-dot';
-    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    dot.addEventListener('click', () => {
+      cur = i;
+      syncKbButtons();
+      slides[i].scrollIntoView({ behavior: 'smooth' });
+    });
     navDotsEl.appendChild(dot);
   }
   const dots = document.querySelectorAll('.nav-dot');
@@ -736,28 +802,26 @@
     entries.forEach(e => {
       if (e.isIntersecting) {
         const idx = Array.from(slides).indexOf(e.target);
+        cur = idx;
         dots.forEach((d, i) => d.classList.toggle('active', i === idx));
         navCounter.textContent = `${idx + 1} / ${total}`;
+        syncKbButtons();
       }
     });
   }, { threshold: 0.4 });
   slides.forEach(s => obs.observe(s));
 
-  let cur = 0;
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
-      e.preventDefault(); cur = Math.min(cur + 1, total - 1);
-      slides[cur].scrollIntoView({ behavior: 'smooth' });
+      e.preventDefault(); goNext();
     } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-      e.preventDefault(); cur = Math.max(cur - 1, 0);
-      slides[cur].scrollIntoView({ behavior: 'smooth' });
+      e.preventDefault(); goPrev();
     }
   });
 
-  const scrollObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) cur = Array.from(slides).indexOf(e.target); });
-  }, { threshold: 0.4 });
-  slides.forEach(s => scrollObs.observe(s));
+  if (kbUp) kbUp.addEventListener('click', goPrev);
+  if (kbDown) kbDown.addEventListener('click', goNext);
+  syncKbButtons();
 })();
 </script>
 

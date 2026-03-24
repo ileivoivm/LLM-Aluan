@@ -821,14 +821,17 @@
       <div class="iframe-wrap" style="margin:0;">
         <div class="iframe-label">Chaos Research · LIVE</div>
         <iframe class="lazy-embed" title="Chaos Research" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz/?cid=QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz&fxhash=onuLCEvez82KSGwx8YSqNKHyAaFs6hPjPTssYUNfRtYcN2PFUKZ&fxminter=tz1LeF4MnbPgy3VTjfhtjjbjKtW9CQKgJtqi&fxiteration=204&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
+        <a class="iframe-link" href="https://www.fxhash.xyz/project/chaos-research" target="_blank" rel="noopener noreferrer">↗ chaosResearch</a>
       </div>
       <div class="iframe-wrap" style="margin:0;">
         <div class="iframe-label">Chaos Memory · LIVE</div>
         <iframe class="lazy-embed" title="Chaos Memory" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT/?cid=QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT&fxhash=ooDG93qCTyNLHyg7GAaMnWp8o8mbb8vfYtdpxKXJiaujh4eJWPj&fxminter=tz1b4sbpCVGQEcgQLVUFWiXgdcwYv1gKXhWu&fxiteration=245&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
+        <a class="iframe-link" href="https://www.fxhash.xyz/project/chaos-memory" target="_blank" rel="noopener noreferrer">↗ chaosMemory</a>
       </div>
       <div class="iframe-wrap" style="margin:0;">
         <div class="iframe-label">Chaos Culture · LIVE</div>
         <iframe class="lazy-embed" title="Chaos Culture" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj/?cid=QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj&fxhash=op5RasCtsN4QaR5aGQLfGBpUsDcy78PALcBcm9khnpQgB4nvw3D&fxminter=tz1PQRJ8wVtFgkZWGfJ6JajjjtJDYUNuKqKc&fxiteration=1000&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
+        <a class="iframe-link" href="https://www.fxhash.xyz/project/chaos-culture" target="_blank" rel="noopener noreferrer">↗ chaosCulture</a>
       </div>
     </div>
     <div class="chaos-mobile-notice" style="display:none; text-align:center; padding:2rem; background:var(--surface); border-radius:8px; margin:1.5rem 0; color:var(--text-dim); font-size:0.9rem;">
@@ -1204,19 +1207,18 @@
 
   updateTimelineState(0);
 
-  // iframe 捲到該頁才載入（直接觀察 iframe 元素，用 viewport 作為 root）
+  // iframe 載入/卸載：進入視窗載入，離開視窗清除以釋放效能
   document.querySelectorAll('iframe.lazy-embed[data-src]').forEach(iframe => {
-    const io = new IntersectionObserver((entries, ob) => {
+    const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
         const url = iframe.getAttribute('data-src');
-        if (url && iframe.dataset.iframeLoaded !== '1') {
-          iframe.src = url;
-          iframe.dataset.iframeLoaded = '1';
+        if (entry.isIntersecting) {
+          if (url && iframe.src !== url) iframe.src = url;
+        } else {
+          if (iframe.src && iframe.src !== 'about:blank') iframe.src = 'about:blank';
         }
-        ob.unobserve(iframe);
       });
-    }, { root: null, threshold: 0, rootMargin: '200px' });
+    }, { root: null, threshold: 0, rootMargin: '300px' });
     io.observe(iframe);
   });
 

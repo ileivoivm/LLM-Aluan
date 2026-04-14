@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王新仁 Aluan Wang — 藝術家簡歷</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --surface: #f6f8fa;
+    --border: #d0d7de;
+    --border-light: #e8e8e8;
+    --text: #2a2a2a;
+    --text-dim: #555;
+    --text-muted: #888;
+    --accent-color: #2d6a4f;
+    --accent-2: #1a5276;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    --sans: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif;
+    --serif: 'Noto Serif TC', 'Source Han Serif TC', Georgia, 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  h1 small {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-family: var(--mono);
+  }
+
+  .bio p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1.5px solid var(--border-light);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    font-size: 0.9rem;
+    padding: 0.35rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    width: 5px;
+    height: 5px;
+    background: var(--accent-color);
+    border-radius: 50%;
+  }
+
+  .works {
+    font-size: 0.9rem;
+    line-height: 2;
+  }
+
+  .work-tag {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    margin: 0.15rem 0.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 0.82rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--mono);
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  /* ── Exhibition Photo ── */
+  .exhibit {
+    margin: 1.2rem 0;
+    background: #fff;
+    padding: 0.6rem;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .exhibit:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+
+  .exhibit img {
+    width: 100%;
+    display: block;
+  }
+
+  .exhibit figcaption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0.2rem 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Video Embed ── */
+  .video-wrap {
+    margin: 1.2rem 0;
+    background: #000;
+    padding: 0.4rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  }
+
+  .video-wrap iframe {
+    width: 100%;
+    height: 420px;
+    display: block;
+    border: none;
+  }
+
+  .video-wrap figcaption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: 0.5rem 0.2rem 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 2rem 1.2rem 3rem; }
+    h1 { font-size: 1.4rem; }
+    .video-wrap iframe { height: 240px; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="back-link" href="index.html">← 返回投影片</a>
+
+  <h1>王新仁 <small>Aluan Wang / 阿亂</small></h1>
+  <div class="subtitle">Generative Artist · Creative Coder · Art Director, akaSwap</div>
+
+  <div class="bio">
+    <p>王新仁（1982年出生於臺灣臺中），為臺灣當代數位藝術與生成藝術領域的先鋒。身為一位創意編碼者（Creative Coder）與新媒體藝術家，他擁有超過15年的創作資歷，擅長將演算法系統、聲音與東方繪畫哲學相結合。他擁有國立臺北藝術大學（TNUA）新媒體藝術學系碩士學位，目前擔任 akaSwap 的藝術總監。</p>
+
+    <p>王新仁將程式碼作為主要創作媒介，透過精密數學公式鏈結聲音與影像，建構出動態的藝術系統。他的創作致力於探索混沌、不可預測性以及自然現象背後的無形結構。他是臺灣首位登上全球知名生成藝術最高殿堂 Art Blocks 的藝術家（2021年），也是首位在 verse.works 發行長篇生成藝術（long-form）作品的亞洲藝術家，成功將臺灣豐沛的數位藝術創作能量帶入國際視野。</p>
+  </div>
+
+  <h2>重要獲獎紀錄</h2>
+  <ul>
+    <li>臺北數位藝術節－首獎（2012、2015）</li>
+    <li>德國威瑪包浩斯大學 PdCon 2011 影音表演－入選（《移動中的共鳴》）</li>
+  </ul>
+
+  <figure class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/72oV0W2wTCE" title="2015第十屆台北數位藝術節｜幻象中的歷史現場" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>《2015第十屆台北數位藝術節》台北數位藝術獎 —【幻象中的歷史現場】</figcaption>
+  </figure>
+
+  <h2>重要個展</h2>
+  <ul>
+    <li>【王新仁：邊界漫遊】，國立臺灣美術館（2020）</li>
+    <li>個人海外首展，德國柏林 Galerie Met（2025）</li>
+  </ul>
+
+  <figure class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/_Xjy_Mr9H34?start=5" title="王新仁：邊界漫遊｜國立臺灣美術館" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>【王新仁：邊界漫遊】國立臺灣美術館（2020）</figcaption>
+  </figure>
+
+  <figure class="exhibit">
+    <img src="assets/berlin_galerie_met.jpg" alt="德國柏林 Galerie Met 個展現場（2025）">
+    <figcaption>德國柏林 Galerie Met 個展現場（2025）</figcaption>
+  </figure>
+
+  <h2>重要聯展</h2>
+  <ul>
+    <li>2025 美國消費電子展（CES 2025），受友達（AUO）邀請展出生成藝術作品</li>
+    <li>2025 C-LAB 聲響藝術節，台韓共演
+      <figure class="exhibit">
+        <img src="assets/clab.jpg" alt="C-LAB 聲響藝術節 台韓共演（2025）">
+        <figcaption>C-LAB 聲響藝術節 台韓共演（2025）</figcaption>
+      </figure>
+    </li>
+    <li>2024 台北國際藝術博覽會（Art Taipei），《春分》與 Mercedes-Maybach 聯名特展</li>
+    <li>2024 Volume DAO 亞洲生成藝術展《dialog()》台北站／首爾站</li>
+    <li>2023 Bright Moments Tokyo × 澀谷 NFT 黃金週，《透納光》（Turner Light）投影於澀谷十字路口 AR 大螢幕
+      <figure class="exhibit">
+        <img src="assets/tokyo.jpg" alt="Bright Moments Tokyo — 澀谷十字路口《透納光》（2023）">
+        <figcaption>Bright Moments Tokyo — 澀谷十字路口《透納光》（2023）</figcaption>
+      </figure>
+    </li>
+    <li>2023 新加坡藝術科學博物館「以太之音：從NFT到AI」特展
+      <figure class="exhibit">
+        <img src="assets/tezos.jpg" alt="新加坡藝術科學博物館「以太之音」特展（2023）">
+        <figcaption>新加坡藝術科學博物館「以太之音：從NFT到AI」特展（2023）</figcaption>
+      </figure>
+    </li>
+    <li>2023【郭雪湖與數位生成藝術家】—跨越百年風景對話（Bridging Eras）</li>
+    <li>2022 香港巴塞爾藝術展（Art Basel Hong Kong），Tezos × fxhash 生成藝術特展</li>
+    <li>2022 大臺北當代藝術雙年展《登入公海》</li>
+  </ul>
+
+  <h2>重要機構典藏</h2>
+  <ul>
+    <li>國立臺灣博物館：典藏《植徑集》（Polypaths），以生成藝術重現臺灣原生與滅絕植物
+      <figure class="exhibit">
+        <img src="assets/taiwan.jpg" alt="國立臺灣博物館典藏《植徑集》">
+        <figcaption>國立臺灣博物館典藏《植徑集》（Polypaths）</figcaption>
+      </figure>
+    </li>
+    <li>Le Random：全球頂尖生成藝術機構，典藏《透納光》（Turner Light）及其他作品</li>
+  </ul>
+
+  <h2>代表作品</h2>
+  <div class="works">
+    <span class="work-tag">《墨域》InkField（2025–）</span>
+    <span class="work-tag">《植徑集》Polypaths</span>
+    <span class="work-tag">《春分》Equinox</span>
+    <span class="work-tag">《Chaos》混沌三部曲</span>
+    <span class="work-tag">《透納光》Turner Light</span>
+    <span class="work-tag">Good Vibrations</span>
+  </div>
+
+</body>
+</html>

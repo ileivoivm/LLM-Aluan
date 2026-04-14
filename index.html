@@ -761,9 +761,41 @@
     </div>
 
     <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO</div>
+      <div class="iframe-label">LIVE DEMO — Good Vibrations</div>
       <iframe class="lazy-embed" title="Good Vibrations 即時演示" src="about:blank" data-src="https://openprocessing.org/sketch/2048187/embed/?plusEmbedHash=8c2372a8&userID=40395&plusEmbedTitle=true&plusEmbedFullscreen=true&show=sketch" sandbox="allow-scripts allow-same-origin"></iframe>
       <a class="iframe-link" href="https://openprocessing.org/sketch/2048187" target="_blank" rel="noopener noreferrer">↗ 在 OpenProcessing 開啟完整 Sketch</a>
+    </div>
+
+  </section>
+
+  <!-- ═══ 4b: AV Sequencer ═══ -->
+  <section class="slide" id="slide-5b">
+    <div class="section-label">05b — AV Sequencer</div>
+
+    <div class="highlight-box">
+      <span class="zh"><strong>AV Sequencer</strong> — 序列機。一排格子，每格存一個音高，索引（index）按固定速率掃過去，掃到哪格就發哪個音。<br>格子是陣列，索引是時鐘。Pure Data 的 array 概念，直接搬上來。</span><span class="en"><strong>AV Sequencer</strong> — a step sequencer. A row of cells, each holding a pitch value, scanned by an index at a fixed rate.<br>The cells are an array; the index is a clock. The Pure Data array concept, carried forward directly.</span>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO — AV Sequencer</div>
+      <iframe class="lazy-embed" title="AV Sequencer 序列機" src="about:blank" data-src="https://ileivoivm.github.io/avlab/av23/" sandbox="allow-scripts allow-same-origin" allow="autoplay"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/avlab/av23/" target="_blank" rel="noopener noreferrer">↗ 開啟序列機</a>
+    </div>
+
+  </section>
+
+  <!-- ═══ 4c: AV Drum Machine ═══ -->
+  <section class="slide" id="slide-5c">
+    <div class="section-label">05c — AV Drum Machine</div>
+
+    <div class="highlight-box">
+      <span class="zh"><strong>AV Drum Machine</strong> — 鼓機。同樣的格子，但每格存的不是音高，是觸發。索引掃過去，開就打，關就靜。<br>結構沒變，讀法從旋律變成節奏。</span><span class="en"><strong>AV Drum Machine</strong> — a drum machine. Same grid, but each cell holds a trigger instead of a pitch. The index scans through — on means hit, off means silence.<br>Same structure, different reading: rhythm instead of melody.</span>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO — AV Drum Machine</div>
+      <iframe class="lazy-embed" title="AV Drum Machine 鼓機" src="about:blank" data-src="https://ileivoivm.github.io/avlab/av11/" sandbox="allow-scripts allow-same-origin" allow="autoplay"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/avlab/av11/" target="_blank" rel="noopener noreferrer">↗ 開啟鼓機</a>
     </div>
 
   </section>
@@ -925,14 +957,36 @@
 
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
-      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://inkfield-production.up.railway.app/?_w:700_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://inkfield-production.up.railway.app/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
+      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
     </div>
 
     <p class="zh" style="margin-top:0.8rem">錄製系統只記錄事件（筆觸參數 + 種子值），不記錄像素。雙種子確定性系統，99.9% 一致性。一幅作品 < 100KB。</p>
     <p class="en" style="margin-top:0.8rem">The recording system captures events (stroke parameters + seed values), not pixels. Dual-seed deterministic system, 99.9% consistency. One painting &lt; 100KB.</p>
     <p class="zh" style="font-size:0.85rem; color:var(--text-dim)">Claude Code 開發，CLAUDE.md 管理規範，doc/ 保留每次迭代的技術文檔。</p>
     <p class="en" style="font-size:0.85rem; color:var(--text-dim)">Built with Claude Code. CLAUDE.md governs project specs. doc/ preserves technical docs from every iteration.</p>
+  </section>
+
+  <!-- ═══ 6b: InkField Gallery ═══ -->
+  <section class="slide" id="slide-9b">
+    <div class="section-label">09b — InkField Gallery</div>
+    <h2><span class="zh">InkField Gallery：過程可以被繼承</span><span class="en">InkField Gallery: Process Can Be Inherited</span></h2>
+
+    <p class="zh">每幅作品的繪製過程都是一份 JSON。任何人可以下載、研究、重播，然後用同樣的引擎畫出自己的版本。</p>
+    <p class="en">Every painting's process is a JSON file. Anyone can download it, study it, replay it, then use the same engine to paint their own version.</p>
+    <p class="zh">不是複製成品，是繼承過程。你拿到的不是一張圖，是一套筆法。</p>
+    <p class="en">It's not copying a finished piece — it's inheriting a process. What you get isn't an image, it's a set of brushstrokes.</p>
+
+    <div class="highlight-box">
+      <span class="zh">作品不是終點。作品是別人的起點。<br>JSON 讓過程可攜、可學、可延續。</span><span class="en">A work isn't the endpoint. It's someone else's starting point.<br>JSON makes the process portable, learnable, continuable.</span>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO — InkField Gallery</div>
+      <iframe class="lazy-embed" title="InkField Gallery" src="about:blank" data-src="https://ileivoivm.github.io/inkField/gallery/" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/gallery/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField Gallery</a>
+    </div>
+
   </section>
 
   <!-- ═══ 7: PolyPaths iframe ═══ -->

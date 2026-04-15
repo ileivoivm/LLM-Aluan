@@ -1,76 +1,60 @@
 # 我如何使用 LLM：從結構到創作的工作方法論
 
-> 王新仁（阿亂）的演講投影片專案
+> 王新仁（阿亂）｜臺藝大講座｜2026.04.16
 > **Live:** [https://ileivoivm.github.io/LLM-Aluan/](https://ileivoivm.github.io/LLM-Aluan/)
 
 ---
 
 ## 專案概述
 
-這是一份以純 HTML + CSS + JS 打造的演講投影片，主題為「我如何使用 LLM：從結構到創作的工作方法論」——從生成藝術實踐出發，闡述如何以結構化方法（JSON / Markdown）與 LLM 協作。
+純 HTML + CSS + JS 演講投影片。主題：以結構化方法（JSON / Markdown）與 LLM 協作，從生成藝術實踐出發。
 
-## 目前進度
-
-### ✅ 已完成
-
-| 項目 | 說明 |
-|------|------|
-| **基礎投影片** | 12 頁完整內容（開場 → 結語） |
-| **右側時間軸導覽** | 固定於右側，顯示各頁標題，點選即滑動到對應頁面 |
-| **自我介紹頁（Slide 1）** | 藝術家簡介、照片、經歷標籤、數據亮點 |
-| **案例頁（Slide 2）** | 兩個藝術合作案例，圖文左右排版 |
-| **案例一：Mercedes-Maybach × Art Taipei 2024** | 台灣賓士「Welcome to Beyond」主題，展出生成藝術作品《春分》，互動螢幕 + 鏡面裝置 |
-| **案例二：總統就職典禮 × 生成式 NFT** | 2024 · 520 就職紀念，AI 風格轉換系統，akaSwap + Tezos 鏈上 NFT |
-| **案例圖片本地化** | 縮圖存放於 `assets/` 目錄 |
-| **內容頁面** | Good Vibrations、JSON 方法論、小說結構、InkField 水墨引擎、PolyPaths、工具鏈、數位分身、總結 |
-| **Live Demo 嵌入** | Good Vibrations / InkField / PolyPaths 三個 iframe，捲動到該頁才載入 |
-| **鍵盤導覽** | ↑↓ / PageUp/PageDown / Space |
-| **GitHub Pages 部署** | `index.html` 為入口 |
-
-### 🔲 待處理
-
-- [ ] **GitHub Pages 啟用確認** — 需至 repo Settings → Pages → Source 選擇 `main` branch
-- [ ] 行動裝置響應式優化（時間軸在小螢幕的處理）
-- [ ] 更多案例擴充（如有需要）
-
-## 投影片結構（12 頁）
+## 投影片結構
 
 ```
-00  開場 — 標題頁
-01  About the Artist — 自我介紹
-02  Selected Cases — 藝術合作案例（Maybach / 520 NFT）
-03  Origin — Good Vibrations 與結構化思考的起源
-04  Methodology — JSON 作為記憶層
-05  Deep Dive · 小說 — JSON 故事結構實例
-06  Deep Dive · 水墨 — InkField AI 用 JSON 畫水墨
-07  Deep Dive · 植物 — PolyPaths 觀眾行為即 DNA
-08  Toolchain — Claude Code / Cursor / Cowork
-09  Digital Twin — 用 .md 建立數位分身
-10  Summary — 四層架構總結
-11  Closing — 結語
+00   開場 — 封面
+01   About the Artist — 自介 + Affine Cipher
+01b  Statement — 藝術家宣言
+02   Selected Cases — Maybach × Art Taipei / 520 就職 NFT
+03   從取樣開始，從濾波結束 — Pure Data 陣列（哲學啟蒙）
+04   Paths 系列 — 卡片入口 → paths.html
+05   Good Vibrations 系列 — 卡片入口 → gv.html
+06   Chaos 三部曲 — Research → Memory → Culture
+06b  轉折 — 一個人不會真的消失
+07   JSON 作為記憶層 — chapter divider
+08   Deep Dive · 小說 — 《修仙-七玄關》
+09   Deep Dive · 水墨 — InkField
+10   Deep Dive · 植物 — PolyPaths
+11   Toolchain — Claude Code / Cursor / Cowork
+12   Digital Twin — .md 風格指南
+13   Summary — 四層架構
+14   Closing — 結構不是限制，結構是自由
+links 延伸閱讀 — X/Twitter 推文嵌入
 ```
-
-## 技術細節
-
-- **純前端**：HTML + CSS + JS，零框架依賴
-- **導覽**：CSS `scroll-snap` + 右側時間軸（IntersectionObserver 驅動）
-- **字型**：Noto Sans TC / Noto Serif TC / JetBrains Mono（Google Fonts）
-- **風格**：淺色主題，墨綠 / 深藍強調色，書籍排版風格
 
 ## 檔案結構
 
 ```
 .
-├── index.html          # 主投影片（GitHub Pages 入口）
-├── CLAUDE.md           # Claude Code 專案指引
-├── README.md           # 本文件
-├── assets/             # 本地圖片資源
-│   ├── mercedes-maybach-art-taipei-2024-banner.png
-│   ├── inaugural-2024-nft-banner.png
-│   ├── inkfield-banner.png
-│   └── seven-gates-card.png
-└── img/                # 其他圖片
+├── index.html        # 主投影片（GitHub Pages 入口）
+├── paths.html        # Paths 系列子頁面（昨日/明日/邊界漫遊/地誌龐克）
+├── gv.html           # Good Vibrations 系列子頁面（GV/序列機/鼓機）
+├── background.html   # 藝術家背景與展覽
+├── CLAUDE.md         # Claude Code 專案指引
+├── README.md         # 本文件
+├── assets/           # 本地圖片資源
+└── 我如何使用LLM….md # 演講原稿（唯一內容源）
 ```
+
+## 技術細節
+
+- **純前端**：HTML + CSS + JS，零框架依賴
+- **導覽**：CSS `scroll-snap` + 右側時間軸（IntersectionObserver）
+- **中英雙語**：右上角切換按鈕（中文 / EN / MD）
+- **子頁面**：系列作品拆至獨立 HTML，主投影片以卡片入口連結
+- **iframe 管理**：進入視窗載入，離開清為 `about:blank`
+- **字型**：Noto Sans TC / Noto Serif TC / JetBrains Mono
+- **風格**：淺色主題，墨綠 / 深藍強調色
 
 ## 授權
 

@@ -1,6 +1,7 @@
 # 僅本機使用，不進版控
 speaker-notes.md
 .claude/
+CLAUDE.md
 
 # macOS
 .DS_Store

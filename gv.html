@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Vibrations 系列 — 王新仁 Aluan Wang</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --surface: #f6f8fa;
+    --border: #d0d7de;
+    --border-light: #e8e8e8;
+    --text: #2a2a2a;
+    --text-dim: #555;
+    --text-muted: #888;
+    --accent: #1a1a1a;
+    --accent-color: #2d6a4f;
+    --accent-2: #1a5276;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    --sans: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif;
+    --serif: 'Noto Serif TC', 'Source Han Serif TC', Georgia, 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    margin-right: max(calc((100vw - 760px) / 2), 2rem);
+  }
+
+  h1 { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+  h1 small { font-size: 1rem; font-weight: 400; color: var(--text-dim); }
+  .subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; font-family: var(--mono); }
+  h2 { font-size: 1.3rem; font-weight: 700; color: var(--accent-color); margin-top: 3rem; margin-bottom: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1.5px solid var(--border-light); }
+  p { font-size: 0.95rem; margin-bottom: 1rem; }
+  .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--accent-color); text-decoration: none; font-family: var(--mono); }
+  .back-link:hover { text-decoration: underline; }
+
+  .highlight-box { border-left: 3px solid var(--accent-color); padding: 1rem 1.2rem; margin: 1.2rem 0; background: var(--surface); font-size: 0.95rem; line-height: 1.8; }
+
+  .iframe-wrap { position: relative; margin: 1.2rem 0; background: var(--card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .iframe-wrap iframe { width: 100%; border: none; display: block; }
+  .iframe-label { position: absolute; top: 10px; right: 12px; font-family: var(--mono); font-size: 0.6rem; background: rgba(255,255,255,0.9); padding: 3px 10px; border-radius: 3px; z-index: 2; }
+  .iframe-link { display: block; text-align: center; padding: 0.5rem; font-size: 0.75rem; font-family: var(--mono); color: var(--text-muted); text-decoration: none; border-top: 1px solid var(--border-light); }
+  .iframe-link:hover { color: var(--accent-color); }
+
+  .img-row { display: flex; gap: 10px; margin: 1.2rem 0; overflow-x: auto; }
+  .img-row img { height: 130px; width: 130px; object-fit: cover; border-radius: 6px; flex-shrink: 0; border: 1px solid var(--border-light); }
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1.2rem 0; font-family: var(--mono); font-size: 0.85rem; }
+  .flow-node { background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; }
+  .flow-arrow { color: var(--accent); font-size: 1rem; }
+
+  /* ── Timeline Nav ── */
+  .timeline-nav { position: fixed; right: 0; top: 0; bottom: 0; z-index: 100; display: flex; flex-direction: column; justify-content: center; padding: 1rem 0; pointer-events: none; }
+  .timeline-inner { display: flex; flex-direction: column; align-items: flex-end; position: relative; pointer-events: auto; }
+  .timeline-inner::before { content: ''; position: absolute; right: 11px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .timeline-item { display: flex; align-items: center; gap: 0; cursor: pointer; padding: 5px 0; position: relative; border: none; background: none; font-family: var(--mono); text-align: right; transition: color 0.25s, font-size 0.25s, font-weight 0.25s, opacity 0.25s; font-size: 1.1rem; }
+  .timeline-label { font-size: 1em; line-height: 1.35; padding: 4px 12px 4px 14px; max-width: 14rem; white-space: normal; transition: inherit; background: rgba(250,250,250,0.92); backdrop-filter: blur(10px); border-radius: 3px 0 0 3px; border: 1px solid transparent; color: rgba(42, 42, 42, 0.45); }
+  .timeline-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: all 0.25s; position: relative; z-index: 2; margin-right: 8px; }
+  .timeline-item.active .timeline-label { color: #1a1a1a; font-weight: 600; border-color: var(--border); }
+  .timeline-item:hover .timeline-dot { background: var(--text-muted); transform: scale(1.4); }
+  .timeline-item.active .timeline-dot { background: #1a1a1a; transform: scale(1.7); box-shadow: 0 0 0 3px rgba(26,26,26,0.1); }
+  .timeline-item:hover .timeline-label { color: rgba(42, 42, 42, 0.55); border-color: var(--border-light); }
+
+  @media (max-width: 768px) {
+    body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
+    h1 { font-size: 1.4rem; }
+    .timeline-nav { display: none; }
+    .iframe-wrap iframe[style*="aspect-ratio"] { aspect-ratio: 4/3; }
+    .img-row img { height: 90px; width: 90px; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="back-link" href="index.html">← 返回投影片</a>
+
+  <h1>作品背後都是結構 <small>Good Vibrations 系列</small></h1>
+  <div class="subtitle">Good Vibrations · AV Sequencer · AV Drum Machine</div>
+
+  <!-- ═══ Good Vibrations ═══ -->
+  <h2 id="sec-gv">Good Vibrations</h2>
+
+  <p><strong>Good Vibrations</strong> — Art Blocks 上的第一件長篇生成藝術作品。台灣首位登上該平台的藝術家。旋轉的圓弧與線段互動，交叉觸發聲音。</p>
+
+  <p>按下 <strong>A+S+D+F</strong>，畫面切成「樂譜模式」，揭示每個 token 背後的音樂結構。後來空投 <strong>B-side</strong> 給所有持有者——每張對應背後的聲響與視覺邏輯。一張樂譜，一份菜單。</p>
+
+  <div class="img-row">
+    <img src="https://aluanwang.com/wp-content/uploads/2021/09/0_GV-300x300.png" alt="GV #0">
+    <img src="https://aluanwang.com/wp-content/uploads/2021/09/74_GV-300x300.png" alt="GV #74">
+    <img src="https://aluanwang.com/wp-content/uploads/2021/09/4_GV-300x300.png" alt="GV #4">
+    <img src="https://aluanwang.com/wp-content/uploads/2021/09/135_GV-300x300.png" alt="GV #135">
+    <img src="https://aluanwang.com/wp-content/uploads/2021/09/1011_GV.png" alt="GV #1011">
+    <img src="https://aluanwang.com/wp-content/uploads/2021/09/920_GV.png" alt="GV #920">
+  </div>
+
+  <div class="flow">
+    <div class="flow-node">hash</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">seed</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">確定性隨機數</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">所有參數</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">🎵 獨特的曲子</div>
+  </div>
+
+  <div class="highlight-box">
+    作品的本質是結構。<br>
+    結構可以被記錄、被還原、被重新生成。<br><br>
+    同一份 hash，可以被讀成視覺，也可以被讀成樂譜。
+  </div>
+
+  <div class="iframe-wrap">
+    <div class="iframe-label">LIVE DEMO — Good Vibrations</div>
+    <iframe src="https://openprocessing.org/sketch/2048187/embed/?plusEmbedHash=8c2372a8&userID=40395&plusEmbedTitle=true&plusEmbedFullscreen=true&show=sketch" title="Good Vibrations 即時演示" sandbox="allow-scripts allow-same-origin" style="aspect-ratio:1/1;"></iframe>
+    <a class="iframe-link" href="https://openprocessing.org/sketch/2048187" target="_blank" rel="noopener noreferrer">↗ 在 OpenProcessing 開啟完整 Sketch</a>
+  </div>
+
+  <!-- ═══ AV Sequencer ═══ -->
+  <h2 id="sec-seq">序列機 AV Sequencer</h2>
+
+  <div class="highlight-box">
+    <strong>AV Sequencer</strong> — 序列機。一排格子，每格存一個音高，索引（index）按固定速率掃過去，掃到哪格就發哪個音。<br>
+    格子是陣列，索引是時鐘。Pure Data 的 array 概念，直接搬上來。
+  </div>
+
+  <div class="iframe-wrap">
+    <div class="iframe-label">LIVE DEMO — AV Sequencer</div>
+    <iframe src="https://ileivoivm.github.io/avlab/av23/" title="AV Sequencer 序列機" sandbox="allow-scripts allow-same-origin" allow="autoplay" style="aspect-ratio:1/1;"></iframe>
+    <a class="iframe-link" href="https://ileivoivm.github.io/avlab/av23/" target="_blank" rel="noopener noreferrer">↗ 開啟序列機</a>
+  </div>
+
+  <!-- ═══ AV Drum Machine ═══ -->
+  <h2 id="sec-drum">鼓機 AV Drum Machine</h2>
+
+  <div class="highlight-box">
+    <strong>AV Drum Machine</strong> — 鼓機。同樣的格子，但每格存的不是音高，是觸發。索引掃過去，開就打，關就靜。<br>
+    結構沒變，讀法從旋律變成節奏。
+  </div>
+
+  <div class="iframe-wrap">
+    <div class="iframe-label">LIVE DEMO — AV Drum Machine</div>
+    <iframe src="https://ileivoivm.github.io/avlab/av11/" title="AV Drum Machine 鼓機" sandbox="allow-scripts allow-same-origin" allow="autoplay" style="aspect-ratio:1/1;"></iframe>
+    <a class="iframe-link" href="https://ileivoivm.github.io/avlab/av11/" target="_blank" rel="noopener noreferrer">↗ 開啟鼓機</a>
+  </div>
+
+<nav class="timeline-nav">
+  <div class="timeline-inner" id="timelineInner"></div>
+</nav>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('h2[id]');
+  const timelineInner = document.getElementById('timelineInner');
+  const items = [];
+
+  sections.forEach(sec => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'timeline-item';
+    const lab = document.createElement('span');
+    lab.className = 'timeline-label';
+    lab.textContent = sec.textContent.split('—')[0].trim();
+    const dot = document.createElement('span');
+    dot.className = 'timeline-dot';
+    btn.appendChild(lab);
+    btn.appendChild(dot);
+    btn.addEventListener('click', () => {
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    timelineInner.appendChild(btn);
+    items.push({ btn, sec });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const match = items.find(i => i.sec === entry.target);
+      if (match) match.visible = entry.isIntersecting;
+    });
+    const active = items.find(i => i.visible);
+    items.forEach(i => i.btn.classList.toggle('active', i === active));
+  }, { rootMargin: '-20% 0px -60% 0px' });
+
+  sections.forEach(sec => obs.observe(sec));
+})();
+</script>
+
+</body>
+</html>

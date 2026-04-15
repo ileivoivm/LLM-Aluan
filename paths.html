@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paths 系列 — 王新仁 Aluan Wang</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --surface: #f6f8fa;
+    --border: #d0d7de;
+    --border-light: #e8e8e8;
+    --text: #2a2a2a;
+    --text-dim: #555;
+    --text-muted: #888;
+    --accent: #1a1a1a;
+    --accent-color: #2d6a4f;
+    --accent-2: #1a5276;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    --sans: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif;
+    --serif: 'Noto Serif TC', 'Source Han Serif TC', Georgia, 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    margin-right: max(calc((100vw - 760px) / 2), 2rem);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  h1 small {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-family: var(--mono);
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 3rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1.5px solid var(--border-light);
+  }
+
+  p { font-size: 0.95rem; margin-bottom: 1rem; }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--mono);
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  /* ── Highlight Box ── */
+  .highlight-box {
+    border-left: 3px solid var(--accent-color);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    background: var(--surface);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  /* ── Flow ── */
+  .flow {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 0.5rem; margin: 1.2rem 0; font-family: var(--mono); font-size: 0.85rem;
+  }
+  .flow-node {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem; border-radius: 4px;
+  }
+  .flow-arrow { color: var(--accent); font-size: 1rem; }
+
+  /* ── Video Embed ── */
+  .video-wrap {
+    margin: 1.2rem 0;
+    background: #000;
+    padding: 0.4rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  }
+  .video-wrap iframe {
+    width: 100%; height: 420px; display: block; border: none;
+  }
+  .video-wrap figcaption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: 0.5rem 0.2rem 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Exhibit Photo ── */
+  .exhibit {
+    margin: 1.2rem 0;
+    background: #fff;
+    padding: 0.6rem;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s ease;
+  }
+  .exhibit:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+  .exhibit img { width: 100%; display: block; }
+  .exhibit figcaption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0.2rem 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Timeline Nav ── */
+  .timeline-nav {
+    position: fixed; right: 0; top: 0; bottom: 0; z-index: 100;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 1rem 0; pointer-events: none;
+  }
+  .timeline-inner {
+    display: flex; flex-direction: column; align-items: flex-end;
+    position: relative; pointer-events: auto;
+  }
+  .timeline-inner::before {
+    content: ''; position: absolute; right: 11px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    display: flex; align-items: center; gap: 0; cursor: pointer;
+    padding: 5px 0; position: relative; border: none; background: none;
+    font-family: var(--mono); text-align: right;
+    transition: color 0.25s, font-size 0.25s, font-weight 0.25s, opacity 0.25s;
+    font-size: 1.1rem;
+  }
+  .timeline-label {
+    font-size: 1em; line-height: 1.35;
+    padding: 4px 12px 4px 14px; max-width: 14rem;
+    white-space: normal; transition: inherit;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(10px);
+    border-radius: 3px 0 0 3px;
+    border: 1px solid transparent;
+    color: rgba(42, 42, 42, 0.45);
+  }
+  .timeline-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--border); flex-shrink: 0;
+    transition: all 0.25s; position: relative; z-index: 2;
+    margin-right: 8px;
+  }
+  .timeline-item.active { font-size: 1.1rem; }
+  .timeline-item.active .timeline-label {
+    color: #1a1a1a; font-weight: 600; border-color: var(--border);
+  }
+  .timeline-item:hover .timeline-dot { background: var(--text-muted); transform: scale(1.4); }
+  .timeline-item.active .timeline-dot {
+    background: #1a1a1a; transform: scale(1.7);
+    box-shadow: 0 0 0 3px rgba(26,26,26,0.1);
+  }
+  .timeline-item:hover .timeline-label {
+    color: rgba(42, 42, 42, 0.55); border-color: var(--border-light);
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
+    h1 { font-size: 1.4rem; }
+    .video-wrap iframe { height: 240px; }
+    .timeline-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="back-link" href="index.html">← 返回投影片</a>
+
+  <h1>Paths 系列 <small>路徑三部曲</small></h1>
+  <div class="subtitle">Paths to the Past · Paths to the Future · GeoPunk</div>
+
+  <!-- ═══ 昨日的路徑 ═══ -->
+  <h2 id="sec-past">昨日的路徑 — Paths to the Past</h2>
+
+  <p>空拍、三維實景、田野錄音、顆粒合成。程式即時演算，景觀輪番交錯，固有的地貌長出流動的新面貌。</p>
+
+  <div class="highlight-box">
+    你選擇收集什麼資料、怎麼 mapping，就決定了歷史長什麼樣子。<br>
+    藝術家和歷史學家做的是同一件事——選擇，然後解讀。
+  </div>
+
+  <figure class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/Vy2APk8U2dQ" title="昨日的路徑 Paths to the Past" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>昨日的路徑 — Paths to the Past</figcaption>
+  </figure>
+
+  <!-- ═══ 明日的路徑 ═══ -->
+  <h2 id="sec-future">明日的路徑 — Paths to the Future</h2>
+
+  <p>以台灣地形為基底，用<strong>波函數塌縮</strong>（wave function collapse）演算法疊加出新的國土想像。</p>
+
+  <div class="highlight-box">
+    台灣被不同政治實體佔領過，每個政權劃出不同的疆域。<br>
+    邊界不是固定的線，是時刻在塌縮的波函數。<br>
+    一個事實，不同解讀——演算法回應的正是這件事。
+  </div>
+
+  <figure class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/4Yo2rKB3aso" title="明日的路徑 Paths to the Future" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>明日的路徑 — Paths to the Future</figcaption>
+  </figure>
+
+  <!-- ═══ 邊界漫遊 ═══ -->
+  <h2 id="sec-roaming">邊界漫遊 — Roaming in the Path</h2>
+
+  <p>藝術家透過演算法在衛星地圖上進行點對點的移動，跨越山巒、海洋，跳躍在洲及島。聚焦在由各種原因形成的邊界路徑——一種對不同理念產生的輪廓。</p>
+
+  <div class="highlight-box">
+    邊界提供了另一個方法觀看核心。相同的地點，在政治上卻映射出全然不同的關係。<br>
+    作品探討的不僅是你決定從哪個方向觀看遠方，更多的是——處於怎樣的地點，決定了你凝視的方向。
+  </div>
+
+  <figure class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/_Xjy_Mr9H34" title="邊界漫遊 Roaming in the Path" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>邊界漫遊 — Roaming in the Path｜國立臺灣美術館（2020）</figcaption>
+  </figure>
+
+  <!-- ═══ GeoPunk ═══ -->
+  <h2 id="sec-geopunk">地誌龐克 — GeoPunk（2021）</h2>
+
+  <p>Paths 系列的番外篇。我最早的區塊鏈生成藝術作品。「地誌龐克」——重新探索地理空間的定義。以「龐克」為名，挑戰疆界切分。</p>
+
+  <p>159 個地址橫跨北京、台灣、美國、英國、加拿大。GPS 座標封裝進 JSON，聲音與敘述以<strong>摩斯電碼</strong>加密。程式隨機抽取經緯度，拉取衛星影像，GLSL shader 將地表紋理<strong>位移、撕裂、重組</strong>。</p>
+
+  <div class="flow">
+    <div class="flow-node">JSON 座標</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">衛星影像</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">GLSL Shader</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">3D 幾何體</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">🏔 地景雕塑</div>
+    <div class="flow-arrow">+</div>
+    <div class="flow-node">摩斯電碼</div>
+  </div>
+
+  <figure class="exhibit">
+    <img src="assets/geopunk-banner.jpg" alt="GeoPunk：衛星地貌經 shader 位移生成的 3D 地景雕塑">
+    <figcaption>GeoPunk — 衛星地貌經 GLSL shader 位移生成的 3D 地景雕塑</figcaption>
+  </figure>
+
+  <figure class="video-wrap">
+    <iframe src="https://ipfs.io/ipfs/QmeRxmM1xbSUmwo3nibQVBo8TK7oUujT2AifCkpqggGp7z/?&creator=tz1cbhmVZuFTKHcACSFpg5ER1bGVGkanhrbW&objkt=28393&viewer=undefined" title="GeoPunk LIVE DEMO" allow="webgl; accelerometer" style="height:500px;"></iframe>
+    <figcaption>GeoPunk — IPFS LIVE DEMO</figcaption>
+  </figure>
+
+  <div class="highlight-box">
+    <strong>每一件作品都是一次對地球表面的儀式性採樣。</strong><br>
+    國界消融，衛星的凝視經演算法轉譯，成為無法被複製的數位地層。<br><br>
+    同一份座標，可以被讀成地景，也可以被讀成敘事。
+  </div>
+
+<nav class="timeline-nav">
+  <div class="timeline-inner" id="timelineInner"></div>
+</nav>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('h2[id]');
+  const timelineInner = document.getElementById('timelineInner');
+  const items = [];
+
+  sections.forEach(sec => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'timeline-item';
+    const lab = document.createElement('span');
+    lab.className = 'timeline-label';
+    lab.textContent = sec.textContent.split('—')[0].trim();
+    const dot = document.createElement('span');
+    dot.className = 'timeline-dot';
+    btn.appendChild(lab);
+    btn.appendChild(dot);
+    btn.addEventListener('click', () => {
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    timelineInner.appendChild(btn);
+    items.push({ btn, sec });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const match = items.find(i => i.sec === entry.target);
+      if (match) match.visible = entry.isIntersecting;
+    });
+    const active = items.find(i => i.visible);
+    items.forEach(i => i.btn.classList.toggle('active', i === active));
+  }, { rootMargin: '-20% 0px -60% 0px' });
+
+  sections.forEach(sec => obs.observe(sec));
+})();
+</script>
+
+</body>
+</html>

@@ -60,7 +60,7 @@
     padding: 5px 0; position: relative; border: none; background: none;
     font-family: var(--mono); text-align: right;
     transition: color 0.25s, font-size 0.25s, font-weight 0.25s, opacity 0.25s;
-    font-size: 0.55rem;
+    font-size: 1.1rem;
   }
   .timeline-label {
     font-size: 1em; line-height: 1.35;
@@ -297,6 +297,9 @@
   .iframe-wrap iframe {
     width: 100%; height: 600px; border: none; display: block;
   }
+  .iframe-wrap iframe[style*="aspect-ratio"] {
+    height: auto;
+  }
   .iframe-label {
     position: absolute; top: 10px; right: 12px;
     font-family: var(--mono); font-size: 0.6rem;
@@ -452,6 +455,8 @@
     .persona-grid { grid-template-columns: 1fr; }
     .kb-hint { display: none; }
     .iframe-wrap iframe { height: 350px; }
+    .iframe-wrap iframe[style*="aspect-ratio"] { aspect-ratio: 4/3; }
+    .highlight-box { font-size: 0.85rem; padding: 0.8rem 1rem; }
     .chaos-live-grid { display: none !important; }
     .chaos-mobile-notice { display: block !important; }
     .tweets-grid { grid-template-columns: 1fr !important; }
@@ -519,7 +524,7 @@
 
     <div class="bio-layout">
       <div class="bio-photo-stack">
-        <img class="bio-photo main" src="https://aluanwang.com/wp-content/uploads/2021/07/1019%E7%B8%BD%E7%B5%B1%E6%96%87%E5%8C%96%E7%8D%8E%E8%AB%96%E5%A3%87-152.jpg" alt="Aluan Wang" onerror="this.style.background='var(--surface-2)'">
+        <img class="bio-photo main" src="assets/aluan_2.jpeg" alt="Aluan Wang">
       </div>
       <div>
         <div class="bio-statement">
@@ -682,45 +687,45 @@
     <p class="en" style="margin-top:1rem">Most of my work since then has been doing the same thing: inventing new ways to read the same data.</p>
   </section>
 
-  <!-- ═══ 4: GeoPunk ═══ -->
+  <!-- ═══ 4: Paths 系列入口 ═══ -->
   <section class="slide" id="slide-4">
-    <div class="section-label">04 — Deep Dive · 地景 · 2021</div>
-    <h2><span class="zh">GeoPunk — 地誌龐克</span><span class="en">GeoPunk — Territorial Punk</span></h2>
+    <div class="section-label">04 — Paths · 地景 · 2017–2021</div>
+    <h2><span class="zh">Paths 系列：資料決定歷史的樣子</span><span class="en">The Paths Series: Data Shapes History</span></h2>
 
-    <p class="zh">Paths 系列（Path to the Past / Future / End）的番外篇。我最早的區塊鏈生成藝術作品。<br>「地誌龐克」——重新探索地理空間的定義。以「龐克」為名，挑戰疆界切分。</p>
-    <p class="en">A spin-off from the Paths series (Path to the Past / Future / End). My earliest blockchain generative artwork.<br>"GeoPunk" — redefining geographic space. Named "punk" to challenge how borders are drawn.</p>
+    <p class="zh">從田野錄音到衛星影像，從波函數塌縮到摩斯電碼。四件作品，同一條線索：<br>你選擇收集什麼資料、怎麼 mapping，就決定了歷史長什麼樣子。</p>
+    <p class="en">From field recordings to satellite imagery, from wave function collapse to Morse code. Four works, one thread:<br>what data you choose to collect, how you map it — that determines what history looks like.</p>
 
-    <p class="zh">159 個地址橫跨北京、台灣、美國、英國、加拿大。GPS 座標封裝進 JSON，聲音與敘述以<strong>摩斯電碼</strong>加密。程式隨機抽取經緯度，拉取衛星影像，GLSL shader 將地表紋理<strong>位移、撕裂、重組</strong>。</p>
-    <p class="en">159 addresses spanning Beijing, Taiwan, the US, UK, and Canada. GPS coordinates packed into JSON, sound and narrative encrypted in <strong>Morse code</strong>. The program randomly picks coordinates, fetches satellite imagery, and GLSL shaders <strong>displace, tear, and reassemble</strong> the terrain.</p>
-
-    <div class="flow">
-      <div class="flow-node">JSON 座標</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">衛星影像</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">GLSL Shader</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">3D 幾何體</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">🏔 地景雕塑</div>
-      <div class="flow-arrow">+</div>
-      <div class="flow-node">摩斯電碼</div>
-    </div>
-
-    <img class="img-wide" src="assets/geopunk-banner.jpg" alt="GeoPunk：衛星地貌經 shader 位移生成的 3D 地景雕塑" onerror="this.style.display='none'">
-
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO</div>
-      <iframe class="lazy-embed" title="GeoPunk 即時演示" src="about:blank" data-src="https://ipfs.io/ipfs/QmeRxmM1xbSUmwo3nibQVBo8TK7oUujT2AifCkpqggGp7z/?&creator=tz1cbhmVZuFTKHcACSFpg5ER1bGVGkanhrbW&objkt=28393&viewer=undefined" allow="webgl; accelerometer" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
-      <a class="iframe-link" href="https://ipfs.io/ipfs/QmeRxmM1xbSUmwo3nibQVBo8TK7oUujT2AifCkpqggGp7z/?&creator=tz1cbhmVZuFTKHcACSFpg5ER1bGVGkanhrbW&objkt=28393&viewer=undefined" target="_blank" rel="noopener noreferrer">↗ 在 IPFS 開啟 GeoPunk</a>
+    <div class="project-grid" style="grid-template-columns: 1fr 1fr;">
+      <a href="paths.html#sec-past" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname"><span class="zh">昨日的路徑 <small style="font-weight:400; font-size:0.8em; color:var(--text-dim)">Paths to the Past</small></span><span class="en">Paths to the Past</span></div>
+        <div class="psub">2017</div>
+        <div class="pdesc"><span class="zh">空拍、三維實景、田野錄音、顆粒合成</span><span class="en">Aerial, 3D photogrammetry, field recordings, granular synthesis</span></div>
+      </div></a>
+      <a href="paths.html#sec-future" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname"><span class="zh">明日的路徑 <small style="font-weight:400; font-size:0.8em; color:var(--text-dim)">Paths to the Future</small></span><span class="en">Paths to the Future</span></div>
+        <div class="psub">2018</div>
+        <div class="pdesc"><span class="zh">波函數塌縮演算法 × 台灣地形</span><span class="en">Wave function collapse × Taiwan terrain</span></div>
+      </div></a>
+      <a href="paths.html#sec-roaming" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname"><span class="zh">邊界漫遊 <small style="font-weight:400; font-size:0.8em; color:var(--text-dim)">Roaming in the Path</small></span><span class="en">Roaming in the Path</span></div>
+        <div class="psub">2020 · 國美館</div>
+        <div class="pdesc"><span class="zh">衛星地圖點對點移動，邊界作為觀看核心的方法</span><span class="en">Point-to-point satellite traversal, borders as a lens to view the center</span></div>
+      </div></a>
+      <a href="paths.html#sec-geopunk" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname"><span class="zh">地誌龐克 <small style="font-weight:400; font-size:0.8em; color:var(--text-dim)">GeoPunk</small></span><span class="en">GeoPunk</span></div>
+        <div class="psub">2021 · Tezos</div>
+        <div class="pdesc"><span class="zh">159 個 GPS 座標 × 衛星影像 × GLSL Shader</span><span class="en">159 GPS coordinates × satellite imagery × GLSL Shader</span></div>
+      </div></a>
     </div>
 
     <div class="highlight-box">
-      <span class="zh"><strong>每一件作品都是一次對地球表面的儀式性採樣。</strong><br>
-      國界消融，衛星的凝視經演算法轉譯，成為無法被複製的數位地層。<br><br>
-      同一份座標，可以被讀成地景，也可以被讀成敘事。</span><span class="en"><strong>Each piece is a ritual sampling of the Earth's surface.</strong><br>
-      Borders dissolve. Satellite gazes, translated by algorithms, become irreplicable digital strata.<br><br>
-      The same coordinates can be read as landscape — or as narrative.</span>
+      <span class="zh">同一份座標，可以被讀成地景，也可以被讀成敘事。</span><span class="en">The same coordinates can be read as landscape — or as narrative.</span>
+    </div>
+
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="paths.html" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:0.5rem 1.2rem; border:1.5px solid var(--accent-color); background:transparent; color:var(--accent-color); border-radius:6px; font-size:0.85rem; font-family:var(--sans); text-decoration:none;">
+        <span class="zh">展開系列 ↗</span><span class="en">Explore the series ↗</span>
+      </a>
     </div>
   </section>
 
@@ -729,76 +734,37 @@
     <div class="section-label">05 — Origin · 2021</div>
     <h2><span class="zh">作品背後都是結構</span><span class="en">Behind Every Piece Lies Structure</span></h2>
 
-    <p class="zh"><strong>Good Vibrations</strong> — Art Blocks 上的第一件長篇生成藝術作品。台灣首位登上該平台的藝術家。旋轉的圓弧與線段互動，交叉觸發聲音。</p>
-    <p class="en"><strong>Good Vibrations</strong> — my first long-form generative work on Art Blocks. The first Taiwanese artist on the platform. Spinning arcs and lines interact, triggering sound at every crossing.</p>
-    <p class="zh">按下 <strong>A+S+D+F</strong>，畫面切成「樂譜模式」，揭示每個 token 背後的音樂結構。後來空投 <strong>B-side</strong> 給所有持有者——每張對應背後的聲響與視覺邏輯。一張樂譜，一份菜單。</p>
-    <p class="en">Press <strong>A+S+D+F</strong> and the canvas flips to "score mode," revealing the musical structure behind each token. Later I airdropped a <strong>B-side</strong> to every holder — each one mapping to its sonic and visual logic. One score, one recipe.</p>
+    <p class="zh"><span class="zh">同一份 hash，可以被讀成視覺，也可以被讀成樂譜。格子是陣列，索引是時鐘——序列機讀音高，鼓機讀觸發。結構沒變，讀法決定它是旋律還是節奏。</span></p>
+    <p class="en">The same hash can be read as visuals — or as a musical score. Cells are arrays, the index is a clock — the sequencer reads pitch, the drum machine reads triggers. Same structure, different reading.</p>
 
-    <div class="img-row">
-      <img src="https://aluanwang.com/wp-content/uploads/2021/09/0_GV-300x300.png" alt="GV #0">
-      <img src="https://aluanwang.com/wp-content/uploads/2021/09/74_GV-300x300.png" alt="GV #74">
-      <img src="https://aluanwang.com/wp-content/uploads/2021/09/4_GV-300x300.png" alt="GV #4">
-      <img src="https://aluanwang.com/wp-content/uploads/2021/09/135_GV-300x300.png" alt="GV #135">
-      <img src="https://aluanwang.com/wp-content/uploads/2021/09/1011_GV.png" alt="GV #1011">
-      <img src="https://aluanwang.com/wp-content/uploads/2021/09/920_GV.png" alt="GV #920">
-    </div>
-
-    <div class="flow">
-      <div class="flow-node">hash</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">seed</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">確定性隨機數</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">所有參數</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">🎵 獨特的曲子</div>
+    <div class="project-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+      <a href="gv.html#sec-gv" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname">Good Vibrations</div>
+        <div class="psub">2021 · Art Blocks</div>
+        <div class="pdesc"><span class="zh">hash → seed → 視覺 + 樂譜</span><span class="en">hash → seed → visuals + score</span></div>
+      </div></a>
+      <a href="gv.html#sec-seq" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname"><span class="zh">序列機 <small style="font-weight:400; font-size:0.8em; color:var(--text-dim)">AV Sequencer</small></span><span class="en">AV Sequencer</span></div>
+        <div class="psub">avlab</div>
+        <div class="pdesc"><span class="zh">格子存音高，索引掃過去</span><span class="en">Cells hold pitch, index scans through</span></div>
+      </div></a>
+      <a href="gv.html#sec-drum" target="_blank" rel="noopener noreferrer" class="project-card" style="text-decoration:none; color:inherit;"><div class="project-card-body">
+        <div class="pname"><span class="zh">鼓機 <small style="font-weight:400; font-size:0.8em; color:var(--text-dim)">AV Drum Machine</small></span><span class="en">AV Drum Machine</span></div>
+        <div class="psub">avlab</div>
+        <div class="pdesc"><span class="zh">格子存觸發，開就打，關就靜</span><span class="en">Cells hold triggers, on = hit, off = silence</span></div>
+      </div></a>
     </div>
 
     <div class="highlight-box">
       <span class="zh">作品的本質是結構。<br>
-      結構可以被記錄、被還原、被重新生成。<br><br>
-      同一份 hash，可以被讀成視覺，也可以被讀成樂譜。</span><span class="en">The essence of a work is its structure.<br>
-      Structure can be recorded, restored, regenerated.<br><br>
-      The same hash can be read as visuals — or as a musical score.</span>
+      結構可以被記錄、被還原、被重新生成。</span><span class="en">The essence of a work is its structure.<br>
+      Structure can be recorded, restored, regenerated.</span>
     </div>
 
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO — Good Vibrations</div>
-      <iframe class="lazy-embed" title="Good Vibrations 即時演示" src="about:blank" data-src="https://openprocessing.org/sketch/2048187/embed/?plusEmbedHash=8c2372a8&userID=40395&plusEmbedTitle=true&plusEmbedFullscreen=true&show=sketch" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://openprocessing.org/sketch/2048187" target="_blank" rel="noopener noreferrer">↗ 在 OpenProcessing 開啟完整 Sketch</a>
-    </div>
-
-  </section>
-
-  <!-- ═══ 4b: AV Sequencer ═══ -->
-  <section class="slide" id="slide-5b">
-    <div class="section-label">05b — AV Sequencer</div>
-
-    <div class="highlight-box">
-      <span class="zh"><strong>AV Sequencer</strong> — 序列機。一排格子，每格存一個音高，索引（index）按固定速率掃過去，掃到哪格就發哪個音。<br>格子是陣列，索引是時鐘。Pure Data 的 array 概念，直接搬上來。</span><span class="en"><strong>AV Sequencer</strong> — a step sequencer. A row of cells, each holding a pitch value, scanned by an index at a fixed rate.<br>The cells are an array; the index is a clock. The Pure Data array concept, carried forward directly.</span>
-    </div>
-
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO — AV Sequencer</div>
-      <iframe class="lazy-embed" title="AV Sequencer 序列機" src="about:blank" data-src="https://ileivoivm.github.io/avlab/av23/" sandbox="allow-scripts allow-same-origin" allow="autoplay"></iframe>
-      <a class="iframe-link" href="https://ileivoivm.github.io/avlab/av23/" target="_blank" rel="noopener noreferrer">↗ 開啟序列機</a>
-    </div>
-
-  </section>
-
-  <!-- ═══ 4c: AV Drum Machine ═══ -->
-  <section class="slide" id="slide-5c">
-    <div class="section-label">05c — AV Drum Machine</div>
-
-    <div class="highlight-box">
-      <span class="zh"><strong>AV Drum Machine</strong> — 鼓機。同樣的格子，但每格存的不是音高，是觸發。索引掃過去，開就打，關就靜。<br>結構沒變，讀法從旋律變成節奏。</span><span class="en"><strong>AV Drum Machine</strong> — a drum machine. Same grid, but each cell holds a trigger instead of a pitch. The index scans through — on means hit, off means silence.<br>Same structure, different reading: rhythm instead of melody.</span>
-    </div>
-
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO — AV Drum Machine</div>
-      <iframe class="lazy-embed" title="AV Drum Machine 鼓機" src="about:blank" data-src="https://ileivoivm.github.io/avlab/av11/" sandbox="allow-scripts allow-same-origin" allow="autoplay"></iframe>
-      <a class="iframe-link" href="https://ileivoivm.github.io/avlab/av11/" target="_blank" rel="noopener noreferrer">↗ 開啟鼓機</a>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="gv.html" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:0.5rem 1.2rem; border:1.5px solid var(--accent-color); background:transparent; color:var(--accent-color); border-radius:6px; font-size:0.85rem; font-family:var(--sans); text-decoration:none;">
+        <span class="zh">展開系列 ↗</span><span class="en">Explore the series ↗</span>
+      </a>
     </div>
 
   </section>
@@ -881,6 +847,33 @@
       Sampling and distilling are, at their core, akin to encryption and decryption.<br><br>
       The same prior work can be read as raw material — or as the next piece.</span>
     </div>
+  </section>
+
+  <!-- ═══ 6b: 轉折 ═══ -->
+  <section class="slide" id="slide-6b">
+    <div class="section-label">06b — 一個人不會真的消失</div>
+
+    <h2><span class="zh">一個人不會真的消失</span><span class="en">A Person Never Truly Disappears</span></h2>
+
+    <p class="zh" style="font-size:1.15rem; line-height:2.2">幾年前，一個朋友走了。</p>
+    <p class="en" style="font-size:1.15rem; line-height:2.2">A few years ago, a friend passed away.</p>
+
+    <p class="zh" style="font-size:1.15rem; line-height:2.2">有天我在 Google 上查一個技術問題，搜尋結果指向一個論壇。<br>點進去，看見他的回答。</p>
+    <p class="en" style="font-size:1.15rem; line-height:2.2">One day I googled a technical question. The results led to a forum.<br>I clicked in — and saw his answer.</p>
+
+    <p class="zh" style="font-size:1.15rem; line-height:2.2">他留下了一個錨點。知識被索引，他就沒有消失。</p>
+    <p class="en" style="font-size:1.15rem; line-height:2.2">He had left an anchor. His knowledge was indexed. He hadn't disappeared.</p>
+
+    <div class="highlight-box" style="margin-top:2rem;">
+      <span class="zh" style="font-size:1.1rem">未來不是 Google。是 LLM。<br><br>
+      如果你的思考方式、你的表達習慣、你的價值觀被結構化地留下來，<br>
+      LLM 會一再地吐出你的故事。<br><br>
+      你就永遠存在。</span><span class="en" style="font-size:1.1rem">The future isn't Google. It's LLMs.<br><br>
+      If your way of thinking, your habits of expression, your values are left behind in structured form,<br>
+      the LLM will keep telling your story.<br><br>
+      You will always exist.</span>
+    </div>
+
   </section>
 
   <!-- ═══ 7: 方法論 ═══ -->
@@ -1153,6 +1146,11 @@
       <span class="zh">結構不是限制，結構是自由。<br><br>
       當我不在場時，<br>別人會怎麼重組我？</span><span class="en">Structure is not constraint. Structure is freedom.<br><br>
       When I'm no longer present,<br>how will others reassemble me?</span>
+    </div>
+    <div class="closing-statement" style="margin-top:2.5rem; font-size:1.1rem;">
+      <span class="zh">大家都在問 AI 會不會取代藝術家。<br>我比較好奇的是——你有沒有留下值得被取代的東西。<br><br>
+      <span style="font-size:0.9rem; color:var(--text-dim)">誰說資料是中性的？你餵什麼，歷史就長成什麼樣子；反正資料遲早會被吃掉，至少讓它吃到你想讓它記住的版本。</span></span><span class="en">Everyone asks whether AI will replace artists.<br>I'm more curious — have you left behind anything worth replacing?<br><br>
+      <span style="font-size:0.9rem; color:var(--text-dim)">Who says data is neutral? What you feed it shapes what history becomes — the data will be consumed sooner or later, so at least make it swallow the version you want remembered.</span></span>
     </div>
     <div class="hashtags">
       <span>#VibeCoding</span>

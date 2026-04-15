@@ -144,3 +144,16 @@ links 延伸閱讀 — 三則 X/Twitter 推文嵌入
 - assets/ 圖片盡量壓縮（JPG < 300KB），避免 push 失敗
 - 中英雙語：每段文字都要有 `<span class="zh">` 和 `<span class="en">` 兩個版本
 - .md 只維護中文版，英文版僅存在於 HTML 中
+
+### ⚠️ 文字排版必須使用現有 CSS 元件（重要）
+
+**新增或修改 slide 內容時，禁止用裸 `<p>` 放重點文字。必須使用以下現有 CSS 元件：**
+
+- `highlight-box` — 金句、觀點、refrain（帶左邊框的引言卡片）
+- `project-card` — 作品介紹卡片（含 `.pname` / `.psub` / `.pdesc` / `.ptag`）
+- `code-block` — JSON / 程式碼展示（含 `.code-label` + `<pre>`）
+- `flow` — 流程圖（`.flow-node` + `.flow-arrow`）
+- `big-quote` — 大字引言
+- `project-grid` — 多卡片網格容器
+
+裸 `<p>` 只用於段落描述文字，不用於觀點或金句。

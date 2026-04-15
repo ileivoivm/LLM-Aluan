@@ -32,7 +32,8 @@
     line-height: 1.9;
     max-width: 760px;
     margin: 0 auto;
-    padding: 3rem 2rem 4rem;
+    padding: 3rem 2rem 4rem 2rem;
+    margin-right: max(calc((100vw - 760px) / 2), 2rem);
   }
 
   h1 {
@@ -119,6 +120,63 @@
 
   .back-link:hover { text-decoration: underline; }
 
+  /* ── Timeline Nav (right side) ── */
+  .timeline-nav {
+    position: fixed; right: 0; top: 0; bottom: 0; z-index: 100;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 1rem 0;
+    pointer-events: none;
+  }
+  .timeline-inner {
+    display: flex; flex-direction: column; align-items: flex-end;
+    position: relative; pointer-events: auto;
+  }
+  .timeline-inner::before {
+    content: ''; position: absolute; right: 11px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    display: flex; align-items: center; gap: 0; cursor: pointer;
+    padding: 5px 0; position: relative; border: none; background: none;
+    font-family: var(--mono); text-align: right;
+    transition: color 0.25s, font-size 0.25s, font-weight 0.25s, opacity 0.25s;
+    font-size: 1.1rem;
+  }
+  .timeline-label {
+    font-size: 1em; line-height: 1.35;
+    padding: 4px 12px 4px 14px;
+    max-width: 14rem;
+    white-space: normal;
+    transition: inherit;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(10px);
+    border-radius: 3px 0 0 3px;
+    border: 1px solid transparent;
+    color: rgba(42, 42, 42, 0.45);
+  }
+  .timeline-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--border); flex-shrink: 0;
+    transition: all 0.25s; position: relative; z-index: 2;
+    margin-right: 8px;
+  }
+  .timeline-item.active { font-size: 1rem; }
+  .timeline-item.active .timeline-label {
+    color: #1a1a1a; font-weight: 600;
+    border-color: var(--border);
+  }
+  .timeline-item:hover .timeline-dot {
+    background: var(--text-muted); transform: scale(1.4);
+  }
+  .timeline-item.active .timeline-dot {
+    background: #1a1a1a; transform: scale(1.7);
+    box-shadow: 0 0 0 3px rgba(26,26,26,0.1);
+  }
+  .timeline-item:hover .timeline-label {
+    color: rgba(42, 42, 42, 0.55);
+    border-color: var(--border-light);
+  }
+
   /* ── Exhibition Photo ── */
   .exhibit {
     margin: 1.2rem 0;
@@ -170,10 +228,11 @@
     letter-spacing: 0.02em;
   }
 
-  @media (max-width: 480px) {
-    body { padding: 2rem 1.2rem 3rem; }
+  @media (max-width: 768px) {
+    body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
     h1 { font-size: 1.4rem; }
     .video-wrap iframe { height: 240px; }
+    .timeline-nav { display: none; }
   }
 </style>
 </head>
@@ -181,8 +240,15 @@
 
   <a class="back-link" href="index.html">← 返回投影片</a>
 
-  <h1>王新仁 <small>Aluan Wang / 阿亂</small></h1>
-  <div class="subtitle">Generative Artist · Creative Coder · Art Director, akaSwap</div>
+  <div style="display:flex; gap:1.5rem; align-items:flex-start; margin-bottom:1.5rem;">
+    <figure class="exhibit" style="flex-shrink:0; width:200px; margin:0;">
+      <img src="assets/aluan.jpg" alt="王新仁 Aluan Wang">
+    </figure>
+    <div>
+      <h1>王新仁 <small>Aluan Wang / 阿亂</small></h1>
+      <div class="subtitle">Generative Artist · Creative Coder · Art Director, akaSwap</div>
+    </div>
+  </div>
 
   <div class="bio">
     <p>王新仁（1982年出生於臺灣臺中），為臺灣當代數位藝術與生成藝術領域的先鋒。身為一位創意編碼者（Creative Coder）與新媒體藝術家，他擁有超過15年的創作資歷，擅長將演算法系統、聲音與東方繪畫哲學相結合。他擁有國立臺北藝術大學（TNUA）新媒體藝術學系碩士學位，目前擔任 akaSwap 的藝術總監。</p>
@@ -190,7 +256,7 @@
     <p>王新仁將程式碼作為主要創作媒介，透過精密數學公式鏈結聲音與影像，建構出動態的藝術系統。他的創作致力於探索混沌、不可預測性以及自然現象背後的無形結構。他是臺灣首位登上全球知名生成藝術最高殿堂 Art Blocks 的藝術家（2021年），也是首位在 verse.works 發行長篇生成藝術（long-form）作品的亞洲藝術家，成功將臺灣豐沛的數位藝術創作能量帶入國際視野。</p>
   </div>
 
-  <h2>重要獲獎紀錄</h2>
+  <h2 id="sec-awards">重要獲獎紀錄</h2>
   <ul>
     <li>臺北數位藝術節－首獎（2012、2015）</li>
     <li>德國威瑪包浩斯大學 PdCon 2011 影音表演－入選（《移動中的共鳴》）</li>
@@ -201,7 +267,7 @@
     <figcaption>《2015第十屆台北數位藝術節》台北數位藝術獎 —【幻象中的歷史現場】</figcaption>
   </figure>
 
-  <h2>重要個展</h2>
+  <h2 id="sec-solo">重要個展</h2>
   <ul>
     <li>【王新仁：邊界漫遊】，國立臺灣美術館（2020）</li>
     <li>個人海外首展，德國柏林 Galerie Met（2025）</li>
@@ -217,7 +283,7 @@
     <figcaption>德國柏林 Galerie Met 個展現場（2025）</figcaption>
   </figure>
 
-  <h2>重要聯展</h2>
+  <h2 id="sec-group">重要聯展</h2>
   <ul>
     <li>2025 美國消費電子展（CES 2025），受友達（AUO）邀請展出生成藝術作品</li>
     <li>2025 C-LAB 聲響藝術節，台韓共演
@@ -245,7 +311,7 @@
     <li>2022 大臺北當代藝術雙年展《登入公海》</li>
   </ul>
 
-  <h2>重要機構典藏</h2>
+  <h2 id="sec-collection">重要機構典藏</h2>
   <ul>
     <li>國立臺灣博物館：典藏《植徑集》（Polypaths），以生成藝術重現臺灣原生與滅絕植物
       <figure class="exhibit">
@@ -256,7 +322,13 @@
     <li>Le Random：全球頂尖生成藝術機構，典藏《透納光》（Turner Light）及其他作品</li>
   </ul>
 
-  <h2>代表作品</h2>
+  <h2 id="sec-works">代表作品</h2>
+
+  <figure class="exhibit">
+    <img src="assets/inkField.jpeg" alt="《墨域》InkField">
+    <figcaption>《墨域》InkField（2025–）</figcaption>
+  </figure>
+
   <div class="works">
     <span class="work-tag">《墨域》InkField（2025–）</span>
     <span class="work-tag">《植徑集》Polypaths</span>
@@ -265,6 +337,47 @@
     <span class="work-tag">《透納光》Turner Light</span>
     <span class="work-tag">Good Vibrations</span>
   </div>
+
+<nav class="timeline-nav">
+  <div class="timeline-inner" id="timelineInner"></div>
+</nav>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('h2[id]');
+  const timelineInner = document.getElementById('timelineInner');
+  const items = [];
+
+  sections.forEach(sec => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'timeline-item';
+    const lab = document.createElement('span');
+    lab.className = 'timeline-label';
+    lab.textContent = sec.textContent;
+    const dot = document.createElement('span');
+    dot.className = 'timeline-dot';
+    btn.appendChild(lab);
+    btn.appendChild(dot);
+    btn.addEventListener('click', () => {
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    timelineInner.appendChild(btn);
+    items.push({ btn, sec });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const match = items.find(i => i.sec === entry.target);
+      if (match) match.visible = entry.isIntersecting;
+    });
+    const active = items.find(i => i.visible);
+    items.forEach(i => i.btn.classList.toggle('active', i === active));
+  }, { rootMargin: '-20% 0px -60% 0px' });
+
+  sections.forEach(sec => obs.observe(sec));
+})();
+</script>
 
 </body>
 </html>

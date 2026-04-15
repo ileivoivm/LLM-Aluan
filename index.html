@@ -248,8 +248,9 @@
   .bio-photo-stack { display: flex; flex-direction: column; gap: 10px; }
   .bio-photo {
     width: 100%; border-radius: 4px; border: 1px solid var(--border);
-    object-fit: cover;
+    object-fit: cover; object-position: center; transform: scale(1.2);
   }
+  .bio-photo-stack { overflow: hidden; }
   .bio-photo.main { height: 100%; }
   .bio-statement {
     font-family: var(--serif);
@@ -525,6 +526,7 @@
     <div class="bio-layout">
       <div class="bio-photo-stack">
         <img class="bio-photo main" src="assets/aluan_2.jpeg" alt="Aluan Wang">
+        <div style="font-family:var(--mono); font-size:0.65rem; color:var(--text-muted); margin-top:0.4rem; line-height:1.5;">圖片提供：明日製作所<br>攝影：林家賢</div>
       </div>
       <div>
         <div class="bio-statement">
@@ -969,61 +971,9 @@
     </div>
   </section>
 
-  <!-- ═══ 6: InkField iframe ═══ -->
+  <!-- ═══ 6: PolyPaths iframe ═══ -->
   <section class="slide" id="slide-9">
-    <div class="section-label">09 — Deep Dive · 水墨</div>
-    <h2><span class="zh">InkField：AI 用 JSON 畫水墨</span><span class="en">InkField: AI Paints Ink Wash via JSON</span></h2>
-
-    <p class="zh">AI 可以畫一幅水墨。不是操作滑鼠，不是生成像素——是輸出一份 JSON，引擎還原成完整畫作。</p>
-    <p class="en">AI can paint ink wash. Not by moving a mouse, not by generating pixels — by outputting a JSON file that the engine renders into a complete painting.</p>
-
-    <div class="flow">
-      <div class="flow-node">AI 生成 JSON</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">事件序列</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">引擎還原</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">完整水墨畫作</div>
-    </div>
-
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO</div>
-      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
-    </div>
-
-    <p class="zh" style="margin-top:0.8rem">錄製系統只記錄事件（筆觸參數 + 種子值），不記錄像素。雙種子確定性系統，99.9% 一致性。一幅作品 < 100KB。</p>
-    <p class="en" style="margin-top:0.8rem">The recording system captures events (stroke parameters + seed values), not pixels. Dual-seed deterministic system, 99.9% consistency. One painting &lt; 100KB.</p>
-    <p class="zh" style="font-size:0.85rem; color:var(--text-dim)">Claude Code 開發，CLAUDE.md 管理規範，doc/ 保留每次迭代的技術文檔。</p>
-    <p class="en" style="font-size:0.85rem; color:var(--text-dim)">Built with Claude Code. CLAUDE.md governs project specs. doc/ preserves technical docs from every iteration.</p>
-  </section>
-
-  <!-- ═══ 6b: InkField Gallery ═══ -->
-  <section class="slide" id="slide-9b">
-    <div class="section-label">09b — InkField Gallery</div>
-    <h2><span class="zh">InkField Gallery：過程可以被繼承</span><span class="en">InkField Gallery: Process Can Be Inherited</span></h2>
-
-    <p class="zh">每幅作品的繪製過程都是一份 JSON。任何人可以下載、研究、重播，然後用同樣的引擎畫出自己的版本。</p>
-    <p class="en">Every painting's process is a JSON file. Anyone can download it, study it, replay it, then use the same engine to paint their own version.</p>
-    <p class="zh">不是複製成品，是繼承過程。你拿到的不是一張圖，是一套筆法。</p>
-    <p class="en">It's not copying a finished piece — it's inheriting a process. What you get isn't an image, it's a set of brushstrokes.</p>
-
-    <div class="highlight-box">
-      <span class="zh">作品不是終點。作品是別人的起點。<br>JSON 讓過程可攜、可學、可延續。</span><span class="en">A work isn't the endpoint. It's someone else's starting point.<br>JSON makes the process portable, learnable, continuable.</span>
-    </div>
-
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO — InkField Gallery</div>
-      <iframe class="lazy-embed" title="InkField Gallery" src="about:blank" data-src="https://ileivoivm.github.io/inkField/gallery/" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/gallery/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField Gallery</a>
-    </div>
-
-  </section>
-
-  <!-- ═══ 7: PolyPaths iframe ═══ -->
-  <section class="slide" id="slide-10">
-    <div class="section-label">10 — Deep Dive · 植物</div>
+    <div class="section-label">09 — Deep Dive · 植物</div>
     <h2><span class="zh">PolyPaths：觀眾不知道自己正在被記錄</span><span class="en">PolyPaths: The Audience Doesn't Know They're Being Recorded</span></h2>
 
     <p class="zh">觀眾在介面上畫路徑，以為只是在互動。他們不知道每一筆都被記下來了。</p>
@@ -1052,6 +1002,58 @@
       <iframe class="lazy-embed" title="PolyPaths 即時演示" src="about:blank" data-src="https://polypaths.up.railway.app/mono.html" sandbox="allow-scripts allow-same-origin"></iframe>
       <a class="iframe-link" href="https://polypaths.up.railway.app/mono.html" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 PolyPaths（mono）</a>
     </div>
+  </section>
+
+  <!-- ═══ 7: InkField iframe ═══ -->
+  <section class="slide" id="slide-10">
+    <div class="section-label">10 — Deep Dive · 水墨</div>
+    <h2><span class="zh">InkField：AI 用 JSON 畫水墨</span><span class="en">InkField: AI Paints Ink Wash via JSON</span></h2>
+
+    <p class="zh">AI 可以畫一幅水墨。不是操作滑鼠，不是生成像素——是輸出一份 JSON，引擎還原成完整畫作。</p>
+    <p class="en">AI can paint ink wash. Not by moving a mouse, not by generating pixels — by outputting a JSON file that the engine renders into a complete painting.</p>
+
+    <div class="flow">
+      <div class="flow-node">AI 生成 JSON</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">事件序列</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">引擎還原</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">完整水墨畫作</div>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
+    </div>
+
+    <p class="zh" style="margin-top:0.8rem">錄製系統只記錄事件（筆觸參數 + 種子值），不記錄像素。雙種子確定性系統，99.9% 一致性。一幅作品 < 100KB。</p>
+    <p class="en" style="margin-top:0.8rem">The recording system captures events (stroke parameters + seed values), not pixels. Dual-seed deterministic system, 99.9% consistency. One painting &lt; 100KB.</p>
+    <p class="zh" style="font-size:0.85rem; color:var(--text-dim)">Claude Code 開發，CLAUDE.md 管理規範，doc/ 保留每次迭代的技術文檔。</p>
+    <p class="en" style="font-size:0.85rem; color:var(--text-dim)">Built with Claude Code. CLAUDE.md governs project specs. doc/ preserves technical docs from every iteration.</p>
+  </section>
+
+  <!-- ═══ 7b: InkField Gallery ═══ -->
+  <section class="slide" id="slide-10b">
+    <div class="section-label">10b — InkField Gallery</div>
+    <h2><span class="zh">InkField Gallery：過程可以被繼承</span><span class="en">InkField Gallery: Process Can Be Inherited</span></h2>
+
+    <p class="zh">每幅作品的繪製過程都是一份 JSON。任何人可以下載、研究、重播，然後用同樣的引擎畫出自己的版本。</p>
+    <p class="en">Every painting's process is a JSON file. Anyone can download it, study it, replay it, then use the same engine to paint their own version.</p>
+    <p class="zh">不是複製成品，是繼承過程。你拿到的不是一張圖，是一套筆法。</p>
+    <p class="en">It's not copying a finished piece — it's inheriting a process. What you get isn't an image, it's a set of brushstrokes.</p>
+
+    <div class="highlight-box">
+      <span class="zh">作品不是終點。作品是別人的起點。<br>JSON 讓過程可攜、可學、可延續。</span><span class="en">A work isn't the endpoint. It's someone else's starting point.<br>JSON makes the process portable, learnable, continuable.</span>
+    </div>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO — InkField Gallery</div>
+      <iframe class="lazy-embed" title="InkField Gallery" src="about:blank" data-src="https://ileivoivm.github.io/inkField/gallery/" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/gallery/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField Gallery</a>
+    </div>
+
   </section>
 
   <!-- ═══ 8: 工具鏈 ═══ -->
@@ -1138,42 +1140,86 @@
     <div class="section-label">13 — Summary</div>
     <h2><span class="zh">留下錨點，讓一切可以被 index</span><span class="en">Leave Anchors. Make Everything Indexable.</span></h2>
 
-    <div class="zh" style="display:flex; flex-direction:column; gap:1.5rem; max-width:500px; margin:2rem auto;">
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">作品層</span>
-        <span style="color:var(--text-dim)">可重播</span>
-      </div>
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">記憶層</span>
-        <span style="color:var(--text-dim)">可索引</span>
-      </div>
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">協作層</span>
-        <span style="color:var(--text-dim)">可延續</span>
-      </div>
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">人格層</span>
-        <span style="color:var(--text-dim)">可模擬</span>
-      </div>
-    </div>
-    <div class="en en-flex" style="display:none; flex-direction:column; gap:1.5rem; max-width:500px; margin:2rem auto;">
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Work</span>
-        <span style="color:var(--text-dim)">Replayable</span>
-      </div>
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Memory</span>
-        <span style="color:var(--text-dim)">Indexable</span>
-      </div>
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Collab</span>
-        <span style="color:var(--text-dim)">Continuable</span>
-      </div>
-      <div style="display:flex; align-items:baseline; gap:1rem; font-size:1.3rem;">
-        <span style="font-family:var(--mono); color:var(--accent-color); font-weight:700; min-width:5rem">Persona</span>
-        <span style="color:var(--text-dim)">Simulable</span>
-      </div>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; max-width:720px; margin:1.5rem auto; display:block;" fill="none" stroke="#1a1a1a">
+      <style>
+        .strata-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .strata-desc { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; fill: #888; stroke: none; }
+        .strata-line { stroke-width: 0.8; stroke: #d0d7de; }
+        .strata-fill-1 { fill: rgba(0,0,0,0.02); }
+        .strata-fill-2 { fill: rgba(0,0,0,0.04); }
+        .strata-fill-3 { fill: rgba(0,0,0,0.06); }
+        .strata-fill-4 { fill: rgba(0,0,0,0.09); }
+        .anchor-line { stroke-width: 1; stroke: #1a1a1a; }
+        .anchor-dot { fill: #1a1a1a; }
+        .anchor-dot-open { fill: none; stroke: #1a1a1a; stroke-width: 1.2; }
+        .index-line { stroke-width: 0.6; stroke: #aaa; }
+        .index-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #aaa; stroke: none; }
+        .strata-edge { stroke-width: 0.5; stroke: #bbb; fill: none; }
+      </style>
+
+      <!-- ── four strata layers ── -->
+      <!-- Layer 1: 作品層 (top, lightest) -->
+      <path d="M60,70 Q180,62 300,72 Q420,80 540,68 Q600,64 660,70 L660,160 Q540,155 420,162 Q300,168 180,158 Q120,154 60,160 Z" class="strata-fill-1 strata-edge" />
+      <text x="80" y="110" class="strata-label">作品層</text>
+      <text x="80" y="126" class="strata-desc">可重播 Replayable</text>
+
+      <!-- Layer 2: 記憶層 -->
+      <path d="M60,160 Q120,154 180,158 Q300,168 420,162 Q540,155 660,160 L660,245 Q540,252 420,248 Q300,242 180,250 Q120,254 60,248 Z" class="strata-fill-2 strata-edge" />
+      <text x="80" y="200" class="strata-label">記憶層</text>
+      <text x="80" y="216" class="strata-desc">可索引 Indexable</text>
+
+      <!-- Layer 3: 協作層 -->
+      <path d="M60,248 Q120,254 180,250 Q300,242 420,248 Q540,252 660,245 L660,335 Q540,340 420,332 Q300,328 180,336 Q120,340 60,335 Z" class="strata-fill-3 strata-edge" />
+      <text x="80" y="290" class="strata-label">協作層</text>
+      <text x="80" y="306" class="strata-desc">可延續 Continuable</text>
+
+      <!-- Layer 4: 人格層 (bottom, darkest) -->
+      <path d="M60,335 Q120,340 180,336 Q300,328 420,332 Q540,340 660,335 L660,420 Q540,426 420,418 Q300,414 180,422 Q120,426 60,420 Z" class="strata-fill-4 strata-edge" />
+      <text x="80" y="378" class="strata-label">人格層</text>
+      <text x="80" y="394" class="strata-desc">可模擬 Simulable</text>
+
+      <!-- ── anchor lines (vertical, piercing all layers) ── -->
+      <!-- Anchor 1: GV / hash -->
+      <line x1="280" y1="52" x2="280" y2="435" class="anchor-line" />
+      <circle cx="280" cy="95" r="4" class="anchor-dot" />
+      <line x1="284" y1="95" x2="340" y2="95" class="index-line" />
+      <text x="344" y="98" class="index-label">Good Vibrations</text>
+      <circle cx="280" cy="190" r="3" class="anchor-dot" />
+      <line x1="284" y1="190" x2="330" y2="190" class="index-line" />
+      <text x="334" y="193" class="index-label">hash → seed → song</text>
+      <circle cx="280" cy="280" r="3" class="anchor-dot-open" />
+      <circle cx="280" cy="370" r="3" class="anchor-dot-open" />
+
+      <!-- Anchor 2: InkField / JSON -->
+      <line x1="440" y1="52" x2="440" y2="435" class="anchor-line" />
+      <circle cx="440" cy="100" r="4" class="anchor-dot" />
+      <line x1="444" y1="100" x2="500" y2="100" class="index-line" />
+      <text x="504" y="103" class="index-label">InkField</text>
+      <circle cx="440" cy="195" r="3" class="anchor-dot" />
+      <line x1="444" y1="195" x2="500" y2="195" class="index-line" />
+      <text x="504" y="198" class="index-label">JSON events</text>
+      <circle cx="440" cy="285" r="3" class="anchor-dot" />
+      <line x1="444" y1="285" x2="500" y2="285" class="index-line" />
+      <text x="504" y="288" class="index-label">fork → gallery</text>
+      <circle cx="440" cy="375" r="3" class="anchor-dot" />
+      <line x1="444" y1="375" x2="500" y2="375" class="index-line" />
+      <text x="504" y="378" class="index-label">.md persona</text>
+
+      <!-- Anchor 3: thinner, no labels (representing future works) -->
+      <line x1="580" y1="58" x2="580" y2="430" stroke="#ccc" stroke-width="0.6" stroke-dasharray="3 4" />
+      <circle cx="580" cy="98" r="2.5" fill="none" stroke="#ccc" stroke-width="0.8" />
+      <circle cx="580" cy="192" r="2.5" fill="none" stroke="#ccc" stroke-width="0.8" />
+      <circle cx="580" cy="283" r="2.5" fill="none" stroke="#ccc" stroke-width="0.8" />
+      <circle cx="580" cy="372" r="2.5" fill="none" stroke="#ccc" stroke-width="0.8" />
+
+      <!-- ── top annotation ── -->
+      <text x="280" y="46" class="index-label" style="font-size:10px; fill:#555;">↓ anchor</text>
+      <text x="440" y="46" class="index-label" style="font-size:10px; fill:#555;">↓ anchor</text>
+      <text x="568" y="46" class="index-label" style="font-size:10px; fill:#555;">↓ ?</text>
+
+      <!-- frame -->
+      <rect x="40" y="30" width="640" height="440" rx="0" stroke="#d0d7de" stroke-width="0.5" />
+    </svg>
   </section>
 
   <!-- ═══ 11: Closing ═══ -->

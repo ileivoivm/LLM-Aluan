@@ -15,7 +15,8 @@
 00   開場 — 封面
 01   About the Artist — 自介 + Affine Cipher
 01b  Statement — 藝術家宣言
-02   Selected Cases — Maybach × Art Taipei / 520 就職 NFT
+01c  Git 結構圖 — LLM 協作架構示意
+02   Selected Cases — 詳見 background.html
 03   從取樣開始，從濾波結束 — Pure Data 陣列（哲學啟蒙）
 04   Paths 系列 — 卡片入口 → paths.html
 05   Good Vibrations 系列 — 卡片入口 → gv.html
@@ -23,8 +24,8 @@
 06b  轉折 — 一個人不會真的消失
 07   JSON 作為記憶層 — chapter divider
 08   Deep Dive · 小說 — 《修仙-七玄關》
-09   Deep Dive · 水墨 — InkField
-10   Deep Dive · 植物 — PolyPaths
+09   Deep Dive · 植物 — PolyPaths
+10   Deep Dive · 水墨 — InkField
 11   Toolchain — Claude Code / Cursor / Cowork
 12   Digital Twin — .md 風格指南
 13   Summary — 四層架構
@@ -36,14 +37,15 @@ links 延伸閱讀 — X/Twitter 推文嵌入
 
 ```
 .
-├── index.html        # 主投影片（GitHub Pages 入口）
-├── paths.html        # Paths 系列子頁面（昨日/明日/邊界漫遊/地誌龐克）
-├── gv.html           # Good Vibrations 系列子頁面（GV/序列機/鼓機）
-├── background.html   # 藝術家背景與展覽
-├── CLAUDE.md         # Claude Code 專案指引
-├── README.md         # 本文件
-├── assets/           # 本地圖片資源
-└── 我如何使用LLM….md # 演講原稿（唯一內容源）
+├── index.html               # 主投影片（GitHub Pages 入口）
+├── paths.html               # Paths 系列子頁面（昨日/明日/邊界漫遊/地誌龐克）
+├── gv.html                  # Good Vibrations 系列子頁面（GV/序列機/鼓機）
+├── background.html          # 藝術家背景與展覽案例
+├── 我如何使用LLM-slides.html # 演講原稿對應投影片（另一版面配置）
+├── README.md                # 本文件
+├── assets/                  # 本地圖片資源
+├── 我如何使用LLM….md         # 演講原稿（唯一內容源）
+└── background.md            # 藝術家簡歷文字稿（background.html 的內容來源）
 ```
 
 ## 技術細節

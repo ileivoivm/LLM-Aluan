@@ -583,60 +583,96 @@
     </div>
   </section>
 
-  <!-- ═══ 2: Cases ═══ -->
-  <section class="slide" id="slide-2">
-    <div class="section-label">02 — Selected Cases</div>
-    <h2><span class="zh">藝術合作案例</span><span class="en">Art Collaborations</span></h2>
+  <!-- ═══ 1c: Git as Creative Medium ═══ -->
+  <section class="slide" id="slide-1c">
+    <div class="section-label">01 — Structure</div>
 
-    <div class="project-grid" style="grid-template-columns: 1fr;">
-      <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
-        <img class="project-card-img" src="assets/mercedes-maybach-art-taipei-2024-banner.png" alt="Mercedes-Maybach EQS SUV 於 Art Taipei 2024 展場，白色幾何展間與 Maybach 品牌牆" style="width:100%; height:100%; object-fit:cover;">
-        <div class="project-card-body">
-          <div class="pname"><span class="zh">Mercedes-Maybach × Art Taipei 2024</span><span class="en">Mercedes-Maybach × Art Taipei 2024</span></div>
-          <div class="psub"><span class="zh">臺北國際藝術博覽會｜數位生成藝術裝置</span><span class="en">Taipei International Art Fair | Generative Art Installation</span></div>
-          <div class="pdesc zh" style="max-width:none">
-            台灣賓士以「Welcome to Beyond」為題，攜手 Mercedes-Maybach EQS 680 SUV 進駐 Art Taipei。<br><br>
-            展區核心為數位生成藝術作品<strong>《春分》</strong>——兩層演算法圖層堆疊，季節遞嬗與自然循環轉譯為流動的視覺語彙。<br><br>
-            觀眾透過互動螢幕觸發畫面生成。鏡面裝置在現實與虛幻之間折射出無限延伸的空間。
-          </div>
-          <div class="pdesc en" style="max-width:none">
-            Mercedes-Benz Taiwan brought the Maybach EQS 680 SUV to Art Taipei under the theme "Welcome to Beyond."<br><br>
-            The centerpiece was a generative artwork, <strong>Spring Equinox</strong> — two algorithmic layers stacked, translating seasonal cycles into flowing visual language.<br><br>
-            Visitors triggered real-time generation through interactive screens. Mirrored installations refracted infinite space between reality and illusion.
-          </div>
-          <span class="ptag tag-json"><span class="zh">生成式藝術</span><span class="en">Generative Art</span></span>
-          <span class="ptag tag-md"><span class="zh">互動裝置</span><span class="en">Interactive Installation</span></span>
-          <span class="ptag tag-html">Art Taipei 2024</span>
-        </div>
-      </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; max-width:720px; margin:0 auto; display:block;" fill="none" stroke="#1a1a1a">
+      <style>
+        .git-node { fill: #1a1a1a; }
+        .git-node-open { fill: none; stroke-width: 1.5; }
+        .git-line { stroke-width: 1.2; }
+        .git-line-dash { stroke-width: 1; stroke-dasharray: 4 3; }
+        .git-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #1a1a1a; stroke: none; }
+        .git-label-lg { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .git-label-dim { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #888; stroke: none; }
+        .git-label-zh { font-family: 'Noto Sans TC', sans-serif; font-size: 12px; fill: #555; stroke: none; }
+        .git-label-zh-sm { font-family: 'Noto Sans TC', sans-serif; font-size: 10.5px; fill: #888; stroke: none; }
+      </style>
 
-      <div class="project-card" style="display:grid; grid-template-columns: 300px 1fr; overflow:hidden;">
-        <img class="project-card-img" src="assets/inaugural-2024-nft-banner.png" alt="中華民國第十六任總統副總統就職慶典主視覺：線條肖像與橘黃藍綠斜線色帶" style="width:100%; height:100%; object-fit:cover;">
-        <div class="project-card-body">
-          <div class="pname"><span class="zh">總統就職典禮 × 生成式 NFT</span><span class="en">Presidential Inauguration × Generative NFT</span></div>
-          <div class="psub"><span class="zh">2024 · 520 就職紀念｜akaSwap</span><span class="en">2024 · Inauguration Commemoration | akaSwap</span></div>
-          <div class="pdesc zh" style="max-width:none">
-            2024 年總統就職典禮，主視覺以橘、黃、藍、綠四色線段象徵自由、民主、自信、友善。<br><br>
-            與 akaSwap 合作開發<strong>AI 風格轉換系統</strong>——民眾自拍後，演算法即時將肖像轉化為就職主視覺的彩色線段風格，並自動鑄造為 Tezos 鏈上的 NFT。<br><br>
-            每一張臉都成為國家敘事的一部分。<strong>十萬人共同參與的集體創作。</strong>
-          </div>
-          <div class="pdesc en" style="max-width:none">
-            The 2024 Presidential Inauguration key visual used orange, yellow, blue, and green lines to symbolize freedom, democracy, confidence, and kindness.<br><br>
-            In collaboration with akaSwap, we built an <strong>AI style-transfer system</strong> — selfies were algorithmically transformed into the inauguration's colored-line aesthetic, then auto-minted as NFTs on Tezos.<br><br>
-            Every face became part of a national narrative. <strong>A collective creation by 100,000 people.</strong>
-          </div>
-          <span class="ptag tag-json"><span class="zh">AI 風格轉換</span><span class="en">AI Style Transfer</span></span>
-          <span class="ptag tag-md"><span class="zh">NFT 鑄造</span><span class="en">NFT Minting</span></span>
-          <span class="ptag tag-html"><span class="zh">Tezos 區塊鏈</span><span class="en">Tezos Blockchain</span></span>
-        </div>
-      </div>
-    </div>
+      <!-- ── main branch ── -->
+      <line x1="80" y1="80" x2="80" y2="400" class="git-line" />
 
-    <div class="highlight-box">
-      <span class="zh">Maybach 展間。總統府前。<br>
-      <strong>演算法是語言，結構是骨架。</strong></span><span class="en">The Maybach showroom. The Presidential Office.<br>
-      <strong>Algorithms are the language. Structure is the skeleton.</strong></span>
-    </div>
+      <!-- commits on main -->
+      <circle cx="80" cy="80" r="5" class="git-node" />
+      <circle cx="80" cy="160" r="5" class="git-node" />
+      <circle cx="80" cy="240" r="5" class="git-node" />
+      <circle cx="80" cy="320" r="5" class="git-node" />
+      <circle cx="80" cy="400" r="5" class="git-node" />
+
+      <!-- main labels -->
+      <text x="96" y="84" class="git-label-lg">commit</text>
+      <text x="96" y="98" class="git-label-zh-sm">留下錨點</text>
+
+      <!-- branch line (from 2nd commit) -->
+      <path d="M80,160 C120,160 120,140 160,140 L160,280" class="git-line" />
+      <circle cx="160" cy="140" r="4" class="git-node" />
+      <circle cx="160" cy="200" r="4" class="git-node" />
+      <circle cx="160" cy="280" r="4" class="git-node" />
+
+      <!-- branch label -->
+      <text x="176" y="144" class="git-label-lg">branch</text>
+      <text x="176" y="158" class="git-label-zh-sm">岔路，試另一種可能</text>
+
+      <!-- merge (branch back to main at 4th commit) -->
+      <path d="M160,280 C160,320 120,320 80,320" class="git-line" />
+      <text x="96" y="338" class="git-label-lg">merge</text>
+      <text x="96" y="352" class="git-label-zh-sm">分開走的路，重新交會</text>
+
+      <!-- fork (from 3rd commit, goes far right) -->
+      <path d="M80,240 C140,240 180,220 260,220 L260,400" class="git-line-dash" />
+      <circle cx="260" cy="220" r="5" class="git-node-open" />
+      <circle cx="260" cy="280" r="5" class="git-node-open" />
+      <circle cx="260" cy="340" r="5" class="git-node-open" />
+      <circle cx="260" cy="400" r="5" class="git-node-open" />
+
+      <!-- fork label -->
+      <text x="276" y="224" class="git-label-lg">fork</text>
+      <text x="276" y="238" class="git-label-zh-sm">從你的節點，長出別人的東西</text>
+
+      <!-- fork's own branch -->
+      <path d="M260,340 C300,340 300,320 340,320 L340,400" class="git-line-dash" />
+      <circle cx="340" cy="320" r="4" class="git-node-open" />
+      <circle cx="340" cy="360" r="4" class="git-node-open" />
+      <circle cx="340" cy="400" r="4" class="git-node-open" />
+
+      <!-- issue (arrow back from fork to main) -->
+      <path d="M260,400 C200,430 140,430 80,400" class="git-line-dash" />
+      <polygon points="84,397 74,400 84,407" fill="#1a1a1a" stroke="none" />
+      <text x="130" y="448" class="git-label-lg" text-anchor="middle">issue</text>
+      <text x="130" y="462" class="git-label-zh-sm" text-anchor="middle">回應，有人看見了</text>
+
+      <!-- right side: philosophical annotations -->
+      <line x1="440" y1="100" x2="440" y2="420" stroke="#e8e8e8" stroke-width="1" />
+
+      <text x="470" y="120" class="git-label-zh" style="font-size:13px; fill:#2a2a2a;">
+        <tspan x="470" dy="0">一個決定，記下來。</tspan>
+        <tspan x="470" dy="28">另一條路，走走看。</tspan>
+        <tspan x="470" dy="28">有人拿去，長出新的。</tspan>
+        <tspan x="470" dy="28">走遠了，再交會。</tspan>
+        <tspan x="470" dy="28">留下痕跡，就沒有消失。</tspan>
+      </text>
+
+      <text x="470" y="320" class="git-label-dim">
+        <tspan x="470" dy="0">github.com/ileivoivm/inkField</tspan>
+        <tspan x="470" dy="18">3 forks · 14 issues · 0 bug reports</tspan>
+        <tspan x="470" dy="18">every issue is a painting</tspan>
+      </text>
+
+      <!-- frame -->
+      <rect x="20" y="30" width="680" height="440" rx="0" stroke="#d0d7de" stroke-width="0.5" />
+    </svg>
+
   </section>
 
   <!-- ═══ 3: Pure Data ═══ -->

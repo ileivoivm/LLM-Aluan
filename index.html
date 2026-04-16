@@ -1062,44 +1062,87 @@
     <div class="section-label">11 — Toolchain</div>
     <h2><span class="zh">我的 LLM 工具鏈</span><span class="en">My LLM Toolchain</span></h2>
 
-    <div class="tool-cards">
-      <div class="tool-card">
-        <h3>Claude Code</h3>
-        <p><span class="zh">深度開發與專案管理</span><span class="en">Deep development & project management</span></p>
-        <ul class="feature-list">
-          <li class="zh"><strong>CLAUDE.md</strong> — 專案規範，每次啟動自動讀取</li>
-          <li class="en"><strong>CLAUDE.md</strong> — project spec, auto-loaded on every launch</li>
-          <li class="zh">先用 <strong>.md 規劃架構</strong>，再展開實作</li>
-          <li class="en">Plan architecture in <strong>.md first</strong>, then implement</li>
-          <li class="zh"><strong>doc/</strong> 目錄保留歷史技術文檔</li>
-          <li class="en"><strong>doc/</strong> directory preserves technical docs from every iteration</li>
-        </ul>
-      </div>
-      <div class="tool-card">
-        <h3>Cursor</h3>
-        <p><span class="zh">即時編碼與快速迭代</span><span class="en">Real-time coding & rapid iteration</span></p>
-        <ul class="feature-list">
-          <li class="zh">寫 <strong>shader</strong>、調視覺參數、debug</li>
-          <li class="en">Write <strong>shaders</strong>, tweak visual parameters, debug</li>
-          <li class="zh"><strong>Inline edit</strong> 邊看 code 邊跟 LLM 對話</li>
-          <li class="en"><strong>Inline edit</strong> — talk to the LLM while reading code</li>
-          <li class="zh">適合快速來回修改的場景</li>
-          <li class="en">Ideal for fast back-and-forth edits</li>
-        </ul>
-      </div>
-      <div class="tool-card">
-        <h3>Cowork</h3>
-        <p><span class="zh">文件處理與日常工作流</span><span class="en">Documents & daily workflows</span></p>
-        <ul class="feature-list">
-          <li class="zh">整理文件、生成報告、處理素材</li>
-          <li class="en">Organize files, generate reports, process assets</li>
-          <li class="zh">非程式碼的工作場景</li>
-          <li class="en">Non-code work scenarios</li>
-          <li class="zh">散落經驗 → 結構化教學文件</li>
-          <li class="en">Scattered experience → structured teaching docs</li>
-        </ul>
-      </div>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" style="width:100%; margin:1rem 0;" fill="none">
+      <defs>
+        <style>
+          .tc-name { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; stroke: none; }
+          .tc-sub  { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; fill: #888; stroke: none; }
+          .tc-tag  { font-family: 'Noto Sans TC', 'JetBrains Mono', sans-serif; font-size: 10.5px; stroke: none; }
+          .tc-ins  { font-family: 'Noto Sans TC', sans-serif; font-size: 12.5px; fill: #333; stroke: none; font-weight: 500; }
+          .tc-en   { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; fill: #aaa; stroke: none; }
+          .tc-foot { font-family: 'Noto Sans TC', sans-serif; font-size: 11.5px; fill: #888; stroke: none; }
+        </style>
+      </defs>
+
+      <!-- ── workflow spine ── -->
+      <line x1="40" y1="28" x2="40" y2="358" stroke="#d0d7de" stroke-width="1"/>
+      <circle cx="40" cy="28" r="3" fill="#bbb"/>
+      <text x="52" y="33" class="tc-en">workflow</text>
+
+      <!-- ══ 1: CLAUDE CODE ══ -->
+      <line x1="40" y1="92" x2="80" y2="92" stroke="#2d6a4f" stroke-width="1.5"/>
+      <circle cx="40" cy="92" r="7" fill="#2d6a4f"/>
+      <rect x="80" y="54" width="680" height="76" fill="rgba(45,106,79,0.04)" stroke="#d0d7de" stroke-width="0.8" rx="2"/>
+      <text x="96" y="80" class="tc-name" fill="#2d6a4f">Claude Code</text>
+      <text x="96" y="95" class="tc-sub">深度開發・專案管理</text>
+      <!-- tags -->
+      <rect x="96"  y="103" width="76" height="20" fill="rgba(45,106,79,0.12)" rx="3"/>
+      <text x="104" y="117" class="tc-tag" fill="#2d6a4f">CLAUDE.md</text>
+      <rect x="180" y="103" width="58" height="20" fill="rgba(45,106,79,0.08)" rx="3"/>
+      <text x="188" y="117" class="tc-tag" fill="#2d6a4f">架構規劃</text>
+      <rect x="246" y="103" width="58" height="20" fill="rgba(45,106,79,0.08)" rx="3"/>
+      <text x="254" y="117" class="tc-tag" fill="#2d6a4f">深度實作</text>
+      <rect x="312" y="103" width="40" height="20" fill="rgba(45,106,79,0.08)" rx="3"/>
+      <text x="320" y="117" class="tc-tag" fill="#2d6a4f">doc/</text>
+      <!-- insight -->
+      <line x1="560" y1="58" x2="560" y2="126" stroke="#ebebeb" stroke-width="0.8"/>
+      <text x="574" y="84"  class="tc-ins">長期記憶的容器</text>
+      <text x="574" y="100" class="tc-en">long session · spec → doc/</text>
+
+      <!-- ══ 2: CURSOR ══ -->
+      <line x1="40" y1="209" x2="80" y2="209" stroke="#1a5276" stroke-width="1.5"/>
+      <circle cx="40" cy="209" r="7" fill="#1a5276"/>
+      <rect x="80" y="171" width="680" height="76" fill="rgba(26,82,118,0.04)" stroke="#d0d7de" stroke-width="0.8" rx="2"/>
+      <text x="96" y="197" class="tc-name" fill="#1a5276">Cursor</text>
+      <text x="96" y="212" class="tc-sub">即時編碼・快速迭代</text>
+      <!-- tags -->
+      <rect x="96"  y="220" width="52" height="20" fill="rgba(26,82,118,0.12)" rx="3"/>
+      <text x="104" y="234" class="tc-tag" fill="#1a5276">shader</text>
+      <rect x="156" y="220" width="82" height="20" fill="rgba(26,82,118,0.08)" rx="3"/>
+      <text x="164" y="234" class="tc-tag" fill="#1a5276">inline edit</text>
+      <rect x="246" y="220" width="88" height="20" fill="rgba(26,82,118,0.08)" rx="3"/>
+      <text x="254" y="234" class="tc-tag" fill="#1a5276">visual debug</text>
+      <rect x="342" y="220" width="58" height="20" fill="rgba(26,82,118,0.08)" rx="3"/>
+      <text x="350" y="234" class="tc-tag" fill="#1a5276">快速調參</text>
+      <!-- insight -->
+      <line x1="560" y1="175" x2="560" y2="243" stroke="#ebebeb" stroke-width="0.8"/>
+      <text x="574" y="201" class="tc-ins">即時對話的界面</text>
+      <text x="574" y="217" class="tc-en">real-time · pair-prog</text>
+
+      <!-- ══ 3: COWORK ══ -->
+      <line x1="40" y1="327" x2="80" y2="327" stroke="#6c3483" stroke-width="1.5"/>
+      <circle cx="40" cy="327" r="7" fill="#6c3483"/>
+      <rect x="80" y="289" width="680" height="76" fill="rgba(108,52,131,0.04)" stroke="#d0d7de" stroke-width="0.8" rx="2"/>
+      <text x="96" y="315" class="tc-name" fill="#6c3483">Cowork</text>
+      <text x="96" y="330" class="tc-sub">文件處理・日常工作流</text>
+      <!-- tags -->
+      <rect x="96"  y="338" width="58" height="20" fill="rgba(108,52,131,0.12)" rx="3"/>
+      <text x="104" y="352" class="tc-tag" fill="#6c3483">整理文件</text>
+      <rect x="162" y="338" width="58" height="20" fill="rgba(108,52,131,0.08)" rx="3"/>
+      <text x="170" y="352" class="tc-tag" fill="#6c3483">生成報告</text>
+      <rect x="228" y="338" width="90" height="20" fill="rgba(108,52,131,0.08)" rx="3"/>
+      <text x="236" y="352" class="tc-tag" fill="#6c3483">結構化教學文件</text>
+      <!-- insight -->
+      <line x1="560" y1="293" x2="560" y2="361" stroke="#ebebeb" stroke-width="0.8"/>
+      <text x="574" y="319" class="tc-ins">非程式碼的橋梁</text>
+      <text x="574" y="335" class="tc-en">non-code · daily workflow</text>
+
+      <!-- ── end + footer ── -->
+      <circle cx="40" cy="358" r="3" fill="#bbb"/>
+      <line x1="40" y1="372" x2="760" y2="372" stroke="#e8e8e8" stroke-width="0.8"/>
+      <text x="40"  y="390" class="tc-foot">工具不重要。知道何時換工具，才重要。</text>
+      <text x="590" y="390" class="tc-en">different context · same intent</text>
+    </svg>
   </section>
 
   <!-- ═══ 9: 數位分身 ═══ -->
@@ -1141,7 +1184,7 @@
     <div class="section-label">13 — Summary</div>
     <h2><span class="zh">留下錨點，讓一切可以被 index</span><span class="en">Leave Anchors. Make Everything Indexable.</span></h2>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; max-width:720px; margin:1.5rem auto; display:block;" fill="none" stroke="#1a1a1a">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; margin:1.5rem auto; display:block;" fill="none" stroke="#1a1a1a">
       <style>
         .strata-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #1a1a1a; stroke: none; font-weight: 600; }
         .strata-desc { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; fill: #888; stroke: none; }

@@ -18,8 +18,8 @@
 01c  Git 結構圖 — LLM 協作架構示意
 02   Selected Cases — 詳見 background.html
 03   從取樣開始，從濾波結束 — Pure Data 陣列（哲學啟蒙）
-04   Paths 系列 — 卡片入口 → paths.html
-05   Good Vibrations 系列 — 卡片入口 → gv.html
+04   Good Vibrations 系列 — 卡片入口 → gv.html（緊接 03 Pure Data）
+05   Paths 系列 — 卡片入口 → paths.html
 06   Chaos 三部曲 — Research → Memory → Culture
 06b  轉折 — 一個人不會真的消失
 07   JSON 作為記憶層 — chapter divider

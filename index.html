@@ -231,6 +231,12 @@
   }
   .flow-arrow { color: var(--accent); font-size: 1rem; }
 
+  /* ── QR inline block ── */
+  .qr-inline { display: flex; align-items: flex-start; gap: 1.2rem; margin: 1rem 0; }
+  .qr-inline img { width: 100px; height: 100px; flex-shrink: 0; border: 1px solid var(--border-light); border-radius: 4px; background: #fff; }
+  .qr-inline-label { font-family: var(--mono); font-size: 0.58rem; color: var(--text-muted); margin-top: 4px; text-align: center; letter-spacing: 0.05em; }
+  @media (max-width: 768px) { .qr-inline img { width: 72px; height: 72px; } }
+
   /* ── Image gallery row ── */
   .img-row {
     display: flex; gap: 10px; margin: 1.2rem 0; overflow-x: auto;
@@ -1067,6 +1073,15 @@
 
     <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2025/08/polypathsbanner.jpg" alt="PolyPaths Banner" onerror="this.style.display='none'">
 
+    <div class="qr-inline">
+      <div>
+        <img src="assets/qr-polypaths.png" alt="QR: polypaths.up.railway.app/mono.html">
+        <div class="qr-inline-label">↗ 掃描互動</div>
+      </div>
+      <p class="zh" style="margin:0; font-size:0.9rem;">掃描 QR Code，進入 PolyPaths——在介面上畫出路徑，系統悄悄記錄每一筆，然後長出一棵植物。</p>
+      <p class="en" style="margin:0; font-size:0.9rem;">Scan the QR to enter PolyPaths — draw paths on the interface. The system quietly records every stroke, then grows a plant from it.</p>
+    </div>
+
     <div class="iframe-wrap">
       <div class="iframe-label">LIVE DEMO</div>
       <iframe class="lazy-embed" title="PolyPaths 即時演示" src="about:blank" data-src="https://polypaths.up.railway.app/mono.html" sandbox="allow-scripts allow-same-origin"></iframe>
@@ -1090,6 +1105,15 @@
       <div class="flow-node">引擎還原</div>
       <div class="flow-arrow">→</div>
       <div class="flow-node">完整水墨畫作</div>
+    </div>
+
+    <div class="qr-inline">
+      <div>
+        <img src="assets/qr-inkfield.png" alt="QR: ileivoivm.github.io/inkField/">
+        <div class="qr-inline-label">↗ 掃描互動</div>
+      </div>
+      <p class="zh" style="margin:0; font-size:0.9rem;">掃描 QR Code，進入 InkField——直接在瀏覽器互動，或貼上一份 JSON 讓 AI 替你作畫。</p>
+      <p class="en" style="margin:0; font-size:0.9rem;">Scan the QR to open InkField — interact directly in the browser, or paste a JSON and let AI paint for you.</p>
     </div>
 
     <div class="iframe-wrap">

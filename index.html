@@ -521,7 +521,7 @@
 
   <!-- ═══ 1a: Artist Identity ═══ -->
   <section class="slide" id="slide-1">
-    <div class="section-label">01 — About the Artist</div>
+    <div class="section-label">01a — About the Artist</div>
     <h2>王新仁 ｜ Aluan Wang</h2>
 
     <div class="bio-layout">
@@ -566,7 +566,7 @@
 
   <!-- ═══ 1b: Artist Statement ═══ -->
   <section class="slide" id="slide-1b">
-    <div class="section-label">01 — Statement</div>
+    <div class="section-label">01b — Statement</div>
 
     <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2021/07/DSC_8894.jpg" alt="Exhibition" style="max-height:280px; object-fit:cover; border-radius:8px; margin-bottom:1.5rem;" onerror="this.style.display='none'">
 
@@ -588,7 +588,7 @@
 
   <!-- ═══ 1c: Git as Creative Medium ═══ -->
   <section class="slide" id="slide-1c">
-    <div class="section-label">01 — Structure</div>
+    <div class="section-label">01c — Structure</div>
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; margin:0 auto; display:block;" fill="none" stroke="#1a1a1a">
       <style>
@@ -1267,24 +1267,84 @@
   </section>
 
   <!-- ═══ 11: Closing ═══ -->
-  <section class="slide slide-closing" id="slide-14">
-    <div class="closing-statement">
-      <span class="zh">結構不是限制，結構是自由。<br><br>
-      當我不在場時，<br>別人會怎麼重組我？</span><span class="en">Structure is not constraint. Structure is freedom.<br><br>
-      When I'm no longer present,<br>how will others reassemble me?</span>
-    </div>
-    <div class="closing-statement" style="margin-top:2.5rem; font-size:1.1rem;">
-      <span class="zh">大家都在問 AI 會不會取代藝術家。<br>我比較好奇的是——你有沒有留下值得被取代的東西。<br><br>
-      <span style="font-size:0.9rem; color:var(--text-dim)">誰說資料是中性的？你餵什麼，歷史就長成什麼樣子；反正資料遲早會被吃掉，至少讓它吃到你想讓它記住的版本。</span></span><span class="en">Everyone asks whether AI will replace artists.<br>I'm more curious — have you left behind anything worth replacing?<br><br>
-      <span style="font-size:0.9rem; color:var(--text-dim)">Who says data is neutral? What you feed it shapes what history becomes — the data will be consumed sooner or later, so at least make it swallow the version you want remembered.</span></span>
-    </div>
-    <div class="hashtags">
-      <span>#VibeCoding</span>
-      <span>#GenArt</span>
-      <span>#LLM</span>
-      <span>#當我不在場時別人會怎麼重組我</span>
-    </div>
-    <div class="author"><span class="zh">阿亂｜王新仁｜2026</span><span class="en">Aluan Wang | 2026</span></div>
+  <section class="slide" id="slide-14">
+    <div class="section-label">14 — 結語</div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; margin:0 auto; display:block;" fill="none" stroke="#1a1a1a">
+      <style>
+        .cl-lbl    { font-family: 'JetBrains Mono', monospace; font-size: 13px; fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .cl-dim    { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #888;   stroke: none; }
+        .cl-zh     { font-family: 'Noto Sans TC', sans-serif;  font-size: 12px; fill: #555;   stroke: none; }
+        .cl-zh-sm  { font-family: 'Noto Sans TC', sans-serif;  font-size: 10.5px; fill: #888; stroke: none; }
+      </style>
+
+      <!-- ── main timeline (你的足跡) ── -->
+      <line x1="80" y1="80" x2="80" y2="320" stroke="#1a1a1a" stroke-width="1.2" />
+
+      <!-- commits (solid) -->
+      <circle cx="80" cy="80"  r="5" fill="#1a1a1a" />
+      <circle cx="80" cy="140" r="5" fill="#1a1a1a" />
+      <circle cx="80" cy="200" r="5" fill="#1a1a1a" />
+      <circle cx="80" cy="260" r="5" fill="#1a1a1a" />
+      <circle cx="80" cy="320" r="5" fill="#1a1a1a" />
+      <text x="96" y="84"  class="cl-lbl">commit</text>
+      <text x="96" y="98"  class="cl-zh-sm">留下錨點</text>
+
+      <!-- ── dashed: 不在場 ── -->
+      <line x1="80" y1="320" x2="80" y2="430" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" />
+      <circle cx="80" cy="375" r="5" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <circle cx="80" cy="430" r="5" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <text x="96" y="379" class="cl-dim">不在場</text>
+      <text x="96" y="393" class="cl-zh-sm" style="fill:#aaa">仍可被索引</text>
+
+      <!-- ── fork (from y=200 commit) ── -->
+      <path d="M80,200 C120,200 130,180 170,180 L170,360" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none" />
+      <circle cx="170" cy="180" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <circle cx="170" cy="260" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <circle cx="170" cy="360" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <text x="186" y="184" class="cl-lbl">fork</text>
+      <text x="186" y="198" class="cl-zh-sm">從你的節點，長出別人的東西</text>
+
+      <!-- ── reconstruction (from fork at y=360) ── -->
+      <path d="M170,360 C210,360 220,340 255,340 L255,430" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none" />
+      <circle cx="255" cy="340" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <circle cx="255" cy="385" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <circle cx="255" cy="430" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+      <text x="271" y="344" class="cl-lbl">重組</text>
+      <text x="271" y="358" class="cl-zh-sm">別人眼中的你</text>
+
+      <!-- ── issue: 迴響 ── -->
+      <path d="M255,430 C200,460 130,458 80,430" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none" />
+      <polygon points="84,427 74,430 84,437" fill="#1a1a1a" stroke="none" />
+      <text x="163" y="454" class="cl-lbl" text-anchor="middle">留下痕跡，就沒有消失</text>
+
+      <!-- ── right panel ── -->
+      <line x1="440" y1="60" x2="440" y2="450" stroke="#e8e8e8" stroke-width="1" />
+
+      <text font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
+        <tspan x="460" y="110">結構不是限制，</tspan>
+        <tspan x="460" dy="28">結構是自由。</tspan>
+      </text>
+
+      <text font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
+        <tspan x="460" y="200">當我不在場時，</tspan>
+        <tspan x="460" dy="28">別人會怎麼重組我？</tspan>
+      </text>
+
+      <text font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#555" stroke="none">
+        <tspan x="460" y="300">大家都在問 AI 會不會取代藝術家。</tspan>
+        <tspan x="460" dy="22">我比較好奇的是——</tspan>
+        <tspan x="460" dy="22">你有沒有留下值得被取代的東西。</tspan>
+      </text>
+
+      <text font-family="'JetBrains Mono', monospace" font-size="10" fill="#888" stroke="none">
+        <tspan x="460" y="400">#VibeCoding · #GenArt · #LLM</tspan>
+        <tspan x="460" dy="18">阿亂｜王新仁｜2026</tspan>
+      </text>
+
+      <!-- frame -->
+      <rect x="20" y="30" width="680" height="440" rx="0" stroke="#d0d7de" stroke-width="0.5" />
+    </svg>
   </section>
 
   <!-- ═══ Links ═══ -->

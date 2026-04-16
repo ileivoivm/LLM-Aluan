@@ -72,12 +72,34 @@
   .timeline-item.active .timeline-dot { background: #1a1a1a; transform: scale(1.7); box-shadow: 0 0 0 3px rgba(26,26,26,0.1); }
   .timeline-item:hover .timeline-label { color: rgba(42, 42, 42, 0.55); border-color: var(--border-light); }
 
+  /* ── QR Code layout ── */
+  .section-intro {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin: 1rem 0 1.2rem;
+  }
+  .qr-block { text-align: center; }
+  .qr-block img {
+    width: 140px; height: 140px; display: block;
+    border: 1px solid var(--border-light);
+    border-radius: 4px; background: #fff;
+  }
+  .qr-label {
+    font-family: var(--mono); font-size: 0.58rem;
+    color: var(--text-muted); margin-top: 5px; letter-spacing: 0.05em;
+  }
+
   @media (max-width: 768px) {
     body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
     h1 { font-size: 1.4rem; }
     .timeline-nav { display: none; }
     .iframe-wrap iframe[style*="aspect-ratio"] { aspect-ratio: 4/3; }
     .img-row img { height: 90px; width: 90px; }
+    .section-intro { grid-template-columns: 1fr; }
+    .qr-block { display: flex; align-items: center; gap: 1rem; text-align: left; }
+    .qr-block img { width: 80px; height: 80px; }
   }
 </style>
 </head>
@@ -91,9 +113,16 @@
   <!-- ═══ Good Vibrations ═══ -->
   <h2 id="sec-gv">Good Vibrations</h2>
 
-  <p><strong>Good Vibrations</strong> — Art Blocks 上的第一件長篇生成藝術作品。台灣首位登上該平台的藝術家。旋轉的圓弧與線段互動，交叉觸發聲音。</p>
-
-  <p>按下 <strong>A+S+D+F</strong>，畫面切成「樂譜模式」，揭示每個 token 背後的音樂結構。後來空投 <strong>B-side</strong> 給所有持有者——每張對應背後的聲響與視覺邏輯。一張樂譜，一份菜單。</p>
+  <div class="section-intro">
+    <div class="qr-block">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fopenprocessing.org%2Fsketch%2F2048187" alt="QR: openprocessing.org/sketch/2048187">
+      <div class="qr-label">↗ 掃描互動</div>
+    </div>
+    <div>
+      <p><strong>Good Vibrations</strong> — Art Blocks 上的第一件長篇生成藝術作品。台灣首位登上該平台的藝術家。旋轉的圓弧與線段互動，交叉觸發聲音。</p>
+      <p>按下 <strong>A+S+D+F</strong>，畫面切成「樂譜模式」，揭示每個 token 背後的音樂結構。後來空投 <strong>B-side</strong> 給所有持有者——每張對應背後的聲響與視覺邏輯。一張樂譜，一份菜單。</p>
+    </div>
+  </div>
 
   <div class="img-row">
     <img src="https://aluanwang.com/wp-content/uploads/2021/09/0_GV-300x300.png" alt="GV #0">
@@ -131,9 +160,15 @@
   <!-- ═══ AV Sequencer ═══ -->
   <h2 id="sec-seq">序列機 AV Sequencer</h2>
 
-  <div class="highlight-box">
-    <strong>AV Sequencer</strong> — 序列機。一排格子，每格存一個音高，索引（index）按固定速率掃過去，掃到哪格就發哪個音。<br>
-    格子是陣列，索引是時鐘。Pure Data 的 array 概念，直接搬上來。
+  <div class="section-intro">
+    <div class="qr-block">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fileivoivm.github.io%2Favlab%2Fav23%2F" alt="QR: ileivoivm.github.io/avlab/av23/">
+      <div class="qr-label">↗ 掃描互動</div>
+    </div>
+    <div class="highlight-box" style="margin:0;">
+      <strong>AV Sequencer</strong> — 序列機。一排格子，每格存一個音高，索引（index）按固定速率掃過去，掃到哪格就發哪個音。<br>
+      格子是陣列，索引是時鐘。Pure Data 的 array 概念，直接搬上來。
+    </div>
   </div>
 
   <div class="iframe-wrap">
@@ -145,9 +180,15 @@
   <!-- ═══ AV Drum Machine ═══ -->
   <h2 id="sec-drum">鼓機 AV Drum Machine</h2>
 
-  <div class="highlight-box">
-    <strong>AV Drum Machine</strong> — 鼓機。同樣的格子，但每格存的不是音高，是觸發。索引掃過去，開就打，關就靜。<br>
-    結構沒變，讀法從旋律變成節奏。
+  <div class="section-intro">
+    <div class="qr-block">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fileivoivm.github.io%2Favlab%2Fav11%2F" alt="QR: ileivoivm.github.io/avlab/av11/">
+      <div class="qr-label">↗ 掃描互動</div>
+    </div>
+    <div class="highlight-box" style="margin:0;">
+      <strong>AV Drum Machine</strong> — 鼓機。同樣的格子，但每格存的不是音高，是觸發。索引掃過去，開就打，關就靜。<br>
+      結構沒變，讀法從旋律變成節奏。
+    </div>
   </div>
 
   <div class="iframe-wrap">

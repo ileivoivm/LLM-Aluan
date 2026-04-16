@@ -484,6 +484,56 @@
     .subtitle { font-size: 0.9rem; }
     h2 { font-size: 1.4rem; }
   }
+
+  /* ── Speaker Notes ── */
+  .notes-btn {
+    position: fixed; left: 1rem; top: 50%; transform: translateY(-50%);
+    z-index: 150; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--border); background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(10px); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: all 0.2s;
+  }
+  .notes-btn:hover  { border-color: var(--accent-color); color: var(--accent-color); }
+  .notes-btn.active { border-color: var(--accent-color); color: var(--accent-color); background: #fff; }
+
+  .notes-panel {
+    position: fixed; left: 3.4rem; top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    width: 300px; max-height: 58vh; overflow-y: auto;
+    background: #fff; border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10); border-radius: 4px;
+    z-index: 200; padding: 1rem 1.2rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .notes-panel.open {
+    opacity: 1; pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+  }
+  .notes-panel-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 0.7rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .notes-slide-id {
+    font-family: var(--mono); font-size: 0.62rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .notes-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 0.75rem; padding: 2px 5px; line-height: 1;
+  }
+  .notes-close:hover { color: var(--text); }
+  .notes-body {
+    font-family: var(--sans); font-size: 0.875rem;
+    color: var(--text); line-height: 1.85; white-space: pre-wrap;
+  }
+  .notes-empty {
+    font-family: var(--mono); font-size: 0.78rem;
+    color: var(--text-muted); font-style: italic;
+  }
+  @media (max-width: 768px) { .notes-btn, .notes-panel { display: none; } }
 </style>
 </head>
 <body>
@@ -491,6 +541,20 @@
 <nav class="timeline-nav" id="timelineNav">
   <div class="timeline-inner" id="timelineInner"></div>
 </nav>
+
+<!-- Speaker Notes -->
+<button id="notesBtn" class="notes-btn" title="講者筆記">
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H5.5L2 13V10H2a1 1 0 0 1-1-1V2z"/>
+  </svg>
+</button>
+<div id="notesPanel" class="notes-panel">
+  <div class="notes-panel-header">
+    <span id="notesSlideId" class="notes-slide-id"></span>
+    <button id="notesClose" class="notes-close">✕</button>
+  </div>
+  <div id="notesBody" class="notes-body"></div>
+</div>
 
 <div class="lang-toggle" id="langToggle">
   <button class="lang-btn active" data-lang="zh-Hant">中文</button>
@@ -1491,6 +1555,75 @@
   });
   const savedLang = localStorage.getItem('lang');
   if (savedLang) setLang(savedLang);
+})();
+</script>
+
+<script src="speaker-notes.js"></script>
+<script>
+(function () {
+  const btn      = document.getElementById('notesBtn');
+  const panel    = document.getElementById('notesPanel');
+  const closeBtn = document.getElementById('notesClose');
+  const slideIdEl = document.getElementById('notesSlideId');
+  const bodyEl   = document.getElementById('notesBody');
+  if (!btn) return;
+
+  let currentSlideId = null;
+  let isOpen = false;
+
+  function getLang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'zh';
+  }
+
+  function renderNotes() {
+    if (!currentSlideId) return;
+    const notes = (window.SPEAKER_NOTES || {})[currentSlideId];
+    const text  = notes ? (notes[getLang()] || '') : '';
+    slideIdEl.textContent = currentSlideId.replace('slide-', 'slide ').toUpperCase();
+    if (text) {
+      bodyEl.className = 'notes-body';
+      bodyEl.textContent = text;
+    } else {
+      bodyEl.className = 'notes-empty';
+      bodyEl.textContent = '（尚無內容）';
+    }
+  }
+
+  btn.addEventListener('click', function () {
+    isOpen = !isOpen;
+    panel.classList.toggle('open', isOpen);
+    btn.classList.toggle('active', isOpen);
+    if (isOpen) renderNotes();
+  });
+
+  closeBtn.addEventListener('click', function () {
+    isOpen = false;
+    panel.classList.remove('open');
+    btn.classList.remove('active');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (isOpen && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+      isOpen = false;
+      panel.classList.remove('open');
+      btn.classList.remove('active');
+    }
+  });
+
+  // Track active slide (threshold 0.5 = slide is more than half visible)
+  const obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        currentSlideId = entry.target.id;
+        if (isOpen) renderNotes();
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.slide').forEach(function (s) { obs.observe(s); });
+
+  // Re-render when language changes
+  new MutationObserver(function () { if (isOpen) renderNotes(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();
 </script>
 

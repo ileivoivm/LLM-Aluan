@@ -1320,7 +1320,7 @@
     const label = slide.querySelector('.section-label');
     if (label) return label.textContent.replace(/\s+/g, ' ').trim();
     if (slide.classList.contains('slide-title')) return '00 — 開場';
-    if (slide.classList.contains('slide-closing')) return '11 — 結語';
+    if (slide.classList.contains('slide-closing')) return '14 — 結語';
     return `${String(i).padStart(2, '0')} —`;
   }
 

@@ -24,10 +24,22 @@
 ## slide-1
 
 ### zh
+Affine Cipher 是一種古典的替換密碼。把每個英文字母經過一次線性函數轉換：E(x) = (ax + b) mod 26。我用 a=5、b=8 把 aluan wang 算出來，得到 ileiv oivm，然後合成一個字：Ileivoivm。這是我從 2021 年開始在 NFT 平台上用的代號。
 
+2021 年是加密藝術爆發的一年。那時候很多藝術家開始用加密過的名字註冊作品，有人用 hash、有人用 hex、有人寫自己的 cipher。錢包地址前面的 0x 本身就是一種身份。匿名、密碼化、數學化的署名變成那個年代的次文化。Pak、0xDEAFBEEF 那一批人都在做這件事。Kevin Abosch 甚至直接把加密過的文字本身做成作品，例如《Hexadecimal Testimony》、《1111》。
+
+我選擇這樣命名有兩個理由。第一個是儀式感，把名字加密一次，等於宣告自己進入一個新的場域，要用新身份做事。第二個是更深一點的：把可以被結構化的東西結構化，包括自己的名字。Ileivoivm 是我這條工作主線最早的 commit。
+
+後來我做的所有事情，從 GeoPunk 把座標壓進 IPFS、到 Chaos 把自己的收藏取樣進新作品、到把寫作風格寫成 .md，背後的姿勢都是同一個。這個姿勢從 2021 年的 Ileivoivm 開始，一路到 2026 年的這份 deck。
 
 ### en
+Affine Cipher is a classical substitution cipher. Each letter passes through a linear function: E(x) = (ax + b) mod 26. I used a=5, b=8 to encrypt "aluan wang" and got "ileiv oivm." I joined the letters into one word: Ileivoivm. This has been my handle on NFT platforms since 2021.
 
+2021 was the explosive year for crypto art. Many artists started registering work under encrypted names. Some used hashes, some hex, some wrote their own ciphers. The wallet address starting with 0x became a kind of identity in itself. Anonymous, encrypted, mathematized signing was the subculture of that era. Pak, 0xDEAFBEEF, that whole crowd was doing it. Kevin Abosch went further and turned encrypted text itself into artworks, like Hexadecimal Testimony and 1111.
+
+I chose to name myself this way for two reasons. The first is ritual. Encrypting your name once is declaring you've entered a new field, and you'll work under a new identity. The second is deeper: structure what can be structured, including your own name. Ileivoivm is the earliest commit of this working line.
+
+Everything I've made since, from GeoPunk packing coordinates into IPFS, to Chaos sampling my own collection into new work, to writing my voice into .md, comes from the same posture. The posture started with Ileivoivm in 2021 and runs through to this deck in 2026.
 
 ---
 
@@ -152,13 +164,12 @@ So the artist's job now has two layers. The first is producing peaks. The second
 ## slide-6b
 
 ### zh
-這頁是輕鬆的。剛剛講完 peak 需要防禦工事，講完 model collapse，講完 CC-BY-SA。我意識到我們講得太重了，所以放這隻熊貓給你們笑一下。
-
-但這隻熊貓不是來搞笑的。藝術家就是這個時代的大熊貓。稀有、固執、不太合群、會被 AI 平均化。如果不主動保護，他們會消失。
+藝術家就是這個時代的大熊貓。稀有、固執、不太合群、會被 AI 平均化。如果不主動保護，他們會消失。
 
 「保護藝術家，讓反抗份子證明人類價值。」這句話我是認真的。如果有一天人類什麼都用 AI 解，那剩下會反抗的、會說「不對，這應該是別的樣子」的，就是藝術家。沒有他們，人類價值會被平均成最大公約數。
 
 所以保護他們。買他們的作品、引他們的話、fork 他們的方法、讓他們活得下去。
+我是個別案例，但每個還沒被 AI 平均化的人，都是 peak
 
 ### en
 This slide is the comic relief. After the peaks-need-defense argument, model collapse, CC-BY-SA, I realized we've been heavy. So here's a panda for a smile.

@@ -227,11 +227,25 @@
     letter-spacing: 0.02em;
   }
 
+  /* ── Bio highlights (numerical badges) ── */
+  .bio-highlights {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;
+    margin: 1.5rem 0 2.2rem;
+  }
+  .bio-hl {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    padding: 1rem; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .bio-hl-num   { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; color: var(--accent-color); line-height: 1.2; }
+  .bio-hl-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem; }
+
   @media (max-width: 768px) {
     body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
     h1 { font-size: 1.4rem; }
     .video-wrap iframe { height: 240px; }
     .timeline-nav { display: none; }
+    .bio-highlights { grid-template-columns: 1fr; gap: 0.6rem; }
   }
 </style>
 </head>
@@ -253,6 +267,12 @@
     <p>王新仁（1982年出生於臺灣臺中），為臺灣當代數位藝術與生成藝術領域的先鋒。身為一位創意編碼者（Creative Coder）與新媒體藝術家，他擁有超過15年的創作資歷，擅長將演算法系統、聲音與東方繪畫哲學相結合。他擁有國立臺北藝術大學（TNUA）新媒體藝術學系碩士學位，目前擔任 akaSwap 的藝術總監。</p>
 
     <p>王新仁將程式碼作為主要創作媒介，透過精密數學公式鏈結聲音與影像，建構出動態的藝術系統。他的創作致力於探索混沌、不可預測性以及自然現象背後的無形結構。他是臺灣首位登上全球知名生成藝術最高殿堂 Art Blocks 的藝術家（2021年），也是首位在 verse.works 發行長篇生成藝術（long-form）作品的亞洲藝術家，成功將臺灣豐沛的數位藝術創作能量帶入國際視野。</p>
+  </div>
+
+  <div class="bio-highlights">
+    <div class="bio-hl"><div class="bio-hl-num">15+</div><div class="bio-hl-label">年數位藝術經驗</div></div>
+    <div class="bio-hl"><div class="bio-hl-num">Art Blocks</div><div class="bio-hl-label">台灣首位藝術家</div></div>
+    <div class="bio-hl"><div class="bio-hl-num">2×</div><div class="bio-hl-label">台北數位藝術節首獎</div></div>
   </div>
 
   <h2 id="sec-cases">藝術合作案例</h2>

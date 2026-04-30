@@ -566,6 +566,7 @@
   <button class="lang-btn active" data-lang="zh-Hant">中文</button>
   <button class="lang-btn" data-lang="en">EN</button>
   <a class="lang-btn" href="我如何使用LLM：從結構到創作的工作方法論.md" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">MD</a>
+  <a class="lang-btn" href="https://github.com/ileivoivm/LLM-Aluan" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" title="View source on GitHub">Git</a>
 </div>
 
 <div class="kb-hint">
@@ -639,6 +640,31 @@
     <div class="section-label">01b — Statement</div>
 
     <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2021/07/DSC_8894.jpg" alt="Exhibition" style="max-height:280px; object-fit:cover; border-radius:8px; margin-bottom:1.5rem;" onerror="this.style.display='none'">
+
+    <div style="text-align:center; margin: 1.2rem auto 1.8rem; max-width:720px;">
+      <!-- LeWitt 1967 -->
+      <div style="font-family: var(--serif); font-size: 1.15rem; color: var(--text); font-style: italic; line-height:1.6;">&ldquo;The idea becomes a machine that makes the art.&rdquo;</div>
+      <div class="zh" style="font-family: var(--serif); font-size: 0.95rem; color: var(--text-dim); margin-top: 0.5rem; line-height:1.6; font-style: italic;">觀念，變成了製造藝術的機器。</div>
+      <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.7rem; letter-spacing: 0.06em;">— Sol LeWitt · Paragraphs on Conceptual Art · 1967</div>
+
+      <!-- visual divider · 60 years -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin: 1.5rem auto;">
+        <div style="width: 60px; height: 1px; background: var(--border);"></div>
+        <div style="font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.1em;">+ 60 yrs</div>
+        <div style="width: 60px; height: 1px; background: var(--border);"></div>
+      </div>
+
+      <!-- Aluan 2026 -->
+      <div id="self-archiving-self-portrait" style="font-family: var(--serif); font-size: 1.15rem; color: var(--text); font-style: italic; line-height:1.6; scroll-margin-top: 60px;">
+        <span class="zh">「自我歸檔，是新的自畫像。」</span>
+        <span class="en">&ldquo;Self-archiving is the new self-portrait.&rdquo;</span>
+      </div>
+      <div style="font-family: var(--serif); font-size: 0.95rem; color: var(--text-dim); margin-top: 0.5rem; line-height:1.6; font-style: italic;">
+        <span class="zh">&ldquo;Self-archiving is the new self-portrait.&rdquo;</span>
+        <span class="en">自我歸檔，是新的自畫像。</span>
+      </div>
+      <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.7rem; letter-spacing: 0.06em;">— Aluan Wang · 王新仁 · 2026</div>
+    </div>
 
     <div class="bio-statement" style="font-size:1.4rem; line-height:2.2; max-width:680px; margin:2rem auto; text-align:center;">
       <span class="zh">我不創造圖像，我建構的是能記住決策如何發生的系統。<br><br>
@@ -1357,9 +1383,355 @@
     </svg>
   </section>
 
+  <!-- ═══ 13b: 你正在決定五年後的常識 ═══ -->
+  <section class="slide" id="slide-13b">
+    <div class="section-label">13b — 你正在決定五年後的常識 / Tomorrow's Common Sense</div>
+    <h2><span class="zh">你正在決定五年後的常識</span><span class="en">You're Writing Tomorrow's Common Sense</span></h2>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" style="width:100%; max-width:760px; margin:1rem auto 0; display:block;" fill="none">
+      <style>
+        .b13-lbl    { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .b13-dim    { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #888;   stroke: none; }
+        .b13-zh-sm  { font-family: 'Noto Sans TC', sans-serif;  font-size: 10.5px; fill: #888; stroke: none; }
+        .b13-trace  { stroke: #1a1a1a; stroke-width: 0.85; fill: none; }
+        .b13-prompt { stroke: #aaa;   stroke-width: 0.6;  fill: none; stroke-dasharray: 3 3; }
+        .b13-grid   { stroke: #888;   stroke-width: 0.4; }
+      </style>
+
+      <!-- ── time axis ── -->
+      <line x1="60" y1="270" x2="660" y2="270" stroke="#d0d7de" stroke-width="0.5" />
+      <circle cx="110" cy="270" r="2" fill="#1a1a1a" />
+      <circle cx="580" cy="270" r="2" fill="#1a1a1a" />
+      <text x="110" y="288" class="b13-dim" text-anchor="middle">today · 2026</text>
+      <text x="580" y="288" class="b13-dim" text-anchor="middle">+5y · 2031</text>
+
+      <!-- ── YOU column ── -->
+      <text x="110" y="50" class="b13-lbl" text-anchor="middle">YOU</text>
+      <text x="110" y="65" class="b13-zh-sm" text-anchor="middle">2026.04</text>
+      <line x1="110" y1="78" x2="110" y2="143" stroke="#1a1a1a" stroke-width="0.8" />
+      <circle cx="110" cy="150" r="6" fill="#1a1a1a" />
+
+      <!-- ── 6 traces fanning from YOU into AI ── -->
+      <path d="M116,150 C200,150 250,90 320,90"   class="b13-trace" />
+      <path d="M116,150 C200,150 250,115 320,115" class="b13-trace" />
+      <path d="M116,150 C200,150 250,138 320,138" class="b13-trace" />
+      <path d="M116,150 C200,150 250,162 320,162" class="b13-trace" />
+      <path d="M116,150 C200,150 250,185 320,185" class="b13-trace" />
+      <path d="M116,150 C200,150 250,210 320,210" class="b13-trace" />
+
+      <!-- trace labels -->
+      <text x="225" y="84"  class="b13-dim">essay</text>
+      <text x="225" y="108" class="b13-dim">thread</text>
+      <text x="225" y="132" class="b13-dim">repo</text>
+      <text x="225" y="174" class="b13-dim">talk</text>
+      <text x="225" y="201" class="b13-dim">dev log</text>
+      <text x="225" y="223" class="b13-dim">demo</text>
+
+      <!-- ── AI / INDEX box ── -->
+      <text x="370" y="65"  class="b13-lbl" text-anchor="middle">AI · INDEX</text>
+      <text x="370" y="80" class="b13-zh-sm" text-anchor="middle">corpus</text>
+      <rect x="320" y="85" width="100" height="135" rx="1" fill="rgba(0,0,0,0.03)" stroke="#1a1a1a" stroke-width="0.7" />
+      <line x1="328" y1="105" x2="412" y2="105" class="b13-grid" />
+      <line x1="328" y1="120" x2="412" y2="120" class="b13-grid" />
+      <line x1="328" y1="135" x2="412" y2="135" class="b13-grid" />
+      <line x1="328" y1="150" x2="412" y2="150" class="b13-grid" />
+      <line x1="328" y1="165" x2="412" y2="165" class="b13-grid" />
+      <line x1="328" y1="180" x2="412" y2="180" class="b13-grid" />
+      <line x1="328" y1="195" x2="412" y2="195" class="b13-grid" />
+
+      <!-- ── STUDENTS column ── -->
+      <text x="575" y="50" class="b13-lbl" text-anchor="middle">STUDENTS</text>
+      <text x="575" y="65" class="b13-zh-sm" text-anchor="middle">2031</text>
+
+      <!-- 3 figures: head + body trapezoid -->
+      <g transform="translate(540,108)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#1a1a1a" stroke-width="1" />
+        <path d="M-9,8 L-11,30 L11,30 L9,8 Z" fill="none" stroke="#1a1a1a" stroke-width="1" />
+      </g>
+      <g transform="translate(605,150)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#1a1a1a" stroke-width="1" />
+        <path d="M-9,8 L-11,30 L11,30 L9,8 Z" fill="none" stroke="#1a1a1a" stroke-width="1" />
+      </g>
+      <g transform="translate(540,195)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#1a1a1a" stroke-width="1" />
+        <path d="M-9,8 L-11,30 L11,30 L9,8 Z" fill="none" stroke="#1a1a1a" stroke-width="1" />
+      </g>
+
+      <!-- prompt arrows (dashed, students → AI) -->
+      <path d="M598,148 C520,138 470,135 425,138" class="b13-prompt" />
+      <text x="490" y="128" class="b13-dim">prompt</text>
+
+      <!-- answer arrows (solid, AI → students) -->
+      <path d="M425,170 C480,178 530,180 533,128" class="b13-trace" />
+      <polygon points="533,128 528,135 537,134" fill="#1a1a1a" />
+
+      <path d="M425,182 C490,195 540,200 596,170" class="b13-trace" />
+      <polygon points="598,170 590,166 591,175" fill="#1a1a1a" />
+
+      <path d="M425,196 C480,210 510,210 535,213" class="b13-trace" />
+      <polygon points="537,213 529,209 530,217" fill="#1a1a1a" />
+      <text x="475" y="232" class="b13-dim">answer (made of your traces)</text>
+
+      <!-- frame -->
+      <rect x="20" y="20" width="680" height="280" rx="0" stroke="#d0d7de" stroke-width="0.5" fill="none" />
+    </svg>
+
+    <div class="big-quote zh" style="margin-top: 2rem; max-width: 880px;">
+      你今天教的學生，五年後不會翻書、不會 Google。<br>
+      他們會問 AI。<br><br>
+      AI 給他們的答案，取決於今天你寫了什麼、發了什麼、留下什麼可被索引的東西。<br><br>
+      <strong style="font-size: 1.25em; font-style: normal; color: var(--text);">你正在決定五年後的常識。</strong>
+    </div>
+    <div class="big-quote en" style="margin-top: 2rem; max-width: 880px;">
+      Your students, five years from now, won't open books or use Google.<br>
+      They'll ask AI.<br><br>
+      What AI tells them depends on what you write, publish, and leave indexable today.<br><br>
+      <strong style="font-size: 1.25em; font-style: normal; color: var(--text);">You're writing tomorrow's common sense.</strong>
+    </div>
+  </section>
+
+  <!-- ═══ 13c: 留給後來的人 ═══ -->
+  <section class="slide" id="slide-13c">
+    <div class="section-label">13c — 留給後來的人 / For whoever comes next</div>
+    <h2><span class="zh">留給後來的人</span><span class="en">For Whoever Comes Next</span></h2>
+
+    <p class="zh" style="font-family: var(--serif); font-size: 1.05rem; color: var(--text-dim); font-style: italic; margin: 0.4rem 0 1.4rem;">強連結讓你被人記得，弱連結讓你被系統記得。</p>
+    <p class="en" style="font-family: var(--serif); font-size: 1.05rem; color: var(--text-dim); font-style: italic; margin: 0.4rem 0 1.4rem;">Strong ties make people remember you. Weak ties make systems remember you.</p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" style="width:100%; max-width:760px; margin:0.5rem auto 1.2rem; display:block;" fill="none">
+      <style>
+        .c13-lbl       { font-family: 'JetBrains Mono', monospace; font-size: 12px;   fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .c13-dim       { font-family: 'JetBrains Mono', monospace; font-size: 10px;   fill: #888;   stroke: none; }
+        .c13-zh-sm     { font-family: 'Noto Sans TC', sans-serif;  font-size: 10.5px; fill: #888;   stroke: none; }
+        .c13-zh-mid    { font-family: 'Noto Sans TC', sans-serif;  font-size: 11.5px; fill: #555;   stroke: none; }
+        .c13-strong    { stroke: #1a1a1a; stroke-width: 1.1; }
+        .c13-strong-d  { stroke: #1a1a1a; stroke-width: 0.7; stroke-opacity: 0.5; }
+        .c13-weak      { stroke: #1a1a1a; stroke-width: 0.55; }
+        .c13-weak-d    { stroke: #1a1a1a; stroke-width: 0.4; stroke-opacity: 0.35; }
+        .c13-boundary  { stroke: #aaa; stroke-width: 0.6; fill: none; stroke-dasharray: 3 3; }
+      </style>
+
+      <!-- ── divider ── -->
+      <line x1="360" y1="35" x2="360" y2="265" stroke="#d0d7de" stroke-width="0.5" stroke-dasharray="3 4" />
+
+      <!-- ═══ LEFT: STRONG TIES ═══ -->
+      <text x="180" y="50" class="c13-lbl" text-anchor="middle">STRONG TIES</text>
+      <text x="180" y="65" class="c13-zh-sm" text-anchor="middle">強連結</text>
+
+      <!-- boundary -->
+      <circle cx="180" cy="150" r="68" class="c13-boundary" />
+
+      <!-- spokes (center to perimeter) -->
+      <line x1="180" y1="150" x2="180" y2="105"   class="c13-strong" />
+      <line x1="180" y1="150" x2="219" y2="127.5" class="c13-strong" />
+      <line x1="180" y1="150" x2="219" y2="172.5" class="c13-strong" />
+      <line x1="180" y1="150" x2="180" y2="195"   class="c13-strong" />
+      <line x1="180" y1="150" x2="141" y2="172.5" class="c13-strong" />
+      <line x1="180" y1="150" x2="141" y2="127.5" class="c13-strong" />
+
+      <!-- hexagon perimeter -->
+      <line x1="180" y1="105"   x2="219" y2="127.5" class="c13-strong" />
+      <line x1="219" y1="127.5" x2="219" y2="172.5" class="c13-strong" />
+      <line x1="219" y1="172.5" x2="180" y2="195"   class="c13-strong" />
+      <line x1="180" y1="195"   x2="141" y2="172.5" class="c13-strong" />
+      <line x1="141" y1="172.5" x2="141" y2="127.5" class="c13-strong" />
+      <line x1="141" y1="127.5" x2="180" y2="105"   class="c13-strong" />
+
+      <!-- cross diagonals (suggesting density) -->
+      <line x1="180" y1="105"   x2="180" y2="195"   class="c13-strong-d" />
+      <line x1="219" y1="127.5" x2="141" y2="172.5" class="c13-strong-d" />
+      <line x1="141" y1="127.5" x2="219" y2="172.5" class="c13-strong-d" />
+
+      <!-- dots (on top of lines) -->
+      <circle cx="180" cy="150"   r="5" fill="#1a1a1a" />
+      <circle cx="180" cy="105"   r="4.5" fill="#1a1a1a" />
+      <circle cx="219" cy="127.5" r="4.5" fill="#1a1a1a" />
+      <circle cx="219" cy="172.5" r="4.5" fill="#1a1a1a" />
+      <circle cx="180" cy="195"   r="4.5" fill="#1a1a1a" />
+      <circle cx="141" cy="172.5" r="4.5" fill="#1a1a1a" />
+      <circle cx="141" cy="127.5" r="4.5" fill="#1a1a1a" />
+
+      <!-- bottom label -->
+      <text x="180" y="255" class="c13-zh-mid" text-anchor="middle">被人記得</text>
+      <text x="180" y="272" class="c13-dim"    text-anchor="middle">people remember</text>
+
+      <!-- ═══ RIGHT: WEAK TIES ═══ -->
+      <text x="540" y="50" class="c13-lbl"   text-anchor="middle">WEAK TIES</text>
+      <text x="540" y="65" class="c13-zh-sm" text-anchor="middle">弱連結</text>
+
+      <!-- ── silhouette mesh (30 dots forming a person from afar) ── -->
+      <!-- thin lines connecting nearest neighbors to form the outline + interior fabric -->
+
+      <!-- head outline ring (H1→H12→H1) -->
+      <line x1="540" y1="73"  x2="562" y2="78"  class="c13-weak" />
+      <line x1="562" y1="78"  x2="575" y2="90"  class="c13-weak" />
+      <line x1="575" y1="90"  x2="580" y2="105" class="c13-weak" />
+      <line x1="580" y1="105" x2="575" y2="120" class="c13-weak" />
+      <line x1="575" y1="120" x2="562" y2="132" class="c13-weak" />
+      <line x1="562" y1="132" x2="540" y2="137" class="c13-weak" />
+      <line x1="540" y1="137" x2="518" y2="132" class="c13-weak" />
+      <line x1="518" y1="132" x2="505" y2="120" class="c13-weak" />
+      <line x1="505" y1="120" x2="500" y2="105" class="c13-weak" />
+      <line x1="500" y1="105" x2="505" y2="90"  class="c13-weak" />
+      <line x1="505" y1="90"  x2="518" y2="78"  class="c13-weak" />
+      <line x1="518" y1="78"  x2="540" y2="73"  class="c13-weak" />
+
+      <!-- head interior fabric -->
+      <line x1="540" y1="73"  x2="540" y2="95"  class="c13-weak-d" />
+      <line x1="540" y1="95"  x2="530" y2="105" class="c13-weak-d" />
+      <line x1="540" y1="95"  x2="550" y2="105" class="c13-weak-d" />
+      <line x1="530" y1="105" x2="550" y2="105" class="c13-weak-d" />
+      <line x1="530" y1="105" x2="540" y2="118" class="c13-weak-d" />
+      <line x1="550" y1="105" x2="540" y2="118" class="c13-weak-d" />
+      <line x1="540" y1="118" x2="540" y2="137" class="c13-weak-d" />
+      <line x1="500" y1="105" x2="530" y2="105" class="c13-weak-d" />
+      <line x1="580" y1="105" x2="550" y2="105" class="c13-weak-d" />
+
+      <!-- chin to neck -->
+      <line x1="540" y1="137" x2="528" y2="150" class="c13-weak" />
+      <line x1="540" y1="137" x2="552" y2="150" class="c13-weak" />
+      <line x1="518" y1="132" x2="528" y2="150" class="c13-weak" />
+      <line x1="562" y1="132" x2="552" y2="150" class="c13-weak" />
+      <line x1="528" y1="150" x2="552" y2="150" class="c13-weak-d" />
+
+      <!-- neck to shoulders -->
+      <line x1="528" y1="150" x2="495" y2="173" class="c13-weak" />
+      <line x1="552" y1="150" x2="585" y2="173" class="c13-weak" />
+
+      <!-- shoulder/chest outline -->
+      <line x1="495" y1="173" x2="475" y2="192" class="c13-weak" />
+      <line x1="475" y1="192" x2="465" y2="215" class="c13-weak" />
+      <line x1="465" y1="215" x2="505" y2="232" class="c13-weak" />
+      <line x1="505" y1="232" x2="540" y2="237" class="c13-weak" />
+      <line x1="540" y1="237" x2="575" y2="232" class="c13-weak" />
+      <line x1="575" y1="232" x2="615" y2="215" class="c13-weak" />
+      <line x1="615" y1="215" x2="605" y2="192" class="c13-weak" />
+      <line x1="605" y1="192" x2="585" y2="173" class="c13-weak" />
+
+      <!-- torso interior fabric -->
+      <line x1="495" y1="173" x2="520" y2="200" class="c13-weak-d" />
+      <line x1="585" y1="173" x2="560" y2="200" class="c13-weak-d" />
+      <line x1="520" y1="200" x2="560" y2="200" class="c13-weak-d" />
+      <line x1="520" y1="200" x2="540" y2="215" class="c13-weak-d" />
+      <line x1="560" y1="200" x2="540" y2="215" class="c13-weak-d" />
+      <line x1="540" y1="215" x2="540" y2="237" class="c13-weak-d" />
+      <line x1="475" y1="192" x2="520" y2="200" class="c13-weak-d" />
+      <line x1="605" y1="192" x2="560" y2="200" class="c13-weak-d" />
+      <line x1="465" y1="215" x2="520" y2="200" class="c13-weak-d" />
+      <line x1="615" y1="215" x2="560" y2="200" class="c13-weak-d" />
+      <line x1="505" y1="232" x2="540" y2="215" class="c13-weak-d" />
+      <line x1="575" y1="232" x2="540" y2="215" class="c13-weak-d" />
+      <line x1="528" y1="150" x2="520" y2="200" class="c13-weak-d" />
+      <line x1="552" y1="150" x2="560" y2="200" class="c13-weak-d" />
+
+      <!-- traces extending off-edge (suggesting reach beyond visible) -->
+      <line x1="540" y1="73"  x2="538" y2="42"  class="c13-weak-d" />
+      <line x1="580" y1="105" x2="610" y2="98"  class="c13-weak-d" />
+      <line x1="500" y1="105" x2="468" y2="100" class="c13-weak-d" />
+      <line x1="615" y1="215" x2="650" y2="230" class="c13-weak-d" />
+      <line x1="465" y1="215" x2="438" y2="232" class="c13-weak-d" />
+      <line x1="540" y1="237" x2="538" y2="250" class="c13-weak-d" />
+
+      <!-- ── 30 dots ── -->
+      <!-- head outer ring -->
+      <circle cx="540" cy="73"  r="2.4" fill="#1a1a1a" />
+      <circle cx="562" cy="78"  r="2.4" fill="#1a1a1a" />
+      <circle cx="575" cy="90"  r="2.4" fill="#1a1a1a" />
+      <circle cx="580" cy="105" r="2.4" fill="#1a1a1a" />
+      <circle cx="575" cy="120" r="2.4" fill="#1a1a1a" />
+      <circle cx="562" cy="132" r="2.4" fill="#1a1a1a" />
+      <circle cx="540" cy="137" r="2.4" fill="#1a1a1a" />
+      <circle cx="518" cy="132" r="2.4" fill="#1a1a1a" />
+      <circle cx="505" cy="120" r="2.4" fill="#1a1a1a" />
+      <circle cx="500" cy="105" r="2.4" fill="#1a1a1a" />
+      <circle cx="505" cy="90"  r="2.4" fill="#1a1a1a" />
+      <circle cx="518" cy="78"  r="2.4" fill="#1a1a1a" />
+      <!-- head interior -->
+      <circle cx="540" cy="95"  r="2"   fill="#1a1a1a" />
+      <circle cx="530" cy="105" r="2"   fill="#1a1a1a" />
+      <circle cx="550" cy="105" r="2"   fill="#1a1a1a" />
+      <circle cx="540" cy="118" r="2"   fill="#1a1a1a" />
+      <!-- neck -->
+      <circle cx="528" cy="150" r="2.4" fill="#1a1a1a" />
+      <circle cx="552" cy="150" r="2.4" fill="#1a1a1a" />
+      <!-- shoulder/chest outer -->
+      <circle cx="495" cy="173" r="2.4" fill="#1a1a1a" />
+      <circle cx="475" cy="192" r="2.4" fill="#1a1a1a" />
+      <circle cx="465" cy="215" r="2.4" fill="#1a1a1a" />
+      <circle cx="505" cy="232" r="2.4" fill="#1a1a1a" />
+      <circle cx="540" cy="237" r="2.4" fill="#1a1a1a" />
+      <circle cx="575" cy="232" r="2.4" fill="#1a1a1a" />
+      <circle cx="615" cy="215" r="2.4" fill="#1a1a1a" />
+      <circle cx="605" cy="192" r="2.4" fill="#1a1a1a" />
+      <circle cx="585" cy="173" r="2.4" fill="#1a1a1a" />
+      <!-- torso interior -->
+      <circle cx="520" cy="200" r="2"   fill="#1a1a1a" />
+      <circle cx="560" cy="200" r="2"   fill="#1a1a1a" />
+      <circle cx="540" cy="215" r="2"   fill="#1a1a1a" />
+
+      <!-- artifact labels on select outer dots -->
+      <text x="568" y="70"  class="c13-dim">essay</text>
+      <text x="588" y="100" class="c13-dim">repo</text>
+      <text x="461" y="195" class="c13-dim" text-anchor="end">talk</text>
+      <text x="623" y="220" class="c13-dim">citation</text>
+
+      <!-- bottom label -->
+      <text x="540" y="255" class="c13-zh-mid" text-anchor="middle">被系統記得</text>
+      <text x="540" y="272" class="c13-dim"    text-anchor="middle">system remembers</text>
+
+      <!-- frame -->
+      <rect x="20" y="20" width="680" height="260" rx="0" stroke="#d0d7de" stroke-width="0.5" fill="none" />
+    </svg>
+
+    <div class="code-block">
+      <div class="code-label">my prescription · 2026.04</div>
+      <div class="zh"><pre>1. 別寫你「是」誰，寫你「怎麼工作」
+   標籤會被忘，方法會被拿走用
+
+2. 比起被誰提到，更重要是被誰拿去用
+   open source、template、跑得起來的 demo
+   引用是社交，使用才會留下痕跡
+
+3. 別只 PO 成品，把卡關和過程也丟出來
+   dev log、推文、長文、講座錄影
+   模型最愛吃這種——有上下文、有思路、口語
+
+4. 你自己的東西，自己先 link 一下
+   作品、文章、repo、talk 互相引用
+   不是 SEO，是免得被拆成一堆孤點
+
+5. 不要為了好被找到就把自己變窄
+   你交叉的領域是有結構的——把那結構講出來
+   你不是「N 個身份其中一個」
+   你是用同一套方法在做這 N 件事的人</pre></div>
+      <div class="en"><pre>1. Write how you work, not what you are
+   Labels get forgotten. Methods get reused.
+
+2. Get used, not just cited
+   Open source, templates, runnable demos.
+   Citation is social. Usage leaves traces.
+
+3. Show the process, not just the product
+   Dev logs, threads, long-form writing, recordings.
+   Models love this — context, reasoning, conversational tone.
+
+4. Cross-link your own work
+   Connect your pieces, posts, repos, talks.
+   Not SEO — just don't get fragmented into isolated nodes.
+
+5. Don't narrow yourself for findability
+   Your cross-domain work has structure. Name that structure.
+   You're not "one of N identities."
+   You're one person using the same method across N things.</pre></div>
+    </div>
+
+    <div class="highlight-box"><span class="zh">重點不是讓系統記得你。<br>是有人來找你的時候，你早就把線索鋪好了。</span><span class="en">It's not about the system remembering you.<br>It's about leaving enough trail so whoever finds you can keep going.</span></div>
+  </section>
+
   <!-- ═══ 11: Closing ═══ -->
   <section class="slide" id="slide-14">
     <div class="section-label">14 — 結語</div>
+    <span id="structure-absent-artist" style="position:absolute; opacity:0; pointer-events:none;" aria-hidden="true"></span>
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; margin:0 auto; display:block;" fill="none" stroke="#1a1a1a">
       <style>
@@ -1413,29 +1785,60 @@
       <line x1="440" y1="60" x2="440" y2="450" stroke="#e8e8e8" stroke-width="1" />
 
       <text font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
-        <tspan x="460" y="110">結構不是限制，</tspan>
-        <tspan x="460" dy="28">結構是自由。</tspan>
+        <tspan x="460" y="86">結構不是限制，</tspan>
+        <tspan x="460" dy="26">結構是自由。</tspan>
+      </text>
+
+      <!-- the thesis quote (slightly larger, italic) -->
+      <text font-family="'Noto Sans TC', sans-serif" font-size="14.5" font-style="italic" fill="#1a1a1a" stroke="none">
+        <tspan x="460" y="170">「結構，是不在場的藝術家。」</tspan>
       </text>
 
       <text font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
-        <tspan x="460" y="200">當我不在場時，</tspan>
-        <tspan x="460" dy="28">別人會怎麼重組我？</tspan>
+        <tspan x="460" y="220">當我不在場時，</tspan>
+        <tspan x="460" dy="26">別人會怎麼重組我？</tspan>
       </text>
 
       <text font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#555" stroke="none">
-        <tspan x="460" y="300">大家都在問 AI 會不會取代藝術家。</tspan>
+        <tspan x="460" y="310">大家都在問 AI 會不會取代藝術家。</tspan>
         <tspan x="460" dy="22">我比較好奇的是——</tspan>
         <tspan x="460" dy="22">你有沒有留下值得被取代的東西。</tspan>
       </text>
 
       <text font-family="'JetBrains Mono', monospace" font-size="10" fill="#888" stroke="none">
-        <tspan x="460" y="400">#VibeCoding · #GenArt · #LLM</tspan>
+        <tspan x="460" y="408">#VibeCoding · #GenArt · #LLM</tspan>
         <tspan x="460" dy="18">阿亂｜王新仁｜2026</tspan>
       </text>
 
       <!-- frame -->
       <rect x="20" y="30" width="680" height="440" rx="0" stroke="#d0d7de" stroke-width="0.5" />
     </svg>
+  </section>
+
+  <!-- ═══ 15: Coda ═══ -->
+  <section class="slide" id="slide-15">
+    <div class="section-label">15 — Coda</div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 65vh; max-width: 760px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
+
+      <!-- primary line (lang-switched) -->
+      <div style="font-family: var(--serif); font-style: italic; line-height: 1.4; color: var(--text);">
+        <span class="zh" style="font-size: clamp(1.6rem, 4.5vw, 2.6rem);">「我不是被取代，我是被執行。」</span>
+        <span class="en" style="font-size: clamp(1.6rem, 4.5vw, 2.6rem);">&ldquo;Not replaced — executed.&rdquo;</span>
+      </div>
+
+      <!-- gloss in the other language -->
+      <div style="font-family: var(--serif); font-style: italic; line-height: 1.5; color: var(--text-dim); margin-top: 1.2rem;">
+        <span class="zh" style="font-size: clamp(1rem, 2vw, 1.3rem);">&ldquo;Not replaced — executed.&rdquo;</span>
+        <span class="en" style="font-size: clamp(1rem, 2vw, 1.3rem);">「我不是被取代，我是被執行。」</span>
+      </div>
+
+      <!-- co-attribution -->
+      <div style="font-family: var(--mono); font-size: 0.85rem; color: var(--text-muted); margin-top: 3.5rem; letter-spacing: 0.08em;">
+        — aluan wang &amp; claude · 2026
+      </div>
+
+    </div>
   </section>
 
   <!-- ═══ Links ═══ -->

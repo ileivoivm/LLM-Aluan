@@ -40,6 +40,17 @@
     overflow-x: hidden;
   }
 
+  /* ── Industrial scrollbar (site-wide) ── */
+  /* Firefox */
+  html { scrollbar-width: thin; scrollbar-color: #000 transparent; }
+  *    { scrollbar-width: thin; scrollbar-color: #000 transparent; }
+  /* WebKit / Chromium / Safari */
+  ::-webkit-scrollbar              { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track        { background: transparent; }
+  ::-webkit-scrollbar-thumb        { background: #000; border-radius: 0; }
+  ::-webkit-scrollbar-thumb:hover  { background: #2a2a2a; }
+  ::-webkit-scrollbar-corner       { background: transparent; }
+
   /* ── Timeline Nav (right side) ── */
   .timeline-nav {
     position: fixed; right: 0; top: 0; bottom: 0; z-index: 100;
@@ -506,10 +517,10 @@
   .notes-panel {
     position: fixed; left: 3.4rem; top: 50%;
     transform: translateY(-50%) translateX(-6px);
-    width: 300px; max-height: 58vh; overflow-y: auto;
+    width: 390px; max-height: 75vh; overflow-y: auto;
     background: #fff; border: 1px solid var(--border);
     box-shadow: 0 4px 24px rgba(0,0,0,0.10); border-radius: 4px;
-    z-index: 200; padding: 1rem 1.2rem;
+    z-index: 200; padding: 1.3rem 1.55rem;
     opacity: 0; pointer-events: none;
     transition: opacity 0.18s ease, transform 0.18s ease;
   }
@@ -532,7 +543,7 @@
   }
   .notes-close:hover { color: var(--text); }
   .notes-body {
-    font-family: var(--sans); font-size: 0.875rem;
+    font-family: var(--sans); font-size: 1rem;
     color: var(--text); line-height: 1.85; white-space: pre-wrap;
   }
   .notes-empty {
@@ -989,9 +1000,134 @@
     </div>
   </section>
 
-  <!-- ═══ 6b: 轉折 ═══ -->
+  <!-- ═══ 6a: Peak + Defense ═══ -->
+  <section class="slide" id="slide-6a">
+    <div class="section-label">06a — Peak + Defense</div>
+    <h2><span class="zh">Peak 跟它的防禦工事</span><span class="en">Peaks and Their Defense</span></h2>
+
+    <!-- Ted Chiang epigraph -->
+    <div style="text-align:center; margin: 1rem auto 1.2rem; max-width:720px;">
+      <div style="font-family: var(--serif); font-size: 1.15rem; color: var(--text); font-style: italic; line-height:1.6;">&ldquo;ChatGPT is a blurry JPEG of the web.&rdquo;</div>
+      <div class="zh" style="font-family: var(--serif); font-size: 0.95rem; color: var(--text-dim); margin-top: 0.5rem; line-height:1.6; font-style: italic;">ChatGPT，是網路的模糊 JPEG。</div>
+      <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.7rem; letter-spacing: 0.06em;">— Ted Chiang · The New Yorker · 2023</div>
+    </div>
+
+    <!-- SVG: peak alone vs peak + defense (side-by-side comparison) -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" style="width:100%; max-width:760px; margin:0.5rem auto 1rem; display:block;" fill="none">
+      <style>
+        .s6a-lbl         { font-family: 'JetBrains Mono', monospace; font-size: 11px;   fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .s6a-dim         { font-family: 'JetBrains Mono', monospace; font-size: 9.5px;  fill: #888;   stroke: none; }
+        .s6a-zh-sm       { font-family: 'Noto Sans TC', sans-serif;  font-size: 10px;   fill: #888;   stroke: none; }
+        .s6a-zh-mid      { font-family: 'Noto Sans TC', sans-serif;  font-size: 11px;   fill: #555;   stroke: none; }
+        .s6a-axis        { stroke: #d0d7de; stroke-width: 0.6; stroke-dasharray: 2 3; fill: none; }
+        .s6a-signal      { stroke: #1a1a1a; stroke-width: 1.2; fill: none; }
+        .s6a-flat        { stroke: #1a1a1a; stroke-width: 0.9; fill: none; stroke-opacity: 0.45; }
+        .s6a-divider     { stroke: #d0d7de; stroke-width: 0.6; stroke-dasharray: 3 4; fill: none; }
+        .s6a-marker      { fill: #fff;     stroke: #1a1a1a; stroke-width: 0.8; }
+        .s6a-marker-text { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .s6a-tracker     { stroke: #aaa;   stroke-width: 0.5; stroke-dasharray: 2 4; fill: none; }
+        .s6a-dot         { fill: #1a1a1a; }
+        .s6a-arrow       { stroke: #1a1a1a; stroke-width: 1; fill: none; }
+        .s6a-arrowhead   { fill: #1a1a1a; stroke: none; }
+      </style>
+
+      <!-- ═══ vertical divider between halves ═══ -->
+      <line x1="360" y1="38" x2="360" y2="295" class="s6a-divider" />
+
+      <!-- ═══ LEFT HALF · peak alone ═══ -->
+      <text x="190" y="42" class="s6a-lbl" text-anchor="middle">PEAK ALONE</text>
+      <text x="190" y="56" class="s6a-zh-sm" text-anchor="middle">沒有防禦</text>
+
+      <!-- upper signal: peak rises, then falls -->
+      <line x1="50" y1="118" x2="330" y2="118" class="s6a-axis" />
+      <path d="M50,118 Q105,116 165,118 L185,72 L205,118 Q260,116 330,118" class="s6a-signal" />
+      <circle cx="185" cy="72" r="2.5" class="s6a-dot" />
+
+      <!-- arrow + recursion text -->
+      <line x1="190" y1="135" x2="190" y2="170" class="s6a-arrow" />
+      <polygon points="186,168 194,168 190,176" class="s6a-arrowhead" />
+      <text x="190" y="195" class="s6a-zh-mid" text-anchor="middle">AI 自我遞迴</text>
+      <text x="190" y="208" class="s6a-dim" text-anchor="middle">model collapse</text>
+
+      <!-- lower band: flat line (peak gone) -->
+      <line x1="50" y1="248" x2="330" y2="248" class="s6a-axis" />
+      <line x1="50" y1="248" x2="330" y2="248" class="s6a-flat" />
+
+      <!-- outcome -->
+      <text x="190" y="278" class="s6a-zh-mid" text-anchor="middle" style="fill:#555">→ 消失</text>
+      <text x="190" y="291" class="s6a-dim" text-anchor="middle">vanishes</text>
+
+      <!-- ═══ RIGHT HALF · peak + defense ═══ -->
+      <text x="540" y="42" class="s6a-lbl" text-anchor="middle">PEAK + DEFENSE</text>
+      <text x="540" y="56" class="s6a-zh-sm" text-anchor="middle">有防禦工事</text>
+
+      <!-- upper signal: peak rises, then falls -->
+      <line x1="395" y1="118" x2="675" y2="118" class="s6a-axis" />
+      <path d="M395,118 Q450,116 510,118 L530,72 L550,118 Q605,116 675,118" class="s6a-signal" />
+      <circle cx="530" cy="72" r="2.5" class="s6a-dot" />
+
+      <!-- defense markers stacked under the peak -->
+      <rect x="514" y="124" width="32" height="13" class="s6a-marker" />
+      <text x="530" y="133" class="s6a-marker-text" text-anchor="middle">CC</text>
+      <rect x="514" y="139" width="32" height="13" class="s6a-marker" />
+      <text x="530" y="148" class="s6a-marker-text" text-anchor="middle">.md</text>
+      <rect x="514" y="154" width="32" height="13" class="s6a-marker" />
+      <text x="530" y="163" class="s6a-marker-text" text-anchor="middle">git</text>
+      <rect x="514" y="169" width="32" height="13" class="s6a-marker" />
+      <text x="530" y="178" class="s6a-marker-text" text-anchor="middle">cite</text>
+
+      <!-- vertical tracker connecting upper peak to lower peak (defended → survives) -->
+      <line x1="530" y1="186" x2="530" y2="240" class="s6a-tracker" />
+
+      <!-- arrow + recursion text -->
+      <text x="640" y="195" class="s6a-zh-mid" text-anchor="end">AI 自我遞迴</text>
+      <text x="640" y="208" class="s6a-dim" text-anchor="end">model collapse</text>
+
+      <!-- lower band: peak preserved (slightly attenuated) -->
+      <line x1="395" y1="248" x2="675" y2="248" class="s6a-axis" />
+      <path d="M395,248 Q450,246 515,248 L530,222 L545,248 Q605,246 675,248" class="s6a-signal" />
+      <circle cx="530" cy="222" r="2.5" class="s6a-dot" />
+
+      <!-- outcome -->
+      <text x="540" y="278" class="s6a-zh-mid" text-anchor="middle" style="fill:#555">→ 存活</text>
+      <text x="540" y="291" class="s6a-dim" text-anchor="middle">survives</text>
+
+      <!-- ═══ Frame ═══ -->
+      <rect x="20" y="20" width="680" height="280" rx="0" stroke="#d0d7de" stroke-width="0.5" fill="none" />
+    </svg>
+
+    <!-- Aluan's response (highlight-box) -->
+    <div class="highlight-box"><span class="zh">咀嚼後，別只想著吐出自己的意識。要留下 peaks。但 peak 不會自動存活。同時也要建造保護 peak 的結構：可索引、可引用、可被 fork。藝術家現在的工作，是同時做尖峰，跟做尖峰的防禦工事。</span><span class="en">After chewing, don't just spit your consciousness back out. Leave peaks behind. But peaks don't survive on their own. You also have to build the structures that protect them: indexable, citable, forkable. The artist's job now is to make peaks and build their defense at the same time.</span></div>
+
+    <!-- Bridge -->
+    <div style="font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 1.2rem; letter-spacing: 0.05em;">
+      <span class="zh">Chaos 是 peak。這份 deck 是它的防禦工事。</span>
+      <span class="en">Chaos is peak. This deck is its defense.</span>
+    </div>
+  </section>
+
+  <!-- ═══ 6b: Protect the Artist (panda meme) ═══ -->
   <section class="slide" id="slide-6b">
-    <div class="section-label">06b — 一個人不會真的消失</div>
+    <div class="section-label">06b — Protect the Artist</div>
+    <h2><span class="zh">保護藝術家</span><span class="en">Protect the Artist</span></h2>
+
+    <!-- Panda holding sign "保護 aluan" -->
+    <img src="assets/protect.png" alt="保護 aluan / Protect aluan" style="display:block; margin:0.5rem auto 0.8rem; max-width:min(420px, 60%); width:100%; height:auto;" onerror="this.style.display='none'">
+
+    <!-- The slogan -->
+    <div class="big-quote zh" style="text-align:center; max-width:680px; margin:1rem auto 0.6rem; border-left: none; padding: 0.5rem 1rem;">「保護藝術家，讓反抗份子證明人類價值。」</div>
+    <div class="big-quote en" style="text-align:center; max-width:680px; margin:1rem auto 0.6rem; border-left: none; padding: 0.5rem 1rem;">&ldquo;Protect artists. Let the rebels prove human value.&rdquo;</div>
+
+    <!-- Sub-message -->
+    <div style="text-align:center; font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted); margin-top: 0.8rem; letter-spacing: 0.05em;">
+      <span class="zh">藝術家是這個時代的稀有動物。沒人保護，世界就會趨平。</span>
+      <span class="en">Artists are this era's rare animals. Without protection, the world flattens.</span>
+    </div>
+  </section>
+
+  <!-- ═══ 6c: 轉折 ═══ -->
+  <section class="slide" id="slide-6c">
+    <div class="section-label">06c — 一個人不會真的消失</div>
 
     <h2><span class="zh">一個人不會真的消失</span><span class="en">A Person Never Truly Disappears</span></h2>
 
@@ -1022,14 +1158,104 @@
 
     <h2><span class="zh">JSON 作為記憶層</span><span class="en">JSON as the Memory Layer</span></h2>
 
-    <p class="zh" style="font-size:1.2rem; text-align:center; margin:2rem 0">LLM 的上下文有限，記憶會斷。<br>JSON 和 .md 就是錨點。</p>
-    <p class="en" style="font-size:1.2rem; text-align:center; margin:2rem 0">LLM context is finite. Memory breaks.<br>JSON and .md are the anchors.</p>
+    <p class="zh" style="font-size:1.15rem; text-align:center; margin:1.5rem 0 0.5rem">LLM 的上下文有限，記憶會斷。<br>JSON 和 .md 就是錨點。</p>
+    <p class="en" style="font-size:1.15rem; text-align:center; margin:1.5rem 0 0.5rem">LLM context is finite. Memory breaks.<br>JSON and .md are the anchors.</p>
 
-    <div style="display:flex; justify-content:center; gap:3rem; margin:2rem 0; font-family:var(--serif); font-size:1.5rem; font-weight:600; color:var(--accent)">
-      <span><span class="zh">故事</span><span class="en">Story</span></span>
-      <span><span class="zh">筆觸</span><span class="en">Brushstroke</span></span>
-      <span><span class="zh">行為</span><span class="en">Behavior</span></span>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; max-width:720px; margin:0.5rem auto; display:block;" fill="none">
+      <style>
+        .s7-lbl       { font-family: 'JetBrains Mono', monospace; font-size: 13px;   fill: #1a1a1a; stroke: none; font-weight: 600; }
+        .s7-dim       { font-family: 'JetBrains Mono', monospace; font-size: 10px;   fill: #888;   stroke: none; }
+        .s7-zh-sm     { font-family: 'Noto Sans TC', sans-serif;  font-size: 10.5px; fill: #888;   stroke: none; }
+        .s7-zh-mid    { font-family: 'Noto Sans TC', sans-serif;  font-size: 12px;   fill: #555;   stroke: none; }
+        .s7-stem      { stroke: #1a1a1a; stroke-width: 1; fill: none; }
+        .s7-flow      { stroke: #1a1a1a; stroke-width: 0.7; fill: none; stroke-opacity: 0.55; }
+        .s7-flow-thin { stroke: #1a1a1a; stroke-width: 0.5; fill: none; stroke-opacity: 0.32; }
+        .s7-petal     { fill: rgba(0,0,0,0.05); stroke: #1a1a1a; stroke-width: 0.8; }
+        .s7-source    { fill: rgba(0,0,0,0.03); stroke: #1a1a1a; stroke-width: 0.8; }
+        .s7-center    { fill: #1a1a1a; }
+        .s7-algo      { fill: rgba(0,0,0,0.03); stroke: #1a1a1a; stroke-width: 1; }
+      </style>
+
+      <!-- ═══ TOP: three flowers (results) ═══ -->
+      <!-- 故事 flower -->
+      <g transform="translate(200,115)">
+        <circle cx="0"  cy="-9" r="5.5" class="s7-petal" />
+        <circle cx="9"  cy="0"  r="5.5" class="s7-petal" />
+        <circle cx="0"  cy="9"  r="5.5" class="s7-petal" />
+        <circle cx="-9" cy="0"  r="5.5" class="s7-petal" />
+        <circle cx="0"  cy="0"  r="3.5" class="s7-center" />
+      </g>
+      <text x="200" y="78" class="s7-lbl" text-anchor="middle">故事</text>
+      <text x="200" y="92" class="s7-dim" text-anchor="middle">story</text>
+
+      <!-- 筆觸 flower -->
+      <g transform="translate(360,90)">
+        <circle cx="0"  cy="-9" r="5.5" class="s7-petal" />
+        <circle cx="9"  cy="0"  r="5.5" class="s7-petal" />
+        <circle cx="0"  cy="9"  r="5.5" class="s7-petal" />
+        <circle cx="-9" cy="0"  r="5.5" class="s7-petal" />
+        <circle cx="0"  cy="0"  r="3.5" class="s7-center" />
+      </g>
+      <text x="360" y="53" class="s7-lbl" text-anchor="middle">筆觸</text>
+      <text x="360" y="67" class="s7-dim" text-anchor="middle">brushstroke</text>
+
+      <!-- 行為 flower -->
+      <g transform="translate(520,115)">
+        <circle cx="0"  cy="-9" r="5.5" class="s7-petal" />
+        <circle cx="9"  cy="0"  r="5.5" class="s7-petal" />
+        <circle cx="0"  cy="9"  r="5.5" class="s7-petal" />
+        <circle cx="-9" cy="0"  r="5.5" class="s7-petal" />
+        <circle cx="0"  cy="0"  r="3.5" class="s7-center" />
+      </g>
+      <text x="520" y="78" class="s7-lbl" text-anchor="middle">行為</text>
+      <text x="520" y="92" class="s7-dim" text-anchor="middle">behavior</text>
+
+      <!-- ═══ Stems: branching from main stem to flowers ═══ -->
+      <path d="M360,205 C360,170 280,145 200,125" class="s7-stem" />
+      <line x1="360" y1="205" x2="360" y2="100" class="s7-stem" />
+      <path d="M360,205 C360,170 440,145 520,125" class="s7-stem" />
+      <!-- branch node dot -->
+      <circle cx="360" cy="205" r="2.2" class="s7-center" />
+
+      <!-- ═══ Main stem: from algorithm up to branch node ═══ -->
+      <line x1="360" y1="235" x2="360" y2="205" class="s7-stem" />
+
+      <!-- ═══ MIDDLE: algorithm circle ═══ -->
+      <circle cx="360" cy="270" r="35" class="s7-algo" />
+      <text x="360" y="266" class="s7-lbl" text-anchor="middle">f(x)</text>
+      <text x="360" y="282" class="s7-zh-sm" text-anchor="middle">演算法</text>
+
+      <!-- side annotation: algorithm = chosen method -->
+      <text x="420" y="266" class="s7-zh-mid"><tspan class="zh">我們選擇的方法</tspan><tspan class="en">our chosen method</tspan></text>
+      <text x="420" y="282" class="s7-dim"><tspan class="zh">algorithm</tspan><tspan class="en">an act with posture</tspan></text>
+
+      <!-- ═══ Nutrient flows from sources up to algorithm ═══ -->
+      <!-- left flows (.md → algorithm) -->
+      <path d="M180,378 C220,340 280,310 335,295" class="s7-flow" />
+      <path d="M195,378 C235,355 290,325 343,300" class="s7-flow-thin" />
+      <path d="M165,378 C195,335 250,305 330,290" class="s7-flow-thin" />
+
+      <!-- right flows (.json → algorithm) -->
+      <path d="M540,378 C500,340 440,310 385,295" class="s7-flow" />
+      <path d="M525,378 C485,355 430,325 377,300" class="s7-flow-thin" />
+      <path d="M555,378 C525,335 470,305 390,290" class="s7-flow-thin" />
+
+      <!-- ═══ BOTTOM: nutrient source boxes ═══ -->
+      <!-- .md source -->
+      <rect x="130" y="378" width="100" height="42" rx="2" class="s7-source" />
+      <text x="180" y="400" class="s7-lbl" text-anchor="middle">.md</text>
+      <text x="180" y="414" class="s7-dim" text-anchor="middle">documentation</text>
+      <text x="180" y="438" class="s7-zh-mid" text-anchor="middle">垂直脈絡</text>
+
+      <!-- .json source -->
+      <rect x="490" y="378" width="100" height="42" rx="2" class="s7-source" />
+      <text x="540" y="400" class="s7-lbl" text-anchor="middle">.json</text>
+      <text x="540" y="414" class="s7-dim" text-anchor="middle">structure</text>
+      <text x="540" y="438" class="s7-zh-mid" text-anchor="middle">橫向探索</text>
+
+      <!-- ═══ Frame ═══ -->
+      <rect x="20" y="20" width="680" height="440" rx="0" stroke="#d0d7de" stroke-width="0.5" fill="none" />
+    </svg>
   </section>
 
   <!-- ═══ 5: JSON 深入 ═══ -->
@@ -1988,7 +2214,47 @@
 })();
 </script>
 
-<script src="speaker-notes.js"></script>
+<script>
+// ── Speaker notes loader ──
+// Source of truth: speaker-notes.md. This block fetches it, parses ## slide-XX /
+// ### zh / ### en into window.SPEAKER_NOTES, and fires 'speaker-notes-loaded'.
+// To edit notes, edit speaker-notes.md — never edit this loader.
+(function () {
+  window.SPEAKER_NOTES = window.SPEAKER_NOTES || {};
+
+  function parseSpeakerNotes(text) {
+    const notes = {};
+    const parts = text.split(/^##\s+(slide-[\w-]+)\s*$/m);
+    for (let i = 1; i < parts.length; i += 2) {
+      const id = parts[i];
+      let body = (parts[i + 1] || '');
+      body = body.replace(/\n*---\s*$/, '').trim();
+      const zhMatch = body.match(/###[ \t]+zh[ \t]*\n([\s\S]*?)(?=\n###[ \t]+en|$)/);
+      const enMatch = body.match(/###[ \t]+en[ \t]*\n([\s\S]*)/);
+      notes[id] = {
+        zh: zhMatch ? zhMatch[1].trim() : '',
+        en: enMatch ? enMatch[1].trim() : ''
+      };
+    }
+    return notes;
+  }
+
+  function notifyLoaded() {
+    window.dispatchEvent(new Event('speaker-notes-loaded'));
+  }
+
+  fetch('speaker-notes.md', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    .then(function (text) {
+      Object.assign(window.SPEAKER_NOTES, parseSpeakerNotes(text));
+      notifyLoaded();
+    })
+    .catch(function (err) {
+      console.warn('[speaker-notes] failed to load speaker-notes.md:', err);
+      notifyLoaded();
+    });
+})();
+</script>
 <script>
 (function () {
   const btn      = document.getElementById('notesBtn');
@@ -2000,24 +2266,45 @@
 
   let currentSlideId = null;
   let isOpen = false;
+  let notesLoaded = false;
 
   function getLang() {
     return document.documentElement.lang === 'en' ? 'en' : 'zh';
   }
 
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderInline(text) {
+    // Escape HTML first, then re-introduce **bold** as <strong>
+    return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  }
+
   function renderNotes() {
     if (!currentSlideId) return;
+    slideIdEl.textContent = currentSlideId.replace('slide-', 'slide ').toUpperCase();
+    if (!notesLoaded) {
+      bodyEl.className = 'notes-empty';
+      bodyEl.textContent = '載入中…';
+      return;
+    }
     const notes = (window.SPEAKER_NOTES || {})[currentSlideId];
     const text  = notes ? (notes[getLang()] || '') : '';
-    slideIdEl.textContent = currentSlideId.replace('slide-', 'slide ').toUpperCase();
     if (text) {
       bodyEl.className = 'notes-body';
-      bodyEl.textContent = text;
+      bodyEl.innerHTML = renderInline(text);
     } else {
       bodyEl.className = 'notes-empty';
       bodyEl.textContent = '（尚無內容）';
     }
   }
+
+  // Re-render when notes finish loading from speaker-notes.md
+  window.addEventListener('speaker-notes-loaded', function () {
+    notesLoaded = true;
+    if (isOpen) renderNotes();
+  });
 
   btn.addEventListener('click', function () {
     isOpen = !isOpen;

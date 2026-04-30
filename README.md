@@ -87,7 +87,9 @@ LeWitt 從觀念藝術那邊提出「觀念是機器」。Reas 從生成藝術�
 04    Paths · 地景 · 2017–2021 — paths.html
 05    Origin · 2021 — Good Vibrations · gv.html
 06    Deep Dive · 混沌 · 2021–22 — Chaos 三部曲
-06b   一個人不會真的消失 — 轉折頁
+06a   Peak 與防禦 — Ted Chiang JPEG 命題 + 防禦工事
+06b   保護藝術家 — 大熊貓 meme（comic relief）
+06c   一個人不會真的消失 — 轉折頁
 07    Methodology — JSON 作為記憶層
 08    Deep Dive · 小說 — 《修仙-七玄關》
 09    Deep Dive · 植物 — PolyPaths

@@ -294,8 +294,8 @@
   @media (max-width: 768px) {
     .bio-layout { grid-template-columns: 1fr; }
     .bio-photo-stack { flex-direction: row; }
-    .bio-photo.main, .bio-photo.secondary { height: 140px; width: 50%; }
-    .bio-photo.main { object-position: top center; transform-origin: top center; }
+    .bio-photo.main, .bio-photo.secondary { height: 220px; width: 50%; transform: none; }
+    .bio-photo.main { object-position: center 28%; }
     .bio-highlights { grid-template-columns: repeat(3, 1fr); }
   }
 
@@ -488,11 +488,13 @@
     .big-quote { font-size: 1rem; padding: 1rem; }
     .closing-statement { font-size: clamp(1rem, 4vw, 1.4rem); }
   }
+
   @media (max-width: 480px) {
     .slide { padding: 1.2rem 1rem; }
     .bio-highlights { grid-template-columns: 1fr; gap: 0.5rem; }
     .bio-photo-stack { flex-direction: column; }
-    .bio-photo.main, .bio-photo.secondary { width: 100%; height: 160px; }
+    .bio-photo.main, .bio-photo.secondary { width: 100%; height: 360px; transform: none; }
+    .bio-photo.main { object-position: center 28%; }
     .iframe-wrap iframe { height: 280px; }
     .flow { justify-content: center; }
     .flow-arrow { font-size: 0.8rem; }
@@ -500,6 +502,98 @@
     .img-row img { height: 90px; width: 90px; }
     .subtitle { font-size: 0.9rem; }
     h2 { font-size: 1.4rem; }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     Real-mobile-only: per-slide fits so every slide fits 100vh
+     without internal scrolling. Triggered ONLY on touch devices
+     (phones, tablets) — NOT on narrow desktop browser windows.
+     Placed after 480px block so it wins the cascade.
+     ────────────────────────────────────────────────────────── */
+  @media (pointer: coarse) and (max-width: 768px) {
+    /* ── slide-0 cover: keep Chinese title on one line, byline on one line ── */
+    .slide-title h1 { font-size: 1.5rem !important; padding: 0.4rem 1rem !important; line-height: 1.3 !important; margin-bottom: 1.2rem !important; }
+    .slide-title h1 .zh, .slide-title h1 .en { white-space: nowrap; }
+    .subtitle { font-size: 0.82rem !important; line-height: 1.7 !important; white-space: nowrap; }
+
+    /* ── Global compress ── */
+    .slide { padding: 0.7rem 1rem; }
+    .section-label { font-size: 0.62rem; margin-bottom: 0.35rem; }
+    h2 { font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.25; }
+    h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+    p { font-size: 0.85rem; line-height: 1.55; margin: 0.3rem 0; }
+    .highlight-box { font-size: 0.78rem; padding: 0.5rem 0.8rem; margin: 0.45rem 0; }
+    .iframe-wrap { margin: 0.45rem 0; }
+    .iframe-wrap iframe { height: 220px; }
+    .iframe-label { font-size: 0.55rem; }
+    .img-wide { display: none; }
+    .flow { display: none; }
+    .code-block { margin: 0.45rem 0; }
+    .code-block pre { font-size: 0.58rem; line-height: 1.35; padding: 0.45rem 0.65rem; }
+    .project-grid { gap: 0.5rem; }
+    .project-card-body { padding: 0.5rem 0.7rem; }
+    .project-card .pname { font-size: 0.85rem; }
+    .project-card .psub { font-size: 0.7rem; }
+    .project-card .pdesc { font-size: 0.72rem; line-height: 1.5; }
+    .project-card .ptag { font-size: 0.6rem; padding: 0.12rem 0.4rem; }
+
+    /* bio photo: shorter on phones, face still visible */
+    .bio-photo.main, .bio-photo.secondary { width: 100%; height: 240px; transform: none; }
+    .bio-photo.main { object-position: center 28%; }
+
+    /* ── slide-1: tighten statement + button ── */
+    #slide-1 .bio-statement { font-size: 0.95rem; padding: 0.35rem 0 0.35rem 0.7rem; margin-bottom: 0.4rem; line-height: 1.6; }
+    #slide-1 a[href="background.html"] { margin-top: 0.5rem !important; padding: 0.35rem 0.9rem !important; font-size: 0.78rem !important; }
+
+    /* ── slide-1b: hide the 3-statement elaboration; keep epigraphs ── */
+    #slide-1b > div:last-child { display: none; }
+    #slide-1b > div:first-of-type { margin: 1rem auto !important; }
+
+    /* ── slide-3 ── */
+    #slide-3 .project-grid { grid-template-columns: 1fr 1fr; }
+    #slide-3 .iframe-wrap { display: none; }
+
+    /* ── slide-6: drop iframes (already display:none via chaos-live-grid), hide flow, descs ── */
+    #slide-6 .project-card .pdesc { display: none; }
+    #slide-6 .project-card .psub { display: none; }
+    #slide-6 .project-card-body { padding: 0.4rem 0.7rem !important; }
+    #slide-6 .project-card .pname { margin-bottom: 0.2rem; }
+    #slide-6 .chaos-mobile-notice { padding: 0.55rem !important; font-size: 0.68rem !important; margin: 0.4rem 0 !important; }
+    #slide-6 .highlight-box { display: none; }
+
+    /* ── slide-6c: restore visual hierarchy (title > body) ── */
+    #slide-6c h2 { font-size: 1.55rem !important; line-height: 1.3 !important; margin-bottom: 0.9rem !important; }
+    #slide-6c p { font-size: 0.92rem !important; line-height: 1.85 !important; margin: 0.5rem 0 !important; }
+    #slide-6c .highlight-box { margin-top: 1rem !important; padding: 0.7rem 1rem !important; }
+    #slide-6c .highlight-box span { font-size: 0.88rem !important; line-height: 1.8 !important; }
+
+    /* ── slide-8: drop iframe demo on mobile (QR-less, but novel demo not critical) ── */
+    #slide-8 .iframe-wrap { display: none; }
+
+    /* ── slide-9, slide-10: keep QR, drop iframe ── */
+    #slide-9 .iframe-wrap, #slide-10 .iframe-wrap { display: none; }
+
+    /* ── slide-10b: smaller iframe ── */
+    #slide-10b .iframe-wrap iframe { height: 220px !important; }
+
+    /* ── slide-12: compress persona cards ── */
+    #slide-12 .persona-card { padding: 0.5rem 0.75rem !important; }
+    #slide-12 .persona-card .pname { font-size: 0.82rem; }
+    #slide-12 .persona-card .pdesc { font-size: 0.7rem; line-height: 1.45; margin-top: 0.15rem; }
+    #slide-12 .persona-grid { gap: 0.4rem !important; }
+
+    /* ── slide-13b: cap SVG ── */
+    #slide-13b svg { max-height: 180px; margin: 0.3rem auto !important; }
+
+    /* ── slide-13c: drop SVG (intro line + prescription carry the meaning), tighten pre ── */
+    #slide-13c svg { display: none !important; }
+    #slide-13c .code-block pre { font-size: 0.62rem; line-height: 1.45; }
+    #slide-13c .highlight-box { font-size: 0.74rem; padding: 0.4rem 0.7rem; margin: 0.35rem 0; }
+    #slide-13c > p { margin: 0.3rem 0 0.6rem !important; font-size: 0.85rem !important; }
+
+    /* ── slide-links: shorter tweet iframes so 3 fit ── */
+    #slide-links .tweets-grid { gap: 0.45rem !important; margin: 0.5rem auto !important; }
+    #slide-links .tweets-grid iframe { height: 165px !important; }
   }
 
   /* ── Speaker Notes ── */
@@ -542,6 +636,19 @@
     color: var(--text-muted); font-size: 0.75rem; padding: 2px 5px; line-height: 1;
   }
   .notes-close:hover { color: var(--text); }
+  .notes-header-actions {
+    display: flex; gap: 0.6rem; align-items: center;
+  }
+  .notes-md-link {
+    font-family: var(--mono); font-size: 0.62rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    text-decoration: none; padding: 2px 6px;
+    border: 1px solid var(--border-light); border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .notes-md-link:hover {
+    color: var(--accent-color); border-color: var(--accent-color);
+  }
   .notes-body {
     font-family: var(--sans); font-size: 1rem;
     color: var(--text); line-height: 1.85; white-space: pre-wrap;
@@ -550,7 +657,24 @@
     font-family: var(--mono); font-size: 0.78rem;
     color: var(--text-muted); font-style: italic;
   }
-  @media (max-width: 768px) { .notes-btn, .notes-panel { display: none; } }
+  @media (max-width: 768px) {
+    .notes-btn {
+      left: auto; right: 1rem; top: auto; bottom: 1rem;
+      transform: none;
+      width: 40px; height: 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    }
+    .notes-panel {
+      left: 1rem; right: 1rem; top: auto; bottom: 4.2rem;
+      width: auto; max-height: 65vh;
+      transform: translateY(8px);
+      padding: 1rem 1.1rem;
+    }
+    .notes-panel.open {
+      transform: translateY(0);
+    }
+    .notes-body { font-size: 0.92rem; line-height: 1.75; }
+  }
 </style>
 </head>
 <body>
@@ -568,7 +692,10 @@
 <div id="notesPanel" class="notes-panel">
   <div class="notes-panel-header">
     <span id="notesSlideId" class="notes-slide-id"></span>
-    <button id="notesClose" class="notes-close">✕</button>
+    <div class="notes-header-actions">
+      <a class="notes-md-link" href="speaker-notes.md" target="_blank" rel="noopener noreferrer" title="View speaker-notes.md source">MD</a>
+      <button id="notesClose" class="notes-close">✕</button>
+    </div>
   </div>
   <div id="notesBody" class="notes-body"></div>
 </div>
@@ -2031,15 +2158,15 @@
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 65vh; max-width: 760px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
 
       <!-- primary line (lang-switched) -->
-      <div style="font-family: var(--serif); font-style: italic; line-height: 1.4; color: var(--text);">
-        <span class="zh" style="font-size: clamp(1.6rem, 4.5vw, 2.6rem);">「我不是被取代，我是被執行。」</span>
-        <span class="en" style="font-size: clamp(1.6rem, 4.5vw, 2.6rem);">&ldquo;Not replaced — executed.&rdquo;</span>
+      <div style="font-family: var(--serif); font-style: italic; line-height: 1.4; color: var(--text); white-space: nowrap;">
+        <span class="zh" style="font-size: clamp(1.1rem, 4.5vw, 2.6rem);">「我不是被取代，我是被執行。」</span>
+        <span class="en" style="font-size: clamp(1.1rem, 4.5vw, 2.6rem);">&ldquo;Not replaced — executed.&rdquo;</span>
       </div>
 
       <!-- gloss in the other language -->
-      <div style="font-family: var(--serif); font-style: italic; line-height: 1.5; color: var(--text-dim); margin-top: 1.2rem;">
-        <span class="zh" style="font-size: clamp(1rem, 2vw, 1.3rem);">&ldquo;Not replaced — executed.&rdquo;</span>
-        <span class="en" style="font-size: clamp(1rem, 2vw, 1.3rem);">「我不是被取代，我是被執行。」</span>
+      <div style="font-family: var(--serif); font-style: italic; line-height: 1.5; color: var(--text-dim); margin-top: 1.2rem; white-space: nowrap;">
+        <span class="zh" style="font-size: clamp(0.82rem, 2vw, 1.3rem);">&ldquo;Not replaced — executed.&rdquo;</span>
+        <span class="en" style="font-size: clamp(0.82rem, 2vw, 1.3rem);">「我不是被取代，我是被執行。」</span>
       </div>
 
       <!-- co-attribution -->

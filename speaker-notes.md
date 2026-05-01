@@ -283,7 +283,7 @@ Algorithms aren't neutral. They're methods we choose. Take the perpendicular-bis
 
 JSON 是給 LLM 看的書籤。它把模型從「記不住的助理」變成「記得住的協作者」。這就是 .md 跟 JSON 在小說創作裡的具體實踐：故事是資料，JSON 是容器，LLM 是讀者。
 
-不要期待 LLM 記住一切。主動幫它建索引。
+不要期待 LLM 記住一切，主動幫它建索引。而且這是整場講座最快能驗證的部分。把自己交出去讓別人執行，要等時間：藏家會不會 fork、後人會不會用、AI 50 年後會不會吐出我，這些都要等。但寫小說、建立角色人格、讓 LLM 在當下執行得對，是現在就能測試的。沒寫對它就會崩，崩或不崩馬上有結果。小說是大命題的近端驗證：可執行格式真的可被執行。
 
 ### en
 This work is Seven Gates of Cultivation, a long-form novel spanning religion, crime, and the supernatural. While writing chapter three, I noticed something: what a character says can't contradict an earlier chapter, every foreshadowing has to pay off, the emotional arc has to stay coherent. But LLMs have a context-length limit. By the time you write further in, the model has forgotten the earlier details.
@@ -292,7 +292,7 @@ So I did this: every passage of the story gets written as JSON, not just plain t
 
 JSON is a bookmark for the LLM. It turns the model from "an assistant that can't remember" into "a collaborator that does." This is the concrete practice of .md and JSON in novel writing: the story is the data, JSON is the container, the LLM is the reader.
 
-Don't expect the LLM to remember everything. Build the index for it.
+Don't expect the LLM to remember everything. Build the index for it. This is also the fastest-verifying part of the whole talk. Handing yourself over for others to execute takes time. Whether collectors fork, whether future readers use, whether an AI spits me out 50 years from now, those answers aren't in yet. But writing a novel, building character personas, getting the LLM to execute correctly right now is something you can test today. If the structure is wrong, the model breaks. Break or not, the answer comes back immediately. The novel is the near-term proof of the larger claim: an executable format actually executes.
 
 ---
 

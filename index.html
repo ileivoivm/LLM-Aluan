@@ -2405,8 +2405,8 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
       const id = parts[i];
       let body = (parts[i + 1] || '');
       body = body.replace(/\n*---\s*$/, '').trim();
-      const zhMatch = body.match(/###[ \t]+zh[ \t]*\n([\s\S]*?)(?=\n###[ \t]+en|$)/);
-      const enMatch = body.match(/###[ \t]+en[ \t]*\n([\s\S]*)/);
+      const zhMatch = body.match(/###[ \t]+zh[ \t]*\n([\s\S]*?)(?=\n###[ \t]+en|\n---|$)/);
+      const enMatch = body.match(/###[ \t]+en[ \t]*\n([\s\S]*?)(?=\n---|$)/);
       notes[id] = {
         zh: zhMatch ? zhMatch[1].trim() : '',
         en: enMatch ? enMatch[1].trim() : ''

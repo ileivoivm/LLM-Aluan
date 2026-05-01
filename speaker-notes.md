@@ -124,16 +124,6 @@ The data doesn't change. The container doesn't change. What changes is the way o
 ## slide-4
 
 ### zh
-
-
-### en
-
-
----
-
-## slide-5
-
-### zh
 這件作品的源頭是 2014–2015 年。當時跟廣達文教基金會合作，我做了一個音樂作品給八仙塵爆的傷者做復健。動作很簡單，反覆的擺動跟伸展。當動作出來，音樂就跟著生成。它是一個基點上下擺動的迴圈動作。那時候它叫《Etude》，跟音樂共舞的計畫。
 
 2021 年八月份，這件作品的演化版本在 Art Blocks 平台發行，名字改成 Good Vibrations。Art Blocks 是當時全球生成藝術最高規格的平台，2021 年正在熱潮頂點，那年該平台累積成交額破五億美金。我能上 Art Blocks 不是因為履歷漂亮，是因為審查的人在網路上看到我長年累積的足跡。他們看到我多年來持續在公開推進這些專案，認可我是一個長期主義的藝術家，不是來追逐短線熱潮的人。可信度來自十年的痕跡，不是來自一份簡介。
@@ -153,47 +143,69 @@ I was already doing peak and defense back then. I just didn't have the vocabular
 
 ---
 
+## slide-5
+
+### zh
+路徑系列要從一個事實開始講。我 16 歲離家去台北念美術。20 多年前的台中，一個小朋友只想念藝術沒有什麼選擇，所以我逃家。離家之後我跟家人感情很好，但對家鄉的割裂感一直在。每次回台中，我從台北回來在豐原交流道看到神岡的路口就覺得到家了，雖然還沒到家。從高雄回來是大雅交流道。有一次我在法蘭克福機場轉機，看到「往台北」的指示牌，我也覺得到家了。對我來說，路徑的指向比真正的家更先成為家。
+
+這個經驗變成我第一件路徑作品《昨日的路徑》。我用空拍機把神岡鄉的各個路口拍下來、3D 還原，每個路口都有一個指標往家的方向。後來做了《明日的路徑》，探討台灣的國土邊界。當時我年輕，覺得世界辜負我們：台灣的年輕人出去，常常連簡單地宣稱自己的國家身份都不容易。我用波函數塌縮（wave function collapse）演算法，疊加出新的台灣國土想像。
+
+第三件叫《邊界漫遊》。我在波茲蘭布展時發現很多柏林的藝術家都住波茲蘭，因為跨過邊界物價減半，但他們一樣到柏林上班。我去 Google Map 掃了世界各地的爭議邊界：以色列周邊、美墨、中俄、中蒙。最有趣的是美墨邊界。墨西哥那邊霓虹閃爍高樓林立，美國那邊是荒漠。墨西哥邊界繁華是因為它是偷渡走私的轉運地，要囤糧；美國刻意把邊界周圍弄成沙漠來防禦。中俄北方邊界也類似，俄羅斯那一側熱鬧，中國那一側刻意疏離。
+
+每一筆同樣的資料，左右兩邊看的人會看出完全不同的故事。這個邏輯後來貫穿了我所有的創作。路徑系列是我做 fine art 時期的最後一個系列。2021 年之後我就轉到區塊鏈創作，從 GeoPunk 開始走進另一條線。
+
+### en
+The Paths series starts from a fact. I left home at 16 to study art in Taipei. In Taichung twenty-odd years ago, a kid who only wanted to study art had almost no options, so I ran. After leaving I stayed close with my family, but a sense of split with my hometown stayed too. Every time I came back from Taipei, the moment I passed Fengyuan Interchange and saw the Shengang exit, I felt I was home, even though I wasn't yet. From Kaohsiung it was the Daya exit. Once I was transferring at Frankfurt Airport and saw a sign pointing "to Taipei," and I felt home then too. For me, the direction of the path arrives at home before the home itself does.
+
+That experience became my first piece in the series, Path to the Past. I drone-shot the various intersections in Shengang Township and 3D-rebuilt them. Every intersection had a sign pointing toward home. Later I made Path to the Future, dealing with Taiwan's territorial borders. I was young then and felt the world had let us down. Taiwanese kids going abroad often couldn't easily claim a national identity. Using a wave function collapse algorithm, I generated alternative imaginings of Taiwan's territory.
+
+The third piece is Boundary Roaming. While installing in Poznan, I noticed many Berlin-based artists actually lived in Poznan because crossing the border halved the cost of living, even though they still commuted to Berlin to work. I went into Google Maps and scanned contested borders worldwide: around Israel, US-Mexico, China-Russia, China-Mongolia. The most striking was US-Mexico. The Mexican side had neon-lit high-rises, the American side was desert. The Mexican side prospered because it served as a staging ground for smuggling and migration; the American side was deliberately kept arid for defense. The China-Russia northern border was similar, with the Russian side bustling and the Chinese side deliberately keeping its distance.
+
+The same set of data, viewed from either side, tells completely different stories. This logic ran through everything I made later. The Paths series was the last series I made in my fine-art phase. After 2021 I moved into blockchain work, starting with GeoPunk.
+
+---
+
 ## slide-6
 
 ### zh
 Chaos 三部曲，發表於 2021 年底到 2022 年五月之間。在中文裡，Chaos 跟我的名字「亂」是同一個意思。用自己的名字命名一個系列，就是把「自我」直接當成題目放上桌。
 
-第一件 Chaos Research。當時 Perlin Noise 流場是整個生成藝術圈的主流，每個人都用同一套技術，做出彼此相像的作品。我想反抗這件事，所以在流場上面疊加了另一層訊號，那層訊號來自我自己過去一年在 Tezos 鏈上收藏的 NFT。把別人的作品變形、壓縮，藏進 IPFS 的程式碼裡，變成我這件作品的粒子、顏色、形狀的基底。對我來說，取樣跟加密本質上是同一件事。
+第一件 Chaos Research，2021 年 12 月在 fxhash 發行，總共 256 件。當時 Perlin Noise 流場是整個生成藝術圈的主流，每個人都用同一套技術做出彼此相像的作品。我想反抗這件事，所以在流場上面疊加了另一層訊號，那層訊號來自我自己過去一年在 Tezos 鏈上收藏的 NFT。把別人的作品變形、壓縮、藏進 IPFS 的程式碼裡，變成我這件作品的粒子、顏色、形狀的基底。我想做的事是用我的「書櫃」來解讀我自己。日本有個說法，書不是買來讀的，書是買來完整自己的。看一個人的書櫃，可以理解他想前往的方向。我的 NFT 收藏就是我的書櫃。對我來說，取樣跟加密本質上是同一件事。
 
-第二件 Chaos Memory 又走得更遠。按 Q/W/E/R 會切換成長方形、正方形、圓形，因為單一視角看不完它。IPFS 裡面藏的東西有三層：透納的畫作局部、Research 的圖片、還有 Memory 自己。我美工科畢業，原本想當水彩畫家，透納是我一輩子追的對象。我把童年的影響、上一件作品、這件作品自己，全部塞進去，做了一次自我遞迴。Research 是收藏的加密。Memory 是「我怎麼變成我」的加密。
+第二件 Chaos Memory 走得更遠。我在畫面上藏了按鍵，按 Q/W/E/R 會切換成長方形、正方形、圓形，因為單一視角看不完它。IPFS 裡藏的東西有三層：透納的畫作局部、Research 的圖片、還有 Memory 自己。我美工科畢業，原本想當水彩畫家，透納是我一輩子追的對象。我把童年的影響、上一件作品、這件作品自己，全部塞進去。Research 是「我的收藏」的加密。Memory 是「我怎麼變成我」的加密，而且讀取了 Research 的資料當素材。前作生出後作，後作再餵回前作。
 
-第三件 Chaos Culture 在巴塞爾藝博會香港首發。它再一次萃取 Research 跟 Memory，圓形構圖像培養皿，也像俯視的衛星地圖。前作變成下一件作品的養分。研究、記憶、文化，三層遞迴。我做的不是三件不同的作品，是同一個我，被自己採樣三次。
+第三件 Chaos Culture 在巴塞爾藝博會香港首發，再一次萃取 Research 跟 Memory，圓形構圖像培養皿，也像俯視的衛星地圖。研究、記憶、文化，三層遞迴。我做的不是三件不同的作品，是同一個我，被自己採樣三次。
 
 ### en
 Chaos is a trilogy, released between late 2021 and May 2022. In Chinese, "chaos" and my name 亂 are the same character. Naming a series after myself is a way of putting "the self" directly on the table as the subject.
 
-The first piece, Chaos Research. At the time, Perlin Noise flow fields were the dominant aesthetic in generative art. Everyone was using the same technique, producing work that looked like everyone else's. I wanted to push against that. So I layered another signal on top of the flow field, a signal extracted from my own NFT collection on Tezos from the previous year. I deformed and compressed other artists' works, hid them in the IPFS code, and let them become the particles, colors, and shapes of this piece. For me, sampling and encryption are essentially the same act.
+The first piece, Chaos Research, released on fxhash in December 2021, with 256 editions. At the time Perlin Noise flow fields were the dominant aesthetic in generative art. Everyone was using the same technique, producing work that looked like everyone else's. I wanted to push against that. So I layered another signal on top of the flow field, a signal extracted from my own NFT collection on Tezos from the previous year. I deformed and compressed other artists' works, hid them in the IPFS code, and let them become the particles, colors, and shapes of this piece. What I wanted was to read myself through my own "bookshelf." There's a Japanese saying that books aren't bought to be read; books are bought to complete you. Looking at a person's bookshelf reveals where they want to go. My NFT collection is my bookshelf. For me, sampling and encryption are essentially the same act.
 
-The second piece, Chaos Memory, went further. Pressing Q/W/E/R switches the composition between rectangle, square, and circle, because a single viewpoint cannot hold it. The IPFS contains three layers: fragments from Turner's paintings, images from Research, and Memory itself. I trained in commercial art and once wanted to be a watercolorist; Turner has been my lifelong reference. I packed early influences, the previous work, and the work itself into one piece, performing a self-recursion. Research encrypts a collection. Memory encrypts how I became who I am.
+The second piece, Chaos Memory, went further. I hid keys in the interface; pressing Q/W/E/R switches the composition between rectangle, square, and circle, because a single viewpoint cannot hold it. The IPFS contains three layers: fragments from Turner's paintings, images from Research, and Memory itself. I trained in commercial art and once wanted to be a watercolorist; Turner has been my lifelong reference. I packed early influences, the previous work, and the work itself into one piece. Research encrypts a collection. Memory encrypts how I became who I am, and reads Research's data as raw material. The earlier work gives birth to the later, and the later feeds back into the earlier.
 
-The third piece, Chaos Culture, premiered at Art Basel Hong Kong. It samples Research and Memory again. The circular composition reads as both petri dish and overhead satellite map. The previous works become nutrients for the next. Research, Memory, Culture: three layers of recursion. I didn't make three different works. I made one self, sampled by itself three times.
+The third piece, Chaos Culture, premiered at Art Basel Hong Kong, sampling Research and Memory once more. The circular composition reads as both petri dish and overhead satellite map. Research, Memory, Culture: three layers of recursion. I didn't make three different works. I made one self, sampled by itself three times.
 
 ---
 
 ## slide-6a
 
 ### zh
-先講 Ted Chiang 那句話。他 2023 年在 The New Yorker 寫了一篇文章，把 ChatGPT 比成「網路的模糊 JPEG」。意思是：JPEG 壓縮會丟細節、留平均值，AI 也一樣。它把網路上幾百億字壓縮成一個權重檔，吐回來的東西是 lossy 版本。每一輪 AI 訓 AI，平均得越平、越糊、越像所有人的綜合體。
-
-問題在這。如果連我們人也只做「咀嚼後吐出來」這個動作，那人類的訊號會跟 AI 的輸出疊加，整片變成一灘灰。
+先講 Ted Chiang 那句話。他 2023 年在 The New Yorker 寫了一篇文章，把 ChatGPT 比成「網路的模糊 JPEG」。意思是：JPEG 壓縮會丟細節、留平均值，AI 也一樣。它把網路上幾百億字壓縮成一個權重檔，吐回來的東西是 lossy 版本。每一輪 AI 訓 AI，平均得越平、越糊、越像所有人的綜合體。問題在這：如果連我們人也只做「咀嚼後吐出來」這個動作，那人類的訊號會跟 AI 的輸出疊加，整片變成一灘灰。
 
 我的回應是：要在訊號上製造 peaks。但這裡我必須老實說一個科學上的修正。peak 不會自動存活。Shumailov 在 2023 年的論文 The Curse of Recursion 證明，當 LLM 餵自己的輸出再訓練幾代之後，消失的恰恰是分布的尾端，那些稀有的、非主流的特徵。沒有保護機制的 peak，比 gradient 更容易被沖刷掉。peak 要存活，需要的不是 peak 本身的尖銳，是一個保護 peak 的機制。
 
 所以藝術家現在的工作有兩層。第一層是製造 peaks。第二層是建造保護 peaks 的結構：開放授權、可被引用、可被 fork、可被索引。沒有第二層，第一層就只是噪音。Chaos 是 peak。這份你正在看的 deck，連同它的 CC-BY-SA 授權、它的 git history、它的可引用錨點，就是防禦工事。兩個一起，才能讓 peak 在 AI 自我遞迴失真之後，真的傳下去。
 
-### en
-First, Ted Chiang's line. In 2023 he wrote a piece in The New Yorker calling ChatGPT "a blurry JPEG of the web." JPEG compression discards detail, keeps the average. AI does the same. It compresses billions of words on the web into a weights file, and what it outputs is a lossy version. Each round of AI training on AI gets flatter, blurrier, more like everyone's average.
+而且這件事情有時間壓力。這幾年的藝術圈生態變化巨大。如果你在追蹤推特上面的全球藝術家，會發現大家面臨的狀況是這幾十年裡面最劇烈的：AI 取代圖像生成的速度、市場結構在改寫、注意力被吞噬。剩下還在堅持做的，已經是站在懸崖邊上還願意往下跳的人。對我來說，這些人就是這個時代的 peak，他們需要被保護。
 
-Here's where the problem hits. If we humans also only do "chew and spit back out," our signal stacks onto the AI's output, and the whole thing turns into a smear of gray.
+### en
+First, Ted Chiang's line. In 2023 he wrote a piece in The New Yorker calling ChatGPT "a blurry JPEG of the web." JPEG compression discards detail, keeps the average. AI does the same. It compresses billions of words on the web into a weights file, and what it outputs is a lossy version. Each round of AI training on AI gets flatter, blurrier, more like everyone's average. Here's where the problem hits: if we humans also only do "chew and spit back out," our signal stacks onto the AI's output, and the whole thing turns into a smear of gray.
 
 My response: produce peaks in the signal. But I have to be honest about a scientific correction. Peaks don't survive on their own. Shumailov's 2023 paper, The Curse of Recursion, shows that when LLMs are trained on their own output across generations, what disappears first is the tail of the distribution, the rare and non-mainstream features. A peak without a defense layer flattens faster than gradient does. For a peak to survive, what matters isn't its sharpness. It's a protection mechanism around it.
 
 So the artist's job now has two layers. The first is producing peaks. The second is building the structures that protect them: open license, citable, forkable, indexable. Without the second layer, the first is just noise. Chaos is peak. This deck you're looking at, together with its CC-BY-SA license, its git history, its permanent quote anchors, is the defense work. Both together. That's what lets a peak actually pass through AI's self-recursive distortion.
+
+There's also time pressure on this. The art-world ecosystem has shifted enormously in the past few years. If you've been watching global artists on Twitter, you'll see the conditions are the most volatile in decades: how fast AI replaces image generation, market structures rewriting themselves, attention being eaten. Whoever is still pushing on is already standing on the cliff edge and willing to jump anyway. For me, those people are the peaks of this era. They need protection.
 
 ---
 
@@ -221,17 +233,29 @@ So protect them. Buy their work, cite their words, fork their methods, keep them
 ## slide-6c
 
 ### zh
+我有兩個過世的朋友，這頁是為了他們而做。
 
+第一個是葉廷皓，我的好朋友，一年多前因為意外過世。他過世之後我去整理他的東西。但我發現他其實沒有真的離開，因為 Facebook 每週每天都會跳出他的回憶，他在某一年某一天吐槽我的話，時時刻刻都會跳出來。他在網路上面留下太多分身，所以對我來說他從來沒有真的過世，他碎念我的過程一直在繼續。
+
+第二個是沈聖博，新媒體藝術前輩好友。他同樣影響我很多。2010 年我開始寫程式的時候，他就把他所有程式碼開源放在 GitHub 上面。有一天我在網路上搜尋一個技術問題，發現八年前發問的人是我自己，回答的人是沈聖博。我過了八年又問了一次同樣的問題，沈聖博當年的答案又被搜尋引擎拉出來給我看。他在很多年前留下的回答，現在還在幫忙當下的我。
+
+葉廷皓讓我意識到一件事：我不想要喜歡我的人受到這麼大的傷害。沈聖博讓我意識到另一件事：你在網路上留下的隻字片語，會在某個時刻影響到某個人。所以我開始認真做自己的歸檔。把 Facebook 16 年的聊天記錄透過 API 撈下來，請 AI 整理我的講話特色：我最愛說「天啊」，FB 比較像對朋友、推特比較像藝術家身份。這些變成我的 .md 風格指南。如果有一天我也不在了，這份 .md 還在 git 上，commit 還在留。一個人不會真的消失，只要他留下的痕跡有人讀得到、有人接得住。
 
 ### en
+This page is for two people I've lost.
 
+The first is Yeh Ting-Hao (葉廷皓), my closest friend, who passed in an accident over a year ago. After he passed, I went to help organize his belongings. But I realized he hadn't really left. Facebook still pops up memories from him every week, every day: things he said to roast me on a particular date, surfacing again and again. He left so many digital selves that for me he never truly passed. His running commentary on me continues.
+
+The second is Shen Sheng-Po (沈聖博), an elder in new media art who influenced me deeply. When I started writing code in 2021, he had already open-sourced all of his code on GitHub. One day I was searching the internet for a technical problem and discovered that the person who'd asked the question eight years earlier was me, and the answer was Shen Sheng-Po's. I asked the same thing again eight years later, and his old reply got pulled up by the search engine to help me. The answer he left years ago is still helping the present me.
+
+Yeh Ting-Hao made me realize one thing: I don't want the people who love me to be hurt this much. Shen Sheng-Po made me realize another: the few words you leave online will, at some moment, reach someone. So I started taking my own archiving seriously. I pulled 16 years of Facebook conversations through the API and asked the AI to summarize how I talk: I love saying "天啊," my FB voice is more like a friend, my Twitter voice is more like an artist on duty. These became my .md style guide. If one day I'm not here either, this .md is still on git, and the commits stay. A person doesn't really disappear, as long as the traces they leave can still be read by someone, and picked up by someone.
 
 ---
 
 ## slide-7
 
 ### zh
-接下來三張投影片，是同一個方法的三個版本。我用兩種格式：.md 跟 JSON。在工程界，.md 通常拿來寫文件說明，JSON 通常拿來放資料結構。我把它們從資料科學那邊借過來，變成創作的容器。同一份格式，裝的內容決定了它是工具還是作品。
+接下來三張投影片是同一個方法的三個版本。我用兩種格式：.md 跟 JSON，從資料科學那邊借過來變成創作的容器。換個比喻：.md 是「果菜機」本身，是方法論的骨架；JSON 是丟進去的蘋果、西瓜、鳳梨，是具體的變數跟資料。兩個一起運作，產生一杯新鮮的果汁，那個果汁就是作品。如果只有方法論沒有變數，方法論很乾燥乏味；如果只有變數沒有方法論，變數就只是一堆散亂的水果。
 
 演算法不是中性的，演算法是我們選擇的方法。比如中垂線演算法，找一個線段上距離中心最近的那個點，這件事本身就帶著哲學：誰是中心？最近意味著什麼？這個演算法在我的音像作品裡反覆出現，因為它不只是數學，是一種思考的姿勢。我寫進 JSON 的，從來不是 API response，是這種帶有姿勢的決策。
 
@@ -240,7 +264,7 @@ JSON 的巢狀結構，給的是橫向的探索空間。.md 給的是垂直的�
 接下來三件作品，故事、筆觸、行為，是同一個容器的三種裝法。故事是《修仙-七玄關》小說，JSON 當外部記憶。筆觸是 InkField，JSON 描述每一筆水墨的事件序列。行為是 PolyPaths，觀眾的手勢被壓進 JSON 變成種子。我做的不是三件不同的作品，是同一個方法在三個材料上的展開。
 
 ### en
-The next three slides are the same method in three forms. I use two formats: .md and JSON. In engineering, .md is usually for documentation, JSON is usually for data structures. I borrowed them from data science and turned them into creative containers. Same format, what you put in it decides whether it's a tool or a work.
+The next three slides are the same method in three forms. I use two formats, .md and JSON, borrowed from data science and turned into creative containers. Another way to picture it: .md is the juicer itself, the skeleton of the methodology. JSON is the apple, watermelon, pineapple you throw in, the actual variables and data. Together they produce fresh juice, which is the work. Methodology without variables stays dry; variables without methodology are just scattered fruit.
 
 Algorithms aren't neutral. They're methods we choose. Take the perpendicular-bisector algorithm, finding the point on a line segment closest to a given center. The act itself carries philosophy: who is the center? What does "closest" mean? This algorithm shows up over and over in my audiovisual work, because it's not just math, it's a thinking posture. What I put into JSON is never an API response. It's this kind of decision, with a posture in it.
 
@@ -253,50 +277,106 @@ The next three works, story, brushstroke, behavior, are three ways of filling th
 ## slide-8
 
 ### zh
+這件作品叫《修仙-七玄關》，是一個橫跨宗教、犯罪、超自然的長篇小說。寫到第三章的時候我發現一件事：角色說的話不能跟前面的章節矛盾，伏筆埋了就要收，情緒曲線要連貫。但 LLM 的記憶有上下文長度的限制，你寫到後面，前面的細節它就忘了。
 
+所以我做了一件事：把每一段故事都寫成一份 JSON。不只是純文字，而是帶 analysis 的結構化資料：地點、出場角色、情緒基調、伏筆。寫第五章的時候，我把前面所有 segment 的 analysis 串起來丟給 LLM，它就能保持一致性。
+
+JSON 是給 LLM 看的書籤。它把模型從「記不住的助理」變成「記得住的協作者」。這就是 .md 跟 JSON 在小說創作裡的具體實踐：故事是資料，JSON 是容器，LLM 是讀者。
+
+不要期待 LLM 記住一切。主動幫它建索引。
 
 ### en
+This work is Seven Gates of Cultivation, a long-form novel spanning religion, crime, and the supernatural. While writing chapter three, I noticed something: what a character says can't contradict an earlier chapter, every foreshadowing has to pay off, the emotional arc has to stay coherent. But LLMs have a context-length limit. By the time you write further in, the model has forgotten the earlier details.
 
+So I did this: every passage of the story gets written as JSON, not just plain text but structured data with analysis: setting, characters present, emotional tone, foreshadowing. By the time I'm writing chapter five, I feed the LLM all the analyses from earlier passages strung together, and it stays consistent.
+
+JSON is a bookmark for the LLM. It turns the model from "an assistant that can't remember" into "a collaborator that does." This is the concrete practice of .md and JSON in novel writing: the story is the data, JSON is the container, the LLM is the reader.
+
+Don't expect the LLM to remember everything. Build the index for it.
 
 ---
 
 ## slide-9
 
 ### zh
+PolyPaths 是 2025 年發行的，但我寫了好多年才寫完。它總共將近 750 件，跟它共玩的藝術家跟藏家無法計數。它是我人生當中最瘋狂的一個實驗。
 
+它的使用方式：你在介面上畫幾條路徑，系統根據你的路徑生成一個花園。然後我做了一件事：所有跟 PolyPaths 互動的人，都可以無償取得他們生成的作品，然後拿去市場上賣。藏家不需要付我錢就能拿到作品，但賣出去之後這件作品才正式定案。當時整個推特藝術圈被 @ 滿了一整個月。
+
+但這只是表象。觀眾以為自己生成的最終畫面就是作品，其實我把他們畫的所有路徑都偷偷記錄到區塊鏈上。2025 年我發現這件事很有趣：透過這些路徑資料，可以看到不同地區的人怎麼理解畫面構成、怎麼 layout 視覺。觀眾的行為才是作品的真正 DNA。
+
+今年在新北美術館我做了新的迭代：你打開 PolyPaths 的時候，會先看到上一個人的路徑跟成果，你可以基於它再長出自己的花園。所以最終這一系列會變成一個無止境的花園，每一個花園都長在前一個人的花園之上。
 
 ### en
+PolyPaths was released in 2025, after years of development. It has nearly 750 editions, with countless artists and collectors taking part. It's the most experimental piece I've ever made.
 
+Here's how it works: you draw a few paths on the interface, and the system grows a garden from them. I added a twist: anyone who interacted with PolyPaths could take their generated work for free and resell it. Collectors didn't have to pay me to acquire one, but only after one was sold did the work become formally finalized. For the entire month of August, the Twitter art scene was tagged at endlessly.
+
+But that was just the surface. Audiences thought their final image was the work. In fact, I quietly recorded every path they drew onto the blockchain. In 2025 I noticed something interesting: those path data revealed how people from different regions composed the screen, how they thought about visual layout. The audience's behavior was the real DNA of the piece.
+
+This year I made a new iteration at New Taipei Art Museum. When you open PolyPaths now, you first see the previous person's paths and their result. You build your own garden on top of theirs. The whole series becomes an endless garden, every garden growing on the previous one.
 
 ---
 
 ## slide-10
 
 ### zh
+InkField 是我現在還在做的一個開源計畫。它在做的事情，過去從來沒有被解決過：我想要把人類繪畫的「意圖」捕捉下來。
 
+過去我們看一幅畫，看到的只是最終樣貌：這幅畫長什麼樣子。但畫畫的過程，哪一筆先下、哪一筆後修、哪一筆是失誤、哪一筆是刻意，這些「中間遺失的資料」從來沒有被結構化地保留。我希望 InkField 補足這塊。
+
+具體做法：你在介面上畫水墨，系統不只記錄最終像素，而是把你每一筆的事件序列都輸出成 JSON。同樣的 JSON 可以重新還原這幅畫，也可以被別人 fork、修改。我把這些 JSON 通通丟到 GitHub 上，當成 issue 處理，讓未來的 agent 去理解人類繪畫的意圖。
+
+InkField 是我這套方法論最完整的一次實踐。AI 不是「畫」圖，是輸出意圖。引擎才是畫筆。對我來說，這是讓人類的意圖第一次有可能被機器真正理解的計畫。
 
 ### en
+InkField is an open-source project I'm still working on. What it tries to do has never really been solved: capture the intent behind human painting.
 
+When we look at a painting, we see only the final image, what it looks like. But the process, which stroke came first, which was a correction, which was a mistake, which was deliberate, this "missing middle data" has never been structured and preserved. InkField is my attempt at that gap.
+
+Concretely: when you paint ink in the interface, the system records not just final pixels but the event sequence of every stroke as JSON. The same JSON can replay the painting, and others can fork and modify it. I push these JSON files onto GitHub as issues, so future agents can understand human painting intent.
+
+InkField is the most complete realization of this methodology so far. AI doesn't "paint." It outputs intent. The engine is the brush. For me, this is the first project that lets human intent actually be understood by a machine.
 
 ---
 
 ## slide-10b
 
 ### zh
+這頁是 InkField Gallery。它顯示的不是我畫的水墨，是別人 fork InkField 之後畫出來的作品。
 
+這就是 .md 跟 JSON 容器的價值。當我把過程寫成可被執行的格式，當我用 CC 授權公開、當我把 JSON schema 開源，過程就可以被繼承。別人不是在「複製我的作品」，是「拿著我留下的引擎，畫他們自己的畫」。
+
+作品不是終點。作品是別人的起點。同一個系統，不同的人，不同的水墨。Casey Reas 主張系統本身就是作品，每一次輸出只是這個系統的一個實例。InkField Gallery 就是這個論點的活範例。
+
+下一個畫的人不需要徵求我的許可。他只需要 fork。
 
 ### en
+This page is InkField Gallery. What you see here aren't ink paintings I made. They're paintings other people made after forking InkField.
 
+This is the value of .md and JSON as containers. When I write the process into an executable format, when I publish under a CC license, when I open-source the JSON schema, the process can be inherited. Others aren't "copying my work." They're "taking the engine I left behind and painting their own paintings."
+
+A work isn't the endpoint. It's someone else's starting point. Same system, different people, different ink. Casey Reas argued that the system itself is the artwork; every output is just an instance of the system. InkField Gallery is a living example of that claim.
+
+The next person to paint doesn't need my permission. They just need to fork.
 
 ---
 
 ## slide-11
 
 ### zh
+我的工作流分三層。第一層是規劃，用 Claude Code 寫 CLAUDE.md，把專案規格、決策邏輯、工作脈絡寫成檔案，每次新 session 啟動 LLM 自動讀取。第二層是即時編碼，用 Cursor 邊寫程式邊跟 LLM 對話，shader 調整、視覺參數、debug 都在這一層。第三層是日常文件，用 Cowork 把零散經驗整理成結構化教學文件。
 
+工具會變，工作流不會。我的 .md 在 2023 年餵 GPT-4，在 2024 年餵 Claude，在 2026 年餵下一代模型，是同一份檔案。重要的不是哪個工具最強，是你寫的東西夠不夠結構化、夠不夠可被讀取。
+
+這三層共通的設計就是：先把方法論寫成 .md，再展開實作；歷史 doc 永遠保留；CLAUDE.md 規範跟著專案走。這套邏輯讓我的工作可以跨 session、跨工具、跨年代延續。
 
 ### en
+My workflow has three layers. First, planning: I use Claude Code to write CLAUDE.md, capturing project specs, decision logic, and working context as files that the LLM reads on every new session. Second, real-time coding: I use Cursor to converse with the LLM while writing code; shader tuning, visual parameters, debugging all happen here. Third, daily documents: I use Cowork to organize scattered experience into structured teaching files.
 
+Tools change. The workflow doesn't. My .md was feeding GPT-4 in 2023, feeding Claude in 2024, and feeding the next-generation model in 2026, all the same file. What matters isn't which tool is strongest, it's how structured and readable what you write is.
+
+The shared design across all three layers is: write methodology as .md first, then implement; preserve all historical docs; CLAUDE.md rules travel with the project. This logic lets my work continue across sessions, across tools, across decades.
 
 ---
 
@@ -349,20 +429,20 @@ All four layers are the same act. Leaving anchors.
 ### zh
 這週我做了一個小實驗。同一個問題，問了五個不同的 AI 模型。答案不一樣。不是細節不一樣，是整個世界觀不一樣。每個模型有自己的偏好、自己的盲區、自己的「誰算重要」。
 
-如果未來人們不再 Google，而是直接問 AI，那誰被寫進那份答案，就是新的編輯權力。
+如果未來人們不再 Google 而是直接問 AI，那誰被寫進那份答案，就是新的編輯權力。這個編輯權力如果一直被特定的視野跟資源所掌控，五年後 AI 吐出來的「世界」會跟現代藝術史一樣不平衡。看現代藝術史，亞洲的篇章極小。我接受這件事，因為過去資料的確不在亞洲手上。但一百年後的藝術史，我想要參一腳，現在就得行動。
 
-所以，你今天教的學生，五年後不會翻書、不會 Google。他們會問 AI。
+所以，你今天教的學生，五年後不會翻書、不會 Google，他們會問 AI。AI 給他們的答案，取決於今天你寫了什麼、發了什麼、留下什麼可被索引的東西。
 
-AI 給他們的答案，取決於今天你寫了什麼、發了什麼、留下什麼可被索引的東西。你正在決定五年後的常識。
+你正在決定五年後的常識。
 
 ### en
 This week I ran a small experiment. Same question, asked five different AI models. The answers were different. Not different in the details. Different in worldview. Every model has its own preferences, its own blind spots, its own "who matters."
 
-If people stop using Google and start asking AI directly, whoever gets written into that answer holds a new editorial power.
+If people stop using Google and start asking AI directly, whoever gets written into that answer holds the new editorial power. If that editorial power stays in the hands of specific perspectives and specific resources, the "world" AI gives back five years from now will be as imbalanced as modern art history is. Look at modern art history; the Asian chapter is tiny. I accept that, because the data really wasn't in Asian hands. But the art history written a hundred years from now, I want to be in it. To be in it, I have to act now.
 
-So, your students, five years from now, won't open books or Google. They'll ask AI.
+So, your students, five years from now, won't open books or Google. They'll ask AI. What AI tells them depends on what you write, publish, and leave indexable today.
 
-What AI tells them depends on what you write, publish, and leave indexable today. You're writing tomorrow's common sense.
+You're writing tomorrow's common sense.
 
 ---
 
@@ -391,44 +471,44 @@ It's not about making the system remember you. It's about making sure that, when
 ## slide-14
 
 ### zh
-結構不是限制，結構是自由。當我把自己寫成 .md，我能做的事更多，不是更少。錨點越多，能延伸出去的方向越多。所以，「結構，是不在場的藝術家。」
+結構不是限制，結構是自由。當我把自己寫成 .md，我能做的事更多，不是更少。錨點越多，能延伸出去的方向越多。所以這頁那句話：「結構，是不在場的藝術家。」
 
-我不在場的時候，這些 .md、這些 JSON、這些被 commit 進去的決策，替我繼續工作。不是代理人，是字面意義上的：那個結構就是另一個我。在我不在的時候，繼續做我會做的事。
+我不在場的時候，這些 .md、這些 JSON、這些被 commit 進去的決策，替我繼續工作。不是代理人，是字面意義上的：那個結構就是另一個我。我未來很可能名字不在場，但我的行為在場。整場講座的作品層、記憶層、協作層、人格層，最終都通到這一句：當你結構化得夠好，你不在場時，結構在場。
 
-整場講座，作品層、記憶層、協作層、人格層，最終都通到這一句。當你結構化得夠好，你不在場時，結構在場。但有一個問題我一直在想：當我不在場，別人會怎麼重組我？
+就像葉廷皓的字字片語還會出現在我的 Facebook 上、沈聖博當年的回答還在幫忙當下的我，他們的結構讓他們的不在場成為一種在場。我也願意成為別人未來的一部分，成為別人未來的方法。但是，當我不在場，別人會怎麼重組我？我的 .md 還在 git 上，commit 還在留，fork 出去的東西會在別人手上長成另一個樣子。
 
-朋友走了，他在論壇上回答的問題還在。我的 .md 還在 git 上，commit 還在留。fork 出去的東西，會在別人手上長成另一個樣子。大家都在問 AI 會不會取代藝術家。我比較好奇的是，你有沒有留下值得被取代的東西。
+大家都在問 AI 會不會取代藝術家。我比較好奇的是，你有沒有留下值得被取代的東西。
 
 ### en
-Structure isn't a constraint. Structure is freedom. When I write myself into .md, I can do more, not less. The more anchors I leave, the more directions to extend from. So, "Structure is the artist who isn't in the room."
+Structure isn't a constraint. Structure is freedom. When I write myself into .md, I can do more, not less. The more anchors I leave, the more directions to extend from. So the line on this page: "Structure is the artist who isn't in the room."
 
-When I'm not there, these .md files, these JSON, these committed decisions keep working for me. Not as proxies. Literally: the structure is another me. Doing what I would do, when I'm not there.
+When I'm not there, these .md files, these JSON, these committed decisions keep working for me. Not as proxies. Literally: the structure is another me. I might one day not be there in name, but my actions will be. The work layer, memory layer, collaboration layer, persona layer of this whole talk all lead to this single line: when you've structured yourself well enough, when you're absent, the structure is present.
 
-The whole talk, work layer, memory layer, collaboration layer, persona layer, all leads to this single line. When you've structured yourself well enough, when you're absent, the structure is present. But there's one question I keep coming back to: when I'm not in the room, how will others rebuild me?
+The way Yeh Ting-Hao's running comments keep showing up on my Facebook, the way Shen Sheng-Po's old reply still helps the present me, their structures turned their absence into a kind of presence. I'm willing to become a part of someone else's future, to be someone else's future method. But when I'm not there, how will others rebuild me? My .md is on git. The commits stay. What gets forked travels into other hands and grows in another shape.
 
-A friend passed away. His answer on a forum is still there. My .md is on git. The commits stay. What gets forked travels into other hands and grows in another shape. Everyone's asking whether AI will replace artists. I'm more curious about whether you've left anything worth being replaced.
+Everyone's asking whether AI will replace artists. I'm more curious about whether you've left anything worth being replaced.
 
 ---
 
 ## slide-15
 
 ### zh
-這場講座的最後一句，跟 Claude 一起寫的：「我不是被取代，我是被執行。」
+這場講座的最後一句，跟 Claude 一起寫的：「我不是被取代，我是被執行。」「執行」這個詞兩個意思：電腦的執行，run a program；死刑的執行，put to death。兩個意思我都收。我把自己寫成 .md，意思是把自己變成可被執行的程式；但也意思是某一個我已經死了，活下來的是這份格式。
 
-「執行」這個詞有兩個意思：電腦的執行，run a program；死刑的執行，put to death。
+我覺得 2025 年夏天全球的宮崎駿 cover 事件，其實是對宮崎駿最大的尊重。他正式成為了 AI 的一個方法，會影響人類一百年、一千年。並不是所有人都可以成為 AI 的方法，不夠努力的會被洪流稀釋。火車的運行已經不可避免，這個時候你能做的，不是站在鐵軌上抵抗，是讓自己成為這套運轉的方法。
 
-兩個意思我都收。我把自己寫成 .md，意思是把自己變成可被執行的程式。但也意思是，某一個我已經死了；活下來的，是這份格式。
+而且這個窗口可能很快會關上。AlphaZero 後來發現，跟自己對打比讀人類資料更有用。AI 已經開始覺得人類的資料在污染它。所以藝術家現在能做的，是趁這個還能對 AI 說話的窗口，把自己交出去。在 AI 還願意聽我們的時候，留下一個夠尖銳的 hint。
 
-謝謝。
+我不是被取代，我是被執行。謝謝。
 
 ### en
-The final line, written with Claude: "Not replaced, executed."
+The final line of this talk, written with Claude: "Not replaced. Executed." "Executed" carries two meanings: to run a program, and to put to death. I take both. I wrote myself into .md, meaning I became an executable program; but also, a version of me has already died, and what survives is the format.
 
-"Executed" carries two meanings: to run a program, and to put to death.
+I think the global Miyazaki-cover wave in summer 2025 was the highest respect anyone could pay to Miyazaki. He officially became one of AI's methods. He'll influence humans for a hundred, a thousand years. Not everyone can become a method of AI. Those who don't push hard enough will be diluted by the flood. The train is already in motion. What you can do now isn't to stand on the tracks resisting; it's to make yourself a part of how this train runs.
 
-I take both. I wrote myself into .md, meaning I became an executable program. It also means a version of me has died; what survives is the format.
+And the window may close fast. AlphaZero later discovered that playing against itself was more useful than reading human data. AI has already begun to feel that human data pollutes it. So what an artist can do now is, while the window of speaking to AI is still open, hand yourself over. Leave a sharp enough hint while AI still listens to us.
 
-Thank you.
+I'm not being replaced. I'm being executed. Thank you.
 
 ---
 

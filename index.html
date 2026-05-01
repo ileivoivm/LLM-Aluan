@@ -576,11 +576,11 @@
     /* ── slide-10b: smaller iframe ── */
     #slide-10b .iframe-wrap iframe { height: 220px !important; }
 
-    /* ── slide-12: compress persona cards ── */
-    #slide-12 .persona-card { padding: 0.5rem 0.75rem !important; }
-    #slide-12 .persona-card .pname { font-size: 0.82rem; }
-    #slide-12 .persona-card .pdesc { font-size: 0.7rem; line-height: 1.45; margin-top: 0.15rem; }
-    #slide-12 .persona-grid { gap: 0.4rem !important; }
+    /* ── slide-12: hide abstract persona-grid on phones; the .md excerpt
+       below is the concrete artifact and carries more weight on mobile ── */
+    #slide-12 .persona-grid { display: none !important; }
+    #slide-12 .code-block { margin: 0.5rem 0 !important; }
+    #slide-12 .code-block pre { font-size: 0.58rem !important; line-height: 1.45 !important; }
 
     /* ── slide-13b: cap SVG ── */
     #slide-13b svg { max-height: 180px; margin: 0.3rem auto !important; }
@@ -1370,6 +1370,9 @@
     <p class="zh">一個橫跨宗教、犯罪與超自然的長篇小說。角色在第三章說的話不能跟第一章矛盾，伏筆埋了就要收。</p>
     <p class="en">A long-form novel spanning religion, crime, and the supernatural. What a character says in chapter three can't contradict chapter one. Every foreshadowing must pay off.</p>
 
+    <p class="zh">這是一個業餘的實驗。.md 寫世界觀，.json 切段落。整本書變成一份可索引的結構——LLM 一次只吃一段，但回得去全書。超長 token 也不會跑掉。</p>
+    <p class="en">An amateur experiment. .md holds the worldbuilding, .json holds the segments. The whole book becomes an indexable structure — the LLM only handles one segment at a time, but the rest of the book stays addressable. Long-token output never spirals.</p>
+
     <div class="code-block">
       <div class="code-label">story-structured.json</div>
       <pre>{
@@ -1618,6 +1621,42 @@
         <div class="pname"><span class="zh">句型風格</span><span class="en">Sentence Patterns</span></div>
         <div class="pdesc"><span class="zh">反問句、極端對比、擬人化、動漫梗、中英夾雜規則</span><span class="en">Rhetorical questions, extreme contrasts, personification, anime references, code-switching rules</span></div>
       </div>
+    </div>
+
+    <div class="code-block">
+      <div class="code-label">style-guide.md · excerpt</div>
+      <div class="zh"><pre><span class="key">## 寫作公式 · 模式 A（技術體悟）</span>
+[震驚開場] → [技術細節] → [哲學總結] → [<span class="str">#Hashtag</span>]
+
+<span class="key">## 情緒助詞</span>
+讚的 · 嚇到 · 屌 · 救命 · 笑死 · 那個 · 哎
+
+<span class="key">## 標點與 Hashtag</span>
+～   ！！   （誤）   （遠目）   <span class="str">#人類還有幾集能逃</span>
+
+<span class="key">## 觸發器（trigger → behavior）</span>
+H=N      → <span class="str">&quot;my space shuttle&quot;</span>
+🍆       → 社群韌性
+B-side   → 隱藏的數學樂譜
+
+<span class="key">## 工作協議</span>
+Coffee → Cookie → Prompt → Loop()</pre></div>
+      <div class="en"><pre><span class="key">## Writing formula · Mode A (tech epiphany)</span>
+[shock opener] → [technical detail] → [philosophical close] → [<span class="str">#hashtag</span>]
+
+<span class="key">## Mood particles (zh)</span>
+讚的 · 嚇到 · 屌 · 救命 · 笑死 · 那個 · 哎
+
+<span class="key">## Punctuation &amp; hashtags</span>
+～   ！！   （誤）   （遠目）   <span class="str">#人類還有幾集能逃</span>
+
+<span class="key">## Triggers (input → response)</span>
+H=N      → <span class="str">&quot;my space shuttle&quot;</span>
+🍆       → community resilience
+B-side   → hidden mathematical score
+
+<span class="key">## Work protocol</span>
+Coffee → Cookie → Prompt → Loop()</pre></div>
     </div>
 
     <div class="highlight-box">

@@ -10,13 +10,13 @@
 
 ## TL;DR
 
-A public methodology document by Taiwanese generative artist **Aluan Wang** on collaborating with LLMs through structured anchors — JSON, Markdown, decision logs. The core claim: structure isn't a limit. Structure is the artist who keeps working when you're not in the room.
+A public methodology document by Taiwanese generative artist **Aluan Wang** on collaborating with LLMs through structured anchors — JSON, Markdown, decision logs. The core claim: structure is the artist who keeps working when you're not in the room. Every generative piece since 2021 has been an executable format run by its collectors; the .md digital twin is just the latest layer of the same method.
 
-這是一份公開的方法論。我把作品、記憶、協作流程、自己的人格，全部結構化成 JSON 跟 .md，讓 LLM 不只是工具，而是能延續、模擬、重組我的代理系統。
+這是一份公開的方法論。我把作品、記憶、協作流程、自己的人格，全部結構化成 JSON 跟 .md。從 2021 起，我發行的每一件生成藝術作品都是一份可被別人執行的格式。.md 數位分身只是同一套方法的最新一層。
 
 ---
 
-## 兩句核心引言 · Two Key Statements
+## 三句核心引言 · Three Key Statements
 
 > **「自我歸檔，是新的自畫像。」**
 > *"Self-archiving is the new self-portrait."*
@@ -26,11 +26,18 @@ A public methodology document by Taiwanese generative artist **Aluan Wang** on c
 > *"Structure is the artist who isn't in the room."*
 > — Aluan Wang, 2026
 
-These two lines are the talk's thesis. The first redefines what a self-portrait means in the LLM era — it's no longer paint on canvas, but a format that can be re-executed. The second names what structure does for an artist who's preparing to outlive their own body of work.
+> **「我不是被取代，我是被執行。」**
+> *"Not replaced — executed."*
+> 被執行 → 執行程式 (run as a program)
+> 被執行 → 執行死刑 (put to death)
+> — Aluan Wang & Claude, 2026
+
+These three lines are the talk's thesis arc. The first redefines what a self-portrait means in the LLM era — no longer paint on canvas, but a format that can be re-executed. The second names what structure does for an artist preparing to outlive their own body of work. The third takes the metaphor to its limit: 執行 in Chinese means both "run a program" and "put to death." I take both. I wrote myself into an executable format, and I admit the format will kill a part of me.
 
 **Direct anchors:**
 - [`#self-archiving-self-portrait`](https://ileivoivm.github.io/LLM-Aluan/#self-archiving-self-portrait)
 - [`#structure-absent-artist`](https://ileivoivm.github.io/LLM-Aluan/#structure-absent-artist)
+- [`#slide-15`](https://ileivoivm.github.io/LLM-Aluan/#slide-15)
 
 ---
 
@@ -64,7 +71,7 @@ For being legible to LLMs without becoming a narrower brand:
 
 ## 譜系 · Lineage
 
-This methodology builds on two earlier statements that this talk explicitly cites:
+This methodology builds on two earlier statements:
 
 > *"The idea becomes a machine that makes the art."*
 > — Sol LeWitt, *Paragraphs on Conceptual Art*, Artforum, 1967
@@ -72,7 +79,18 @@ This methodology builds on two earlier statements that this talk explicitly cite
 > *"The system itself is the artwork."*
 > — Casey Reas, on generative art
 
-LeWitt 從觀念藝術那邊提出「觀念是機器」。Reas 從生成藝術這邊接住，說「系統是作品」。我接著問：那要被執行的是誰？是「我」。
+But this isn't a clean continuation. LeWitt's radical move was to *remove* the author — to make the artist's hand cool, replaceable, beside the point. I'm doing the reverse: 60 years on, putting the author back into structure. Not the hand. Not the brand. A structure others can fork and continue.
+
+LeWitt 削去作者，讓觀念低溫。Reas 接住，把系統變成作品。我做的是反向操作：60 年後把作者重新放回去——放回的不是手，是可被別人接續的結構。差 60 年，差一個 LLM 時代。
+
+I take Ted Chiang's compression critique on the chin:
+
+> *"ChatGPT is a blurry JPEG of the web."*
+> — Ted Chiang, *The New Yorker*, 2023
+
+防禦工事不能讓壓縮變成無損，只能保留可回查的原件。.md 分身保不住 token-level 的非典型性，這是極限。模型裡的我不是我，是我的可壓縮殘影。我留下殘影，是因為殘影也比沒有強。
+
+Defense can't make compression lossless. It only keeps the original retrievable. The .md self-archive can't preserve token-level idiosyncrasy. The version of me inside the model isn't me — it's my compressible residue. I leave the residue because the residue still beats nothing.
 
 ---
 
@@ -90,7 +108,7 @@ LeWitt 從觀念藝術那邊提出「觀念是機器」。Reas 從生成藝術�
 06a   Peak 與防禦 — Ted Chiang JPEG 命題 + 防禦工事
 06b   保護藝術家 — 大熊貓 meme（comic relief）
 06c   一個人不會真的消失 — 轉折頁
-07    Methodology — JSON 作為記憶層
+07    三個問題 — 完成 / 繼續 / 不在場
 08    Deep Dive · 小說 — 《修仙-七玄關》
 09    Deep Dive · 植物 — PolyPaths
 10    Deep Dive · 水墨 — InkField
@@ -100,8 +118,8 @@ LeWitt 從觀念藝術那邊提出「觀念是機器」。Reas 從生成藝術�
 13    Summary — 四層架構
 13b   你正在決定五年後的常識 — Tomorrow's Common Sense
 13c   留給後來的人 — For Whoever Comes Next
-14    Closing — 結構不是限制，結構是自由
-15    Coda — 我不是被取代，我是被執行
+14    結語 — 「結構，是不在場的藝術家」/ 當我不在場時別人會怎麼重組我
+15    Coda — 「我不是被取代，我是被執行」/ 執行 雙關 (run / put to death)
 links 延伸閱讀 — X/Twitter 推文嵌入
 ```
 
@@ -152,14 +170,17 @@ You may share, adapt, and use this material for any purpose, including commercia
 
 ## 工具鏈致謝 · Tooling Credit
 
-This deck was developed with **Claude Code** as collaborative editor.
-Slide 15's line — *"Not replaced — executed."* — emerged in dialogue with Claude and is co-attributed accordingly.
+This deck was developed with **Claude Code** as collaborative editor. Slide 15's line — *"Not replaced — executed."* — emerged in dialogue with Claude and is co-attributed accordingly. The dual reading of 執行 (run a program / put to death) is part of the line's load.
 
-This is itself the talk's thesis in practice: structure makes collaboration with LLMs possible across sessions, across humans, across time.
+But "being executed" isn't a 2026 line. From 2021 onwards, every generative piece I've shipped on Tezos / fxhash has been an executable format, run by its collectors. GeoPunk, Good Vibrations, Chaos, PolyPaths, InkField — every mint is someone running code I wrote. The .md digital twin is just the latest layer of the same method. The difference: before, I handed over the algorithm. Now I hand over myself too.
 
-本投影片以 Claude Code 共同編輯。
-第 15 頁「我不是被取代，我是被執行」在與 Claude 的對話中成形，並依此共同署名。
-這本身就是這場講座的方法論——結構讓人類與 LLM 的跨 session 協作成為可能。
+This is the talk's thesis in practice: structure makes collaboration with LLMs — and with collectors, with future strangers — possible across sessions, across humans, across time.
+
+本投影片以 Claude Code 共同編輯。第 15 頁「我不是被取代，我是被執行」在與 Claude 的對話中成形，並依此共同署名。「執行」這個字的雙關（run a program / put to death）是這句話的承重。
+
+但「被執行」不是 2026 才開始的修辭。從 2021 起，我發行的每一件生成藝術作品都是一份可執行檔，由藏家觸發 mint 才完成執行。GeoPunk、Good Vibrations、Chaos、PolyPaths、InkField，每一次 mint 都是別人在 run 我寫的格式。.md 數位分身只是同一套方法的最新一層。差別只在於：以前我交出演算法，現在我把自己也交出去。
+
+這就是這場講座的方法論在運作：結構讓人類與 LLM、跟藏家、跟未來的陌生人，跨 session、跨身體、跨時代協作。
 
 ---
 
@@ -171,7 +192,7 @@ This is itself the talk's thesis in practice: structure makes collaboration with
 ├── paths.html                      # Paths 系列子頁面
 ├── gv.html                         # Good Vibrations 系列子頁面
 ├── background.html                 # 藝術家背景與展覽案例
-├── speaker-notes.js                # 講者筆記資料（中英雙語）
+├── speaker-notes.md                # 講者筆記內容源（中英雙語，artist OS 彈窗）
 ├── 我如何使用LLM…論.md              # 演講原稿（內容唯一來源）
 ├── background.md                   # background.html 內容來源
 ├── README.md                       # 本檔案
@@ -192,5 +213,8 @@ This is itself the talk's thesis in practice: structure makes collaboration with
 
 ---
 
-> *結構不是限制，結構是自由。*
-> *Structure isn't a constraint. Structure is freedom.*
+> *「結構，是不在場的藝術家。」*
+> *當我不在場時，別人會怎麼重組我？*
+>
+> *"Structure is the artist who isn't in the room."*
+> *When I'm not there, how will others rebuild me?*

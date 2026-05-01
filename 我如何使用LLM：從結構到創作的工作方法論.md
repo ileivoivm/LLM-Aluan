@@ -26,6 +26,9 @@ OUTPUT  ileiv oivm → Ileivoivm
 > "Self-archiving is the new self-portrait."
 > — 王新仁（Aluan Wang）, 2026
 
+> *LeWitt 削去作者。我把作者放回來──放回的不是手，是可被別人接續的結構。*
+> *LeWitt removed the author. I put the author back — not the hand, but a structure others can continue.*
+
 我不創造圖像，我建構的是能記住決策如何發生的系統。
 在我的作品裡，繪畫存在於時間之中，而不是形式之上。
 你所看到的不是結果，而是人類意圖殘留下來的痕跡。
@@ -201,10 +204,11 @@ GeoPunk 取樣地球。Chaos 取樣自己。
 
 ---
 
-## 07 — JSON 作為記憶層
+## 07 — 三個問題
 
-LLM 的上下文有限，記憶會斷。
-JSON 和 .md 就是錨點。
+作品什麼時候算完成？
+誰有權繼續？
+人不在場時，這權利屬於誰？
 
 故事　筆觸　行為
 
@@ -368,5 +372,13 @@ AI 給他們的答案，取決於今天你寫了什麼、發了什麼、留下�
 「我不是被取代，我是被執行。」
 
 "Not replaced — executed."
+
+```
+被執行 → 執行程式（run as a program）
+被執行 → 執行死刑（put to death）
+```
+
+*我把自己寫成可執行格式，也承認那個格式會殺死一部分的我。*
+*I wrote myself into an executable format, and admit the format will kill a part of me.*
 
 *— aluan wang & claude, 2026*

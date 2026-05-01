@@ -64,7 +64,7 @@ This fork wasn't designed afterward. The 2021 impulse made it happen. My name si
 
 這條線中間還有一個橋：Casey Reas，Processing 的共同創造者。他主張的核心觀點是：系統本身就是作品，每一次輸出只是這個系統的一個實例。我的所有程式碼，我也都認為它是作品的一部分，輸出只是這個系統最終的表現特徵。
 
-LeWitt 給了觀念。Reas 給了系統。我接著問：那要被執行的是誰？是「我」。所以這頁的三句宣言把這條線串起來。我不創造圖像，我建構的是能記住決策如何發生的系統。繪畫存在於時間之中，而不是形式之上。你看到的，是人類意圖殘留下來的痕跡。
+LeWitt 給了觀念。Reas 給了系統。我接著問：那要被執行的是誰？是「我」。但這裡要誠實一句：我做的不是接續 LeWitt，是反向操作。LeWitt 削去作者，讓觀念低溫。我把作者放回來，但放回的不是手，是可被別人接續的結構。差 60 年，差一個 LLM 時代。所以這頁的三句宣言把這條線串起來。我不創造圖像，我建構的是能記住決策如何發生的系統。繪畫存在於時間之中，而不是形式之上。你看到的，是人類意圖殘留下來的痕跡。
 
 ### en
 Two quotes on this page. Sixty years between them. In 1967, Sol LeWitt wrote: "The idea becomes a machine that makes the art." That year, conceptual art was just emerging. He predicted: art doesn't need the artist to make it by hand. Write the idea clearly, and the rest can be handed to a machine, or an executor. Written in 1967, this now sounds like a prediction of LLMs.
@@ -73,7 +73,7 @@ In 2026 I write: "Self-archiving is the new self-portrait." Why? Picasso, van Go
 
 There's a bridge in this line: Casey Reas, co-creator of Processing. His core argument is that the system itself is the artwork, and every output is just an instance of the system. I treat my own code the same way; the output is just the final expression of that system.
 
-LeWitt gave us the idea. Reas gave us the system. I'm asking: what gets executed? It's "me." That's why this page's three statements connect the line. I don't create images. I build systems that remember how decisions were made. Painting exists in time, not in form. What you see is the residue of human intention.
+LeWitt gave us the idea. Reas gave us the system. I'm asking: what gets executed? It's "me." One honest line here: I'm not extending LeWitt; I'm doing the reverse. LeWitt removed the author to cool the idea down. I put the author back, but not the hand. What I put back is a structure others can continue. Sixty years apart, an LLM era apart. That's why this page's three statements connect the line. I don't create images. I build systems that remember how decisions were made. Painting exists in time, not in form. What you see is the residue of human intention.
 
 ---
 
@@ -255,22 +255,22 @@ Yeh Ting-Hao made me realize one thing: I don't want the people who love me to b
 ## slide-7
 
 ### zh
-接下來三張投影片是同一個方法的三個版本。我用兩種格式：.md 跟 JSON，從資料科學那邊借過來變成創作的容器。換個比喻：.md 是「果菜機」本身，是方法論的骨架；JSON 是丟進去的蘋果、西瓜、鳳梨，是具體的變數跟資料。兩個一起運作，產生一杯新鮮的果汁，那個果汁就是作品。如果只有方法論沒有變數，方法論很乾燥乏味；如果只有變數沒有方法論，變數就只是一堆散亂的水果。
+這頁要釘三個問題。作品什麼時候算完成？誰有權繼續？人不在場時，這權利屬於誰？這三個問題不是修辭，是接下來三件作品在實際操作上要回答的東西。
 
-演算法不是中性的，演算法是我們選擇的方法。比如中垂線演算法，找一個線段上距離中心最近的那個點，這件事本身就帶著哲學：誰是中心？最近意味著什麼？這個演算法在我的音像作品裡反覆出現，因為它不只是數學，是一種思考的姿勢。我寫進 JSON 的，從來不是 API response，是這種帶有姿勢的決策。
+下面三件作品，故事、筆觸、行為，是同一個方法在三個材料上的展開。故事是《修仙-七玄關》，JSON 當外部記憶，故事的繼續權交給結構。筆觸是 InkField，AI 用 JSON 畫水墨，每一筆都被寫成可被別人重播的事件。行為是 PolyPaths，觀眾的手勢被壓進 hash，作品由所有人一起完成。三件作品分別把「繼續」、「完成」、「不在場」這三個問題各推到一個方向。
 
-JSON 的巢狀結構，給的是橫向的探索空間。.md 給的是垂直的脈絡：這個東西是什麼，它該怎麼被讀。JSON 給的是橫向的可能性：這個東西的每一個動作、每一個屬性、每一個觸發條件，都可以被描述、被重新組合。兩個一起用，就是一個可以被機器讀、被人讀、被未來重組的記憶層。
+兩個格式：.md 跟 JSON。.md 是垂直脈絡，是這個東西是什麼，該怎麼被讀。JSON 是橫向探索，是每一個動作、每一個屬性、每一個觸發條件都可以被描述、被重新組合。打個比方，.md 是果菜機本身，是方法論的骨架。JSON 是丟進去的蘋果、西瓜、鳳梨，是具體的變數。兩個一起運作，產生一杯新鮮的果汁，那個果汁就是作品。
 
-接下來三件作品，故事、筆觸、行為，是同一個容器的三種裝法。故事是《修仙-七玄關》小說，JSON 當外部記憶。筆觸是 InkField，JSON 描述每一筆水墨的事件序列。行為是 PolyPaths，觀眾的手勢被壓進 JSON 變成種子。我做的不是三件不同的作品，是同一個方法在三個材料上的展開。
+演算法不是中性的，演算法是我們選擇的方法。中垂線演算法，找一個線段上距離中心最近的那個點，這件事本身就帶著哲學：誰是中心？最近意味著什麼？我寫進 JSON 的，從來不是 API response，是這種帶有姿勢的決策。
 
 ### en
-The next three slides are the same method in three forms. I use two formats, .md and JSON, borrowed from data science and turned into creative containers. Another way to picture it: .md is the juicer itself, the skeleton of the methodology. JSON is the apple, watermelon, pineapple you throw in, the actual variables and data. Together they produce fresh juice, which is the work. Methodology without variables stays dry; variables without methodology are just scattered fruit.
+This page nails three questions. When is a work complete? Who has the right to continue it? When the maker isn't there, whose right is it? These aren't rhetoric. The next three works each push one of these questions in a direction.
 
-Algorithms aren't neutral. They're methods we choose. Take the perpendicular-bisector algorithm, finding the point on a line segment closest to a given center. The act itself carries philosophy: who is the center? What does "closest" mean? This algorithm shows up over and over in my audiovisual work, because it's not just math, it's a thinking posture. What I put into JSON is never an API response. It's this kind of decision, with a posture in it.
+The next three works, story, brushstroke, behavior, are the same method spread across three materials. Story is Seven Gates, where JSON serves as external memory and the right to continue is given to the structure. Brushstroke is InkField, where AI paints ink wash through JSON, every stroke written as a replayable event. Behavior is PolyPaths, where audience gestures get compressed into hashes and the work is finished by everyone. Three works, three questions: continue, complete, absence.
 
-JSON's nested structure gives horizontal exploration space. .md gives vertical context: what this thing is, how it should be read. JSON gives horizontal possibilities: every action, every attribute, every trigger condition can be described and recombined. The two together make a memory layer that machines can read, humans can read, and the future can recompose.
+Two formats: .md and JSON. .md gives vertical context, what this thing is and how it should be read. JSON gives horizontal exploration, every action, attribute, trigger that can be described and recombined. Picture it: .md is the juicer itself, the skeleton of the methodology. JSON is the apple, watermelon, pineapple you throw in, the actual variables. Together they produce fresh juice, and that juice is the work.
 
-The next three works, story, brushstroke, behavior, are three ways of filling the same container. Story is Seven Gates, a novel that uses JSON as external memory. Brushstroke is InkField, where JSON describes the event sequence of each ink stroke. Behavior is PolyPaths, where audience gestures get compressed into JSON as seeds. Three different works on the surface; one method underneath, applied to three materials.
+Algorithms aren't neutral. They're methods we choose. Take the perpendicular-bisector algorithm, finding the point on a line segment closest to a given center. The act itself carries philosophy: who is the center? What does "closest" mean? What I put into JSON is never an API response. It's this kind of decision, with a posture in it.
 
 ---
 
@@ -493,7 +493,7 @@ Everyone's asking whether AI will replace artists. I'm more curious about whethe
 ## slide-15
 
 ### zh
-這場講座的最後一句，跟 Claude 一起寫的：「我不是被取代，我是被執行。」「執行」這個詞兩個意思：電腦的執行，run a program；死刑的執行，put to death。兩個意思我都收。我把自己寫成 .md，意思是把自己變成可被執行的程式；但也意思是某一個我已經死了，活下來的是這份格式。
+這場講座的最後一句，跟 Claude 一起寫的：「我不是被取代，我是被執行。」「執行」這個詞兩個意思：電腦的執行，run a program；死刑的執行，put to death。兩個意思我都收。我把自己寫成可執行格式，也承認那個格式會殺死一部分的我。模型裡的我不是我，是我的可壓縮殘影。我留下殘影，是因為殘影也比沒有強。
 
 我覺得 2025 年夏天全球的宮崎駿 cover 事件，其實是對宮崎駿最大的尊重。他正式成為了 AI 的一個方法，會影響人類一百年、一千年。並不是所有人都可以成為 AI 的方法，不夠努力的會被洪流稀釋。火車的運行已經不可避免，這個時候你能做的，不是站在鐵軌上抵抗，是讓自己成為這套運轉的方法。
 
@@ -502,7 +502,7 @@ Everyone's asking whether AI will replace artists. I'm more curious about whethe
 我不是被取代，我是被執行。謝謝。
 
 ### en
-The final line of this talk, written with Claude: "Not replaced. Executed." "Executed" carries two meanings: to run a program, and to put to death. I take both. I wrote myself into .md, meaning I became an executable program; but also, a version of me has already died, and what survives is the format.
+The final line of this talk, written with Claude: "Not replaced. Executed." "Executed" carries two meanings: to run a program, and to put to death. I take both. I wrote myself into an executable format, and I admit the format will kill a part of me. The version of me inside the model isn't me. It's my compressible residue. I leave the residue because the residue still beats nothing.
 
 I think the global Miyazaki-cover wave in summer 2025 was the highest respect anyone could pay to Miyazaki. He officially became one of AI's methods. He'll influence humans for a hundred, a thousand years. Not everyone can become a method of AI. Those who don't push hard enough will be diluted by the flood. The train is already in motion. What you can do now isn't to stand on the tracks resisting; it's to make yourself a part of how this train runs.
 

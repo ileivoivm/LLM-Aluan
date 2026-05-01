@@ -385,20 +385,20 @@ The shared design across all three layers is: write methodology as .md first, th
 ### zh
 我把這幾年在 Facebook、X、Threads 上發過的東西，全部下載下來，丟進 LLM，請它幫我抽出寫作習慣：常用什麼詞、句型怎麼跑、面對不同主題會切到哪種口氣。
 
-抽出來之後，我整理成一份 .md。分四塊：人格設定、寫作公式、口頭禪、句型風格。
+抽出來之後，我整理成一份 .md。分四塊：人格設定、寫作公式、口頭禪、句型風格。這份 .md 不是給人看的，是給 LLM 看的。它讀完之後，能模擬我的口氣回應問題、用我的方式組織想法。
 
-這份 .md 不是給人看的，是給 LLM 看的。它讀完之後，能模擬我的口氣回應問題、用我的方式組織想法。
+但要誠實一句：這是工作工具，不是哲學承諾。.md 能讓 LLM 模擬我的口氣，但模型裡的我不是我，是我的可壓縮殘影。問題只有一個：藝術家能不能拿回自我資料化的設計權？
 
-到這一步，LLM 對我來說不再是助理。它是一個 agent，一個模擬我自己的 agent。
+而且這也不是新事。我從 2021 第一件作品上鏈那天起，就一直在把自己寫成可執行格式讓別人 run。演算法是靈魂，鏈是發行通路，藏家是執行者。.md 數位分身只是同一套方法的最新一層。差別只在於：以前我交出演算法，現在我把自己也交出去。
 
 ### en
 I downloaded everything I'd written on Facebook, X, Threads, years of posts, and dumped it into an LLM. I asked it to extract my writing habits: recurring words, sentence shapes, and how my tone shifts across topics.
 
-Then I organized the output into an .md. Four sections: persona, writing formulas, vocabulary, sentence style.
+Then I organized the output into an .md. Four sections: persona, writing formulas, vocabulary, sentence style. This .md isn't written for humans. It's written for the LLM. After reading it, the model can mimic my voice and structure thoughts the way I would.
 
-This .md isn't written for humans. It's written for the LLM. After reading it, the model can mimic my voice and structure thoughts the way I would.
+One honest line here: this is a working tool, not a philosophical promise. The .md lets the LLM mimic my voice, but the version of me inside the model isn't me. It's my compressible residue. The only real question: can the artist take back the design rights of being turned into data?
 
-At this point, the LLM isn't my assistant anymore. It's an agent, one that simulates me.
+And this isn't new. From the day I minted my first work on chain in 2021, I've been writing myself into executable formats and letting others run them. Algorithm is the soul, the chain is the distribution channel, collectors are the executors. The .md digital twin is just the latest layer of the same method. The only difference: before, I handed over the algorithm. Now I hand over myself too.
 
 ---
 
@@ -471,7 +471,7 @@ It's not about making the system remember you. It's about making sure that, when
 ## slide-14
 
 ### zh
-結構不是限制，結構是自由。當我把自己寫成 .md，我能做的事更多，不是更少。錨點越多，能延伸出去的方向越多。所以這頁那句話：「結構，是不在場的藝術家。」
+這頁的那句話：「結構，是不在場的藝術家。」當我把自己寫成 .md、把作品寫成 .json、把行為寫成 hash，我能做的事更多，不是更少。錨點越多，能延伸出去的方向越多。
 
 我不在場的時候，這些 .md、這些 JSON、這些被 commit 進去的決策，替我繼續工作。不是代理人，是字面意義上的：那個結構就是另一個我。我未來很可能名字不在場，但我的行為在場。整場講座的作品層、記憶層、協作層、人格層，最終都通到這一句：當你結構化得夠好，你不在場時，結構在場。
 
@@ -480,7 +480,7 @@ It's not about making the system remember you. It's about making sure that, when
 大家都在問 AI 會不會取代藝術家。我比較好奇的是，你有沒有留下值得被取代的東西。
 
 ### en
-Structure isn't a constraint. Structure is freedom. When I write myself into .md, I can do more, not less. The more anchors I leave, the more directions to extend from. So the line on this page: "Structure is the artist who isn't in the room."
+The line on this page: "Structure is the artist who isn't in the room." When I write myself into .md, my works into .json, my behavior into hash, I can do more, not less. The more anchors I leave, the more directions to extend from.
 
 When I'm not there, these .md files, these JSON, these committed decisions keep working for me. Not as proxies. Literally: the structure is another me. I might one day not be there in name, but my actions will be. The work layer, memory layer, collaboration layer, persona layer of this whole talk all lead to this single line: when you've structured yourself well enough, when you're absent, the structure is present.
 
@@ -495,20 +495,20 @@ Everyone's asking whether AI will replace artists. I'm more curious about whethe
 ### zh
 這場講座的最後一句，跟 Claude 一起寫的：「我不是被取代，我是被執行。」「執行」這個詞兩個意思：電腦的執行，run a program；死刑的執行，put to death。兩個意思我都收。我把自己寫成可執行格式，也承認那個格式會殺死一部分的我。模型裡的我不是我，是我的可壓縮殘影。我留下殘影，是因為殘影也比沒有強。
 
+而且「把自己寫成可執行格式」這件事，不是 2026 才開始。我從 2021 把第一件作品鑄上鏈那天起，做的就是這件事。每一件 fxhash 作品都是一份可執行檔，演算法是靈魂，鏈是發行通路，藏家是執行者。GeoPunk、Good Vibrations、Chaos、PolyPaths、InkField，每一次 mint 都是別人在 run 我寫的格式。.md 數位分身只是同一套方法用到自己身上的最新一份。所以「被執行」不是 2026 寫的句子，是過去五年我每一件作品已經在做的事。差別只在於：以前我把演算法交出去，現在我把自己也交出去。
+
 我覺得 2025 年夏天全球的宮崎駿 cover 事件，其實是對宮崎駿最大的尊重。他正式成為了 AI 的一個方法，會影響人類一百年、一千年。並不是所有人都可以成為 AI 的方法，不夠努力的會被洪流稀釋。火車的運行已經不可避免，這個時候你能做的，不是站在鐵軌上抵抗，是讓自己成為這套運轉的方法。
 
-而且這個窗口可能很快會關上。AlphaZero 後來發現，跟自己對打比讀人類資料更有用。AI 已經開始覺得人類的資料在污染它。所以藝術家現在能做的，是趁這個還能對 AI 說話的窗口，把自己交出去。在 AI 還願意聽我們的時候，留下一個夠尖銳的 hint。
-
-我不是被取代，我是被執行。謝謝。
+而且這個窗口可能很快會關上。AlphaZero 後來發現，跟自己對打比讀人類資料更有用。AI 已經開始覺得人類的資料在污染它。所以藝術家現在能做的，是趁這個還能對 AI 說話的窗口，把自己交出去。在 AI 還願意聽我們的時候，留下一個夠尖銳的 hint。我不是被取代，我是被執行。謝謝。
 
 ### en
 The final line of this talk, written with Claude: "Not replaced. Executed." "Executed" carries two meanings: to run a program, and to put to death. I take both. I wrote myself into an executable format, and I admit the format will kill a part of me. The version of me inside the model isn't me. It's my compressible residue. I leave the residue because the residue still beats nothing.
 
+And writing myself into an executable format didn't start in 2026. From the day I minted my first work on chain in 2021, this is what I've been doing. Every fxhash piece is an executable file. Algorithm is the soul, the chain is the distribution channel, collectors are the executors. GeoPunk, Good Vibrations, Chaos, PolyPaths, InkField, every mint is someone running a format I wrote. The .md digital twin is just the latest application of the same method, this time turned on myself. So "being executed" isn't a line I wrote in 2026. It's what every work I've made for the past five years has already been doing. The only difference: before, I handed over the algorithm. Now I hand over myself too.
+
 I think the global Miyazaki-cover wave in summer 2025 was the highest respect anyone could pay to Miyazaki. He officially became one of AI's methods. He'll influence humans for a hundred, a thousand years. Not everyone can become a method of AI. Those who don't push hard enough will be diluted by the flood. The train is already in motion. What you can do now isn't to stand on the tracks resisting; it's to make yourself a part of how this train runs.
 
-And the window may close fast. AlphaZero later discovered that playing against itself was more useful than reading human data. AI has already begun to feel that human data pollutes it. So what an artist can do now is, while the window of speaking to AI is still open, hand yourself over. Leave a sharp enough hint while AI still listens to us.
-
-I'm not being replaced. I'm being executed. Thank you.
+And the window may close fast. AlphaZero later discovered that playing against itself was more useful than reading human data. AI has already begun to feel that human data pollutes it. So what an artist can do now is, while the window of speaking to AI is still open, hand yourself over. Leave a sharp enough hint while AI still listens to us. I'm not being replaced. I'm being executed. Thank you.
 
 ---
 

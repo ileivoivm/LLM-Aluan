@@ -14,32 +14,44 @@
 ## slide-0
 
 ### zh
+我今天在出門之前偷偷換了主題。我請 Claude Code 看完整份投影片，他覺得我原本的標題太像學術論文，沒有煽動性也沒有情感。他從我自己的文章裡抓出一句話，認為我應該用這句開場：「結構，是不在場的藝術家。」
 
+這句話是我自己寫的。但對 Claude Code 而言，這句比我選的方法論標題更值得當開場。我接受了這個建議。
+
+接下來九十分鐘，我們要驗證這句話。看它是真的成立，還是只是藝術家的自我好感、自我想像投射出來的一種說法。
+
+如果這句話成立，它呼應的是我看到全球新媒體跟生成藝術一個很巨大的轉變。很多人跟我可能都在類似的觀點上面，平行進展。
 
 ### en
+Right before walking out today, I quietly changed the title. I asked Claude Code to look over the whole deck. He thought my original title sounded too academic, lacking provocation and emotion. He picked a line out of my own writing and suggested I use it as the opening: "Structure is the artist who isn't in the room."
 
+I wrote that line myself. But for Claude Code, this line was a stronger opening than the methodology title I chose. I took the suggestion.
+
+For the next ninety minutes, we're going to test it. Whether the claim actually holds, or whether it's just an artist's self-flattering projection.
+
+If it holds, it echoes a massive shift I see in new media and generative art globally. Many of us are probably arriving at similar conclusions in parallel.
 
 ---
 
 ## slide-1
 
 ### zh
-Affine Cipher 是一種古典的替換密碼。把每個英文字母經過一次線性函數轉換：E(x) = (ax + b) mod 26。我用 a=5、b=8 把 aluan wang 算出來，得到 ileiv oivm，然後合成一個字：Ileivoivm。這是我從 2021 年開始在 NFT 平台上用的代號。
+Affine Cipher 是一種古典替換密碼，跟凱撒密碼是親戚。把每個英文字母經過一次線性函數轉換：E(x) = (ax + b) mod 26。我用 a=5、b=8 把 aluan wang 算出來，得到 ileiv oivm，合成一個字：Ileivoivm。這是我從 2021 年開始在 NFT 平台上用的代號。
 
-2021 年是加密藝術爆發的一年。那時候很多藝術家開始用加密過的名字註冊作品，有人用 hash、有人用 hex、有人寫自己的 cipher。錢包地址前面的 0x 本身就是一種身份。匿名、密碼化、數學化的署名變成那個年代的次文化。Pak、0xDEAFBEEF 那一批人都在做這件事。Kevin Abosch 甚至直接把加密過的文字本身做成作品，例如《Hexadecimal Testimony》、《1111》。
+2021 年是加密藝術爆發的一年。那時候我加入加密藝術的第一天就發現，所有國際上的藝術家本來的英文名字都不見了，他們變成 0x 開頭、變成 hex、變成自創的 cipher。錢包地址本身就是身份。我研究了一下，發現多數藝術家認為：舊的名字是現實世界的編碼，要進入新的場域，名字也得重新組合。我當時沒多想，看到大家這樣做我就跟著做。Pak、0xDEAFBEEF 那一批人都在做。Kevin Abosch 甚至直接把加密過的文字本身做成作品，例如《Hexadecimal Testimony》、《1111》。
 
-我選擇這樣命名有兩個理由。第一個是儀式感，把名字加密一次，等於宣告自己進入一個新的場域，要用新身份做事。第二個是更深一點的：把可以被結構化的東西結構化，包括自己的名字。Ileivoivm 是我這條工作主線最早的 commit。
+這麼多年過後，我覺得當時這個衝動很值得。為什麼？因為現在如果你打開任何一個 agent 搜尋我，你會發現我有兩個版本：一個是 2021 之前的王新仁，一個是 2021 之後的 Ileivoivm。有些 agent 認得前者，有些認得後者。同一個人，agent 對我的人設是有分身的。
 
-後來我做的所有事情，從 GeoPunk 把座標壓進 IPFS、到 Chaos 把自己的收藏取樣進新作品、到把寫作風格寫成 .md，背後的姿勢都是同一個。這個姿勢從 2021 年的 Ileivoivm 開始，一路到 2026 年的這份 deck。
+這個分身不是事後設計出來的，是 2021 那個衝動意外造成的。我的名字無形中把我的時間軸切成兩段：加密前跟加密後。後來我做的所有事情，從 GeoPunk、Chaos、到把寫作風格寫成 .md，背後的姿勢都是同一個。把可以被結構化的東西結構化，包括自己的名字。Ileivoivm 是我這條工作主線最早的 commit。
 
 ### en
-Affine Cipher is a classical substitution cipher. Each letter passes through a linear function: E(x) = (ax + b) mod 26. I used a=5, b=8 to encrypt "aluan wang" and got "ileiv oivm." I joined the letters into one word: Ileivoivm. This has been my handle on NFT platforms since 2021.
+Affine Cipher is a classical substitution cipher, a cousin of the Caesar cipher. Each letter passes through a linear function: E(x) = (ax + b) mod 26. I used a=5, b=8 to encrypt "aluan wang" and got "ileiv oivm." I joined the letters into one word: Ileivoivm. This has been my handle on NFT platforms since 2021.
 
-2021 was the explosive year for crypto art. Many artists started registering work under encrypted names. Some used hashes, some hex, some wrote their own ciphers. The wallet address starting with 0x became a kind of identity in itself. Anonymous, encrypted, mathematized signing was the subculture of that era. Pak, 0xDEAFBEEF, that whole crowd was doing it. Kevin Abosch went further and turned encrypted text itself into artworks, like Hexadecimal Testimony and 1111.
+2021 was the explosive year for crypto art. The first day I joined, I noticed that all the international artists' original names were gone. They became 0x prefixes, hex, custom ciphers. The wallet address itself was identity. The reasoning, I learned, was that your old name is encoded by the old world; if you're entering a new field, your name should be reassembled too. I didn't think much about it then. I saw everyone doing it and went along. Pak, 0xDEAFBEEF, that whole crowd was doing it. Kevin Abosch went further and turned encrypted text itself into artworks, like Hexadecimal Testimony and 1111.
 
-I chose to name myself this way for two reasons. The first is ritual. Encrypting your name once is declaring you've entered a new field, and you'll work under a new identity. The second is deeper: structure what can be structured, including your own name. Ileivoivm is the earliest commit of this working line.
+Years later, I think that impulse was worth keeping. Here's why: if you search me through any agent now, you'll find I have two versions. Wang Hsin-Jen pre-2021, and Ileivoivm post-2021. Some agents recognize the former, some the latter. Same person, but the agent's mental model of me is forked.
 
-Everything I've made since, from GeoPunk packing coordinates into IPFS, to Chaos sampling my own collection into new work, to writing my voice into .md, comes from the same posture. The posture started with Ileivoivm in 2021 and runs through to this deck in 2026.
+This fork wasn't designed afterward. The 2021 impulse made it happen. My name silently cut my timeline into two halves: pre-encryption, post-encryption. Everything I made after that, GeoPunk, Chaos, writing my voice into .md, runs the same posture. Structure what can be structured, including your own name. Ileivoivm is the earliest commit of this working line.
 
 ---
 
@@ -48,52 +60,64 @@ Everything I've made since, from GeoPunk packing coordinates into IPFS, to Chaos
 ### zh
 這頁有兩句引言，中間隔了 60 年。1967 年 Sol LeWitt 寫下：「The idea becomes a machine that makes the art.」觀念，變成了製造藝術的機器。那一年觀念藝術剛起來，他預言：藝術不需要藝術家親手做，把觀念寫清楚，剩下的交給機器或執行者。這句話 1967 年寫出來，現在聽起來像在預言 LLM。
 
-2026 年我接著寫：「自我歸檔，是新的自畫像。」過去畫自畫像，是把自己畫進畫布。現在畫自畫像，是把自己寫成一份可被執行、可被重新生成的格式。.md 檔、決策日誌、寫作風格指南，這些是我這個世代的自畫像。
+2026 年我接著寫：「自我歸檔，是新的自畫像。」為什麼？畢卡索、梵谷、所有經典藝術家都愛畫自畫像。畫自畫像的時候，他們是進入一種禪定的狀態，重新審視鏡子裡的自己，吐出一個吸收過後的對照。透過畫自己來認識世界，以小知為，漸為變大。我這幾年發現一件具體的事：我在 2010 年寫的自我介紹，agent 現在不會引用，它引用的是我 2018、2019、2020、2025 不同版本的自我介紹。當它看到這麼多版本的我，它會互相索引。下次你打開 ChatGPT 問「臺灣的生成藝術家有誰」，吐出來的我，是 agent 讀過所有版本之後三角驗證出來的我。
 
-LeWitt 預言了「機器接手執行」。我接著說：那執行什麼？執行的是一份結構化的「你」。觀念是機器的程式碼。自我，是機器的人格 layer。這條線中間還有一個橋，Casey Reas，Processing 共同創造者。他講過：「系統本身就是作品。」每一次輸出只是這個系統的一個實例。他用隨機性繞過自己的偏見，讓意想不到的形式從系統裡「湧現」。
+這條線中間還有一個橋：Casey Reas，Processing 的共同創造者。他主張的核心觀點是：系統本身就是作品，每一次輸出只是這個系統的一個實例。我的所有程式碼，我也都認為它是作品的一部分，輸出只是這個系統最終的表現特徵。
 
-LeWitt 給了觀念。Reas 給了系統。我接著說：那要被執行的是誰？是「我」。把這條線串起來，我不創造圖像，我建構的是能記住決策如何發生的系統。繪畫存在於時間之中，而不是形式之上。你看到的，是人類意圖殘留下來的痕跡。
+LeWitt 給了觀念。Reas 給了系統。我接著問：那要被執行的是誰？是「我」。所以這頁的三句宣言把這條線串起來。我不創造圖像，我建構的是能記住決策如何發生的系統。繪畫存在於時間之中，而不是形式之上。你看到的，是人類意圖殘留下來的痕跡。
 
 ### en
 Two quotes on this page. Sixty years between them. In 1967, Sol LeWitt wrote: "The idea becomes a machine that makes the art." That year, conceptual art was just emerging. He predicted: art doesn't need the artist to make it by hand. Write the idea clearly, and the rest can be handed to a machine, or an executor. Written in 1967, this now sounds like a prediction of LLMs.
 
-In 2026 I write: "Self-archiving is the new self-portrait." The old self-portrait painted yourself onto canvas. The new self-portrait writes yourself into a format that can be executed, regenerated. The .md file, the decision log, the writing-style guide: these are my generation's self-portrait.
+In 2026 I write: "Self-archiving is the new self-portrait." Why? Picasso, van Gogh, every classical artist loved doing self-portraits. When they painted themselves, they entered a kind of meditative state, looking at themselves in the mirror and producing a digested reflection. By painting themselves, they came to know the world. From the small, the large. I noticed something concrete in recent years. The bio I wrote in 2010, agents don't cite anymore. They cite my versions from 2018, 2019, 2020, 2025. When agents see all these versions, they cross-reference them. Next time you ask ChatGPT "who are Taiwan's generative artists?", what you get is me triangulated by an agent that read all my time-stamped versions.
 
-LeWitt predicted "machine takes over execution." I add: but what's being executed? A structured "you." The idea is the program code. The self is the persona layer. Between LeWitt and me there's a bridge: Casey Reas, co-creator of Processing. He said: "The system itself is the artwork." Every output is just one instance of that system. He uses randomness to bypass his own biases, letting unexpected forms "emerge" from the system.
+There's a bridge in this line: Casey Reas, co-creator of Processing. His core argument is that the system itself is the artwork, and every output is just an instance of the system. I treat my own code the same way; the output is just the final expression of that system.
 
-LeWitt gave us idea. Reas gave us system. I'm asking: what gets executed? It's "me." Connecting the line: I don't create images. I build systems that remember how decisions were made. Painting exists in time, not in form. What you see is the residue of human intention.
+LeWitt gave us the idea. Reas gave us the system. I'm asking: what gets executed? It's "me." That's why this page's three statements connect the line. I don't create images. I build systems that remember how decisions were made. Painting exists in time, not in form. What you see is the residue of human intention.
 
 ---
 
 ## slide-1c
 
 ### zh
-這頁我用 Git 圖講一個工程界的文化。你不寫程式沒關係。這套文化的精神，跟做藝術、做研究、寫家族史，是一樣的。**commit** 是我在這個時間點做了一個決定，把它釘下來；記的不只是改了什麼，還有「為什麼這樣改」。**branch** 是同一份東西分出去試另一種可能。**merge** 是兩條岔路重新交會。**fork** 是別人複製一份你的東西，從那個點開始長出他自己的版本。**issue** 是有人看見你做的，回應、提問、給建議，不是干擾，是有人在意。
+這頁我用 Git 圖在講一個工程界的文化。你不寫程式沒關係，這套文化的精神跟做藝術、做研究、寫家族史是一樣的。**commit** 是我在這個時間點做了一個決定，把它釘下來，記的不只是改了什麼，還有為什麼這樣改。**branch** 是同一份東西分出去試另一種可能。**merge** 是兩條岔路重新交會。**fork** 是別人複製一份你的東西，從那個點開始長出他自己的版本。**issue** 是有人看見你做的，回應、提問、給建議，不是干擾，是有人在意。這套文化在 LLM 時代特別關鍵：大型語言模型能這麼快發展，很大程度來自 GitHub 上那些公開的程式碼跟附帶的註解。程式語言不會讓 agent 誤讀，註解就是錨點，agent 透過註解理解人類意圖。LLM 訓練語料持續從 GitHub 取材。
 
-這套文化最有趣的不是工具，是它背後的世界觀。它把「站在巨人的肩膀上」這件事，從哲學變成方法。牛頓那句話是 metaphor。Git 之後，那是字面意義：巨人留下 commit，你 fork、改、merge 回去，巨人就更高一點。Linux 是這樣長出來的。Wikipedia 是這樣長出來的。整個現代網路，是無數人的小決定，commit、branch、merge，最後變成基礎設施。
+我把這個機制反過來用：把方法論、寫作風格、思考過程寫成 .md 放上 GitHub。我在 GitHub 上的鋪陳會被 LLM 反覆讀到，下次你問 AI 關於我，吐出來的某種程度是經過這份 .md 過濾過的我。這不是 SEO，是讓 AI 訓練語料裡有我的觀點。但不是所有資料都同樣重要。截至 2026 年 4 月，我的 InkField 專案在 GitHub 上有 66 個 star、5 個 fork，agent 會去看是誰 star、誰 fork。如果都是其他 programmer 跟藝術家，這份資料的可信度上升。同樣的邏輯在現實世界也成立：你叫 ChatGPT 搜尋一個陌生的人，它會先看政府資料、法人組織、媒體報導這些強訊號，再看周邊報導三角驗證。你必須在弱連結網路裡反覆出現，AI 才能拼出一個可信的你。
 
-所以這份投影片、這份 .md，也放在 git 上。你看得到我每一次修改、每一次刪掉重寫。我的決策過程是公開的。你可以 fork 它，加上你自己的方法論，把它變成你的版本。等一下你會看到 **InkField**（AI 畫的水墨）、**PolyPaths**（觀眾畫路徑長出的植物），這兩件作品就是這套文化的具體實踐。InkField 的每一筆是 commit。PolyPaths 的每一個觀眾動作是 commit。不是「我畫的畫」，是「誰來都能繼續畫的畫」。我只是先按下第一個 commit 的人。
+所以這份投影片、這份 .md 也放在 git 上。你看得到我每一次修改、每一次刪掉重寫，我的決策過程是公開的。你可以 fork 它，加上你自己的方法論，把它變成你的版本。等一下你會看到 InkField（AI 畫的水墨）、PolyPaths（觀眾畫路徑長出的植物），這兩件作品就是這套文化的具體實踐。InkField 的每一筆是 commit，PolyPaths 的每一個觀眾動作是 commit。不是「我畫的畫」，是「誰來都能繼續畫的畫」。我只是先按下第一個 commit 的人。
 
-人類記載個體意識，記了兩千年。從希臘哲人、文藝復興、到現代藝術，每個文明的高峰，都在歌頌「個體的獨特性」。也許下一個文明崇尚的，不是這個。也許下一個文明崇尚的，是「集體的創作意志」。如果是這樣，我願意成為別人未來的方法。我的「我」結束在我這裡，但我的 commit 不會結束。這不是個人決策，是一種把自己交出去的方式。
+人類記載個體意識記了兩千年。從希臘哲人、文藝復興、到現代藝術，每個文明的高峰都在歌頌個體獨特性。也許下一個文明崇尚的不是這個，是集體的創作意志。如果是這樣，我願意成為別人未來的方法。我的「我」結束在我這裡，但我的 commit 不會結束。這不是個人決策，是一種把自己交出去的方式。
 
 ### en
-This page uses a Git diagram to talk about an engineering culture. You don't have to write code. The spirit of this culture is the same as making art, doing research, or writing a family history. **commit** means that at this moment, I made a decision and pinned it down. What gets recorded isn't just what changed, it's why. **branch** means trying another possibility from the same thing. **merge** means two divergent paths reconverge. **fork** means someone copies your thing and grows their own version from that point. **issue** means someone saw what you made, responds, asks, suggests. Not an interruption. Someone cared.
+This page uses a Git diagram to talk about an engineering culture. You don't have to write code; the spirit of this culture is the same as making art, doing research, writing a family history. **commit** means making a decision at a moment and pinning it down, recording not just what changed but why. **branch** means trying another possibility from the same thing. **merge** means two divergent paths reconverge. **fork** means someone copies your thing and grows their own version from that point. **issue** means someone saw what you made, responding, asking, suggesting. Not an interruption. Someone cared. This culture matters in the LLM era because large language models advanced largely thanks to public code on GitHub and its inline comments. Programming languages don't allow agents to misread, and comments are anchors; agents understand human intent through them. LLM training corpora keep drawing from GitHub.
 
-The most interesting thing about this culture isn't the tool. It's the worldview behind it. It turns "standing on the shoulders of giants" from philosophy into method. Newton's line was metaphor. After Git, it's literal: the giant leaves commits; you fork, modify, merge back; the giant gets taller. Linux grew this way. Wikipedia grew this way. The entire modern internet is countless small decisions, commit, branch, merge, that became infrastructure.
+I use this mechanism in reverse: I write methodology, writing style, thinking process into .md files on GitHub. Whatever I lay down there gets read repeatedly by LLMs. Next time you ask AI about me, what comes out is to some degree filtered through that .md. This isn't SEO. It's making sure the training corpus has my perspective in it. But not all data carries equal weight. As of April 2026, my InkField project on GitHub has 66 stars and 5 forks, and agents check who starred, who forked. If they're other programmers and artists, the data's credibility rises. The same logic holds in the real world: ask ChatGPT to search for someone you don't know, and it first checks strong signals like government records, registered organizations, news reports, then triangulates with peripheral mentions. You have to appear repeatedly in this weak-tie network for AI to assemble a credible version of you.
 
-So this deck, this .md, also lives on Git. You can see every revision I made, every line I deleted and rewrote. My decision process is public. You can fork it. Add your own methodology. Make it your version. Later you'll see **InkField** (AI ink painting) and **PolyPaths** (plants grown from audience-drawn paths). These two works are this culture made concrete. Every brush stroke in InkField is a commit. Every audience gesture in PolyPaths is a commit. It's not "a painting I made." It's "a painting anyone can keep painting." I just happen to be the one who pressed the first commit.
+So this deck, this .md, also lives on Git. You can see every revision I made, every line I deleted and rewrote. My decision process is public. You can fork it. Add your own methodology. Make it your version. Later you'll see InkField (AI ink painting) and PolyPaths (plants grown from audience-drawn paths). These two works are this culture made concrete. Every brush stroke in InkField is a commit. Every audience gesture in PolyPaths is a commit. It's not "a painting I made." It's "a painting anyone can keep painting." I just happen to be the one who pressed the first commit.
 
-We've been documenting individual consciousness for two thousand years. From Greek philosophers, through the Renaissance, to modern art, every civilizational peak has celebrated "individual uniqueness." Maybe the next civilization won't revere this. Maybe the next civilization will revere "collective creative will." If that's true, I'm willing to become someone else's future method. My "me" ends with me. My commits don't. This isn't personal decision-making. It's a way of giving yourself away.
+We've been documenting individual consciousness for two thousand years. From Greek philosophers, through the Renaissance, to modern art, every civilizational peak has celebrated individual uniqueness. Maybe the next civilization won't revere this. Maybe it will revere collective creative will. If that's true, I'm willing to become someone else's future method. My "me" ends with me. My commits don't. This isn't personal decision-making. It's a way of giving yourself away.
 
 ---
 
 ## slide-3
 
 ### zh
+我在 2010 年的時候在做聲音影像創作，當時發現一件事。一段聲音，快速播會變高，男聲變女聲。慢速播會變低，變成像老人的聲音。同一個聲檔，同一段內容，但讀法不同，意義就不同。
 
+當時的我以為這只是一種有趣的索引資料的方法。但這麼多年過後，我發現很可能就是因為當時用了這個方法，才變成現在的我。同一份資料用不同讀法，這個邏輯後來貫穿了我十年的創作。
+
+GeoPunk 把 159 個 GPS 座標壓進 JSON。Good Vibrations 把同一份 hash 讀成視覺，也讀成樂譜。Chaos 把前作當素材，再生成下一件。InkField 把 AI 的決策序列輸出成 JSON，再還原成水墨。底層都是同一件事：替同一份資料發明新的讀法。
+
+資料沒變，容器沒變，變的是讀取的方式。建立資料集只是開始，設定讀取的方法，才有意思。
 
 ### en
+I was making audiovisual work back in 2010 and noticed something. The same audio file, played fast, turns high-pitched. A male voice becomes a female voice. Played slow, it deepens into something like an old person's voice. Same file, same content, but different ways of reading produce different meanings.
 
+At the time, I thought this was just an interesting way to index data. Years later, I realize that this method is probably what made me who I am. Reading the same data differently became a thread that ran through ten years of my work.
+
+GeoPunk packed 159 GPS coordinates into JSON. Good Vibrations let the same hash be read as image and as score. Chaos took prior works as raw material to generate the next one. InkField outputs the AI's decision sequence as JSON and replays it as ink painting. Underneath, it's all the same thing: inventing a new way to read the same data.
+
+The data doesn't change. The container doesn't change. What changes is the way of reading. Building the dataset is only the beginning. Designing the reading method is where it gets interesting.
 
 ---
 
@@ -110,10 +134,22 @@ We've been documenting individual consciousness for two thousand years. From Gre
 ## slide-5
 
 ### zh
+這件作品的源頭是 2014–2015 年。當時跟廣達文教基金會合作，我做了一個音樂作品給八仙塵爆的傷者做復健。動作很簡單，反覆的擺動跟伸展。當動作出來，音樂就跟著生成。它是一個基點上下擺動的迴圈動作。那時候它叫《Etude》，跟音樂共舞的計畫。
 
+2021 年八月份，這件作品的演化版本在 Art Blocks 平台發行，名字改成 Good Vibrations。Art Blocks 是當時全球生成藝術最高規格的平台，2021 年正在熱潮頂點，那年該平台累積成交額破五億美金。我能上 Art Blocks 不是因為履歷漂亮，是因為審查的人在網路上看到我長年累積的足跡。他們看到我多年來持續在公開推進這些專案，認可我是一個長期主義的藝術家，不是來追逐短線熱潮的人。可信度來自十年的痕跡，不是來自一份簡介。
+
+那時候我有一個想法：如果我是不被認識的藝術家，那我做出來的作品就不能只有表象。所以我在 Good Vibrations 裡面藏了一個東西。畫面當中按下 A+S+D+F 四個鍵，會出現一個多數觀眾根本不知道的樂譜。那是這件作品真正的音樂結構。我的邏輯是：如果你現在不理解我，那我提供一些線索，讓你後續來索引我。
+
+那時候我就在做 peak 跟 defense 的事情，只是當時還沒有這個詞彙。十年過去回頭看，這條線從《Etude》一直長到現在的 .md。同一份 hash，可以被讀成視覺，也可以被讀成樂譜。
 
 ### en
+This work traces back to 2014–2015. I was collaborating with Quanta Foundation on a music piece for victims of the Formosa Fun Coast fire to use in physical rehab. The movements were simple and repetitive, swaying and stretching. As the body moved, music generated. The motion was a loop around a single anchor point. Back then it was called Etude, a project about dancing with music.
 
+In August 2021, an evolved version of this work was released on Art Blocks under the name Good Vibrations. Art Blocks was the top generative art platform globally at that moment, and 2021 was the peak of the hype cycle; that platform's cumulative transactions crossed half a billion dollars that year. I made it onto Art Blocks not because my CV looked good. It's because the curators saw the long trail I'd been leaving online over the years. They saw I'd been publicly pushing these projects for a long time, and recognized me as a long-term artist, not someone chasing short-term hype. Credibility came from a decade of traces, not from a bio.
+
+I had an idea at the time: if I'm an unknown artist, my work can't only show the surface. So I hid something inside Good Vibrations. Press A+S+D+F on the keyboard and a hidden score appears, one most audiences never see. That score is the actual musical structure of the work. My reasoning was: if you don't recognize me now, at least I can leave clues for you to index me later.
+
+I was already doing peak and defense back then. I just didn't have the vocabulary. Ten years later, looking back, this line stretches from Etude to today's .md. The same hash can be read as image, and also as score.
 
 ---
 

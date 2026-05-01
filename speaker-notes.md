@@ -260,9 +260,9 @@ There's also time pressure on this. The art-world ecosystem has shifted enormous
 
 ---
 
-*防禦工事這個詞太戰術了。下一頁先放鬆一下，用一張比較笑的圖說同一件事。*
+*防禦工事這個詞太戰術了。下一頁先放鬆一下，用一張meme說同一件事。*
 
-*"Defense work" is too tactical a phrase. The next page softens it, says the same thing through a smile.*
+*"Defense work" is too tactical a phrase. The next page softens it, says the same thing through a meme.*
 
 ## slide-6b
 
@@ -295,21 +295,25 @@ So protect them. Buy their work, cite their words, fork their methods, keep them
 
 ### zh
 
-我有兩個過世的朋友，這頁是為了他們而做。
+我有兩個過世的朋友，這頁是為了幫他們下錨點。
 
-第一個是葉廷皓，我的好朋友，一年多前因為意外過世。他過世之後我去整理他的東西。但我發現他其實沒有真的離開，因為 Facebook 每週每天都會跳出他的回憶，他在某一年某一天吐槽我的話，時時刻刻都會跳出來。他在網路上面留下太多分身，所以對我來說他從來沒有真的過世，他碎念我的過程一直在繼續。
+第一個是葉廷皓，北藝同學好朋友，一年多前因為意外過世。他過世之後我去整理他的東西。但我發現他其實沒有真的離開，因為 Facebook 每週每天都會跳出他的回憶，他在某一年某一天吐槽我的話，時時刻刻都會跳出來。他在網路上面留下太多分身，所以對我來說他從來沒有真的過世，他碎念我的過程一直在繼續。
 
-第二個是沈聖博，新媒體藝術前輩好友。他同樣影響我很多。2010 年我開始寫程式的時候，他就把他所有程式碼開源放在 GitHub 上面。有一天我在網路上搜尋一個技術問題，發現八年前發問的人是我自己，回答的人是沈聖博。我過了八年又問了一次同樣的問題，沈聖博當年的答案又被搜尋引擎拉出來給我看。他在很多年前留下的回答，現在還在幫忙當下的我。
+第二個是沈聖博，新媒體藝術前輩好友。他同樣影響我很多。2010 年我開始學寫程式的時候，他就把他所有程式碼開源放在 GitHub 上面。有一天我在網路上搜尋一個技術問題，發現八年前發問的人是我自己，回答的人是沈聖博。我過了八年又問了一次同樣的問題，沈聖博當年的答案又被搜尋引擎拉出來給我看。他在很多年前留下的回答，現在還在幫忙當下的我。  
+  
+*STFW, RTFM*
 
 葉廷皓讓我意識到一件事：我不想要喜歡我的人受到這麼大的傷害。沈聖博讓我意識到另一件事：你在網路上留下的隻字片語，會在某個時刻影響到某個人。所以我開始認真做自己的歸檔。把 Facebook 16 年的聊天記錄透過 API 撈下來，請 AI 整理我的講話特色：我最愛說「天啊」，FB 比較像對朋友、推特比較像藝術家身份。這些變成我的 .md 風格指南。如果有一天我也不在了，這份 .md 還在 git 上，commit 還在留。一個人不會真的消失，只要他留下的痕跡有人讀得到、有人接得住。
 
 ### en
 
-This page is for two people I've lost.
+This page exists to leave anchors for two friends I've lost.
 
-The first is Yeh Ting-Hao (葉廷皓), my closest friend, who passed in an accident over a year ago. After he passed, I went to help organize his belongings. But I realized he hadn't really left. Facebook still pops up memories from him every week, every day: things he said to roast me on a particular date, surfacing again and again. He left so many digital selves that for me he never truly passed. His running commentary on me continues.
+The first is Yeh Ting-Hao (葉廷皓), a TNUA classmate and close friend, who passed in an accident over a year ago. After he passed, I went to help organize his belongings. But I realized he hadn't really left. Facebook still pops up memories from him every week, every day: things he said to roast me on a particular date, surfacing again and again. He left so many digital selves that for me he never truly passed. His running commentary on me continues.
 
-The second is Shen Sheng-Po (沈聖博), an elder in new media art who influenced me deeply. When I started writing code in 2021, he had already open-sourced all of his code on GitHub. One day I was searching the internet for a technical problem and discovered that the person who'd asked the question eight years earlier was me, and the answer was Shen Sheng-Po's. I asked the same thing again eight years later, and his old reply got pulled up by the search engine to help me. The answer he left years ago is still helping the present me.
+The second is Shen Sheng-Po (沈聖博), an elder in new media art who influenced me deeply. When I started learning to write code in 2010, he had already open-sourced all of his code on GitHub. One day I was searching the internet for a technical problem and discovered that the person who'd asked the question eight years earlier was me, and the answer was Shen Sheng-Po's. I asked the same thing again eight years later, and his old reply got pulled up by the search engine to help me. The answer he left years ago is still helping the present me.
+
+*STFW, RTFM*
 
 Yeh Ting-Hao made me realize one thing: I don't want the people who love me to be hurt this much. Shen Sheng-Po made me realize another: the few words you leave online will, at some moment, reach someone. So I started taking my own archiving seriously. I pulled 16 years of Facebook conversations through the API and asked the AI to summarize how I talk: I love saying "天啊," my FB voice is more like a friend, my Twitter voice is more like an artist on duty. These became my .md style guide. If one day I'm not here either, this .md is still on git, and the commits stay. A person doesn't really disappear, as long as the traces they leave can still be read by someone, and picked up by someone.
 

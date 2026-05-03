@@ -403,6 +403,34 @@ This year I made a new iteration at New Taipei Art Museum. When you open PolyPat
 
 ---
 
+*講完了概念，下一頁我們真的來玩一下。左邊讓你畫，右邊讓植物長出來。*
+
+*Concept done. The next page is hands-on. Draw on the left, let the plant grow on the right.*
+
+## slide-9a
+
+### zh
+
+這一頁是現場互動。你拿起手機掃 QR，或是直接在這個畫面的左邊用滑鼠畫幾條路徑。右邊就會根據你的路徑長出一棵植物。每畫一筆，URL 就更新，把你剛剛的動作壓成 hash 塞進去。
+
+這不只是 demo，是 polypaths 系統的真實版本。你在這裡產生的作品，跟 2025 年發行的那 750 件本質上是同一件事。差別是：當時是藏家在玩，現在是你。
+
+如果你把 URL 複製給朋友，他打開那串 URL，會看到一棵跟你長得一樣的植物。因為演算法是確定的，hash 是還原的種子。同一個 URL，同一棵植物。
+
+這就是我說的「可被執行的格式」。植物不是我畫的，是你畫的。但畫的方法是我寫的。
+
+### en
+
+This page is live interaction. Pick up your phone and scan the QR, or just draw a few paths with your mouse on the left side of this screen. The plant on the right grows from your paths. Every stroke updates the URL, compressing your action into a hash and embedding it.
+
+This isn't just a demo. It's the real PolyPaths system. The piece you generate here is, in essence, the same as the 750 editions released in 2025. The difference: back then, collectors were the ones playing. Now you are.
+
+If you copy the URL and send it to a friend, they'll open it and see the same plant you grew. Because the algorithm is deterministic, the hash is the restoring seed. Same URL, same plant.
+
+This is what I mean by an executable format. The plant isn't painted by me. It's painted by you. But the way of painting was written by me.
+
+---
+
 *PolyPaths 把人的行為轉成可重播的 JSON。InkField 反過來，把 AI 的決策轉成可重播的 JSON。同一個容器，這次裡面裝的是水墨。*
 
 *PolyPaths turns human behavior into replayable JSON. InkField goes the other way: AI's decisions become replayable JSON. Same container; this time it holds ink.*
@@ -428,6 +456,30 @@ When we look at a painting, we see only the final image, what it looks like. But
 Concretely: when you paint ink in the interface, the system records not just final pixels but the event sequence of every stroke as JSON. The same JSON can replay the painting, and others can fork and modify it. I push these JSON files onto GitHub as issues, so future agents can understand human painting intent.
 
 InkField is the most complete realization of this methodology so far. AI doesn't "paint." It outputs intent. The engine is the brush. For me, this is the first project that lets human intent actually be understood by a machine.
+
+---
+
+*概念講完，下一頁讓 InkField 自己跑給你看。*
+
+*Concept done. The next page lets InkField run itself in front of you.*
+
+## slide-10a
+
+### zh
+
+這一頁是 InkField 的 live demo。不是錄影，是即時生成。AI 給引擎一份 JSON，引擎一筆一筆把畫畫出來，你看到的不是「結果」，是「結果產生的過程」。
+
+對我來說這比結果重要。一幅水墨畫的最終樣子，掃描就能複製。但「畫畫的過程」，過去從來不是可被結構化的東西。哪一筆先下，哪一筆是修補，哪一筆是失誤被收回，這些決策軌跡如果沒被記錄下來，看畫的人就只能猜。
+
+InkField 把這層可被結構化。每一筆是一個 JSON event。下一頁你會看到，這份 JSON 不只可以被 AI 重播，還可以被別人 fork 出去當素材。
+
+### en
+
+This page is InkField's live demo. Not a recording. Real-time generation. The AI gives the engine a JSON file, the engine draws stroke by stroke, and what you see isn't "the result," it's "the process that produces the result."
+
+For me this matters more than the result. A finished ink painting can be scanned and copied. But "the act of painting," historically, has never been a thing you could structure. Which stroke came first, which was a correction, which was a withdrawn mistake. If those decision traces aren't recorded, the viewer can only guess.
+
+InkField makes that layer structured. Every stroke is a JSON event. On the next page, you'll see that this JSON isn't just replayable by AI. It can also be forked by others and used as material.
 
 ---
 

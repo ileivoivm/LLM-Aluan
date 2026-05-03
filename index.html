@@ -630,8 +630,9 @@
     /* ── slide-8: drop iframe demo on mobile (QR-less, but novel demo not critical) ── */
     #slide-8 .iframe-wrap { display: none; }
 
-    /* ── slide-9, slide-10: keep QR, drop iframe ── */
-    #slide-9 .iframe-wrap, #slide-9 .polypaths-live, #slide-10 .iframe-wrap { display: none; }
+    /* ── slide-9a / 10a: live demos move to their own slides; on mobile,
+       drop the interactive blocks since they don't fit a phone viewport ── */
+    #slide-9a .polypaths-live, #slide-10a .iframe-wrap { display: none; }
 
     /* ── slide-10b: smaller iframe ── */
     #slide-10b .iframe-wrap iframe { height: 220px !important; }
@@ -1520,6 +1521,15 @@
     </div>
 
     <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2025/08/polypathsbanner.jpg" alt="PolyPaths Banner" onerror="this.style.display='none'">
+  </section>
+
+  <!-- ═══ 9a: PolyPaths · LIVE DEMO ═══ -->
+  <section class="slide" id="slide-9a">
+    <div class="section-label">09a — PolyPaths · LIVE</div>
+    <h2><span class="zh">親自畫一條路徑</span><span class="en">Draw a Path Yourself</span></h2>
+
+    <p class="zh" style="margin-bottom:0.5rem;">左邊畫，右邊長。每一筆都被壓成 hash，藏進 URL。</p>
+    <p class="en" style="margin-bottom:0.5rem;">Draw on the left, watch it grow on the right. Every stroke is compressed into a hash and hidden in the URL.</p>
 
     <div class="polypaths-live" data-polypaths>
       <div class="polypaths-live-head">
@@ -1553,8 +1563,8 @@
 
     <div style="display:grid; grid-template-columns: 8fr 2fr; gap: 1.2rem; align-items: start; margin-bottom: 0.5rem;">
       <div>
-        <p class="zh" style="margin-bottom:0.6rem;">AI 可以畫一幅水墨。不是操作滑鼠，不是生成像素——是輸出一份 JSON，引擎還原成完整畫作。</p>
-        <p class="en" style="margin-bottom:0;">AI can paint ink wash. Not by moving a mouse, not by generating pixels — by outputting a JSON file that the engine renders into a complete painting.</p>
+        <p class="zh" style="margin-bottom:0.6rem;">水墨可以被執行。InkField 把每一筆的時機、力道、留白寫成事件序列，引擎讀完，畫就出來了。AI 不是畫家，AI 是寫筆譜的人。</p>
+        <p class="en" style="margin-bottom:0;">Ink wash can be executed. InkField writes every stroke&rsquo;s timing, pressure, and unpainted space into an event sequence; the engine reads it, the painting appears. The AI isn&rsquo;t the painter. The AI writes the score.</p>
       </div>
       <div style="text-align:center;">
         <img src="assets/qr-inkfield.png" alt="QR: ileivoivm.github.io/inkField/" style="width:100%; max-width:100px; border:1px solid var(--border-light); border-radius:4px; background:#fff; display:block; margin:0 auto;">
@@ -1572,16 +1582,27 @@
       <div class="flow-node">完整水墨畫作</div>
     </div>
 
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO</div>
-      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
-    </div>
+    <img class="img-wide" src="assets/inkField_banner.png" alt="InkField Banner" onerror="this.style.display='none'">
 
     <p class="zh" style="margin-top:0.8rem">錄製系統只記錄事件（筆觸參數 + 種子值），不記錄像素。雙種子確定性系統，99.9% 一致性。一幅作品 < 100KB。</p>
     <p class="en" style="margin-top:0.8rem">The recording system captures events (stroke parameters + seed values), not pixels. Dual-seed deterministic system, 99.9% consistency. One painting &lt; 100KB.</p>
     <p class="zh" style="font-size:0.85rem; color:var(--text-dim)">Claude Code 開發，CLAUDE.md 管理規範，doc/ 保留每次迭代的技術文檔。</p>
     <p class="en" style="font-size:0.85rem; color:var(--text-dim)">Built with Claude Code. CLAUDE.md governs project specs. doc/ preserves technical docs from every iteration.</p>
+  </section>
+
+  <!-- ═══ 10a: InkField · LIVE DEMO ═══ -->
+  <section class="slide" id="slide-10a">
+    <div class="section-label">10a — InkField · LIVE</div>
+    <h2><span class="zh">親自看一幅水墨被執行</span><span class="en">Watch an Ink Painting Get Executed</span></h2>
+
+    <p class="zh" style="margin-bottom:0.5rem;">同一份 JSON，同一支筆。AI 寫的決策序列，引擎一筆一筆把它畫出來。</p>
+    <p class="en" style="margin-bottom:0.5rem;">Same JSON, same brush. The AI's decision sequence, replayed stroke by stroke by the engine.</p>
+
+    <div class="iframe-wrap">
+      <div class="iframe-label">LIVE DEMO</div>
+      <iframe class="lazy-embed" title="InkField 即時演示" src="about:blank" data-src="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" sandbox="allow-scripts allow-same-origin"></iframe>
+      <a class="iframe-link" href="https://ileivoivm.github.io/inkField/index.html?w:500_h:500" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 InkField</a>
+    </div>
   </section>
 
   <!-- ═══ 7b: InkField Gallery ═══ -->
@@ -2360,6 +2381,32 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   let cur = 0;
 
+  // ── URL hash <-> slide binding ──
+  // Short hash (#1, #1b, #13c) maps to slide id (slide-1, slide-1b, slide-13c).
+  // Backward-compat: long form #slide-1 still works.
+  // Named anchors (#self-archiving-self-portrait, #structure-absent-artist)
+  // are left to native browser scroll and don't trigger auto-sync until the
+  // user explicitly navigates.
+  let allowHashSync = false;
+  function slideIdToHash(slideId) {
+    return slideId.replace(/^slide-/, '');
+  }
+  function findSlideByHash(hash) {
+    if (!hash) return null;
+    const clean = hash.replace(/^#/, '');
+    if (!clean) return null;
+    const fullId = clean.indexOf('slide-') === 0 ? clean : 'slide-' + clean;
+    const el = document.getElementById(fullId);
+    return el && el.classList && el.classList.contains('slide') ? el : null;
+  }
+  function syncUrlHash(slide) {
+    if (!allowHashSync || !slide) return;
+    const newHash = '#' + slideIdToHash(slide.id);
+    if (location.hash !== newHash) {
+      history.replaceState(null, '', newHash);
+    }
+  }
+
   function syncKbButtons() {
     if (!kbUp || !kbDown) return;
     kbUp.disabled = cur <= 0;
@@ -2367,16 +2414,20 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
   }
 
   function goPrev() {
+    allowHashSync = true;
     cur = Math.max(cur - 1, 0);
     updateTimelineState(cur);
     slides[cur].scrollIntoView({ behavior: 'smooth' });
     syncKbButtons();
+    syncUrlHash(slides[cur]);
   }
   function goNext() {
+    allowHashSync = true;
     cur = Math.min(cur + 1, total - 1);
     updateTimelineState(cur);
     slides[cur].scrollIntoView({ behavior: 'smooth' });
     syncKbButtons();
+    syncUrlHash(slides[cur]);
   }
 
   // Build timeline items（標題與各頁 .section-label 同步）
@@ -2392,10 +2443,12 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
     item.appendChild(lab);
     item.appendChild(dot);
     item.addEventListener('click', () => {
+      allowHashSync = true;
       cur = i;
       updateTimelineState(i);
       syncKbButtons();
       slides[i].scrollIntoView({ behavior: 'smooth' });
+      syncUrlHash(slides[i]);
     });
     timelineInner.appendChild(item);
   }
@@ -2416,12 +2469,50 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
         cur = idx;
         updateTimelineState(idx);
         syncKbButtons();
+        syncUrlHash(e.target);
       }
     });
-  }, { threshold: 0.4 });
+  }, { root: slidesRoot, threshold: 0.4 });
   slides.forEach(s => obs.observe(s));
 
   updateTimelineState(0);
+
+  // ── Initial hash handling ──
+  // If URL has a slide hash (#1, #1b, or legacy #slide-1), jump there instantly.
+  // If it's a named anchor (e.g. #self-archiving-self-portrait), let the browser
+  // scroll natively and defer auto-sync until the user explicitly navigates.
+  (function initFromHash() {
+    const hash = location.hash;
+    if (!hash) {
+      allowHashSync = true;
+      return;
+    }
+    const slide = findSlideByHash(hash);
+    if (slide) {
+      slide.scrollIntoView({ block: 'start' });
+      cur = Array.from(slides).indexOf(slide);
+      updateTimelineState(cur);
+      syncKbButtons();
+      // Normalize to short format
+      const shortHash = '#' + slideIdToHash(slide.id);
+      if (hash !== shortHash) {
+        history.replaceState(null, '', shortHash);
+      }
+      allowHashSync = true;
+    }
+  })();
+
+  // Browser back/forward, or in-page hash links
+  window.addEventListener('hashchange', function () {
+    const slide = findSlideByHash(location.hash);
+    if (slide) {
+      slide.scrollIntoView({ block: 'start' });
+      cur = Array.from(slides).indexOf(slide);
+      updateTimelineState(cur);
+      syncKbButtons();
+      allowHashSync = true;
+    }
+  });
 
   // iframe 載入/卸載：進入視窗載入，離開視窗清除以釋放效能
   document.querySelectorAll('iframe.lazy-embed[data-src]').forEach(iframe => {

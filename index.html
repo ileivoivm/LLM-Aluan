@@ -335,6 +335,61 @@
   }
   .iframe-link:hover { color: var(--accent); }
 
+  /* ── PolyPaths live panel ── */
+  .polypaths-live {
+    width: 100%; border: 1px solid var(--border); border-radius: 4px;
+    background: #fff; overflow: hidden; margin: 1rem 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .polypaths-live-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .polypaths-live-title {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .polypaths-live-link {
+    font-family: var(--mono); font-size: 0.68rem;
+    color: var(--text-dim); text-decoration: none;
+  }
+  .polypaths-live-link:hover { color: var(--accent); }
+  .polypaths-stage {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5px;
+    min-height: 420px; padding: 5px; background: #fff;
+  }
+  .polypaths-pane {
+    position: relative; min-height: 420px; background: #fff; overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .polypaths-pane-label {
+    position: absolute; top: 8px; left: 8px; z-index: 2;
+    font-family: var(--mono); font-size: 0.58rem; color: var(--text-muted);
+    background: rgba(255,255,255,0.88); border: 1px solid var(--border);
+    border-radius: 3px; padding: 2px 7px;
+  }
+  .polypaths-pane iframe {
+    width: 100%; height: 100%; border: 0; display: block; background: #fff;
+  }
+  .polypaths-controls {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    gap: 0.45rem; padding: 0.65rem; border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .polypaths-btn {
+    border: 1px solid transparent; background: transparent; color: var(--text);
+    cursor: pointer; font-family: var(--mono); font-size: 0.68rem;
+    padding: 0.35rem 0.7rem; border-radius: 3px;
+  }
+  .polypaths-btn:hover { background: rgba(0,0,0,0.04); border-color: var(--border); }
+  .polypaths-btn.primary { color: var(--accent-2); }
+  .polypaths-url {
+    flex-basis: 100%; margin-top: 0.2rem; text-align: center;
+    font-family: var(--mono); font-size: 0.62rem; color: var(--text-muted);
+    word-break: break-all;
+  }
+
   /* ── Project cards ── */
   .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
   .project-card {
@@ -475,6 +530,8 @@
     .kb-hint { display: none; }
     .iframe-wrap iframe { height: 350px; }
     .iframe-wrap iframe[style*="aspect-ratio"] { aspect-ratio: 4/3; }
+    .polypaths-stage { grid-template-columns: 1fr; min-height: 700px; }
+    .polypaths-pane { min-height: 340px; }
     .highlight-box { font-size: 0.85rem; padding: 0.8rem 1rem; }
     .chaos-live-grid { display: none !important; }
     .chaos-mobile-notice { display: block !important; }
@@ -526,6 +583,9 @@
     .iframe-wrap { margin: 0.45rem 0; }
     .iframe-wrap iframe { height: 220px; }
     .iframe-label { font-size: 0.55rem; }
+    .polypaths-live { margin: 0.45rem 0; }
+    .polypaths-stage { min-height: 520px; }
+    .polypaths-pane { min-height: 255px; }
     .img-wide { display: none; }
     .flow { display: none; }
     .code-block { margin: 0.45rem 0; }
@@ -571,7 +631,7 @@
     #slide-8 .iframe-wrap { display: none; }
 
     /* ── slide-9, slide-10: keep QR, drop iframe ── */
-    #slide-9 .iframe-wrap, #slide-10 .iframe-wrap { display: none; }
+    #slide-9 .iframe-wrap, #slide-9 .polypaths-live, #slide-10 .iframe-wrap { display: none; }
 
     /* ── slide-10b: smaller iframe ── */
     #slide-10b .iframe-wrap iframe { height: 220px !important; }
@@ -1427,7 +1487,7 @@
     </div>
   </section>
 
-  <!-- ═══ 6: PolyPaths iframe ═══ -->
+  <!-- ═══ 6: PolyPaths live panel ═══ -->
   <section class="slide" id="slide-9">
     <div class="section-label">09 — Deep Dive · 植物</div>
     <h2><span class="zh">PolyPaths：觀眾不知道自己正在被記錄</span><span class="en">PolyPaths: The Audience Doesn't Know They're Being Recorded</span></h2>
@@ -1461,10 +1521,28 @@
 
     <img class="img-wide" src="https://aluanwang.com/wp-content/uploads/2025/08/polypathsbanner.jpg" alt="PolyPaths Banner" onerror="this.style.display='none'">
 
-    <div class="iframe-wrap">
-      <div class="iframe-label">LIVE DEMO</div>
-      <iframe class="lazy-embed" title="PolyPaths 即時演示" src="about:blank" data-src="https://aluanwang.com/polypaths/" sandbox="allow-scripts allow-same-origin"></iframe>
-      <a class="iframe-link" href="https://aluanwang.com/polypaths/" target="_blank" rel="noopener noreferrer">↗ 在新視窗開啟 PolyPaths（mono）</a>
+    <div class="polypaths-live" data-polypaths>
+      <div class="polypaths-live-head">
+        <div class="polypaths-live-title">POLYPATHS GENERATOR</div>
+        <a class="polypaths-live-link" href="https://aluanwang.com/polypaths/" target="_blank" rel="noopener noreferrer">↗ Open full version</a>
+      </div>
+      <div class="polypaths-stage">
+        <div class="polypaths-pane">
+          <div class="polypaths-pane-label">DRAW</div>
+          <iframe class="lazy-embed" data-polypaths-builder title="PolyPaths 繪製介面" src="about:blank" data-src="https://ppsui.up.railway.app/" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div class="polypaths-pane">
+          <div class="polypaths-pane-label">GROW</div>
+          <iframe class="lazy-embed" data-polypaths-preview title="PolyPaths 生成器" src="about:blank" data-src="https://pps.up.railway.app/" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+      </div>
+      <div class="polypaths-controls">
+        <button class="polypaths-btn" type="button" data-action="clear"><span class="zh">清除路徑</span><span class="en">Clear Canvas</span></button>
+        <button class="polypaths-btn primary" type="button" data-action="generate"><span class="zh">生成植物</span><span class="en">Generate Plant</span></button>
+        <button class="polypaths-btn" type="button" data-action="seed"><span class="zh">新 Seed</span><span class="en">New Seed</span></button>
+        <button class="polypaths-btn" type="button" data-action="fullscreen"><span class="zh">新視窗</span><span class="en">Fullscreen</span></button>
+        <div class="polypaths-url" data-polypaths-status>等待繪製路徑...</div>
+      </div>
     </div>
   </section>
 
@@ -2358,6 +2436,118 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
       });
     }, { root: null, threshold: 0, rootMargin: '300px' });
     io.observe(iframe);
+  });
+
+  // PolyPaths: keep the wrapper logic in this deck instead of iframeing another wrapper page.
+  document.querySelectorAll('[data-polypaths]').forEach(panel => {
+    const builder = panel.querySelector('[data-polypaths-builder]');
+    const preview = panel.querySelector('[data-polypaths-preview]');
+    const status = panel.querySelector('[data-polypaths-status]');
+    if (!builder || !preview || !status) return;
+
+    const builderOrigin = 'https://ppsui.up.railway.app';
+    const previewBase = 'https://pps.up.railway.app/';
+    const allowedOrigins = new Set([builderOrigin, 'https://pps.up.railway.app']);
+    const state = { pathData: '', seed: '' };
+
+    function appendPathData(url, pathData) {
+      if (!pathData) return url;
+      const data = String(pathData).trim();
+      if (!data) return url;
+      if (data.startsWith('#')) return `${url}${data}`;
+      if (data.startsWith('?')) return `${url}${url.includes('?') ? '&' : '?'}${data.slice(1)}`;
+      if (data.startsWith('&')) return `${url}${url.includes('?') ? '&' : '?'}${data.slice(1)}`;
+      return `${url}${url.includes('?') ? '&' : '?'}${data}`;
+    }
+
+    function previewUrl(includePixelMode = false) {
+      let url = previewBase;
+      if (state.seed) url += `?seed=${encodeURIComponent(state.seed)}`;
+      url = appendPathData(url, state.pathData);
+      if (includePixelMode) url += `${url.includes('?') ? '&' : '?'}pix_2.5`;
+      return url;
+    }
+
+    function setStatus(message) {
+      if (message) {
+        status.textContent = message;
+        return;
+      }
+      if (state.pathData) {
+        status.textContent = previewUrl(false);
+      } else if (state.seed) {
+        status.textContent = `seed=${state.seed} · 等待繪製路徑...`;
+      } else {
+        status.textContent = '等待繪製路徑...';
+      }
+    }
+
+    function reloadPreview(url) {
+      preview.setAttribute('data-src', url);
+      if (!preview.src || preview.src === 'about:blank') return;
+      preview.style.opacity = '0.78';
+      preview.src = 'about:blank';
+      setTimeout(() => {
+        preview.src = url;
+        preview.style.opacity = '1';
+      }, 50);
+    }
+
+    function newSeed() {
+      state.seed = String(Math.floor(Math.random() * 900000000) + 100000000);
+      setStatus();
+      if (state.pathData) reloadPreview(previewUrl(false));
+    }
+
+    function clearCanvas() {
+      builder.contentWindow?.postMessage({ type: 'reset' }, builderOrigin);
+      state.pathData = '';
+      state.seed = '';
+      preview.setAttribute('data-src', previewBase);
+      if (preview.src && preview.src !== 'about:blank') preview.src = previewBase;
+      setStatus();
+    }
+
+    function generatePlant() {
+      if (!state.pathData) {
+        setStatus('請先在左側繪製路徑。');
+        return;
+      }
+      const url = previewUrl(false);
+      reloadPreview(url);
+      setStatus(url);
+    }
+
+    function openFullscreen() {
+      window.open(previewUrl(true), '_blank', 'noopener,noreferrer');
+    }
+
+    panel.addEventListener('click', event => {
+      const button = event.target.closest('[data-action]');
+      if (!button) return;
+      const action = button.getAttribute('data-action');
+      if (action === 'clear') clearCanvas();
+      if (action === 'generate') generatePlant();
+      if (action === 'seed') newSeed();
+      if (action === 'fullscreen') openFullscreen();
+    });
+
+    window.addEventListener('message', event => {
+      if (!allowedOrigins.has(event.origin)) return;
+      if (event.source !== builder.contentWindow && event.source !== preview.contentWindow) return;
+      if (typeof event.data !== 'object' || event.data === null) return;
+
+      const { type, payload } = event.data;
+      if (type === 'newPath' || type === 'generatedURL') {
+        state.pathData = String(payload || '');
+        setStatus();
+      } else if (type === 'reset') {
+        state.pathData = '';
+        setStatus();
+      }
+    });
+
+    setTimeout(newSeed, 500);
   });
 
   document.addEventListener('keydown', e => {

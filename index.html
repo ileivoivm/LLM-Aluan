@@ -890,7 +890,8 @@
 
       <!-- main labels -->
       <text x="96" y="84" class="git-label-lg">commit</text>
-      <text x="96" y="98" class="git-label-zh-sm">留下錨點</text>
+      <text x="96" y="98" class="git-label-zh-sm zh">留下錨點</text>
+      <text x="96" y="98" class="git-label-zh-sm en">leave anchors</text>
 
       <!-- branch line (from 2nd commit) -->
       <path d="M80,160 C120,160 120,140 160,140 L160,280" class="git-line" />
@@ -900,12 +901,14 @@
 
       <!-- branch label -->
       <text x="176" y="144" class="git-label-lg">branch</text>
-      <text x="176" y="158" class="git-label-zh-sm">岔路，試另一種可能</text>
+      <text x="176" y="158" class="git-label-zh-sm zh">岔路，試另一種可能</text>
+      <text x="176" y="158" class="git-label-zh-sm en">a fork in the road, try another way</text>
 
       <!-- merge (branch back to main at 4th commit) -->
       <path d="M160,280 C160,320 120,320 80,320" class="git-line" />
       <text x="96" y="338" class="git-label-lg">merge</text>
-      <text x="96" y="352" class="git-label-zh-sm">分開走的路，重新交會</text>
+      <text x="96" y="352" class="git-label-zh-sm zh">分開走的路，重新交會</text>
+      <text x="96" y="352" class="git-label-zh-sm en">paths apart, joined again</text>
 
       <!-- fork (from 3rd commit, goes far right) -->
       <path d="M80,240 C140,240 180,220 260,220 L260,400" class="git-line-dash" />
@@ -916,7 +919,8 @@
 
       <!-- fork label -->
       <text x="276" y="224" class="git-label-lg">fork</text>
-      <text x="276" y="238" class="git-label-zh-sm">從你的節點，長出別人的東西</text>
+      <text x="276" y="238" class="git-label-zh-sm zh">從你的節點，長出別人的東西</text>
+      <text x="276" y="238" class="git-label-zh-sm en">your node, someone else&rsquo;s growth</text>
 
       <!-- fork's own branch -->
       <path d="M260,340 C300,340 300,320 340,320 L340,400" class="git-line-dash" />
@@ -928,17 +932,25 @@
       <path d="M260,400 C200,430 140,430 80,400" class="git-line-dash" />
       <polygon points="84,397 74,400 84,407" fill="#1a1a1a" stroke="none" />
       <text x="130" y="448" class="git-label-lg" text-anchor="middle">issue</text>
-      <text x="130" y="462" class="git-label-zh-sm" text-anchor="middle">回應，有人看見了</text>
+      <text x="130" y="462" class="git-label-zh-sm zh" text-anchor="middle">回應，有人看見了</text>
+      <text x="130" y="462" class="git-label-zh-sm en" text-anchor="middle">someone responded, someone saw</text>
 
       <!-- right side: philosophical annotations -->
       <line x1="440" y1="100" x2="440" y2="420" stroke="#e8e8e8" stroke-width="1" />
 
-      <text x="470" y="120" class="git-label-zh" style="font-size:13px; fill:#2a2a2a;">
+      <text x="470" y="120" class="git-label-zh zh" style="font-size:13px; fill:#2a2a2a;">
         <tspan x="470" dy="0">一個決定，記下來。</tspan>
         <tspan x="470" dy="28">另一條路，走走看。</tspan>
         <tspan x="470" dy="28">有人拿去，長出新的。</tspan>
         <tspan x="470" dy="28">走遠了，再交會。</tspan>
         <tspan x="470" dy="28">留下痕跡，就沒有消失。</tspan>
+      </text>
+      <text x="470" y="120" class="git-label-zh en" style="font-size:13px; fill:#2a2a2a;">
+        <tspan x="470" dy="0">A decision, recorded.</tspan>
+        <tspan x="470" dy="28">Another path, tried.</tspan>
+        <tspan x="470" dy="28">Someone takes it, grows it new.</tspan>
+        <tspan x="470" dy="28">Far apart, then joined again.</tspan>
+        <tspan x="470" dy="28">A trace remains, presence remains.</tspan>
       </text>
       <text x="470" y="252" font-family="'JetBrains Mono', monospace" font-size="9" fill="#aaa" stroke="none" letter-spacing="1.5">→ ch.06c</text>
 
@@ -956,7 +968,7 @@
 
   <!-- ═══ 3: Pure Data ═══ -->
   <section class="slide" id="slide-3">
-    <div class="section-label">03 — 從取樣開始，從濾波結束</div>
+    <div class="section-label"><span class="zh">03 — 從取樣開始，從濾波結束</span><span class="en">03 — Start with Sampling, End with Filtering</span></div>
     <h2><span class="zh">從取樣開始，從濾波結束</span><span class="en">Start with Sampling, End with Filtering</span></h2>
     <div style="font-family: var(--mono); font-size: 0.75rem; color: var(--text-muted); margin-top: -0.6rem; margin-bottom: 1.2rem; letter-spacing: 0.08em;">early Pure Data work · 2010s</div>
 
@@ -1050,7 +1062,7 @@
   </section>
 
   <section class="slide" id="slide-5">
-    <div class="section-label">05 — Paths · 地景 · 2017–2021</div>
+    <div class="section-label"><span class="zh">05 — Paths · 地景 · 2017–2021</span><span class="en">05 — Paths · Landscapes · 2017–2021</span></div>
     <h2><span class="zh">Paths 系列：資料決定歷史的樣子</span><span class="en">The Paths Series: Data Shapes History</span></h2>
 
     <p class="zh">從田野錄音到衛星影像，從波函數塌縮到摩斯電碼。四件作品，同一條線索：<br>你選擇收集什麼資料、怎麼 mapping，就決定了歷史長什麼樣子。</p>
@@ -1092,7 +1104,7 @@
 
   <!-- ═══ 5: Chaos 三部曲 ═══ -->
   <section class="slide" id="slide-6">
-    <div class="section-label">06 — Deep Dive · 混沌 · 2021–22</div>
+    <div class="section-label"><span class="zh">06 — Deep Dive · 混沌 · 2021–22</span><span class="en">06 — Deep Dive · Chaos · 2021–22</span></div>
     <h2><span class="zh">Chaos 三部曲：作品吃作品</span><span class="en">The Chaos Trilogy: Art Feeding on Art</span></h2>
 
     <p class="zh">GeoPunk 取樣地球。Chaos 取樣自己。<br>作品以前作為原料，層層遞迴，生成新的混沌。</p>
@@ -1302,7 +1314,7 @@
 
   <!-- ═══ 6c: 轉折 ═══ -->
   <section class="slide" id="slide-6c">
-    <div class="section-label">06c — 一個人不會真的消失</div>
+    <div class="section-label"><span class="zh">06c — 一個人不會真的消失</span><span class="en">06c — A Person Doesn't Really Disappear</span></div>
 
     <h2><span class="zh">一個人不會真的消失</span><span class="en">A Person Never Truly Disappears</span></h2>
 
@@ -1446,7 +1458,7 @@
 
   <!-- ═══ 5: JSON 深入 ═══ -->
   <section class="slide" id="slide-8">
-    <div class="section-label">08 — Deep Dive · 小說</div>
+    <div class="section-label"><span class="zh">08 — Deep Dive · 小說</span><span class="en">08 — Deep Dive · Novel</span></div>
     <h2><span class="zh">《修仙-七玄關》：故事的外部記憶</span><span class="en">Seven Gates: External Memory for a Novel</span></h2>
 
     <p class="zh">一個橫跨宗教、犯罪與超自然的長篇小說。角色在第三章說的話不能跟第一章矛盾，伏筆埋了就要收。</p>
@@ -1490,7 +1502,7 @@
 
   <!-- ═══ 6: PolyPaths live panel ═══ -->
   <section class="slide" id="slide-9">
-    <div class="section-label">09 — Deep Dive · 植物</div>
+    <div class="section-label"><span class="zh">09 — Deep Dive · 植物</span><span class="en">09 — Deep Dive · Plants</span></div>
     <h2><span class="zh">PolyPaths：觀眾不知道自己正在被記錄</span><span class="en">PolyPaths: The Audience Doesn't Know They're Being Recorded</span></h2>
 
     <div style="display:grid; grid-template-columns: 8fr 2fr; gap: 1.2rem; align-items: start; margin-bottom: 0.5rem;">
@@ -1558,7 +1570,7 @@
 
   <!-- ═══ 7: InkField iframe ═══ -->
   <section class="slide" id="slide-10">
-    <div class="section-label">10 — Deep Dive · 水墨</div>
+    <div class="section-label"><span class="zh">10 — Deep Dive · 水墨</span><span class="en">10 — Deep Dive · Ink Wash</span></div>
     <h2><span class="zh">InkField：AI 用 JSON 畫水墨</span><span class="en">InkField: AI Paints Ink Wash via JSON</span></h2>
 
     <div style="display:grid; grid-template-columns: 8fr 2fr; gap: 1.2rem; align-items: start; margin-bottom: 0.5rem;">
@@ -1788,7 +1800,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   <!-- ═══ 10: 總結 ═══ -->
   <section class="slide" id="slide-13">
-    <div class="section-label">13 — Take This With You · 離場前帶走這個</div>
+    <div class="section-label"><span class="zh">13 — 離場前帶走這個</span><span class="en">13 — Take This With You</span></div>
     <h2><span class="zh">留下錨點，讓一切可以被 index</span><span class="en">Leave Anchors. Make Everything Indexable.</span></h2>
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; margin:1.5rem auto; display:block;" fill="none" stroke="#1a1a1a">
@@ -1809,25 +1821,33 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
       </style>
 
       <!-- ── four strata layers ── -->
-      <!-- Layer 1: 作品層 (top, lightest) -->
+      <!-- Layer 1: 作品層 / Work (top, lightest) -->
       <path d="M60,70 Q180,62 300,72 Q420,80 540,68 Q600,64 660,70 L660,160 Q540,155 420,162 Q300,168 180,158 Q120,154 60,160 Z" class="strata-fill-1 strata-edge" />
-      <text x="80" y="110" class="strata-label">作品層</text>
-      <text x="80" y="126" class="strata-desc">可重播 Replayable</text>
+      <text x="80" y="110" class="strata-label zh">作品層</text>
+      <text x="80" y="110" class="strata-label en">Work Layer</text>
+      <text x="80" y="126" class="strata-desc zh">可重播</text>
+      <text x="80" y="126" class="strata-desc en">Replayable</text>
 
-      <!-- Layer 2: 記憶層 -->
+      <!-- Layer 2: 記憶層 / Memory -->
       <path d="M60,160 Q120,154 180,158 Q300,168 420,162 Q540,155 660,160 L660,245 Q540,252 420,248 Q300,242 180,250 Q120,254 60,248 Z" class="strata-fill-2 strata-edge" />
-      <text x="80" y="200" class="strata-label">記憶層</text>
-      <text x="80" y="216" class="strata-desc">可索引 Indexable</text>
+      <text x="80" y="200" class="strata-label zh">記憶層</text>
+      <text x="80" y="200" class="strata-label en">Memory Layer</text>
+      <text x="80" y="216" class="strata-desc zh">可索引</text>
+      <text x="80" y="216" class="strata-desc en">Indexable</text>
 
-      <!-- Layer 3: 協作層 -->
+      <!-- Layer 3: 協作層 / Collaboration -->
       <path d="M60,248 Q120,254 180,250 Q300,242 420,248 Q540,252 660,245 L660,335 Q540,340 420,332 Q300,328 180,336 Q120,340 60,335 Z" class="strata-fill-3 strata-edge" />
-      <text x="80" y="290" class="strata-label">協作層</text>
-      <text x="80" y="306" class="strata-desc">可延續 Continuable</text>
+      <text x="80" y="290" class="strata-label zh">協作層</text>
+      <text x="80" y="290" class="strata-label en">Collaboration Layer</text>
+      <text x="80" y="306" class="strata-desc zh">可延續</text>
+      <text x="80" y="306" class="strata-desc en">Continuable</text>
 
-      <!-- Layer 4: 人格層 (bottom, darkest) -->
+      <!-- Layer 4: 人格層 / Persona (bottom, darkest) -->
       <path d="M60,335 Q120,340 180,336 Q300,328 420,332 Q540,340 660,335 L660,420 Q540,426 420,418 Q300,414 180,422 Q120,426 60,420 Z" class="strata-fill-4 strata-edge" />
-      <text x="80" y="378" class="strata-label">人格層</text>
-      <text x="80" y="394" class="strata-desc">可模擬 Simulable</text>
+      <text x="80" y="378" class="strata-label zh">人格層</text>
+      <text x="80" y="378" class="strata-label en">Persona Layer</text>
+      <text x="80" y="394" class="strata-desc zh">可模擬</text>
+      <text x="80" y="394" class="strata-desc en">Simulable</text>
 
       <!-- ── anchor lines (vertical, piercing all layers) ── -->
       <!-- Anchor 1: GV / hash -->
@@ -1875,7 +1895,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   <!-- ═══ 13b: 你正在決定五年後的常識 ═══ -->
   <section class="slide" id="slide-13b">
-    <div class="section-label">13b — 你正在決定五年後的常識 / Tomorrow's Common Sense</div>
+    <div class="section-label"><span class="zh">13b — 你正在決定五年後的常識</span><span class="en">13b — Tomorrow's Common Sense</span></div>
     <h2><span class="zh">你正在決定五年後的常識</span><span class="en">You're Writing Tomorrow's Common Sense</span></h2>
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" style="width:100%; max-width:760px; margin:1rem auto 0; display:block;" fill="none">
@@ -1987,7 +2007,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   <!-- ═══ 13c: 留給後來的人 ═══ -->
   <section class="slide" id="slide-13c">
-    <div class="section-label">13c — 留給後來的人 / For whoever comes next</div>
+    <div class="section-label"><span class="zh">13c — 留給後來的人</span><span class="en">13c — For Whoever Comes Next</span></div>
     <h2><span class="zh">留給後來的人</span><span class="en">For Whoever Comes Next</span></h2>
 
     <p class="zh" style="font-family: var(--serif); font-size: 1.05rem; color: var(--text-dim); font-style: italic; margin: 0.4rem 0 1.4rem;">強連結讓你被人記得，弱連結讓你被系統記得。</p>
@@ -2225,7 +2245,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   <!-- ═══ 11: Closing ═══ -->
   <section class="slide" id="slide-14">
-    <div class="section-label">14 — 結語</div>
+    <div class="section-label"><span class="zh">14 — 結語</span><span class="en">14 — Closing</span></div>
     <span id="structure-absent-artist" style="position:absolute; opacity:0; pointer-events:none;" aria-hidden="true"></span>
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" style="width:100%; margin:0 auto; display:block;" fill="none" stroke="#1a1a1a">
@@ -2246,14 +2266,17 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
       <circle cx="80" cy="260" r="5" fill="#1a1a1a" />
       <circle cx="80" cy="320" r="5" fill="#1a1a1a" />
       <text x="96" y="84"  class="cl-lbl">commit</text>
-      <text x="96" y="98"  class="cl-zh-sm">留下錨點</text>
+      <text x="96" y="98"  class="cl-zh-sm zh">留下錨點</text>
+      <text x="96" y="98"  class="cl-zh-sm en">leave anchors</text>
 
       <!-- ── dashed: 不在場 ── -->
       <line x1="80" y1="320" x2="80" y2="430" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" />
       <circle cx="80" cy="375" r="5" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
       <circle cx="80" cy="430" r="5" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
-      <text x="96" y="379" class="cl-dim">不在場</text>
-      <text x="96" y="393" class="cl-zh-sm" style="fill:#aaa">仍可被索引</text>
+      <text x="96" y="379" class="cl-dim zh">不在場</text>
+      <text x="96" y="379" class="cl-dim en">absent</text>
+      <text x="96" y="393" class="cl-zh-sm zh" style="fill:#aaa">仍可被索引</text>
+      <text x="96" y="393" class="cl-zh-sm en" style="fill:#aaa">still indexable</text>
 
       <!-- ── fork (from y=200 commit) ── -->
       <path d="M80,200 C120,200 130,180 170,180 L170,360" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none" />
@@ -2261,43 +2284,64 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
       <circle cx="170" cy="260" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
       <circle cx="170" cy="360" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
       <text x="186" y="184" class="cl-lbl">fork</text>
-      <text x="186" y="198" class="cl-zh-sm">從你的節點，長出別人的東西</text>
+      <text x="186" y="198" class="cl-zh-sm zh">從你的節點，長出別人的東西</text>
+      <text x="186" y="198" class="cl-zh-sm en">your node, someone else&rsquo;s growth</text>
 
       <!-- ── reconstruction (from fork at y=360) ── -->
       <path d="M170,360 C210,360 220,340 255,340 L255,430" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none" />
       <circle cx="255" cy="340" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
       <circle cx="255" cy="385" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
       <circle cx="255" cy="430" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
-      <text x="271" y="344" class="cl-lbl">重組</text>
-      <text x="271" y="358" class="cl-zh-sm">別人眼中的你</text>
+      <text x="271" y="344" class="cl-lbl zh">重組</text>
+      <text x="271" y="344" class="cl-lbl en">remix</text>
+      <text x="271" y="358" class="cl-zh-sm zh">別人眼中的你</text>
+      <text x="271" y="358" class="cl-zh-sm en">you in others&rsquo; eyes</text>
 
       <!-- ── issue: 迴響 ── -->
       <path d="M255,430 C200,460 130,458 80,430" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none" />
       <polygon points="84,427 74,430 84,437" fill="#1a1a1a" stroke="none" />
-      <text x="163" y="454" class="cl-lbl" text-anchor="middle">留下痕跡，就沒有消失</text>
+      <text x="163" y="454" class="cl-lbl zh" text-anchor="middle">留下痕跡，就沒有消失</text>
+      <text x="163" y="454" class="cl-lbl en" text-anchor="middle">trace remains, presence remains</text>
 
       <!-- ── right panel ── -->
       <line x1="440" y1="60" x2="440" y2="450" stroke="#e8e8e8" stroke-width="1" />
 
       <!-- the thesis quote (italic) — promoted to top of right panel -->
-      <text font-family="'Noto Sans TC', sans-serif" font-size="15" font-style="italic" fill="#1a1a1a" stroke="none">
+      <text class="zh" font-family="'Noto Sans TC', sans-serif" font-size="15" font-style="italic" fill="#1a1a1a" stroke="none">
         <tspan x="460" y="100">「結構，是不在場的藝術家。」</tspan>
       </text>
+      <text class="en" font-family="'Noto Serif TC', serif" font-size="15" font-style="italic" fill="#1a1a1a" stroke="none">
+        <tspan x="460" y="100">&ldquo;Structure is the artist who isn&rsquo;t in the room.&rdquo;</tspan>
+      </text>
 
-      <text font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
+      <text class="zh" font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
         <tspan x="460" y="170">當我不在場時，</tspan>
         <tspan x="460" dy="26">別人會怎麼重組我？</tspan>
       </text>
+      <text class="en" font-family="'Noto Sans TC', sans-serif" font-size="13" fill="#2a2a2a" stroke="none">
+        <tspan x="460" y="170">When I&rsquo;m not in the room,</tspan>
+        <tspan x="460" dy="26">how will others rebuild me?</tspan>
+      </text>
 
-      <text font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#555" stroke="none">
+      <text class="zh" font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#555" stroke="none">
         <tspan x="460" y="270">大家都在問 AI 會不會取代藝術家。</tspan>
         <tspan x="460" dy="22">我比較好奇的是，</tspan>
         <tspan x="460" dy="22">你有沒有留下值得被取代的東西。</tspan>
       </text>
+      <text class="en" font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#555" stroke="none">
+        <tspan x="460" y="270">Everyone asks whether AI will replace artists.</tspan>
+        <tspan x="460" dy="22">I&rsquo;m more curious whether</tspan>
+        <tspan x="460" dy="22">you&rsquo;ve left anything worth being replaced.</tspan>
+      </text>
 
       <text font-family="'JetBrains Mono', monospace" font-size="10" fill="#888" stroke="none">
         <tspan x="460" y="380">#VibeCoding · #GenArt · #LLM</tspan>
-        <tspan x="460" dy="18">阿亂｜王新仁｜2026</tspan>
+      </text>
+      <text class="zh" font-family="'JetBrains Mono', monospace" font-size="10" fill="#888" stroke="none">
+        <tspan x="460" y="398">阿亂｜王新仁｜2026</tspan>
+      </text>
+      <text class="en" font-family="'JetBrains Mono', monospace" font-size="10" fill="#888" stroke="none">
+        <tspan x="460" y="398">Aluan · Wang Hsin-Jen · 2026</tspan>
       </text>
 
       <!-- frame -->
@@ -2373,9 +2417,9 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   function slideNavTitle(slide, i) {
     const label = slide.querySelector('.section-label');
-    if (label) return label.textContent.replace(/\s+/g, ' ').trim();
-    if (slide.classList.contains('slide-title')) return '00 — 開場';
-    if (slide.classList.contains('slide-closing')) return '14 — 結語';
+    if (label) return label.innerHTML;
+    if (slide.classList.contains('slide-title')) return '<span class="zh">00 — 開場</span><span class="en">00 — Opening</span>';
+    if (slide.classList.contains('slide-closing')) return '<span class="zh">14 — 結語</span><span class="en">14 — Closing</span>';
     return `${String(i).padStart(2, '0')} —`;
   }
 
@@ -2437,7 +2481,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
     item.className = 'timeline-item';
     const lab = document.createElement('span');
     lab.className = 'timeline-label';
-    lab.textContent = slideNavTitle(slides[i], i);
+    lab.innerHTML = slideNavTitle(slides[i], i);
     const dot = document.createElement('span');
     dot.className = 'timeline-dot';
     item.appendChild(lab);

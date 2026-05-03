@@ -2,7 +2,7 @@
 ## How I Use LLMs: A Working Methodology from Structure to Creation
 
 王新仁（Aluan Wang）｜2026
-**Live deck →** [https://ileivoivm.github.io/LLM-Aluan/](https://ileivoivm.github.io/LLM-Aluan/)
+**Live deck →** [中文版](https://ileivoivm.github.io/LLM-Aluan/) · [English](https://ileivoivm.github.io/LLM-Aluan/?lang=en)
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -34,10 +34,13 @@ A public methodology document by Taiwanese generative artist **Aluan Wang** on c
 
 These three lines are the talk's thesis arc. The first redefines what a self-portrait means in the LLM era — no longer paint on canvas, but a format that can be re-executed. The second names what structure does for an artist preparing to outlive their own body of work. The third takes the metaphor to its limit: 執行 in Chinese means both "run a program" and "put to death." I take both. I wrote myself into an executable format, and I admit the format will kill a part of me.
 
-**Direct anchors:**
-- [`#self-archiving-self-portrait`](https://ileivoivm.github.io/LLM-Aluan/#self-archiving-self-portrait)
-- [`#structure-absent-artist`](https://ileivoivm.github.io/LLM-Aluan/#structure-absent-artist)
-- [`#slide-15`](https://ileivoivm.github.io/LLM-Aluan/#slide-15)
+**Direct anchors** (each line links the same anchor in both languages):
+
+- 「自我歸檔」 · [zh](https://ileivoivm.github.io/LLM-Aluan/#self-archiving-self-portrait) · [en](https://ileivoivm.github.io/LLM-Aluan/?lang=en#self-archiving-self-portrait)
+- 「結構，是不在場的藝術家」 · [zh](https://ileivoivm.github.io/LLM-Aluan/#structure-absent-artist) · [en](https://ileivoivm.github.io/LLM-Aluan/?lang=en#structure-absent-artist)
+- 「我不是被取代，我是被執行」 · [zh](https://ileivoivm.github.io/LLM-Aluan/#slide-15) · [en](https://ileivoivm.github.io/LLM-Aluan/?lang=en#slide-15)
+
+URL format: append `?lang=en` before the `#hash` to land on the English version. Default (no `?lang=`) is Chinese.
 
 ---
 

@@ -2671,20 +2671,52 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
   syncKbButtons();
 
   // ── Language Toggle ──
+  // Three sources of truth (priority order): ?lang= URL param, localStorage,
+  // default 'zh-Hant'. URL only updates when the user explicitly clicks the
+  // toggle — initial load via localStorage doesn't pollute the URL.
+  // Sharing /?lang=en#5 lets the recipient land on the English version of slide 5.
   const langToggle = document.getElementById('langToggle');
-  function setLang(lang) {
+  const VALID_LANGS = ['zh-Hant', 'en'];
+
+  function updateLangUrl(lang) {
+    const url = new URL(location.href);
+    if (lang === 'en') {
+      url.searchParams.set('lang', 'en');
+    } else {
+      url.searchParams.delete('lang');
+    }
+    const newRel = url.pathname + (url.search ? url.search : '') + url.hash;
+    const curRel = location.pathname + (location.search ? location.search : '') + location.hash;
+    if (newRel !== curRel) {
+      history.replaceState(null, '', newRel);
+    }
+  }
+
+  function setLang(lang, opts) {
+    if (!VALID_LANGS.includes(lang)) lang = 'zh-Hant';
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
     langToggle.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
+    if (opts && opts.updateUrl) updateLangUrl(lang);
   }
+
   langToggle.addEventListener('click', e => {
     const btn = e.target.closest('.lang-btn');
-    if (btn) setLang(btn.dataset.lang);
+    if (btn) setLang(btn.dataset.lang, { updateUrl: true });
   });
-  const savedLang = localStorage.getItem('lang');
-  if (savedLang) setLang(savedLang);
+
+  (function initLang() {
+    const params = new URLSearchParams(location.search);
+    const urlLang = params.get('lang');
+    if (urlLang && VALID_LANGS.includes(urlLang)) {
+      setLang(urlLang);
+      return;
+    }
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang && VALID_LANGS.includes(savedLang)) setLang(savedLang);
+  })();
 })();
 </script>
 

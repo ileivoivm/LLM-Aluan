@@ -2479,8 +2479,10 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
   // ── Initial hash handling ──
   // If URL has a slide hash (#1, #1b, or legacy #slide-1), jump there instantly.
-  // If it's a named anchor (e.g. #self-archiving-self-portrait), let the browser
-  // scroll natively and defer auto-sync until the user explicitly navigates.
+  // If it's a named anchor (e.g. #self-archiving-self-portrait), find the
+  // containing slide and scroll there manually — native browser anchor-scroll
+  // doesn't work reliably inside a nested scroll-snap container. Preserve the
+  // named anchor in the URL and defer auto-sync until the user navigates.
   (function initFromHash() {
     const hash = location.hash;
     if (!hash) {
@@ -2499,6 +2501,21 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
         history.replaceState(null, '', shortHash);
       }
       allowHashSync = true;
+      return;
+    }
+    // Named anchor: find which slide contains the target element, scroll there,
+    // but leave the URL hash alone so the named anchor stays shareable.
+    const namedEl = document.getElementById(hash.replace(/^#/, ''));
+    if (namedEl) {
+      const containingSlide = namedEl.closest('.slide');
+      if (containingSlide) {
+        containingSlide.scrollIntoView({ block: 'start' });
+        cur = Array.from(slides).indexOf(containingSlide);
+        updateTimelineState(cur);
+        syncKbButtons();
+        // allowHashSync stays false — preserve the named anchor in URL until
+        // the user explicitly navigates with arrow keys, buttons, or timeline.
+      }
     }
   })();
 

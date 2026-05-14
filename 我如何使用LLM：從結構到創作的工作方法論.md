@@ -224,16 +224,16 @@ GeoPunk 取樣地球。Chaos 取樣自己。
 
 ## 07a — 演算法
 
-亂數是一個入口。材料先鬆動，形狀才會自己長出來。
+這一頁是亂數、機率與演算法的教學／參考頁。它用範例說明 `random()`、分布、noise、seed 與 metadata 的基本用途，和前面主投影片的創作敘事區隔。
 
-**打開演算法頁**
-OpenProcessing examples
+**打開演算法教學頁**
+Teaching / reference examples
 
-均勻亂數──宇宙塵。高斯亂數──柔光山脈。一維 Perlin Noise──跳動的音量柱。二維 Perlin Noise──雲海／大理石。亂數模式──三種分布。常態、稀有、連續。Good Vibrations──把機率變成樂器。
+內容包含均勻亂數、高斯亂數、一維與二維 Perlin Noise、分布比較、seed、rarity、metadata，以及 Good Vibrations 作為機率系統的案例。
 
 → algo.html
 
-> 隨機是一條可以被保存的分岔。
+> 教學頁負責定義概念、展示效果與說明用途，不作為作品敘事或創作宣言。
 
 ---
 

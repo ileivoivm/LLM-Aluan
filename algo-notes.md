@@ -25,7 +25,7 @@
 
 確定性提供結構，機率提供變體。結構讓每一次生成共享同一套規則，變體則讓每個結果保有差異。
 
-因此，亂數可以被理解為安排可能性的工具。它負責在已設定的範圍內提供差異，而不是取代規則本身。
+因此，亂數可以被理解為產生可控變化的工具。它負責在已設定的範圍內提供差異，而不是取代規則本身。
 
 ### en
 
@@ -45,11 +45,11 @@ Randomness can therefore be understood as a tool for arranging possibility. It p
 
 ### zh
 
-生成系統通常先決定不可變的部分，例如畫布尺寸、座標系、迴圈次數、邊界處理，以及迴圈內部的規則。這一層是確定性的骨架。
+生成系統通常先決定不可變的部分，例如畫布尺寸、座標系、迴圈次數、邊界處理，以及迴圈內部的規則。這一層是確定性的共同結構。
 
-骨架讓多次生成共享同一個場域。沒有共同骨架，結果之間只是彼此分離的個案；有了共同骨架，這些結果才形成一個系列。
+共同結構讓多次生成使用同一套條件。沒有共同結構，結果之間只是彼此分離的個案；有了共同結構，這些結果才形成一個系列。
 
-因此，生成藝術不只處理隨機性，也處理確定性。隨機變化附著在骨架上，風格的一致性通常來自不變的結構。
+因此，生成藝術不只處理隨機性，也處理確定性。隨機變化建立在共同結構上，風格的一致性通常來自不變的規則。
 
 ### en
 
@@ -61,7 +61,7 @@ Generative art therefore handles both randomness and determinism. Random variati
 
 ---
 
-*骨架建立後，機率開始發揮作用。*
+*共同結構建立後，機率開始發揮作用。*
 
 *Once the skeleton is defined, probability begins to operate.*
 
@@ -69,9 +69,9 @@ Generative art therefore handles both randomness and determinism. Random variati
 
 ### zh
 
-同一套規則若搭配不同分布，會產生不同結果。骨架沒有改變，但畫面的密度、節奏和視覺性格會改變。
+同一套規則若搭配不同分布，會產生不同結果。共同結構沒有改變，但畫面的密度、節奏和視覺特徵會改變。
 
-均勻分布讓每個位置的機會相同，效果接近平均散布的星塵。高斯分布會讓機率往中心集中，邊緣慢慢退開。長尾分布則保留少數較大、較遠或較罕見的事件。
+均勻分布讓每個位置的機會相同，效果接近平均散布的點群。高斯分布會讓機率往中心集中，外圍機率逐漸降低。長尾分布則保留少數較大、較遠或較罕見的事件。
 
 分布不是事後附加的風格，而是生成結果的基礎形狀。即使程式碼中的 `randomGaussian` 不可見，畫面仍會呈現往中心集中的密度。
 
@@ -85,7 +85,7 @@ Distribution is not a style applied afterward. It is the underlying shape of the
 
 ---
 
-*分布影響視覺性格。若結果需要重現，還需要另一層機制。*
+*分布影響視覺特徵。若結果需要重現，還需要另一層機制。*
 
 *Distribution influences visual character. If the result needs to be reproduced, another mechanism is still needed.*
 
@@ -109,7 +109,7 @@ In Good Vibrations, the token hash functions as this seed. If the on-chain hash 
 
 ---
 
-*seed 讓偶然結果變成固定版本。下一步是設定哪些結果常見、哪些結果稀有。*
+*seed 讓隨機結果變成固定版本。下一步是設定哪些結果常見、哪些結果稀有。*
 
 *A seed turns a chance result into a fixed version. The next step is setting which results are common and which are rare.*
 
@@ -119,7 +119,7 @@ In Good Vibrations, the token hash functions as this seed. If the on-chain hash 
 
 Rarity 可以在生成前就寫入機率，而不是在生成後再替結果貼上標籤。這種做法會先定義各種 trait 出現的門檻或權重。
 
-在 Good Vibrations 中，有兩種色盤只有當隨機數通過 0.92 或 0.97 才會出現。多數 token 會得到 Ocean、Sunset、Forest，少數 token 則會得到 Cosmological 或 Monochromical。這是事前安排的機率分配，不是事後評分。
+在 Good Vibrations 中，有兩種色盤只有當隨機數通過 0.92 或 0.97 才會出現。多數 token 會得到 Ocean、Sunset、Forest，少數 token 則會得到 Cosmological 或 Monochromical。這是事前設定的機率分配，不是事後評分。
 
 這也改變了選擇方式。當分布先被設定好，不能只挑選偏好的版本，而是需要讓每一個可能被 mint 出來的結果都成立。稀有因此成為一種事先寫入的機率設定。
 
@@ -147,11 +147,11 @@ This also changes the selection process. Once the distribution is defined, prefe
 
 章節一使用的主要工具是 `random()`。它的基本概念是讓指定範圍內的每個值有相同機會出現。在視覺生成中，「相同機會」仍可能產生不同的空間效果。
 
-直接抽樣一萬次，畫面會接近均勻散布的星塵。若使用 `random(random(N))`，機率會開始偏向某一側。若改成極座標抽樣，點也可能在不知不覺中集中到中心。
+直接抽樣一萬次，畫面會接近均勻散布的點群。若使用 `random(random(N))`，機率會開始偏向某一側。若改成極座標抽樣，點也可能在不知不覺中集中到中心。
 
 「均勻」有不同層次。每個數值機率相同，不等於畫面上每塊面積的點數相同。使用 `sqrt` 可以修正圓形面積造成的偏差，blue noise 可以改善人眼感知到的分布，rejection sampling 則提供另一種篩選樣本的方法。
 
-選擇哪一種均勻，會直接影響作品的空間節奏。
+選擇哪一種均勻，會直接影響作品的空間分布。
 
 ### en
 
@@ -171,7 +171,7 @@ The chosen form of uniformity directly affects the spatial rhythm of the work.
 
 ---
 
-# 章節二 · 高斯亂數／柔光山脈
+# 章節二 · 高斯亂數／中心集中
 
 ## algo-2
 
@@ -181,10 +181,10 @@ The chosen form of uniformity directly affects the spatial rhythm of the work.
 
 這一行可以拆成兩個部分：50 是中心位置，10 是擴散值。高斯分布會讓機率往中心集中，越接近中心越常出現，越遠離中心越少出現。大部分數值會靠近 50，常見範圍大約落在 40 到 60 附近，但並不是被鎖在這個範圍內，偶爾仍會出現更遠的值。
 
-高斯亂數會讓畫面形成重心。它不像均勻亂數那樣平均分散，而是讓多數元素靠近中心，少數偏離中心的值形成起伏。這種分布常用於柔和、集中、有重量感的畫面。
+高斯亂數會讓畫面形成重心。它不像均勻亂數那樣平均分散，而是讓多數元素靠近中心，少數偏離中心的值形成變化。這種分布常用於集中、穩定的畫面。
 
 - 中心不是單一點，而是數值最常回到的區域。
-- 尺寸、亮度、位置，都可以受到同一個中心牽引。
+- 尺寸、亮度、位置，都可以受到同一個中心影響。
 - 大部分變化集中在中心附近，因此畫面較穩定。
 - 少數偏離值保留起伏，避免畫面過於平坦。
 
@@ -222,11 +222,11 @@ Values farther from the center become less common, but they do not disappear com
 Perlin noise 讓亂數具有連續性。它不像每次重新抽樣的擲骰，而是從一張連續的噪聲場中取值。因此，前一刻和下一刻會自然銜接，畫面不會每一禎都突然跳動。
 
 - `random()` 類似擲骰，每次呼叫都是新的抽樣，前後沒有關係。
-- Perlin 類似讀取一張固定地圖，給同樣的 x 會得到同樣的值。
-- 因為數值連續，動畫看起來較平滑，相鄰格子也會互相牽動。
+- Perlin 類似讀取固定噪聲場，給同樣的 x 會得到同樣的值。
+- 因為數值連續，動畫看起來較平滑，相鄰格子也會彼此相關。
 - 疊加不同頻率的 noise，可以同時產生大尺度輪廓與小尺度細節。
 
-在動畫中，Perlin noise 讓每一禎沿著同一個場慢慢移動，而不是形成彼此無關的格子。雲、火、地形、水紋等自然感，常來自多個尺度的連續噪聲疊加。
+在動畫中，Perlin noise 讓每一禎沿著同一個噪聲場慢慢移動，而不是形成彼此無關的格子。雲、火、地形、水紋等自然紋理效果，常來自多個尺度的連續噪聲疊加。
 
 ### en
 
@@ -253,12 +253,12 @@ In animation, Perlin noise lets each frame move gradually through the same field
 
 二維 Perlin noise 會把連續亂數從一條時間軸展開成一整片表面。
 
-- 一維 noise 像音量柱，沿著時間軸慢慢變化。
+- 一維 noise 可用在音量柱，沿著時間軸慢慢變化。
 - 二維 noise 多了一個 y 軸，噪聲可以鋪滿整張畫布。
 - 雲、石紋、地形不是每一點獨立跳動，而是鄰近像素彼此連續。
-- 改變 scale、seed 和疊加層次，畫面可以從柔霧變成礦脈。
+- 改變 scale、seed 和疊加層次，畫面可以呈現不同粗細與方向的紋理。
 
-自然感常常來自連續性。每個點不需要獨立複雜，只要與鄰近點保持關聯，就能形成有機的視覺質地。
+自然紋理效果常常來自連續性。每個點不需要獨立複雜，只要與鄰近點保持關聯，就能形成連續的視覺質地。
 
 ### en
 
@@ -293,7 +293,7 @@ Natural-looking texture often comes from continuity. Each point does not need to
 - 5.2 比較 noise 內部的差異：Perlin、Worley、Curl。同樣被稱為 noise，但質地並不相同。
 - 5.3 展開分布家族，從 Uniform 到 Power law 到 Poisson，觀察尾端如何下降。
 
-選擇分布不是選擇最漂亮的數學形式，而是選擇哪一種機率分配最符合預期畫面。中心集中可以形成光暈，長尾可以保留偶發爆發，連續流動可以帶來時間感。系列的視覺性格常常來自分布選擇。
+選擇分布不是選擇最漂亮的數學形式，而是選擇哪一種機率分配最符合預期畫面。中心集中可以形成聚焦效果，長尾可以保留少數極端值，連續流動可以帶來時間連續性。系列的視覺特徵常常來自分布選擇。
 
 ### en
 
@@ -307,7 +307,7 @@ Choosing a distribution is not about choosing the most elegant mathematical form
 
 ---
 
-*分布提供視覺性格。下一步是把具體版本固定下來，這需要 seed。*
+*分布提供視覺特徵。下一步是把具體版本固定下來，這需要 seed。*
 
 *Distribution provides visual character. The next step is fixing a specific version, which requires a seed.*
 
@@ -323,7 +323,7 @@ Choosing a distribution is not about choosing the most elegant mathematical form
 
 - 位置（6.1）：平均散開、靠近重心，或沿著場流動。
 - 尺寸（6.2）：維持穩定範圍，或拉出長尾，讓少數物件突然變大。
-- 顏色（6.3）：在主色附近震盪，或用門檻切出少數不同色相。
+- 顏色（6.3）：在主色附近變化，或用門檻切出少數不同色相。
 - 稀缺（6.4）：設定哪些 trait 常見，哪些 trait 只在少數作品中出現。
 
 主要決策不是是否使用 random，而是每個參數各自搭配哪一種分布。位置搭配 Gaussian 會產生聚焦，搭配 Perlin 會產生流動；尺寸搭配 Exponential 會產生少數爆發；顏色使用 weighted threshold，則可以自動分配稀有色。下一章的 Good Vibrations 會把這四個軸接上同一個 seed，使作品可以被重播。
@@ -347,7 +347,7 @@ The main decision is not whether to use random, but which distribution should su
 
 ---
 
-# 章節七 · Good Vibrations：把機率變成樂器
+# 章節七 · Good Vibrations：用機率控制圖像與聲音
 
 ## algo-7
 
@@ -357,8 +357,8 @@ The main decision is not whether to use random, but which distribution should su
 
 Good Vibrations 使用同一個 hash 產生 seed，再由 seed 推導出圖像、聲音與 metadata。
 
-- 圓形旋律物件的位置、顏色、線段和移動，都從同一串亂數分出。
-- seed 讓作品可以回到同一個版本。同一個 token 會得到相同的圖像與聲音。
+- 圓形旋律物件的位置、顏色、線段和移動，都由同一串亂數推導。
+- seed 讓作品可以重現同一個版本。同一個 token 會得到相同的圖像與聲音。
 - 稀缺不是後來貼上的標籤，而是先寫好的門檻。有些顏色和狀態只會少數出現。
 - 線段交點可以轉成聲音事件，features 則記錄作品特徵。
 
@@ -391,7 +391,7 @@ Good Vibrations uses a single hash to generate a seed, then derives image, sound
 
 從 random 到 Perlin，從分布到 seed，從四個參數到稀缺，每一層都是設計選擇。選擇哪一種均勻、哪一個中心、哪一條長尾、哪些 trait 要常見，都會影響最終畫面。
 
-機率不是捷徑，而是把決策從「每一筆畫在哪裡」移到「哪些事情被允許發生」。每一筆未必被手動指定，但每一筆能出現的範圍、密度與機率都可以被設計。
+機率不是省略決策，而是把決策從「每一筆畫在哪裡」移到「哪些事情被允許發生」。每一筆未必被手動指定，但每一筆能出現的範圍、密度與機率都可以被設計。
 
 因此，機率可以視為生成系統中的材料。只要規則與 seed 保留，同一個版本就能被重播。Good Vibrations 使用的正是這種結構：畫面、聲音與 metadata 都是同一組決策被執行後的結果。
 

@@ -2,7 +2,7 @@
 ## How I Use LLMs: A Working Methodology from Structure to Creation
 
 王新仁（Aluan Wang）｜2026
-**Live deck →** [中文版](https://ileivoivm.github.io/LLM-Aluan/) · [English](https://ileivoivm.github.io/LLM-Aluan/?lang=en)
+**Live deck →** [中文版](https://ileivoivm.github.io/LLM-Aluan/) · [English](https://ileivoivm.github.io/LLM-Aluan/?lang=en) · [演算法／亂數與機率教學](https://ileivoivm.github.io/LLM-Aluan/algo.html)
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -112,6 +112,7 @@ Defense can't make compression lossless. It only keeps the original retrievable.
 06b   保護藝術家 — 大熊貓 meme（comic relief）
 06c   一個人不會真的消失 — 轉折頁
 07    三個問題 — 完成 / 繼續 / 不在場
+07a   演算法 — algo.html（亂數與機率教學）
 08    Deep Dive · 小說 — 《修仙-七玄關》
 09    Deep Dive · 植物 — PolyPaths
 10    Deep Dive · 水墨 — InkField
@@ -192,6 +193,7 @@ This is the talk's thesis in practice: structure makes collaboration with LLMs �
 ```
 .
 ├── index.html                      # 主投影片（GitHub Pages 入口 / Live deck）
+├── algo.html                       # 演算法／亂數與機率教學子頁面
 ├── paths.html                      # Paths 系列子頁面
 ├── gv.html                         # Good Vibrations 系列子頁面
 ├── background.html                 # 藝術家背景與展覽案例

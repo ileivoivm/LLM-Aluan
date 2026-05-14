@@ -347,6 +347,14 @@ Algorithms aren't neutral. They're methods we choose. Take the perpendicular-bis
 
 ---
 
+## slide-7a
+
+### zh
+
+### en
+
+---
+
 *三個問題，三件作品，三個答案。先講故事這條。寫小說的人都知道，記憶是寫到後面就會掉的東西。*
 
 *Three questions, three works, three answers. Let me start with story. Anyone who writes a novel knows that memory drops off the further in you go.*

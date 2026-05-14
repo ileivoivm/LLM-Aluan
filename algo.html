@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>演算法 — 王新仁 Aluan Wang</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --surface: #f6f8fa;
+    --border: #d0d7de;
+    --border-light: #e8e8e8;
+    --text: #2a2a2a;
+    --text-dim: #555;
+    --text-muted: #888;
+    --accent: #1a1a1a;
+    --accent-color: #2d6a4f;
+    --accent-2: #1a5276;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    --sans: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif;
+    --serif: 'Noto Serif TC', 'Source Han Serif TC', Georgia, 'Times New Roman', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    margin-right: max(calc((100vw - 760px) / 2), 2rem);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  h1 small { font-size: 1rem; font-weight: 400; color: var(--text-dim); }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 3rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1.5px solid var(--border-light);
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-family: var(--mono);
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--mono);
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .highlight-box {
+    border-left: 3px solid var(--accent-color);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    background: var(--surface);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .chapter-note {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin: 0.6rem 0 1.2rem;
+  }
+
+  .explainer {
+    margin: 1rem 0 0.4rem;
+    padding: 0.9rem 1.05rem;
+    background: var(--surface);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+  }
+  .explainer-title {
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-family: var(--sans);
+  }
+  .explainer p { margin: 0.4rem 0; }
+  .explainer ul {
+    margin: 0.4rem 0 0.5rem 1.1rem;
+    padding-left: 0.4rem;
+  }
+  .explainer ul li { margin: 0.25rem 0; }
+  .explainer code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: #ebf0ea;
+    padding: 0.05rem 0.32rem;
+    border-radius: 3px;
+    color: var(--accent-color);
+  }
+  .code-mini {
+    margin-top: 0.7rem;
+    padding: 0.65rem 0.85rem;
+    background: #1a1a1a;
+    color: #e8e8e8;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    border-radius: 4px;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .code-mini .cm { color: #888; }
+
+  .hist-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin: 0.7rem 0 0.2rem;
+  }
+  .hist {
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 0.55rem 0.55rem 0.4rem;
+  }
+  .hist-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+    text-align: center;
+  }
+  .hist-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 60px;
+  }
+  .hist-bars .bar {
+    flex: 1;
+    background: var(--accent-color);
+    border-radius: 2px 2px 0 0;
+    opacity: 0.85;
+  }
+  .hist-axis {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+  @media (max-width: 480px) {
+    .hist-pair { grid-template-columns: 1fr; }
+  }
+
+  .density-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.55rem;
+    margin: 0.8rem 0 0.3rem;
+  }
+  .dot-panel {
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 0.4rem 0.4rem 0.3rem;
+  }
+  .dot-panel svg {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  .dot-panel circle { fill: var(--accent-color); }
+  .dot-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+  @media (max-width: 480px) {
+    .density-row { grid-template-columns: 1fr 1fr 1fr; }
+    .dot-label { font-size: 0.55rem; }
+  }
+
+  .example-grid {
+    display: grid;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .example-card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    color: inherit;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .example-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .example-body { padding: 1.1rem 1.2rem; }
+  .example-kicker {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+  }
+  .example-title {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .example-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+  .example-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--accent-2);
+    background: #edf4f7;
+    border: 1px solid #d8e8ee;
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+  }
+  .example-links {
+    margin-top: 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+  }
+  .example-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+  .example-links a:hover { text-decoration: underline; }
+  .example-embed {
+    border-top: 1px solid var(--border-light);
+    background: var(--surface);
+    padding: 0.75rem;
+  }
+  .embed-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.45rem;
+  }
+  .embed-hint {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-bottom: 0.55rem;
+  }
+  .lazy-embed {
+    display: block;
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background:
+      radial-gradient(circle at 28% 24%, rgba(45,106,79,0.16) 0 2px, transparent 3px),
+      radial-gradient(circle at 72% 62%, rgba(26,82,118,0.12) 0 2px, transparent 3px),
+      linear-gradient(135deg, #ffffff, #f1f5f4);
+  }
+
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.2rem 0;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+  }
+  .flow-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+  }
+  .flow-arrow { color: var(--accent); font-size: 1rem; }
+
+  .timeline-nav {
+    position: fixed; right: 0; top: 0; bottom: 0; z-index: 100;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 1rem 0; pointer-events: none;
+  }
+  .timeline-inner {
+    display: flex; flex-direction: column; align-items: flex-end;
+    position: relative; pointer-events: auto;
+  }
+  .timeline-inner::before {
+    content: ''; position: absolute; right: 11px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    display: flex; align-items: center; gap: 0; cursor: pointer;
+    padding: 5px 0; position: relative; border: none; background: none;
+    font-family: var(--mono); text-align: right;
+    color: rgba(42,42,42,0.45);
+    text-decoration: none;
+  }
+  .timeline-label {
+    font-size: 0.9rem; line-height: 1.35;
+    padding: 4px 12px 4px 14px; max-width: 12rem;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(10px);
+    border-radius: 3px 0 0 3px;
+    border: 1px solid transparent;
+  }
+  .timeline-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--border); flex-shrink: 0;
+    margin-right: 8px; position: relative; z-index: 2;
+  }
+  .timeline-item:hover .timeline-label { color: var(--text); border-color: var(--border-light); }
+  .timeline-item:hover .timeline-dot { background: var(--text-muted); transform: scale(1.4); }
+
+  @media (max-width: 768px) {
+    body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
+    h1 { font-size: 1.4rem; }
+    .timeline-nav { display: none; }
+    .example-embed { padding: 0.55rem; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="back-link" href="index.html#slide-7a">← 返回投影片</a>
+
+  <h1>演算法 <small>亂數、隨機、形狀</small></h1>
+  <div class="subtitle">Algorithm · Randomness · OpenProcessing Examples</div>
+
+  <div class="highlight-box">
+    亂數是一個入口。材料先鬆動，形狀才會自己長出來。
+  </div>
+
+  <div class="flow" aria-label="亂數到重播的流程">
+    <div class="flow-node">噪聲</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">種子</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">規則</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">重播</div>
+  </div>
+
+  <h2 id="chapter-1">章節一 — 均勻亂數──宇宙塵</h2>
+  <div class="chapter-note">
+    點先落下來。還沒有形狀，只有機率的底色。
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 1.1</div>
+        <div class="example-title">均勻亂數，「宇宙塵」</div>
+        <div class="example-desc">每個點都有同樣的機會出現。像一層乾淨的雜訊，還沒有方向。</div>
+        <div class="example-tags">
+          <span class="tag">uniform random</span>
+          <span class="tag">cosmic dust</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-1" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-1</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 1</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="均勻亂數，宇宙塵 page-1" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 1.2</div>
+        <div class="example-title">巢狀亂數</div>
+        <div class="example-desc">給亂數再加一次亂數，機率開始傾斜。均勻的點慢慢聚成漸層。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼兩個 random 包起來，會變成這個形狀？</div>
+          <p>先把 <code>random(N)</code> 想成一台抽號機：給它一個最大值 N，它就在 0 到 N 之間隨手丟一個數字回來，每個數字的機會都一樣。</p>
+          <p>巢狀的意思是抽兩次。第一次抽出一個數字 A，把 A 當成第二次的最大值，再抽一次。第二次的範圍會被第一次卡住。</p>
+          <ul>
+            <li>第一次抽到 90，第二次的範圍是 0 到 90，還有機會抽到很大的數字。</li>
+            <li>第一次抽到 5，第二次的範圍就只剩 0 到 5，怎麼抽都不會超過 5。</li>
+          </ul>
+          <p>大數字要連中兩次籤才會出現，小數字幾乎每次都有機會。整體分布就被往「小」的那一邊拉，越靠近 0 越密集，越靠近最大值越稀疏。畫面上的點也因此從均勻變成漸層。</p>
+
+          <div class="hist-pair" aria-hidden="true">
+            <div class="hist">
+              <div class="hist-label">random(100)</div>
+              <div class="hist-bars">
+                <div class="bar" style="height:78%"></div>
+                <div class="bar" style="height:82%"></div>
+                <div class="bar" style="height:76%"></div>
+                <div class="bar" style="height:80%"></div>
+                <div class="bar" style="height:79%"></div>
+                <div class="bar" style="height:81%"></div>
+                <div class="bar" style="height:77%"></div>
+                <div class="bar" style="height:80%"></div>
+              </div>
+              <div class="hist-axis"><span>0</span><span>100</span></div>
+            </div>
+            <div class="hist">
+              <div class="hist-label">random(random(100))</div>
+              <div class="hist-bars">
+                <div class="bar" style="height:100%"></div>
+                <div class="bar" style="height:72%"></div>
+                <div class="bar" style="height:54%"></div>
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:28%"></div>
+                <div class="bar" style="height:19%"></div>
+                <div class="bar" style="height:11%"></div>
+                <div class="bar" style="height:5%"></div>
+              </div>
+              <div class="hist-axis"><span>0</span><span>100</span></div>
+            </div>
+          </div>
+
+          <div class="code-mini">random(100)            <span class="cm">// 0 到 100，每個數字機會一樣</span>
+random(random(100))    <span class="cm">// 第二次的最大值 = 第一次抽到的數</span></div>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">nested random</span>
+          <span class="tag">biased distribution</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-2" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-2</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 2</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="巢狀亂數 page-2" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-2" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 1.3</div>
+        <div class="example-title">密度與空白</div>
+        <div class="example-desc">調整點的數量與分布，讓空白開始成為畫面的一部分。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼同樣的均勻亂數，可以又密又疏？</div>
+          <p>均勻亂數本來會把點鋪滿整張畫布。要讓畫面出現空白，常用的做法是把一個點拆成兩段判斷：先選位置，再決定要不要真的畫出來。</p>
+          <ul>
+            <li>第一個 <code>random()</code> 決定點落在哪裡。</li>
+            <li>第二個 <code>random()</code> 是擲一次機率骰，過了門檻才畫，沒過就跳過。</li>
+          </ul>
+          <p>同一批候選位置，門檻設 1.0 全部畫滿，設 0.3 大約剩三成，設 0.05 只剩零星幾顆。畫面上的密度不是亂數本身變了，是「決定不畫」這個動作變嚴了。</p>
+          <p>如果再讓門檻跟位置有關，比如中心區域門檻鬆、邊緣門檻嚴，畫面就會自己長出有重心的構圖。空白不是沒東西，是被決定留下來的形狀。</p>
+
+          <div class="density-row" aria-hidden="true">
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="8" cy="14" r="1.4"/><circle cx="25" cy="9" r="1.4"/><circle cx="44" cy="17" r="1.4"/><circle cx="62" cy="11" r="1.4"/><circle cx="78" cy="6" r="1.4"/><circle cx="91" cy="20" r="1.4"/>
+                <circle cx="13" cy="29" r="1.4"/><circle cx="31" cy="35" r="1.4"/><circle cx="50" cy="26" r="1.4"/><circle cx="68" cy="33" r="1.4"/><circle cx="86" cy="31" r="1.4"/>
+                <circle cx="6" cy="47" r="1.4"/><circle cx="22" cy="41" r="1.4"/><circle cx="39" cy="52" r="1.4"/><circle cx="56" cy="45" r="1.4"/><circle cx="72" cy="53" r="1.4"/><circle cx="88" cy="48" r="1.4"/>
+                <circle cx="15" cy="67" r="1.4"/><circle cx="33" cy="71" r="1.4"/><circle cx="51" cy="63" r="1.4"/><circle cx="69" cy="72" r="1.4"/><circle cx="84" cy="66" r="1.4"/>
+                <circle cx="10" cy="84" r="1.4"/><circle cx="28" cy="89" r="1.4"/><circle cx="47" cy="82" r="1.4"/><circle cx="64" cy="87" r="1.4"/><circle cx="81" cy="91" r="1.4"/>
+              </svg>
+              <div class="dot-label">門檻 1.0<br>全部畫</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="44" cy="17" r="1.4"/><circle cx="78" cy="6" r="1.4"/>
+                <circle cx="31" cy="35" r="1.4"/><circle cx="68" cy="33" r="1.4"/>
+                <circle cx="22" cy="41" r="1.4"/><circle cx="56" cy="45" r="1.4"/>
+                <circle cx="33" cy="71" r="1.4"/><circle cx="84" cy="66" r="1.4"/>
+                <circle cx="47" cy="82" r="1.4"/>
+              </svg>
+              <div class="dot-label">門檻 0.3<br>留約三成</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="44" cy="17" r="1.4"/>
+                <circle cx="56" cy="45" r="1.4"/>
+                <circle cx="84" cy="66" r="1.4"/>
+                <circle cx="47" cy="82" r="1.4"/>
+              </svg>
+              <div class="dot-label">門檻 0.05<br>留零星</div>
+            </div>
+          </div>
+
+          <div class="code-mini">for (let i = 0; i &lt; 1000; i++) {
+  let x = random(width);     <span class="cm">// 第一個 random：位置</span>
+  let y = random(height);
+  if (random() &lt; 0.3) {      <span class="cm">// 第二個 random：要不要畫</span>
+    point(x, y);
+  }
+}</div>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">uniform random</span>
+          <span class="tag">density</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-3" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-3</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 3</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="密度與空白 page-3" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-3" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 1.4</div>
+        <div class="example-title">同一份材料，不同讀法</div>
+        <div class="example-desc">保留亂數作為材料，改變讀取方式，形狀就會偏向另一邊。</div>
+        <div class="example-tags">
+          <span class="tag">random field</span>
+          <span class="tag">mapping</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-4" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-4</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 4</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="同一份材料，不同讀法 page-4" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-4" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="chapter-2">章節二 — 高斯亂數──柔光山脈</h2>
+  <div class="chapter-note">
+    機率往中心集中，邊緣慢慢退開。
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 2.1</div>
+        <div class="example-title">高斯亂數，「柔光山脈」</div>
+        <div class="example-desc">數值不再平均散開，而是聚在中間。亮度與高度因此長出柔和的坡。</div>
+        <div class="example-tags">
+          <span class="tag">gaussian random</span>
+          <span class="tag">soft mountains</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-5" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-5</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 5</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="高斯亂數，柔光山脈 page-5" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-5" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="chapter-3">章節三 — 一維 Perlin Noise──跳動的音量柱</h2>
+  <div class="chapter-note">
+    隨機開始有連續性，前一刻會影響下一刻。
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 3.1</div>
+        <div class="example-title">一維 Perlin Noise，「跳動的音量柱」</div>
+        <div class="example-desc">噪聲沿著時間移動。每一格都在變，但變化彼此相連。</div>
+        <div class="example-tags">
+          <span class="tag">1D perlin noise</span>
+          <span class="tag">volume bars</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-6" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-6</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 6</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="一維 Perlin Noise，跳動的音量柱 page-6" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-6" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="chapter-4">章節四 — 二維 Perlin Noise──雲海／大理石</h2>
+  <div class="chapter-note">
+    噪聲從線變成面，紋理開始有方向。
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 4.1</div>
+        <div class="example-title">二維 Perlin Noise，「雲海／大理石」</div>
+        <div class="example-desc">同一組噪聲鋪成平面，可以像雲，也可以像石紋。</div>
+        <div class="example-tags">
+          <span class="tag">2D perlin noise</span>
+          <span class="tag">cloud / marble</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2624103#page-7" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-7</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · PAGE 7</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="二維 Perlin Noise，雲海／大理石 page-7" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-7" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="chapter-5">章節五 — 亂數模式──三種分布</h2>
+  <div class="chapter-note">
+    同一個畫面放進三種亂數。中心、外溢、連續的雜訊，各自長出不同的密度。
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 5.1</div>
+        <div class="example-title">亂數模式</div>
+        <div class="example-desc">程式並列 Gaussian、Exponential、Perlin noise：一個往中心聚，一個在近處密集、遠處偶發，一個把時間放進噪聲裡。</div>
+        <div class="example-tags">
+          <span class="tag">gaussian</span>
+          <span class="tag">exponential</span>
+          <span class="tag">perlin noise</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2631109" target="_blank" rel="noopener noreferrer">↗ OpenProcessing sketch 2631109</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · 亂數模式</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="亂數模式" src="about:blank" data-src="https://openprocessing.org/sketch/2631109/embed/" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="chapter-6">章節六 — 常態、稀有、連續</h2>
+  <div class="chapter-note">
+    亂數不是把控制權交出去。亂數是一種分配方式。
+  </div>
+
+  <div class="highlight-box">
+    我不是只問：「要不要隨機？」我會問：「什麼東西應該常出現？什麼東西只偶爾出現？什麼東西需要前後連續？」
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 6.1</div>
+        <div class="example-title">位置</div>
+        <div class="example-desc">均勻分布像星塵。Gaussian 形成重心。Perlin noise 讓位置有流動的方向。</div>
+        <div class="example-tags">
+          <span class="tag">position</span>
+          <span class="tag">gaussian</span>
+          <span class="tag">perlin noise</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 6.2</div>
+        <div class="example-title">尺寸</div>
+        <div class="example-desc">平均的變化讓畫面穩定。長尾的變化讓少數物件突然變大。</div>
+        <div class="example-tags">
+          <span class="tag">scale</span>
+          <span class="tag">exponential</span>
+          <span class="tag">long tail</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 6.3</div>
+        <div class="example-title">顏色</div>
+        <div class="example-desc">顏色可以在主色附近震盪，也可以偶爾抽到完全不同的色相。</div>
+        <div class="example-tags">
+          <span class="tag">color</span>
+          <span class="tag">palette</span>
+          <span class="tag">rare hue</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 6.4</div>
+        <div class="example-title">稀缺</div>
+        <div class="example-desc">Rarity 不是事後貼上的標籤。它先在程式裡被安排成機率。</div>
+        <div class="example-tags">
+          <span class="tag">rarity</span>
+          <span class="tag">probability</span>
+          <span class="tag">feature</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="highlight-box">
+    一個系列的性格，常常不是來自單一圖形，而是來自機率怎麼被安排。
+  </div>
+
+  <div class="highlight-box">
+    隨機是一條可以被保存的分岔。
+  </div>
+
+  <h2 id="chapter-7">章節七 — Good Vibrations：把機率變成樂器</h2>
+  <div class="chapter-note">
+    位置、尺寸、顏色、稀缺，在這裡變成一組可重播的視覺與聲音系統。
+  </div>
+
+  <div class="highlight-box">
+    Good Vibrations 先把 token hash 轉成 seed，再讓線段、旋律、音色、metadata 從同一組亂數展開。
+  </div>
+
+  <div class="example-grid">
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">good vibrations 7.1</div>
+        <div class="example-title">Seed</div>
+        <div class="example-desc">tokenData.hash 被切成數字，餵進 xorshift。Random 和 RND 每次吐出的序列都一樣。同一個 token，會回到同一張圖、同一組音。</div>
+        <div class="example-tags">
+          <span class="tag">tokenData.hash</span>
+          <span class="tag">xorshift</span>
+          <span class="tag">replayable</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">good vibrations 7.2</div>
+        <div class="example-title">位置</div>
+        <div class="example-desc">defult() 決定 MelodyNum、線段方向、長度、位置與距離。average() 讓物件不只是散開，也會靠近某些重心。</div>
+        <div class="example-tags">
+          <span class="tag">MelodyNum</span>
+          <span class="tag">average()</span>
+          <span class="tag">geometry</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">good vibrations 7.3</div>
+        <div class="example-title">稀缺</div>
+        <div class="example-desc">colorSetting() 把色系寫成機率。Ocean、Sunset、Forest 是常態；Cosmological 和 Monochromical 只在 rc 跨過 0.92、0.97 之後出現。</div>
+        <div class="example-tags">
+          <span class="tag">palette</span>
+          <span class="tag">rc &gt; 0.92</span>
+          <span class="tag">rc &gt; 0.97</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">good vibrations 7.4</div>
+        <div class="example-title">聲音</div>
+        <div class="example-desc">Melody 有半徑、形狀、角度、速度、亮度層與縮放層。它們在畫面中移動，和線段相交時，交點就變成聲音事件。</div>
+        <div class="example-tags">
+          <span class="tag">intersection()</span>
+          <span class="tag">frqArray</span>
+          <span class="tag">waveforms</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">code summary</div>
+        <div class="example-title">同一份 hash 的幾種讀法</div>
+        <div class="example-desc">我把視覺結構和聲音結構一起寫進 metadata。Surface、GeoPos、MelodyNum、LineNum、OscSine、OscSquare、OscTriangle、OscSawtooth、Ring，都來自程式執行時留下的骨架。</div>
+        <div class="code-mini">hash -&gt; seed -&gt; Random / RND
+seed -&gt; colorSetting() -&gt; Ocean / Sunset / Forest / rare palettes
+seed -&gt; defult() -&gt; MelodyNum / LineNum / synthId / specialLine
+Melody + line -&gt; intersection() -&gt; note / length / waveform
+features[] -&gt; Surface / GeoPos / Osc* / Ring</div>
+        <div class="example-tags">
+          <span class="tag">features</span>
+          <span class="tag">metadata</span>
+          <span class="tag">score</span>
+        </div>
+        <div class="example-links">
+          <a href="https://openprocessing.org/@aluan/2048187" target="_blank" rel="noopener noreferrer">↗ OpenProcessing sketch 2048187</a>
+        </div>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">OPENPROCESSING · GOOD VIBRATIONS</div>
+        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
+        <iframe class="lazy-embed" title="Good Vibrations" src="about:blank" data-src="https://openprocessing.org/sketch/2048187/embed/" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+
+<nav class="timeline-nav">
+  <div class="timeline-inner">
+    <a class="timeline-item" href="#chapter-1">
+      <span class="timeline-label">章節一</span>
+      <span class="timeline-dot"></span>
+    </a>
+    <a class="timeline-item" href="#chapter-2">
+      <span class="timeline-label">章節二</span>
+      <span class="timeline-dot"></span>
+    </a>
+    <a class="timeline-item" href="#chapter-3">
+      <span class="timeline-label">章節三</span>
+      <span class="timeline-dot"></span>
+    </a>
+    <a class="timeline-item" href="#chapter-4">
+      <span class="timeline-label">章節四</span>
+      <span class="timeline-dot"></span>
+    </a>
+    <a class="timeline-item" href="#chapter-5">
+      <span class="timeline-label">章節五</span>
+      <span class="timeline-dot"></span>
+    </a>
+    <a class="timeline-item" href="#chapter-6">
+      <span class="timeline-label">章節六</span>
+      <span class="timeline-dot"></span>
+    </a>
+    <a class="timeline-item" href="#chapter-7">
+      <span class="timeline-label">章節七</span>
+      <span class="timeline-dot"></span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  document.querySelectorAll('iframe.lazy-embed[data-src]').forEach(iframe => {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const url = iframe.getAttribute('data-src');
+        if (entry.isIntersecting) {
+          if (url && iframe.src !== url) iframe.src = url;
+        } else {
+          if (iframe.src && iframe.src !== 'about:blank') iframe.src = 'about:blank';
+        }
+      });
+    }, { root: null, threshold: 0, rootMargin: '300px' });
+    io.observe(iframe);
+  });
+</script>
+
+</body>
+</html>

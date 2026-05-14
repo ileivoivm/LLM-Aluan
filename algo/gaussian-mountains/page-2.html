@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中心位置與擴散值，高斯亂數 page-2</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let panels = [
+  { label: 'small spread', centerX: 95, spread: 13, tone: [120, 180, 255] },
+  { label: 'medium spread', centerX: 250, spread: 38, tone: [190, 220, 255] },
+  { label: 'large spread', centerX: 405, spread: 78, tone: [245, 220, 170] }
+];
+let centerY = 250;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  drawScene();
+}
+
+function drawScene() {
+  background(5, 7, 12);
+  drawPanels();
+  drawGaussianClouds();
+  drawGuide();
+}
+
+function drawPanels() {
+  noFill();
+  stroke(55);
+  strokeWeight(1);
+  for (let i = 1; i < panels.length; i++) {
+    line(i * width / 3, 46, i * width / 3, height - 42);
+  }
+
+  for (let p of panels) {
+    stroke(90, 110, 145, 95);
+    line(p.centerX, 70, p.centerX, height - 66);
+    line(p.centerX - p.spread, centerY, p.centerX + p.spread, centerY);
+    circle(p.centerX, centerY, p.spread * 2);
+
+    noStroke();
+    fill(230);
+    circle(p.centerX, centerY, 4);
+    fill(150);
+    textSize(10);
+    text(`${p.label}`, p.centerX - 48, 26);
+    text(`center=${p.centerX}  spread=${p.spread}`, p.centerX - 70, height - 22);
+  }
+}
+
+function drawGaussianClouds() {
+  blendMode(ADD);
+  noStroke();
+
+  for (let p of panels) {
+    for (let i = 0; i < 2200; i++) {
+      let x = randomGaussian(p.centerX, p.spread);
+      let y = randomGaussian(centerY, p.spread);
+      if (!insidePanel(x, p.centerX) || y < 58 || y > height - 58) continue;
+
+      let d = dist(x, y, p.centerX, centerY);
+      let alpha = map(d, 0, p.spread * 3.2, 24, 4, true);
+      fill(p.tone[0], p.tone[1], p.tone[2], alpha);
+      circle(x, y, random(1.2, 3.2));
+    }
+  }
+
+  blendMode(BLEND);
+}
+
+function insidePanel(x, centerX) {
+  let panelW = width / 3;
+  let panelIndex = floor(centerX / panelW);
+  let minX = panelIndex * panelW + 8;
+  let maxX = (panelIndex + 1) * panelW - 8;
+  return x >= minX && x <= maxX;
+}
+
+function drawGuide() {
+  noStroke();
+  fill(230);
+  textSize(11);
+  text('randomGaussian(center, spread)', 16, 24);
+  fill(140);
+  text('center sets the cloud position; spread sets how far it opens', 16, height - 8);
+}
+
+function mousePressed() {
+  drawScene();
+}
+</script>
+</body>
+</html>

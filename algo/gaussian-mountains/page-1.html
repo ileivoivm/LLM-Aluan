@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高斯亂數，柔光山脈 page-1</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let centerX = 250;
+let baseY = 360;
+let spreadX = 78;
+let spreadY = 34;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  drawScene();
+}
+
+function drawScene() {
+  background(5, 7, 12);
+  drawMountainGlow();
+  drawRidge();
+  drawGuide();
+}
+
+function mountainY(x) {
+  let d = abs(x - centerX) / centerX;
+  let peak = 168 * exp(-d * d * 2.4);
+  return baseY - peak + sin(x * 0.026) * 14 + sin(x * 0.071) * 6;
+}
+
+function drawMountainGlow() {
+  blendMode(ADD);
+  noStroke();
+
+  for (let i = 0; i < 9000; i++) {
+    let x = randomGaussian(centerX, spreadX);
+    let y = randomGaussian(mountainY(x), spreadY);
+    if (x < 0 || x > width || y < 0 || y > height) continue;
+
+    let alpha = map(y, 70, height, 20, 6, true);
+    fill(120, 170, 255, alpha);
+    circle(x, y, random(1.2, 3.6));
+  }
+
+  for (let i = 0; i < 900; i++) {
+    let x = randomGaussian(centerX, spreadX * 2.15);
+    let y = randomGaussian(mountainY(x), spreadY * 1.7);
+    if (x < 0 || x > width || y < 0 || y > height) continue;
+
+    fill(240, 230, 185, 10);
+    circle(x, y, random(0.8, 2.4));
+  }
+
+  blendMode(BLEND);
+}
+
+function drawRidge() {
+  noFill();
+  stroke(235, 240, 255, 105);
+  strokeWeight(1.2);
+  beginShape();
+  for (let x = 0; x <= width; x += 4) {
+    vertex(x, mountainY(x));
+  }
+  endShape();
+
+  stroke(75, 105, 160, 90);
+  strokeWeight(1);
+  for (let y = 405; y < height; y += 18) {
+    line(0, y, width, y);
+  }
+}
+
+function drawGuide() {
+  noStroke();
+  fill(230);
+  textSize(11);
+  text('randomGaussian(center, spread)', 16, 24);
+  fill(140);
+  text('most samples stay near the ridge; a few drift away', 16, height - 16);
+}
+
+function mousePressed() {
+  drawScene();
+}
+</script>
+</body>
+</html>

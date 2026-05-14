@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半徑不是面積 page-3</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < 8000; i++) {
+    fill(random(255));
+    let r = random() * width / 2;
+    let x = cos(i / 8000 * 6.28) * r;
+    let y = sin(i / 8000 * 6.28) * r;
+
+    circle(x + width / 2, y + height / 2, 2);
+  }
+}
+</script>
+</body>
+</html>

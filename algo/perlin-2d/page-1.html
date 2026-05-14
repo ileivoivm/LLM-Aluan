@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二維 Perlin Noise，雲海／大理石 page-1</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let seed;
+let scale = 0.012;
+let marbleStrength = 7.5;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  seed = int(random(99999));
+  drawScene();
+}
+
+function drawScene() {
+  noiseSeed(seed);
+  noiseDetail(5, 0.5);
+  loadPixels();
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      let n = fbm(x * scale, y * scale);
+      let marble = sin(x * 0.035 + n * marbleStrength);
+      let cloud = map(n, 0.2, 0.85, 0, 1, true);
+      let vein = map(marble, -1, 1, 0, 1);
+      let shade = cloud * 0.72 + vein * 0.28;
+
+      let idx = 4 * (x + y * width);
+      pixels[idx + 0] = lerp(18, 238, shade);
+      pixels[idx + 1] = lerp(30, 232, shade);
+      pixels[idx + 2] = lerp(45, 218, shade);
+      pixels[idx + 3] = 255;
+    }
+  }
+
+  updatePixels();
+  drawOverlay();
+}
+
+function fbm(x, y) {
+  let value = 0;
+  let amp = 0.5;
+  let freq = 1;
+
+  for (let i = 0; i < 5; i++) {
+    value += noise(x * freq, y * freq) * amp;
+    freq *= 2;
+    amp *= 0.5;
+  }
+
+  return value;
+}
+
+function drawOverlay() {
+  noStroke();
+  fill(0, 90);
+  rect(0, 0, width, 42);
+  rect(0, height - 34, width, 34);
+
+  fill(235);
+  textSize(11);
+  text('noise(x * scale, y * scale)', 16, 24);
+  fill(180);
+  text(`seed ${seed}   click: re-seed`, 16, height - 14);
+}
+
+function mousePressed() {
+  seed = int(random(99999));
+  drawScene();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1D Perlin Noise，跳動的音量柱 page-1</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let numBars = 36;
+let barWidth = 8;
+let barGap = 4;
+let spaceScale = 0.18;
+let timeScale = 0.012;
+let t = 0;
+let history = [];
+let historyLen = 240;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noStroke();
+  noiseDetail(4, 0.5);
+}
+
+function draw() {
+  background(5, 7, 12);
+
+  let totalWidth = numBars * barWidth + (numBars - 1) * barGap;
+  let startX = (width - totalWidth) / 2;
+  let baseY = 380;
+  let maxH = 280;
+
+  // 累積目前的 noise 樣本，畫上方歷史曲線
+  let centerNoise = noise(numBars / 2 * spaceScale, t);
+  history.push(centerNoise);
+  if (history.length > historyLen) history.shift();
+
+  drawHistory(history, startX, totalWidth, maxH);
+
+  // 主畫面：音量柱
+  for (let i = 0; i < numBars; i++) {
+    let n = noise(i * spaceScale, t);
+    let h = map(n, 0, 1, 12, maxH);
+    let x = startX + i * (barWidth + barGap);
+
+    // 軌道（背景）
+    fill(28, 46, 42, 90);
+    rect(x, baseY - maxH, barWidth, maxH);
+
+    // 當前音量
+    let alpha = map(n, 0, 1, 130, 230);
+    fill(120, 200, 160, alpha);
+    rect(x, baseY - h, barWidth, h);
+
+    // 頂端 cap
+    fill(230, 245, 235, 230);
+    rect(x, baseY - h - 2, barWidth, 2);
+  }
+
+  // 連線：把柱頂連起來，看出 noise 的連續性
+  push();
+  noFill();
+  stroke(180, 230, 200, 120);
+  strokeWeight(1);
+  beginShape();
+  for (let i = 0; i < numBars; i++) {
+    let n = noise(i * spaceScale, t);
+    let x = startX + i * (barWidth + barGap) + barWidth / 2;
+    let y = baseY - map(n, 0, 1, 12, maxH);
+    vertex(x, y);
+  }
+  endShape();
+  pop();
+
+  drawStats();
+
+  t += timeScale;
+}
+
+function drawHistory(arr, startX, totalWidth, maxH) {
+  let topY = 60;
+  let h = 70;
+  push();
+  noFill();
+  stroke(80, 100, 95, 150);
+  strokeWeight(1);
+  rect(startX, topY, totalWidth, h);
+
+  stroke(160, 220, 190, 200);
+  strokeWeight(1.2);
+  beginShape();
+  for (let i = 0; i < arr.length; i++) {
+    let x = startX + (i / (historyLen - 1)) * totalWidth;
+    let y = topY + h - arr[i] * h;
+    vertex(x, y);
+  }
+  endShape();
+  pop();
+
+  noStroke();
+  fill(120);
+  textSize(10);
+  text('history of noise(center, t)', startX, topY - 6);
+}
+
+function drawStats() {
+  noStroke();
+  fill(220);
+  textSize(11);
+  text(`noise(i * ${spaceScale.toFixed(2)}, t)`, 16, 24);
+  fill(155);
+  text(`t = ${t.toFixed(2)}`, 16, 42);
+  text(`bars ${numBars}   click: re-seed`, 16, height - 14);
+}
+
+function mousePressed() {
+  noiseSeed(int(random(99999)));
+  history = [];
+  t = 0;
+}
+</script>
+</body>
+</html>

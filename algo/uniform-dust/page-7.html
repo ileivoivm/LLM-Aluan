@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejection Sampling page-7</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let radius = 210;
+let maxAttempts = 1400;
+let samplesPerFrame = 22;
+let accepted = [];
+let rejected = [];
+let attempts = 0;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  resetSampling();
+}
+
+function draw() {
+  if (attempts < maxAttempts) {
+    for (let i = 0; i < samplesPerFrame && attempts < maxAttempts; i++) {
+      sampleCandidate();
+    }
+  }
+
+  background(0);
+  drawBounds();
+  drawPoints(rejected, color(115, 70, 70, 150), 2);
+  drawPoints(accepted, color(235, 235, 235, 210), 2.5);
+  drawStats();
+}
+
+function sampleCandidate() {
+  let x = random(-radius, radius);
+  let y = random(-radius, radius);
+  let p = createVector(x, y);
+
+  if (x * x + y * y <= radius * radius) {
+    accepted.push(p);
+  } else {
+    rejected.push(p);
+  }
+
+  attempts++;
+}
+
+function drawBounds() {
+  push();
+  translate(width / 2, height / 2);
+
+  noFill();
+  stroke(80);
+  strokeWeight(1);
+  rectMode(CENTER);
+  rect(0, 0, radius * 2, radius * 2);
+
+  stroke(190);
+  strokeWeight(1.2);
+  circle(0, 0, radius * 2);
+  pop();
+}
+
+function drawPoints(points, c, size) {
+  push();
+  translate(width / 2, height / 2);
+  noStroke();
+  fill(c);
+  for (let p of points) {
+    circle(p.x, p.y, size);
+  }
+  pop();
+}
+
+function drawStats() {
+  let rate = attempts === 0 ? 0 : accepted.length / attempts;
+  let waste = 1 - rate;
+
+  noStroke();
+  fill(235);
+  textSize(11);
+  text(`accepted ${accepted.length}`, 16, 24);
+  fill(155);
+  text(`rejected ${rejected.length}`, 16, 42);
+  text(`rate ${nf(rate, 1, 3)}  target PI/4 ${nf(PI / 4, 1, 3)}`, 16, height - 28);
+  text(`waste ${nf(waste, 1, 3)}  click: resample`, 16, height - 12);
+}
+
+function resetSampling() {
+  accepted = [];
+  rejected = [];
+  attempts = 0;
+}
+
+function mousePressed() {
+  resetSampling();
+}
+</script>
+</body>
+</html>

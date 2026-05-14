@@ -116,6 +116,16 @@
     border-radius: 3px;
     color: var(--accent-color);
   }
+  .explainer a {
+    color: var(--accent-2);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-2);
+  }
+  .explainer a:hover {
+    color: var(--accent-color);
+    border-bottom-style: solid;
+    border-color: var(--accent-color);
+  }
   .code-mini {
     margin-top: 0.7rem;
     padding: 0.65rem 0.85rem;
@@ -129,6 +139,41 @@
     overflow-x: auto;
   }
   .code-mini .cm { color: #888; }
+  .sketch-code {
+    margin-top: 0.85rem;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: #111;
+    overflow: hidden;
+  }
+  .sketch-code summary {
+    cursor: pointer;
+    padding: 0.55rem 0.75rem;
+    background: #1a1a1a;
+    color: #e8e8e8;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+  .sketch-code summary:hover {
+    color: #fff;
+    background: #202020;
+  }
+  .sketch-code pre {
+    margin: 0;
+    padding: 0.85rem;
+    max-height: 22rem;
+    overflow: auto;
+    color: #e8e8e8;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    line-height: 1.65;
+    white-space: pre;
+  }
+  .sketch-code code {
+    font-family: inherit;
+    color: inherit;
+  }
 
   .hist-pair {
     display: grid;
@@ -209,110 +254,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
     margin: 0.8rem 0 0.3rem;
-  }
-
-  /* TODO scaffolding */
-  .todo-block {
-    margin: 1rem 0;
-    padding: 0.95rem 1.1rem;
-    background: #fffbea;
-    border: 1px dashed #b8860b;
-    border-radius: 6px;
-    font-size: 0.88rem;
-    line-height: 1.75;
-    color: var(--text);
-  }
-  .todo-tag {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    background: #b8860b;
-    color: #fff;
-    padding: 0.12rem 0.55rem;
-    border-radius: 3px;
-    margin-bottom: 0.45rem;
-    letter-spacing: 0.08em;
-  }
-  .todo-title {
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-    font-family: var(--sans);
-    color: var(--text);
-  }
-  .todo-brief {
-    margin: 0.25rem 0 0.6rem;
-    color: var(--text-dim);
-    font-style: italic;
-    font-size: 0.86rem;
-  }
-  .todo-block dl { margin: 0.4rem 0 0; }
-  .todo-block dt {
-    font-weight: 700;
-    font-size: 0.72rem;
-    color: var(--accent-2);
-    margin-top: 0.55rem;
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .todo-block dd {
-    margin: 0.2rem 0 0;
-    font-size: 0.86rem;
-    color: var(--text-dim);
-  }
-  .todo-block dd ul { margin: 0.2rem 0 0 1.1rem; padding-left: 0.3rem; }
-  .todo-block dd li { margin: 0.15rem 0; }
-  .todo-block code {
-    font-family: var(--mono);
-    font-size: 0.82em;
-    background: #fff;
-    border: 1px solid #f0e6c2;
-    padding: 0.05rem 0.32rem;
-    border-radius: 3px;
-    color: var(--accent-color);
-  }
-
-  .meta-outline {
-    margin: 1.5rem 0 2rem;
-    padding: 1.1rem 1.3rem;
-    background: var(--surface);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-  }
-  .meta-outline h2.meta-h {
-    margin-top: 0;
-    font-size: 1.05rem;
-    border: none;
-    padding: 0;
-    color: var(--text);
-    font-family: var(--sans);
-  }
-  .meta-outline p {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin: 0.5rem 0 0.8rem;
-  }
-  .meta-outline ol {
-    margin: 0.5rem 0 0 1.3rem;
-    font-size: 0.85rem;
-  }
-  .meta-outline ol li { margin: 0.3rem 0; color: var(--text-dim); }
-  .meta-outline ol li b { color: var(--text); }
-  .meta-outline code {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    background: #fff;
-    border: 1px solid var(--border-light);
-    padding: 0.05rem 0.35rem;
-    border-radius: 3px;
-    color: var(--accent-2);
-  }
-  .meta-outline .legend {
-    margin-top: 0.7rem;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-family: var(--mono);
   }
 
   .map-back {
@@ -409,6 +350,14 @@
     box-shadow: 0 4px 18px rgba(0,0,0,0.08);
     transform: translateY(-2px);
   }
+  .example-card.supplement-card {
+    border-style: dashed;
+    background: #fbfbf8;
+  }
+  .example-card.supplement-card:hover {
+    border-color: var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
   .example-body { padding: 1.1rem 1.2rem; }
   .example-kicker {
     font-family: var(--mono);
@@ -423,6 +372,18 @@
     font-size: 1.12rem;
     font-weight: 700;
     margin-bottom: 0.35rem;
+  }
+  .example-title .title-num {
+    font-family: var(--mono);
+    font-size: 0.92em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-right: 0.55rem;
+    letter-spacing: 0;
+    padding: 0.05rem 0.42rem;
+    background: #edf4ee;
+    border-radius: 3px;
+    vertical-align: 0.05em;
   }
   .example-desc {
     font-size: 0.9rem;
@@ -540,11 +501,111 @@
   .timeline-item:hover .timeline-label { color: var(--text); border-color: var(--border-light); }
   .timeline-item:hover .timeline-dot { background: var(--text-muted); transform: scale(1.4); }
 
+  .timeline-item.sub { padding: 1px 0; }
+  .timeline-item.sub .timeline-label {
+    font-size: 0.7rem;
+    padding: 1px 10px 1px 14px;
+    color: rgba(42,42,42,0.4);
+    max-width: 8rem;
+    font-weight: 400;
+  }
+  .timeline-item.sub .timeline-dot {
+    width: 4px;
+    height: 4px;
+    margin-right: 9.5px;
+    background: var(--border-light);
+  }
+  .timeline-item.sub:hover .timeline-label { color: var(--text-dim); }
+  .timeline-item.sub:hover .timeline-dot { background: var(--text-muted); transform: scale(1.5); }
+
+  .timeline-inner {
+    max-height: 96vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .timeline-inner::-webkit-scrollbar { display: none; }
+
   @media (max-width: 768px) {
     body { padding: 2rem 1.2rem 3rem; margin-right: auto; }
     h1 { font-size: 1.4rem; }
     .timeline-nav { display: none; }
     .example-embed { padding: 0.55rem; }
+  }
+
+  /* ── Speaker Notes ── */
+  .notes-btn {
+    position: fixed; left: 1rem; top: 50%; transform: translateY(-50%);
+    z-index: 150; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--border); background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(10px); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: all 0.2s;
+  }
+  .notes-btn:hover  { border-color: var(--accent-color); color: var(--accent-color); }
+  .notes-btn.active { border-color: var(--accent-color); color: var(--accent-color); background: #fff; }
+
+  .notes-panel {
+    position: fixed; left: 3.4rem; top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    width: 510px; max-width: calc(100vw - 5rem); max-height: 75vh; overflow-y: auto;
+    background: #fff; border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10); border-radius: 4px;
+    z-index: 200; padding: 1.3rem 1.55rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .notes-panel.open {
+    opacity: 1; pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+  }
+  .notes-panel-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 0.7rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .notes-slide-id {
+    font-family: var(--mono); font-size: 0.62rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .notes-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 0.75rem; padding: 2px 5px; line-height: 1;
+  }
+  .notes-close:hover { color: var(--text); }
+  .notes-header-actions {
+    display: flex; gap: 0.6rem; align-items: center;
+  }
+  .notes-md-link {
+    font-family: var(--mono); font-size: 0.62rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    text-decoration: none; padding: 2px 6px;
+    border: 1px solid var(--border-light); border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .notes-md-link:hover { color: var(--accent-color); border-color: var(--accent-color); }
+  .notes-body {
+    font-family: var(--sans); font-size: 0.96rem;
+    color: var(--text); line-height: 1.85; white-space: pre-wrap;
+  }
+  .notes-empty {
+    font-family: var(--mono); font-size: 0.78rem;
+    color: var(--text-muted); font-style: italic;
+  }
+  @media (max-width: 768px) {
+    .notes-btn {
+      left: auto; right: 1rem; top: auto; bottom: 1rem;
+      transform: none;
+      width: 40px; height: 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    }
+    .notes-panel {
+      left: 1rem; right: 1rem; top: auto; bottom: 4.2rem;
+      width: auto; max-width: none; max-height: 65vh;
+      transform: translateY(8px);
+      padding: 1rem 1.1rem;
+    }
+    .notes-panel.open { transform: translateY(0); }
+    .notes-body { font-size: 0.92rem; line-height: 1.75; }
   }
 </style>
 </head>
@@ -552,8 +613,25 @@
 
   <a class="back-link" href="index.html#slide-7a">← 返回投影片</a>
 
+  <!-- Speaker Notes -->
+  <button id="notesBtn" class="notes-btn" title="講者筆記">
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H5.5L2 13V10H2a1 1 0 0 1-1-1V2z"/>
+    </svg>
+  </button>
+  <div id="notesPanel" class="notes-panel">
+    <div class="notes-panel-header">
+      <span id="notesSlideId" class="notes-slide-id"></span>
+      <div class="notes-header-actions">
+        <a class="notes-md-link" href="algo-notes.md" target="_blank" rel="noopener noreferrer" title="View algo-notes.md source">MD</a>
+        <button id="notesClose" class="notes-close">✕</button>
+      </div>
+    </div>
+    <div id="notesBody" class="notes-body"></div>
+  </div>
+
   <h1>演算法 <small>亂數、隨機、形狀</small></h1>
-  <div class="subtitle">Algorithm · Randomness · OpenProcessing Examples</div>
+  <div class="subtitle">Algorithm · Randomness · Local Sketches</div>
 
   <div class="highlight-box">
     亂數是一個入口。材料先鬆動，形狀才會自己長出來。
@@ -569,28 +647,9 @@
     <div class="flow-node">重播</div>
   </div>
 
-  <section class="meta-outline">
-    <h2 class="meta-h">修訂大綱（TODO map · 給接手 agent 看）</h2>
-    <p>這頁正在補完。文中以黃色 <code>TODO-X.Y</code> 區塊標記待寫段落，每個區塊都含寫作指引。Agent 接到任務後：找到對應 TODO ID → 讀「目標 / 內容大綱 / 視覺輔助 / 程式碼 / 對照 / 風格 / 長度」→ 整段替換成正式 <code>.explainer</code> 區塊（或新 <code>.example-card</code>）。寫好後刪掉 todo-block。</p>
-    <ol>
-      <li><b>章節零</b> 為什麼是機率？藝術立場 — 已補定錨頁，保留 <code>TODO-0.2 ~ 0.3</code></li>
-      <li><b>章節一</b> 均勻亂數 — 已有 1.1–1.5，補 <code>TODO-1.6, 1.7</code></li>
-      <li><b>章節二</b> 高斯亂數 — 補 <code>TODO-2.2 ~ 2.4</code></li>
-      <li><b>章節三</b> 1D Perlin — 補 <code>TODO-3.2, 3.3</code></li>
-      <li><b>章節四</b> 2D Perlin — 補 <code>TODO-4.2, 4.3</code></li>
-      <li><b>章節五</b> 分布並列 — 補 <code>TODO-5.2</code></li>
-      <li><b>章節六</b> 機率工具箱 — 保留 6.1–6.4 觀念，補 <code>TODO-6.5 ~ 6.8</code> 具體工具</li>
-      <li><b>章節七（新）</b> 演算法家族 — 不只 random — <code>TODO-7.1 ~ 7.5</code></li>
-      <li><b>章節八</b> Good Vibrations（原章節七） — 補 <code>TODO-8.0</code> pipeline、概念回扣</li>
-      <li><b>章節九（新）</b> 感知偏差 — <code>TODO-9.1 ~ 9.3</code></li>
-      <li><b>章節十（新）</b> 收尾 / 機率作為決策 — <code>TODO-10.1 ~ 10.3</code></li>
-    </ol>
-    <p class="legend">寫作公約：沿用 <code>.explainer</code> 結構；國中生友善；禁用破折號 ——；禁止「不只是A更是B」「表面是X骨子裡是Y」；不替觀眾下結論；事實擺出來。</p>
-  </section>
-
   <h2 id="chapter-0">章節零 — 亂數不是失控</h2>
   <div class="chapter-note">
-    工具進來之前，先擺立場。
+    聲音藝術有句名言：噪音為聲音之母。演算法有千百萬種，本章節透過解析亂數、機率，來說明為什麼亂數也是生成藝術之母。
   </div>
 
   <div class="highlight-box">
@@ -708,14 +767,9 @@ random_with_seed(seed)     <span class="cm">// 同樣 seed 永遠回同樣作品
 
         <div class="explainer">
           <div class="explainer-title">random() 是什麼？怎麼讓畫面出現空白？</div>
-          <p>把 <code>random(N)</code> 想成一台抽號機：給它一個最大值 N，它就在 0 到 N 之間隨手丟一個數字回來，每個數字的機會都一樣。把這個動作重複幾千次去畫點，整張畫布就會被均勻鋪滿，就是這頁的基本款。</p>
-          <p>要讓畫面出現空白，最常用的做法是把一個點拆成兩段判斷：</p>
-          <ul>
-            <li>第一個 <code>random()</code> 決定點落在哪。</li>
-            <li>第二個 <code>random()</code> 是擲一次機率骰，過了門檻才畫，沒過就跳過。</li>
-          </ul>
-          <p>同一批候選位置，門檻設 1.0 全部畫滿，設 0.3 大約剩三成，設 0.05 只剩零星幾顆。畫面上的密度不是亂數變了，是「決定不畫」這個動作變嚴了。</p>
-          <p>如果再讓門檻跟位置有關，比如中心區域門檻鬆、邊緣門檻嚴，畫面就會自己長出有重心的構圖。空白不是沒東西，是被決定留下來的形狀。</p>
+          <p><code>random(N)</code> 像一台抽號機：給它最大值 N，它就在 0 到 N 之間丟一個數字回來。重複幾千次去畫點，畫布會被一層沒有方向的雜訊鋪滿。</p>
+          <p><a href="https://en.wikiquote.org/wiki/John_von_Neumann" target="_blank" rel="noopener noreferrer">John von Neumann</a> 1949 年在 Monte Carlo 研討會上講了一段話，1951 年收進《Monte Carlo Method》論文集：「任何用算數方法產生隨機數的人，當然是處在罪惡狀態。」電腦其實做不出真正的亂數，只能用一個確定性的函數演出隨機。當時是純數學家的自嘲，七十年後變成了生成藝術的全部基礎。</p>
+          <p>空白不是另一種亂數，而是多一個門檻。位置先被抽出來，再決定要不要畫。門檻設 1.0 全部留下，設 0.3 大約剩三成，設 0.05 只剩零星幾顆。</p>
 
           <div class="density-row" aria-hidden="true">
             <div class="dot-panel">
@@ -763,13 +817,29 @@ random_with_seed(seed)     <span class="cm">// 同樣 seed 永遠回同樣作品
           <span class="tag">cosmic dust</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-1" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-1</a>
+          <a href="algo/uniform-dust/page-1.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-1</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-1 sketch.js</summary>
+          <pre><code>function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i &lt; 8000; i++) {
+    fill(random(255));
+    circle(random(width), random(height), 2);
+  }
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 1</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="均勻亂數，宇宙塵 page-1" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 1</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。</div>
+        <iframe class="lazy-embed" title="均勻亂數，宇宙塵 page-1" src="about:blank" data-src="algo/uniform-dust/page-1.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
@@ -829,20 +899,35 @@ random(random(100))    <span class="cm">// 第二次的最大值 = 第一次抽�
           <span class="tag">biased distribution</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-2" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-2</a>
+          <a href="algo/uniform-dust/page-2.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-2</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-2 sketch.js</summary>
+          <pre><code>function setup() {
+  createCanvas(500, 500);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i &lt; 8000; i++) {
+    fill(random(255));
+    circle(random(random())*width, random(random())*height, 2);
+  }
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 2</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="巢狀亂數 page-2" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-2" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 2</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。</div>
+        <iframe class="lazy-embed" title="巢狀亂數 page-2" src="about:blank" data-src="algo/uniform-dust/page-2.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
     <div class="problem-cluster" aria-label="圓盤問題：半徑不是面積">
       <div class="problem-note">
         <b>圓盤問題：半徑不是面積</b>
-        同一個問題，我試三次。先讓半徑均勻，中心會密。再把半徑反轉，點被推到外圈。最後用 <code>sqrt(random())</code> 把尺度改成面積，圓盤才接近視覺均勻。
+        同一個圓盤，差別只在半徑怎麼抽。<code>random() * R</code> 會讓中心偏密；<code>sqrt(random()) * R</code> 才接近整個面積的均勻。
       </div>
 
     <article class="example-card">
@@ -853,13 +938,8 @@ random(random(100))    <span class="cm">// 第二次的最大值 = 第一次抽�
 
         <div class="explainer">
           <div class="explainer-title">第一個版本：random() * R</div>
-          <p>我先讓角度平均繞一圈，再讓半徑從 0 到 R 平均抽。這聽起來像均勻，其實只是半徑均勻。</p>
-          <p>圓盤切成內外兩塊：半徑小於一半的內圈小圓，和外面那一整圈。</p>
-          <ul>
-            <li>內圈半徑是整個圓的一半，面積只占 1/4。</li>
-            <li>外圈占 3/4，因為面積跟半徑平方有關。</li>
-          </ul>
-          <p><code>random() * R</code> 會讓一半的點落在 0 到 R/2。於是一半的點擠進 1/4 的面積，中心自然變密。</p>
+          <p>角度平均繞一圈，半徑從 0 到 R 平均抽。這是半徑均勻，不是面積均勻。</p>
+          <p><code>random() * R</code> 會讓一半的點落在 0 到 R/2。那塊內圈只占整個圓 1/4 的面積，所以中心自然變密。</p>
 
           <div class="code-mini">function setup() {
   createCanvas(500, 500);
@@ -885,13 +965,33 @@ function draw() {
           <span class="tag">area bias</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-3" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-3</a>
+          <a href="algo/uniform-dust/page-3.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-3</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-3 sketch.js</summary>
+          <pre><code>function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i &lt; 8000; i++) {
+    fill(random(255));
+    let r = random() * width / 2;
+    let x = cos(i / 8000 * 6.28) * r;
+    let y = sin(i / 8000 * 6.28) * r;
+
+    circle(x + width / 2, y + height / 2, 2);
+  }
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 3</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="半徑不是面積 page-3" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-3" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 3</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。</div>
+        <iframe class="lazy-embed" title="半徑不是面積 page-3" src="about:blank" data-src="algo/uniform-dust/page-3.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
@@ -903,14 +1003,9 @@ function draw() {
 
         <div class="explainer">
           <div class="explainer-title">第二個版本：1.0 - ...</div>
-          <p>角度還是平均繞一圈。我只改半徑這行：</p>
+          <p>角度不變，只改半徑這行：</p>
           <div class="code-mini">let r = (1 - random(random(random()))) * width/2;</div>
-          <p>巢狀亂數會偏向小值，多包一層就更靠近 0。前面加上 <code>1.0 -</code>，小值被翻到接近 1。</p>
-          <ul>
-            <li><code>random(random(random()))</code>：半徑偏小，中心會擠。</li>
-            <li><code>1.0 - random(random(random()))</code>：半徑偏大，外圈會亮。</li>
-          </ul>
-          <p>同一個半徑變數，反轉之後變成距離的開關。中間空出來，外圈留下來。</p>
+          <p>巢狀亂數偏小，前面加上 <code>1.0 -</code>，小值被翻到接近 1。半徑被推遠，中間空出來，外圈留下來。</p>
 
           <div class="ring-pair" aria-hidden="true">
             <div class="dot-panel">
@@ -947,13 +1042,33 @@ function draw() {
           <span class="tag">halo</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-4" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-4</a>
+          <a href="algo/uniform-dust/page-4.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-4</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-4 sketch.js</summary>
+          <pre><code>function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i &lt; 8000; i++) {
+    fill(random(255));
+    let r = (1 - random(random(random()))) * width / 2;
+    let x = cos(i / 8000 * 6.28) * r;
+    let y = sin(i / 8000 * 6.28) * r;
+
+    circle(x + width / 2, y + height / 2, 2);
+  }
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 4</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="密度與空白 page-4" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-4" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 4</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。</div>
+        <iframe class="lazy-embed" title="密度與空白 page-4" src="about:blank" data-src="algo/uniform-dust/page-4.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
@@ -967,12 +1082,8 @@ function draw() {
           <div class="explainer-title">第三個版本：sqrt(random()) * R</div>
           <p>角度不變，半徑換成這一行：</p>
           <div class="code-mini">let r = sqrt(random()) * width/2;</div>
-          <p><code>sqrt</code> 不是裝飾。它把半徑往外補，補到剛好符合面積的成長。</p>
-          <ul>
-            <li><code>random() * R</code>：一半的點進到半徑一半的內圈，中心偏密。</li>
-            <li><code>sqrt(random()) * R</code>：只有 1/4 的點進到那個內圈，剛好對上 1/4 的面積。</li>
-          </ul>
-          <p>這三張圖其實是一個半徑問題：</p>
+          <p><code>sqrt</code> 把半徑往外補。半徑一半的內圈只占 1/4 面積，所以也只該拿到 1/4 的點。</p>
+          <p>這三張圖只看一件事：</p>
           <ul>
             <li><code>random() * R</code>：半徑均勻，中心密。</li>
             <li><code>1.0 - ...</code>：半徑反轉，外圈亮。</li>
@@ -1017,13 +1128,33 @@ function draw() {
           <span class="tag">sqrt</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-5" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-5</a>
+          <a href="algo/uniform-dust/page-5.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-5</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-5 sketch.js</summary>
+          <pre><code>function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i &lt; 8000; i++) {
+    fill(random(255));
+    let r = sqrt(random()) * width / 2;
+    let x = cos(i / 8000 * 6.28) * r;
+    let y = sin(i / 8000 * 6.28) * r;
+
+    circle(x + width / 2, y + height / 2, 2);
+  }
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 5</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="同一份材料，不同讀法 page-5" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-5" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 5</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。</div>
+        <iframe class="lazy-embed" title="同一份材料，不同讀法 page-5" src="about:blank" data-src="algo/uniform-dust/page-5.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
     </div>
@@ -1032,13 +1163,38 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 1.6</div>
         <div class="example-title">視覺均勻，Blue Noise</div>
-        <div class="example-desc">純 random 會自然結團。Poisson disk 在點和點之間加上最小距離，畫面看起來更均勻。這不是更「隨機」，而是更接近人眼期待的均勻。</div>
+        <div class="example-desc">純 random 會自然結團。Blue Noise 讓點彼此留出距離，所以看起來更均勻。</div>
 
         <div class="explainer">
-          <div class="explainer-title">視覺均勻 ≠ 機率均勻</div>
-          <p>每個點獨立落下來，局部就會有擠在一起的時候。那是真正的隨機，不是程式壞掉。</p>
-          <p>Poisson disk 多加一條規則：新點不能離舊點太近。點還是從機率裡長出來，但彼此保留一點空氣。畫面少了結團，多了一種細密的平均。</p>
-          <p>這種分布常被叫做 blue noise。它不是把亂數變乾淨，而是把人眼不想看的低頻結團壓下去。</p>
+          <div class="explainer-title">為什麼真隨機看起來不像均勻？</div>
+          <p>把點用 <code>random()</code> 撒上畫布，會看到結團與空洞。沒有壞掉，點只是彼此不避開。</p>
+          <p>Poisson disk sampling 只多加一條規則：太靠近舊點的候選點不收。這不是更「隨機」，而是更接近人眼期待的均勻。</p>
+
+          <div class="ring-pair" aria-hidden="true">
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="12" cy="14" r="1.4"/><circle cx="18" cy="20" r="1.4"/><circle cx="22" cy="16" r="1.4"/><circle cx="16" cy="25" r="1.4"/><circle cx="48" cy="8" r="1.4"/><circle cx="78" cy="12" r="1.4"/><circle cx="82" cy="18" r="1.4"/><circle cx="86" cy="14" r="1.4"/><circle cx="40" cy="22" r="1.4"/><circle cx="44" cy="28" r="1.4"/><circle cx="62" cy="30" r="1.4"/><circle cx="66" cy="34" r="1.4"/><circle cx="64" cy="38" r="1.4"/><circle cx="92" cy="32" r="1.4"/><circle cx="8" cy="42" r="1.4"/><circle cx="14" cy="48" r="1.4"/><circle cx="10" cy="52" r="1.4"/><circle cx="32" cy="46" r="1.4"/><circle cx="50" cy="50" r="1.4"/><circle cx="54" cy="54" r="1.4"/><circle cx="80" cy="48" r="1.4"/><circle cx="84" cy="52" r="1.4"/><circle cx="86" cy="56" r="1.4"/><circle cx="20" cy="68" r="1.4"/><circle cx="40" cy="64" r="1.4"/><circle cx="44" cy="70" r="1.4"/><circle cx="68" cy="68" r="1.4"/><circle cx="72" cy="72" r="1.4"/><circle cx="92" cy="76" r="1.4"/><circle cx="14" cy="84" r="1.4"/><circle cx="30" cy="88" r="1.4"/><circle cx="50" cy="86" r="1.4"/><circle cx="56" cy="90" r="1.4"/><circle cx="78" cy="88" r="1.4"/>
+              </svg>
+              <div class="dot-label">純 random<br>看得到結團與空洞</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="14" cy="14" r="1.4"/><circle cx="32" cy="10" r="1.4"/><circle cx="50" cy="14" r="1.4"/><circle cx="68" cy="10" r="1.4"/><circle cx="86" cy="14" r="1.4"/><circle cx="22" cy="26" r="1.4"/><circle cx="40" cy="24" r="1.4"/><circle cx="58" cy="26" r="1.4"/><circle cx="76" cy="22" r="1.4"/><circle cx="92" cy="28" r="1.4"/><circle cx="12" cy="32" r="1.4"/><circle cx="30" cy="38" r="1.4"/><circle cx="48" cy="36" r="1.4"/><circle cx="66" cy="38" r="1.4"/><circle cx="84" cy="40" r="1.4"/><circle cx="20" cy="48" r="1.4"/><circle cx="38" cy="50" r="1.4"/><circle cx="56" cy="48" r="1.4"/><circle cx="74" cy="50" r="1.4"/><circle cx="90" cy="52" r="1.4"/><circle cx="10" cy="58" r="1.4"/><circle cx="28" cy="62" r="1.4"/><circle cx="46" cy="60" r="1.4"/><circle cx="64" cy="62" r="1.4"/><circle cx="82" cy="64" r="1.4"/><circle cx="18" cy="74" r="1.4"/><circle cx="36" cy="76" r="1.4"/><circle cx="54" cy="74" r="1.4"/><circle cx="72" cy="76" r="1.4"/><circle cx="88" cy="78" r="1.4"/><circle cx="14" cy="88" r="1.4"/><circle cx="32" cy="90" r="1.4"/><circle cx="50" cy="88" r="1.4"/><circle cx="68" cy="90" r="1.4"/><circle cx="86" cy="88" r="1.4"/>
+              </svg>
+              <div class="dot-label">Poisson disk<br>有最小距離，視覺均勻</div>
+            </div>
+          </div>
+
+          <div class="code-mini"><span class="cm">// 最小距離法的核心邏輯</span>
+function tryPoint() {
+  let p = createVector(random(width), random(height));
+  for (let q of accepted) {
+    if (p.dist(q) &lt; r) return null;   <span class="cm">// 太近，丟掉</span>
+  }
+  return p;                             <span class="cm">// 通過，加入名單</span>
+}</div>
+
+          <p>看起來均勻，不等於數學上的均勻。</p>
         </div>
 
         <div class="example-tags">
@@ -1047,54 +1203,262 @@ function draw() {
           <span class="tag">visual uniformity</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2939332" target="_blank" rel="noopener noreferrer">↗ OpenProcessing sketch 2939332</a>
+          <a href="algo/uniform-dust/page-6.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-6</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-6 sketch.js</summary>
+          <pre><code>let targetCount = 260;
+let minDistance = 14;
+let randomPoints = [];
+let poissonPoints = [];
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  generatePoints();
+}
+
+function draw() {
+  background(0);
+  drawPanel(0, randomPoints, 'pure random');
+  drawPanel(width / 2, poissonPoints, 'poisson disk');
+  drawDivider();
+}
+
+function generatePoints() {
+  randomPoints = makeRandomPoints(targetCount, 0, width / 2);
+  poissonPoints = makePoissonPoints(targetCount, width / 2, width, minDistance);
+  redraw();
+}
+
+function makeRandomPoints(count, minX, maxX) {
+  let pts = [];
+  for (let i = 0; i &lt; count; i++) {
+    pts.push(createVector(random(minX + 12, maxX - 12), random(36, height - 14)));
+  }
+  return pts;
+}
+
+function makePoissonPoints(count, minX, maxX, radius) {
+  let pts = [];
+  let attempts = 0;
+  let maxAttempts = count * 280;
+
+  while (pts.length &lt; count &amp;&amp; attempts &lt; maxAttempts) {
+    let p = createVector(random(minX + 12, maxX - 12), random(36, height - 14));
+    if (isFarEnough(p, pts, radius)) {
+      pts.push(p);
+    }
+    attempts++;
+  }
+
+  return pts;
+}
+
+function isFarEnough(p, pts, radius) {
+  let r2 = radius * radius;
+  for (let q of pts) {
+    let dx = p.x - q.x;
+    let dy = p.y - q.y;
+    if (dx * dx + dy * dy &lt; r2) return false;
+  }
+  return true;
+}
+
+function drawPanel(offsetX, pts, label) {
+  noFill();
+  stroke(38);
+  rect(offsetX + 8, 28, width / 2 - 16, height - 36);
+
+  noStroke();
+  fill(235);
+  for (let p of pts) {
+    circle(p.x, p.y, 3);
+  }
+
+  fill(150);
+  textSize(10);
+  text(label, offsetX + 12, 18);
+  text(`${pts.length} pts`, offsetX + width / 2 - 64, 18);
+}
+
+function drawDivider() {
+  stroke(70);
+  line(width / 2, 0, width / 2, height);
+
+  noStroke();
+  fill(120);
+  textSize(9);
+  text(`click: regenerate  [ / ] distance: ${minDistance}  - / + count: ${targetCount}`, 12, height - 8);
+}
+
+function mousePressed() {
+  generatePoints();
+}
+
+function keyPressed() {
+  if (key === '[') minDistance = max(6, minDistance - 1);
+  if (key === ']') minDistance = min(32, minDistance + 1);
+  if (key === '-' || key === '_') targetCount = max(60, targetCount - 20);
+  if (key === '=' || key === '+') targetCount = min(520, targetCount + 20);
+  generatePoints();
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · BLUE NOISE</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="Blue Noise / Poisson Disk" src="about:blank" data-src="https://openprocessing.org/sketch/2939332/embed/" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 6</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。點擊重生，鍵盤可調整點數與最小距離。</div>
+        <iframe class="lazy-embed" title="Blue Noise / Poisson Disk page-6" src="about:blank" data-src="algo/uniform-dust/page-6.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
-    <div class="todo-block" id="todo-1-7">
-      <div class="todo-tag">TODO-1.7</div>
-      <div class="todo-title">Rejection Sampling — 另一條把點均勻撒進圓盤的路</div>
-      <div class="todo-brief">1.5 用 sqrt 修正面積偏差，但其實還有更直觀的解法：在方框內均勻撒，超出圓的丟掉。對照兩種思路。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>介紹 rejection sampling 作為通用工具：先在簡單區域均勻撒，再過濾。為章節六 6.7 鋪墊。</dd>
-        <dt>內容大綱</dt>
-        <ul>
-          <li>方法：在 [-R, R] × [-R, R] 正方形內撒點，<code>x² + y² &gt; R²</code> 的就 reject</li>
-          <li>π/4 ≈ 78.5% 通過率，浪費的點佔 21.5%</li>
-          <li>優點：思路直觀、可推廣到任何「先大區域，後過濾」的形狀</li>
-          <li>缺點：浪費點、形狀越複雜通過率越低</li>
-          <li>對照 1.5 的 sqrt（inverse CDF）：精確不浪費，但要算數學</li>
-          <li>什麼時候用哪個：形狀簡單可解析 → inverse CDF；形狀複雜不可解析 → rejection</li>
-        </ul>
-        <dt>視覺輔助</dt>
-        <dd>單格 SVG：100 個方形內隨機點，圓內的染色、圓外的灰掉。標出「保留」「丟棄」。</dd>
-        <dt>程式碼</dt>
-        <dd>
-          <code>do {<br>
-          &nbsp;&nbsp;x = random(-R, R);<br>
-          &nbsp;&nbsp;y = random(-R, R);<br>
-          } while (x*x + y*y &gt; R*R);</code>
-        </dd>
-        <dt>對照</dt>
-        <dd>1.5（sqrt 方法）— 同一個目標的兩種解。章節六 6.7 會把 rejection 推廣為通用工具。</dd>
-        <dt>風格</dt>
-        <dd>把兩種方法的 trade-off 擺出來，不下「哪個比較好」的結論。</dd>
-        <dt>長度</dt>
-        <dd>200–350 字 + 1 個 SVG。</dd>
-      </dl>
-    </div>
+    <article class="example-card supplement-card">
+      <div class="example-body">
+        <div class="example-kicker">supplement 1.7</div>
+        <div class="example-title">補充：Rejection Sampling</div>
+        <div class="example-desc">另一種做圓盤均勻的方法：先在正方形裡撒點，圓外丟掉，圓內留下。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">補充：先撒，再切掉</div>
+          <p>1.5 用 <code>sqrt(random())</code> 修正半徑。Rejection sampling 換一條路：先在外面的正方形均勻撒，撒完檢查，沒進圓的就丟掉。</p>
+          <p>圓裡留下的點仍然均勻。代價是會浪費一部分樣本，圓盤大約丟掉 21.5%。</p>
+
+          <div class="dot-panel" aria-hidden="true" style="max-width:280px;margin:0.8rem auto 0.3rem;">
+            <svg viewBox="0 0 100 100">
+              <rect x="2" y="2" width="96" height="96" fill="none" stroke="#bbb" stroke-width="0.6" stroke-dasharray="2 2"/>
+              <circle cx="50" cy="50" r="48" fill="none" stroke="#888" stroke-width="0.6"/>
+              <circle cx="50" cy="50" r="1.4"/><circle cx="62" cy="38" r="1.4"/><circle cx="35" cy="55" r="1.4"/><circle cx="70" cy="60" r="1.4"/><circle cx="42" cy="30" r="1.4"/><circle cx="58" cy="72" r="1.4"/><circle cx="28" cy="42" r="1.4"/><circle cx="75" cy="48" r="1.4"/><circle cx="48" cy="80" r="1.4"/><circle cx="20" cy="58" r="1.4"/><circle cx="65" cy="22" r="1.4"/><circle cx="38" cy="68" r="1.4"/><circle cx="80" cy="38" r="1.4"/><circle cx="25" cy="72" r="1.4"/><circle cx="55" cy="18" r="1.4"/><circle cx="82" cy="65" r="1.4"/><circle cx="15" cy="48" r="1.4"/><circle cx="50" cy="92" r="1.4"/><circle cx="22" cy="28" r="1.4"/><circle cx="72" cy="80" r="1.4"/><circle cx="60" cy="55" r="1.4"/><circle cx="40" cy="42" r="1.4"/><circle cx="55" cy="62" r="1.4"/><circle cx="32" cy="62" r="1.4"/>
+              <circle cx="8" cy="10" r="1.4" fill="#ccc"/><circle cx="92" cy="8" r="1.4" fill="#ccc"/><circle cx="6" cy="92" r="1.4" fill="#ccc"/><circle cx="94" cy="90" r="1.4" fill="#ccc"/><circle cx="12" cy="14" r="1.4" fill="#ccc"/><circle cx="90" cy="18" r="1.4" fill="#ccc"/><circle cx="10" cy="86" r="1.4" fill="#ccc"/><circle cx="88" cy="84" r="1.4" fill="#ccc"/>
+            </svg>
+            <div class="dot-label">深色：保留<br>灰色：在圓外，丟掉</div>
+          </div>
+
+          <div class="code-mini">let x, y;
+do {
+  x = random(-R, R);                 <span class="cm">// 正方形內均勻撒</span>
+  y = random(-R, R);
+} while (x*x + y*y &gt; R*R);          <span class="cm">// 出圓就重抽</span>
+circle(x + width/2, y + height/2, 2);</div>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">rejection sampling</span>
+          <span class="tag">uniform disk</span>
+          <span class="tag">general method</span>
+        </div>
+        <div class="example-links">
+          <a href="algo/uniform-dust/page-7.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-7</a>
+        </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-7 sketch.js</summary>
+          <pre><code>let radius = 210;
+let maxAttempts = 1400;
+let samplesPerFrame = 22;
+let accepted = [];
+let rejected = [];
+let attempts = 0;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  resetSampling();
+}
+
+function draw() {
+  if (attempts &lt; maxAttempts) {
+    for (let i = 0; i &lt; samplesPerFrame &amp;&amp; attempts &lt; maxAttempts; i++) {
+      sampleCandidate();
+    }
+  }
+
+  background(0);
+  drawBounds();
+  drawPoints(rejected, color(115, 70, 70, 150), 2);
+  drawPoints(accepted, color(235, 235, 235, 210), 2.5);
+  drawStats();
+}
+
+function sampleCandidate() {
+  let x = random(-radius, radius);
+  let y = random(-radius, radius);
+  let p = createVector(x, y);
+
+  if (x * x + y * y &lt;= radius * radius) {
+    accepted.push(p);
+  } else {
+    rejected.push(p);
+  }
+
+  attempts++;
+}
+
+function drawBounds() {
+  push();
+  translate(width / 2, height / 2);
+
+  noFill();
+  stroke(80);
+  strokeWeight(1);
+  rectMode(CENTER);
+  rect(0, 0, radius * 2, radius * 2);
+
+  stroke(190);
+  strokeWeight(1.2);
+  circle(0, 0, radius * 2);
+  pop();
+}
+
+function drawPoints(points, c, size) {
+  push();
+  translate(width / 2, height / 2);
+  noStroke();
+  fill(c);
+  for (let p of points) {
+    circle(p.x, p.y, size);
+  }
+  pop();
+}
+
+function drawStats() {
+  let rate = attempts === 0 ? 0 : accepted.length / attempts;
+  let waste = 1 - rate;
+
+  noStroke();
+  fill(235);
+  textSize(11);
+  text(`accepted ${accepted.length}`, 16, 24);
+  fill(155);
+  text(`rejected ${rejected.length}`, 16, 42);
+  text(`rate ${nf(rate, 1, 3)}  target PI/4 ${nf(PI / 4, 1, 3)}`, 16, height - 28);
+  text(`waste ${nf(waste, 1, 3)}  click: resample`, 16, height - 12);
+}
+
+function resetSampling() {
+  accepted = [];
+  rejected = [];
+  attempts = 0;
+}
+
+function mousePressed() {
+  resetSampling();
+}</code></pre>
+        </details>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">LOCAL · PAGE 7</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。白點保留，紅灰點丟掉；點擊重新取樣。</div>
+        <iframe class="lazy-embed" title="Rejection Sampling page-7" src="about:blank" data-src="algo/uniform-dust/page-7.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
   </div>
 
   <h2 id="chapter-2">章節二 — 高斯亂數──柔光山脈</h2>
   <div class="chapter-note">
-    機率往中心集中，邊緣慢慢退開。
+    <p>高斯亂數有中心位置，也有擴散值。多數點靠近中心，少數點慢慢退到外圍。</p>
+    <pre><code>x = randomGaussian(centerPosition, spreadValue); // 中心位置決定靠近哪裡，擴散值決定散開多遠</code></pre>
   </div>
 
   <div class="example-grid">
@@ -1102,105 +1466,267 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 2.1</div>
         <div class="example-title">高斯亂數，「柔光山脈」</div>
-        <div class="example-desc">數值不再平均散開，而是多數靠近中心，少數偏離。用在重心、尺寸、亮度、主色附近的偏移，畫面會有一個柔軟的吸引點。</div>
+        <div class="example-desc">中心位置決定點雲靠近哪裡，擴散值決定散開多遠。用在重心、尺寸、亮度、主色附近的偏移，畫面會有一個柔軟的吸引點。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼這個鐘形曲線會出現在德國馬克紙鈔上？</div>
+          <p><a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss" target="_blank" rel="noopener noreferrer">Carl Friedrich Gauss</a> 1809 年出版《Theoria Motus》時，為了解釋天文觀測誤差，把這條鐘形曲線寫進公式。後人才把它命名為「高斯分布」。其實 Abraham de Moivre 1733 年就提早算出來了，只是當時沒人在意。</p>
+          <p>1991 到 2001 年流通的德國 <a href="https://en.numista.com/catalogue/note203955.html" target="_blank" rel="noopener noreferrer">10 馬克紙鈔</a>正面，印著高斯本人、鐘形曲線、以及他工作過的哥廷根。一張紙鈔同時放數學家跟分布函數，在貨幣設計史上很罕見。等於是把「自然界誤差的形狀」變成國家認證的圖像。</p>
+        </div>
+
         <div class="example-tags">
           <span class="tag">gaussian random</span>
           <span class="tag">soft mountains</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-6" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-6</a>
+          <a href="algo/gaussian-mountains/page-1.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-1</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-1 sketch.js</summary>
+          <pre><code>let centerX = 250;
+let baseY = 360;
+let spreadX = 78;
+let spreadY = 34;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  drawScene();
+}
+
+function drawScene() {
+  background(5, 7, 12);
+  drawMountainGlow();
+  drawRidge();
+  drawGuide();
+}
+
+function mountainY(x) {
+  let d = abs(x - centerX) / centerX;
+  let peak = 168 * exp(-d * d * 2.4);
+  return baseY - peak + sin(x * 0.026) * 14 + sin(x * 0.071) * 6;
+}
+
+function drawMountainGlow() {
+  blendMode(ADD);
+  noStroke();
+
+  for (let i = 0; i &lt; 9000; i++) {
+    let x = randomGaussian(centerX, spreadX);
+    let y = randomGaussian(mountainY(x), spreadY);
+    if (x &lt; 0 || x &gt; width || y &lt; 0 || y &gt; height) continue;
+
+    let alpha = map(y, 70, height, 20, 6, true);
+    fill(120, 170, 255, alpha);
+    circle(x, y, random(1.2, 3.6));
+  }
+
+  for (let i = 0; i &lt; 900; i++) {
+    let x = randomGaussian(centerX, spreadX * 2.15);
+    let y = randomGaussian(mountainY(x), spreadY * 1.7);
+    if (x &lt; 0 || x &gt; width || y &lt; 0 || y &gt; height) continue;
+
+    fill(240, 230, 185, 10);
+    circle(x, y, random(0.8, 2.4));
+  }
+
+  blendMode(BLEND);
+}
+
+function drawRidge() {
+  noFill();
+  stroke(235, 240, 255, 105);
+  strokeWeight(1.2);
+  beginShape();
+  for (let x = 0; x &lt;= width; x += 4) {
+    vertex(x, mountainY(x));
+  }
+  endShape();
+
+  stroke(75, 105, 160, 90);
+  strokeWeight(1);
+  for (let y = 405; y &lt; height; y += 18) {
+    line(0, y, width, y);
+  }
+}
+
+function drawGuide() {
+  noStroke();
+  fill(230);
+  textSize(11);
+  text('randomGaussian(center, spread)', 16, 24);
+  fill(140);
+  text('most samples stay near the ridge; a few drift away', 16, height - 16);
+}
+
+function mousePressed() {
+  drawScene();
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 6</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="高斯亂數，柔光山脈 page-6" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-6" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 1</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。點擊重新取樣。</div>
+        <iframe class="lazy-embed" title="高斯亂數，柔光山脈 page-1" src="about:blank" data-src="algo/gaussian-mountains/page-1.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
-    <div class="todo-block" id="todo-2-2">
-      <div class="todo-tag">TODO-2.2</div>
-      <div class="todo-title">標準差 σ — 控制「聚多緊、散多寬」</div>
-      <div class="todo-brief">章節二只有「聚在中間」這句，沒講 σ 怎麼控制聚的程度。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>解釋高斯分布的兩個參數 μ（中心）和 σ（寬窄），讓藝術家知道怎麼把「聚焦感」調強或調弱。</dd>
-        <dt>內容大綱</dt>
-        <ul>
-          <li>μ：分布的中心，把「聚在哪」移過去</li>
-          <li>σ：擴散程度。σ 越小越集中，σ 越大越接近均勻</li>
-          <li>68–95–99.7 法則：±1σ 占 68%、±2σ 占 95%、±3σ 占 99.7%</li>
-          <li>實際應用：粒子噴發、星團密度、筆觸聚焦、顏色微擾</li>
-        </ul>
-        <dt>視覺輔助</dt>
-        <dd>三格 dot-panel 或 histogram 對照不同 σ（窄、中、寬）。複用 <code>.density-row</code> CSS。</dd>
-        <dt>程式碼</dt>
-        <dd><code>randomGaussian(mu, sigma)</code> 的呼叫範例 + 視覺輸出。</dd>
-        <dt>對照</dt>
-        <dd>對照章節一 1.1（uniform）：σ → ∞ 時高斯趨近 uniform。</dd>
-        <dt>風格</dt>
-        <dd>把參數的物理意義講清楚，不要只列數字。</dd>
-        <dt>長度</dt>
-        <dd>250–400 字 + 三格視覺。</dd>
-      </dl>
-    </div>
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 2.2</div>
+        <div class="example-title">中心位置與擴散值，把山的位置和寬度交出去</div>
+        <div class="example-desc">高斯亂數有兩個旋鈕：中心位置決定點雲圍繞哪裡，擴散值決定散開多遠。擴散值一小，點收成一團。擴散值一大，山攤開，幾乎變成均勻。</div>
 
-    <div class="todo-block" id="todo-2-3">
-      <div class="todo-tag">TODO-2.3</div>
-      <div class="todo-title">中央極限定理 — 為什麼自然界到處是高斯</div>
-      <div class="todo-brief">章節二沒講高斯為何「天然」。CLT 是這個答案，也是藝術家為何選高斯的根據。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>用國中生能懂的方式講中央極限定理：很多獨立小擾動加起來，結果會自動變高斯。</dd>
-        <dt>內容大綱</dt>
-        <ul>
-          <li>實驗：把多個 uniform random 相加，畫直方圖</li>
-          <li>1 個 random：平的</li>
-          <li>2 個相加：三角</li>
-          <li>3、6、12 個相加：越來越接近鐘形</li>
-          <li>結論：自然界的「累積效應」幾乎都會逼近高斯（身高、測量誤差、布朗運動）</li>
-          <li>反過來：高斯亂數可以用「6 個 uniform 相加減 3」近似（早期遊戲常用）</li>
-        </ul>
-        <dt>視覺輔助</dt>
-        <dd>四格 histogram，從 1 個 uniform 到 12 個 uniform 累加，看到鐘形浮現。複用 <code>.hist-pair</code> CSS 改 4 欄。</dd>
-        <dt>程式碼</dt>
-        <dd><code>let g = 0; for (let i = 0; i &lt; 12; i++) g += random(); g -= 6;</code></dd>
-        <dt>對照</dt>
-        <dd>章節一 1.1（uniform） → 透過 CLT 變成 2.1（gaussian）。寫的時候要把這條路畫出來。</dd>
-        <dt>風格</dt>
-        <dd>實驗式敘述，「我們來試試看」。視覺優先。</dd>
-        <dt>長度</dt>
-        <dd>300–450 字 + 四格 histogram。</dd>
-      </dl>
-    </div>
+        <div class="explainer">
+          <div class="explainer-title">擴散值到底在控制什麼？</div>
+          <p><code>randomGaussian()</code> 抽到的數字，會繞著一個中心晃。中心位置決定點雲圍繞哪裡，擴散值決定散開多遠。</p>
+          <ul>
+            <li>擴散值小：點收在中心附近，畫面緊。</li>
+            <li>擴散值中：有重心，也有外圈。</li>
+            <li>擴散值大：山被攤開，畫面接近均勻。</li>
+          </ul>
+          <p>我在這裡只需要這個直覺：高斯把多數事件留在中心，把少數偏離留在邊緣。</p>
 
-    <div class="todo-block" id="todo-2-4">
-      <div class="todo-tag">TODO-2.4</div>
-      <div class="todo-title">Box-Muller — 精確造高斯的標準解</div>
-      <div class="todo-brief">2.3 用 CLT 近似，2.4 補上精確法。順便埋下 inverse transform 的伏筆。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>介紹 Box-Muller transform 作為從 uniform 造出標準高斯的精確方法，並提一句它和章節一 1.5 sqrt 是同一家族（inverse CDF / 變數變換）。</dd>
-        <dt>內容大綱</dt>
-        <ul>
-          <li>核心公式：<code>z = sqrt(-2 ln u1) * cos(2π u2)</code></li>
-          <li>需要兩個獨立 uniform，產生兩個獨立高斯</li>
-          <li>幾何解釋：在極座標上選一個距離（指數分布）和一個角度（均勻），轉成笛卡爾就是高斯</li>
-          <li>提一句 Marsaglia polar method 是它的優化版（避免 sin/cos）</li>
-          <li>連結 1.5：sqrt 修正面積；Box-Muller 用 sqrt(-ln) 修正密度。同一招的不同分布</li>
-        </ul>
-        <dt>視覺輔助</dt>
-        <dd>選一：(a) 兩個 uniform 平面 → 一個高斯平面的對映示意；(b) 直方圖比較 CLT 近似 vs Box-Muller。</dd>
-        <dt>程式碼</dt>
-        <dd>完整 Box-Muller 函數 6–8 行 JS。</dd>
-        <dt>對照</dt>
-        <dd>1.5 sqrt 修正、章節六 6.7 inverse CDF — 同一條方法線。</dd>
-        <dt>風格</dt>
-        <dd>不要躲數學，但每個符號都要白話翻譯。</dd>
-        <dt>長度</dt>
-        <dd>300–450 字。</dd>
-      </dl>
-    </div>
+          <div class="density-row" aria-hidden="true">
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="1.4"/><circle cx="51" cy="50" r="1.4"/><circle cx="49" cy="50" r="1.4"/><circle cx="50" cy="51" r="1.4"/><circle cx="50" cy="49" r="1.4"/><circle cx="52" cy="51" r="1.4"/><circle cx="48" cy="49" r="1.4"/><circle cx="51" cy="48" r="1.4"/><circle cx="49" cy="52" r="1.4"/><circle cx="53" cy="50" r="1.4"/><circle cx="47" cy="50" r="1.4"/><circle cx="50" cy="53" r="1.4"/><circle cx="50" cy="47" r="1.4"/><circle cx="52" cy="48" r="1.4"/><circle cx="48" cy="52" r="1.4"/><circle cx="46" cy="51" r="1.4"/><circle cx="54" cy="49" r="1.4"/><circle cx="51" cy="46" r="1.4"/><circle cx="49" cy="54" r="1.4"/><circle cx="55" cy="51" r="1.4"/><circle cx="45" cy="49" r="1.4"/>
+              </svg>
+              <div class="dot-label">擴散值小<br>緊，幾乎一點</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="1.4"/><circle cx="55" cy="48" r="1.4"/><circle cx="46" cy="53" r="1.4"/><circle cx="52" cy="44" r="1.4"/><circle cx="48" cy="56" r="1.4"/><circle cx="58" cy="52" r="1.4"/><circle cx="42" cy="48" r="1.4"/><circle cx="54" cy="58" r="1.4"/><circle cx="46" cy="42" r="1.4"/><circle cx="60" cy="46" r="1.4"/><circle cx="40" cy="54" r="1.4"/><circle cx="50" cy="62" r="1.4"/><circle cx="50" cy="38" r="1.4"/><circle cx="36" cy="50" r="1.4"/><circle cx="64" cy="50" r="1.4"/><circle cx="56" cy="60" r="1.4"/><circle cx="44" cy="40" r="1.4"/><circle cx="62" cy="42" r="1.4"/><circle cx="38" cy="58" r="1.4"/><circle cx="48" cy="32" r="1.4"/><circle cx="68" cy="56" r="1.4"/>
+              </svg>
+              <div class="dot-label">擴散值中<br>有重心，有外圈</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="1.4"/><circle cx="62" cy="35" r="1.4"/><circle cx="38" cy="58" r="1.4"/><circle cx="72" cy="62" r="1.4"/><circle cx="28" cy="42" r="1.4"/><circle cx="55" cy="22" r="1.4"/><circle cx="45" cy="78" r="1.4"/><circle cx="80" cy="48" r="1.4"/><circle cx="20" cy="55" r="1.4"/><circle cx="66" cy="78" r="1.4"/><circle cx="34" cy="25" r="1.4"/><circle cx="48" cy="64" r="1.4"/><circle cx="58" cy="44" r="1.4"/><circle cx="42" cy="36" r="1.4"/><circle cx="84" cy="68" r="1.4"/><circle cx="16" cy="32" r="1.4"/><circle cx="76" cy="20" r="1.4"/><circle cx="24" cy="76" r="1.4"/><circle cx="92" cy="55" r="1.4"/><circle cx="8" cy="65" r="1.4"/><circle cx="60" cy="88" r="1.4"/><circle cx="40" cy="12" r="1.4"/>
+              </svg>
+              <div class="dot-label">擴散值大<br>攤開，趨近均勻</div>
+            </div>
+          </div>
+
+          <div class="code-mini">let centerPosition = 0;
+let spreadValue = 40;                        <span class="cm">// 換這個就換鬆緊</span>
+for (let i = 0; i &lt; 1000; i++) {
+  let x = randomGaussian() * spreadValue + centerPosition;
+  let y = randomGaussian() * spreadValue + centerPosition;
+  point(x + width/2, y + height/2);
+}</div>
+
+          <p>中心位置把山搬到哪裡，擴散值把山揉成什麼形狀。畫面上的「聚焦感」是擴散值寫出來的。</p>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">gaussian random</span>
+          <span class="tag">center spread</span>
+          <span class="tag">soft center</span>
+        </div>
+        <div class="example-links">
+          <a href="algo/gaussian-mountains/page-2.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-2</a>
+        </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-2 sketch.js</summary>
+          <pre><code>let panels = [
+  { label: 'small spread', centerX: 95, spread: 13, tone: [120, 180, 255] },
+  { label: 'medium spread', centerX: 250, spread: 38, tone: [190, 220, 255] },
+  { label: 'large spread', centerX: 405, spread: 78, tone: [245, 220, 170] }
+];
+let centerY = 250;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  drawScene();
+}
+
+function drawScene() {
+  background(5, 7, 12);
+  drawPanels();
+  drawGaussianClouds();
+  drawGuide();
+}
+
+function drawPanels() {
+  noFill();
+  stroke(55);
+  strokeWeight(1);
+  for (let i = 1; i &lt; panels.length; i++) {
+    line(i * width / 3, 46, i * width / 3, height - 42);
+  }
+
+  for (let p of panels) {
+    stroke(90, 110, 145, 95);
+    line(p.centerX, 70, p.centerX, height - 66);
+    line(p.centerX - p.spread, centerY, p.centerX + p.spread, centerY);
+    circle(p.centerX, centerY, p.spread * 2);
+
+    noStroke();
+    fill(230);
+    circle(p.centerX, centerY, 4);
+    fill(150);
+    textSize(10);
+    text(`${p.label}`, p.centerX - 48, 26);
+    text(`center=${p.centerX}  spread=${p.spread}`, p.centerX - 70, height - 22);
+  }
+}
+
+function drawGaussianClouds() {
+  blendMode(ADD);
+  noStroke();
+
+  for (let p of panels) {
+    for (let i = 0; i &lt; 2200; i++) {
+      let x = randomGaussian(p.centerX, p.spread);
+      let y = randomGaussian(centerY, p.spread);
+      if (!insidePanel(x, p.centerX) || y &lt; 58 || y &gt; height - 58) continue;
+
+      let d = dist(x, y, p.centerX, centerY);
+      let alpha = map(d, 0, p.spread * 3.2, 24, 4, true);
+      fill(p.tone[0], p.tone[1], p.tone[2], alpha);
+      circle(x, y, random(1.2, 3.2));
+    }
+  }
+
+  blendMode(BLEND);
+}
+
+function insidePanel(x, centerX) {
+  let panelW = width / 3;
+  let panelIndex = floor(centerX / panelW);
+  let minX = panelIndex * panelW + 8;
+  let maxX = (panelIndex + 1) * panelW - 8;
+  return x &gt;= minX &amp;&amp; x &lt;= maxX;
+}
+
+function drawGuide() {
+  noStroke();
+  fill(230);
+  textSize(11);
+  text('randomGaussian(center, spread)', 16, 24);
+  fill(140);
+  text('center sets the cloud position; spread sets how far it opens', 16, height - 8);
+}
+
+function mousePressed() {
+  drawScene();
+}</code></pre>
+        </details>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">LOCAL · PAGE 2</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。三組擴散值，三種聚焦；點擊重新取樣。</div>
+        <iframe class="lazy-embed" title="中心位置與擴散值，高斯亂數 page-2" src="about:blank" data-src="algo/gaussian-mountains/page-2.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+
+
   </div>
 
   <h2 id="chapter-3">章節三 — 一維 Perlin Noise──跳動的音量柱</h2>
@@ -1214,87 +1740,259 @@ function draw() {
         <div class="example-kicker">example 3.1</div>
         <div class="example-title">一維 Perlin Noise，「跳動的音量柱」</div>
         <div class="example-desc">噪聲沿著時間移動。它不是每一格重新抽籤，而是讓下一刻接著上一刻走，所以跳動有呼吸，不會變成碎裂的閃爍。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼音量柱跳動會有「呼吸」？</div>
+          <p>如果每一格都用 <code>random()</code>，畫面會像壞掉的螢光燈，每一禎都跟前一禎沒關係，看起來只是雜訊。</p>
+          <p>把 <code>random()</code> 換成 <code>noise(i * 空間, t * 時間)</code>，整排柱子的高度突然有了一種連續感。原因是 noise 不在抽籤，是在查一張連續的地圖（3.2 會展開）。t 慢慢往前走，地圖就像被慢慢拉過去一樣，相鄰位置的值差不多，所以前後的高度差很小。</p>
+          <ul>
+            <li><code>spaceScale</code> 控制空間頻率：值越大，相鄰柱子差越多。</li>
+            <li><code>timeScale</code> 控制時間頻率：值越大，動得越快、越神經質。</li>
+            <li>調對的時候，畫面會像在呼吸。</li>
+          </ul>
+          <p>上方那條歷史曲線記錄了中央那一根柱子隨時間的值。它畫出來不是一連串突刺，而是一條柔軟的波浪。整排柱子的「呼吸感」就是從這種連續性長出來的。</p>
+        </div>
+
         <div class="example-tags">
           <span class="tag">1D perlin noise</span>
           <span class="tag">volume bars</span>
+          <span class="tag">continuity</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-7" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-7</a>
+          <a href="algo/perlin-bars/page-1.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-1</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-1 sketch.js</summary>
+          <pre><code>let numBars = 36;
+let barWidth = 8;
+let barGap = 4;
+let spaceScale = 0.18;
+let timeScale = 0.012;
+let t = 0;
+let history = [];
+let historyLen = 240;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noStroke();
+  noiseDetail(4, 0.5);
+}
+
+function draw() {
+  background(5, 7, 12);
+
+  let totalWidth = numBars * barWidth + (numBars - 1) * barGap;
+  let startX = (width - totalWidth) / 2;
+  let baseY = 380;
+  let maxH = 280;
+
+  let centerNoise = noise(numBars / 2 * spaceScale, t);
+  history.push(centerNoise);
+  if (history.length &gt; historyLen) history.shift();
+
+  drawHistory(history, startX, totalWidth, maxH);
+
+  for (let i = 0; i &lt; numBars; i++) {
+    let n = noise(i * spaceScale, t);
+    let h = map(n, 0, 1, 12, maxH);
+    let x = startX + i * (barWidth + barGap);
+
+    fill(28, 46, 42, 90);
+    rect(x, baseY - maxH, barWidth, maxH);
+
+    let alpha = map(n, 0, 1, 130, 230);
+    fill(120, 200, 160, alpha);
+    rect(x, baseY - h, barWidth, h);
+
+    fill(230, 245, 235, 230);
+    rect(x, baseY - h - 2, barWidth, 2);
+  }
+
+  push();
+  noFill();
+  stroke(180, 230, 200, 120);
+  strokeWeight(1);
+  beginShape();
+  for (let i = 0; i &lt; numBars; i++) {
+    let n = noise(i * spaceScale, t);
+    let x = startX + i * (barWidth + barGap) + barWidth / 2;
+    let y = baseY - map(n, 0, 1, 12, maxH);
+    vertex(x, y);
+  }
+  endShape();
+  pop();
+
+  drawStats();
+  t += timeScale;
+}
+
+function drawHistory(arr, startX, totalWidth, maxH) {
+  let topY = 60;
+  let h = 70;
+  push();
+  noFill();
+  stroke(80, 100, 95, 150);
+  strokeWeight(1);
+  rect(startX, topY, totalWidth, h);
+
+  stroke(160, 220, 190, 200);
+  strokeWeight(1.2);
+  beginShape();
+  for (let i = 0; i &lt; arr.length; i++) {
+    let x = startX + (i / (historyLen - 1)) * totalWidth;
+    let y = topY + h - arr[i] * h;
+    vertex(x, y);
+  }
+  endShape();
+  pop();
+
+  noStroke();
+  fill(120);
+  textSize(10);
+  text('history of noise(center, t)', startX, topY - 6);
+}
+
+function drawStats() {
+  noStroke();
+  fill(220);
+  textSize(11);
+  text(`noise(i * ${spaceScale.toFixed(2)}, t)`, 16, 24);
+  fill(155);
+  text(`t = ${t.toFixed(2)}`, 16, 42);
+  text(`bars ${numBars}   click: re-seed`, 16, height - 14);
+}
+
+function mousePressed() {
+  noiseSeed(int(random(99999)));
+  history = [];
+  t = 0;
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 7</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="一維 Perlin Noise，跳動的音量柱 page-7" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-7" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 1</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。柱頂連線顯示 noise 的連續性，上方曲線記錄中央柱的歷史；點擊重新 seed。</div>
+        <iframe class="lazy-embed" title="一維 Perlin Noise，跳動的音量柱 page-1" src="about:blank" data-src="algo/perlin-bars/page-1.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
-    <div class="todo-block" id="todo-3-2">
-      <div class="todo-tag">TODO-3.2</div>
-      <div class="todo-title">Perlin 其實不是隨機 — Deterministic Gradient Noise</div>
-      <div class="todo-brief">章節三只說「前一刻會影響下一刻」，沒講 Perlin 本質：給同一個 x 永遠回同一個值。這是它能被當成「材料」的關鍵。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>解釋 Perlin noise 是 deterministic 函數而不是 random 序列。同樣輸入永遠同樣輸出，所以可重播、可動畫、可採樣。</dd>
-        <dt>內容大綱</dt>
-        <dd>
-          <ul>
-            <li>random vs noise：random 每次叫都不同，noise(x) 每次叫同一個 x 都同樣值</li>
-            <li>實作概念：在格子上預先放隨機梯度向量，輸入 x 落在格子間，做平滑插值</li>
-            <li>「連續性」來自插值，不是來自序列記憶</li>
-            <li>所以可以 noise(t) 做時間動畫、noise(x, y) 做地形、noise(x, y, t) 做演化雲</li>
-            <li>提一句 Ken Perlin 1985 為了 Tron 視效發明，1997 拿奧斯卡技術獎</li>
-          </ul>
-        </dd>
-        <dt>視覺輔助</dt>
-        <dd>選一：(a) 一條 noise(x) 的折線圖；(b) 對照 random() 的鋸齒折線 vs noise(x) 的平滑折線。</dd>
-        <dt>程式碼</dt>
-        <dd><code>console.log(noise(0.5)); // 0.4632...</code><br><code>console.log(noise(0.5)); // 0.4632... 同樣值</code></dd>
-        <dt>對照</dt>
-        <dd>對比章節一 1.1 random()。Perlin 是「另一條材料線」，不是 random 的子集。</dd>
-        <dt>風格</dt>
-        <dd>把「為什麼叫 noise 但不是隨機」這個 paradox 講清楚。</dd>
-        <dt>長度</dt>
-        <dd>250–400 字 + 1 個對照圖。</dd>
-      </dl>
-    </div>
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 3.2</div>
+        <div class="example-title">Perlin 其實不是隨機，是一張查得到的表</div>
+        <div class="example-desc">同一個 x 叫一次回什麼值，叫第二次還是回一樣的值。它不會記得上一刻，是因為它根本不在抽籤，是在查一張看不見的表。</div>
 
-    <div class="todo-block" id="todo-3-3">
-      <div class="todo-tag">TODO-3.3</div>
-      <div class="todo-title">Frequency、Amplitude、Octave — fBm 分形布朗運動</div>
-      <div class="todo-brief">Perlin 一次叫只給「中等尺度」的擾動。把多個尺度疊加才會出現自然紋理（雲、山、火）。這是 generative artist 每天用的招。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>解釋怎麼把多個 octave 的 noise 疊加成 fractal Brownian motion，得到從遠處到近處都有細節的紋理。</dd>
-        <dt>內容大綱</dt>
-        <dd>
+        <div class="explainer">
+          <div class="explainer-title">為什麼叫 noise，卻不是隨機？</div>
+          <p>名字叫 noise，很容易誤會它跟 <code>random()</code> 是同一家。其實它們做的事完全不同。</p>
           <ul>
-            <li>frequency：<code>noise(x * f)</code>，f 越大波越密</li>
-            <li>amplitude：<code>noise(...) * a</code>，a 越大擾動越強</li>
-            <li>octave：把多個 (f, a) 疊加。標準做法：每層 f *= 2，a *= 0.5</li>
-            <li>persistence：a 的衰減速度（章節四美學光譜會用到）</li>
-            <li>結果：大尺度骨架 + 中尺度紋理 + 小尺度細節，像真實山脈</li>
-            <li>實際應用：地形、雲、火、water caustics、procedural texture</li>
+            <li><code>random()</code>：每叫一次都重抽，前後沒有關係。</li>
+            <li><code>noise(0.5)</code>：今天叫、明天叫、換一台電腦叫，永遠回同一個值。</li>
           </ul>
-        </dd>
-        <dt>視覺輔助</dt>
-        <dd>四格波形：octave 1、octave 2、octave 4、四 octave 疊加。看到細節逐層加上去。</dd>
-        <dt>程式碼</dt>
-        <dd>
-          <code>let v = 0, f = 1, a = 1;</code><br>
-          <code>for (let i = 0; i &lt; 4; i++) {</code><br>
-          <code>&nbsp;&nbsp;v += noise(x * f) * a;</code><br>
-          <code>&nbsp;&nbsp;f *= 2; a *= 0.5;</code><br>
-          <code>}</code>
-        </dd>
-        <dt>對照</dt>
-        <dd>章節四 4.3 美學光譜會用 octave/persistence 對應到 1/f 噪聲。寫的時候鋪這條線。</dd>
-        <dt>風格</dt>
-        <dd>視覺優先。每層 octave 的視覺改變要看得到。</dd>
-        <dt>長度</dt>
-        <dd>300–450 字 + 四格波形。</dd>
-      </dl>
-    </div>
+          <p>它不是序列，它是一個函數。輸入是一個位置 x，輸出是一個落在 0 到 1 之間的數字。你可以把它想成一張看不見的長條地圖。地圖在格子上先預先放好隨機方向的小箭頭，這些叫梯度向量。給一個 x，它先看 x 落在哪兩個格子之間，再用兩端的箭頭做平滑插值，算出一個值。</p>
+          <p>所謂的「連續性」是從這裡來的。不是它記得上一刻，是它跟上一刻同樣去查那張地圖，地圖本身就連續，所以結果也連續。換成藝術語言：random 是擲骰，noise 是讀譜。</p>
+
+          <div class="ring-pair" aria-hidden="true">
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <polyline points="0,40 8,12 16,68 24,20 32,60 40,8 48,72 56,28 64,55 72,15 80,65 88,35 96,18 104,70 112,25 120,58 128,10 136,62 144,30 152,75 160,20 168,50 176,8 184,68 192,30 200,55" fill="none" stroke="#2d6a4f" stroke-width="1.2"/>
+              </svg>
+              <div class="dot-label">random(x)<br>鋸齒，前後沒關係</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <path d="M0,45 C10,42 18,30 28,25 C38,22 45,32 55,40 C65,48 72,55 82,52 C92,49 100,38 110,30 C120,24 128,22 138,28 C148,34 155,45 165,50 C175,54 182,48 192,40 L200,38" fill="none" stroke="#2d6a4f" stroke-width="1.2"/>
+              </svg>
+              <div class="dot-label">noise(x)<br>連續，可重播</div>
+            </div>
+          </div>
+
+          <div class="code-mini">noise(0.5);   <span class="cm">// 0.4632...</span>
+noise(0.5);   <span class="cm">// 0.4632... 一樣</span>
+noise(0.5);   <span class="cm">// 0.4632... 還是一樣</span>
+
+random();     <span class="cm">// 0.7281...</span>
+random();     <span class="cm">// 0.1149... 每次不同</span></div>
+
+          <p><a href="https://en.wikipedia.org/wiki/Perlin_noise" target="_blank" rel="noopener noreferrer">Ken Perlin</a> 1985 年發表這個函數，最早是為了 1982 年《Tron》的視覺特效寫的，<a href="https://en.wikipedia.org/wiki/Academy_Scientific_and_Technical_Award" target="_blank" rel="noopener noreferrer">1997 年拿到奧斯卡技術成就獎</a>。它能變成 noise(t) 做時間動畫、noise(x, y) 做地形、noise(x, y, t) 做演化的雲，都是因為這個性質：給同樣輸入永遠給同樣輸出。可以採樣，可以倒帶，可以拼接。</p>
+          <p>章節一 1.1 的 <code>random()</code> 是擲一次少一次的籤。Perlin 是另一條材料線，不在那條線的延伸上。</p>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">deterministic</span>
+          <span class="tag">gradient noise</span>
+          <span class="tag">perlin 1985</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 3.3</div>
+        <div class="example-title">Octave 疊加，山的骨架加上山的皺褶</div>
+        <div class="example-desc">一次 noise 只給一個尺度的擾動。把不同密度的 noise 加起來，遠看是山的形狀，靠近還有岩石的紋理。同一條曲線同時帶著好幾種尺度。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼自然的紋理看起來「一層一層」？</div>
+          <p>真正的山遠看是一條起伏的稜線，走近會看到岩塊，再走近會看到裂紋。雲、火、海浪、水紋都是這樣，遠中近三個尺度疊在一起。</p>
+          <p>用單一次 <code>noise(x)</code> 只能拿到一個尺度。要把山的多層感寫出來，就要疊。先給 noise 兩個旋鈕：</p>
+          <ul>
+            <li><b>frequency</b>：<code>noise(x * f)</code>。f 越大，等於把 x 拉開來看，波就變密。</li>
+            <li><b>amplitude</b>：<code>noise(...) * a</code>。a 越大，這層擾動越強。</li>
+          </ul>
+          <p>標準做法：第一層當骨架，f = 1、a = 1。下一層 f 乘 2 變兩倍密、a 乘 0.5 變一半強。再下一層再乘一次。一般疊 4 到 6 層。這個疊加的結果叫 fractal Brownian motion，簡稱 fBm。</p>
+
+          <div class="hist-pair" aria-hidden="true" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <path d="M0,50 C25,30 50,70 75,55 C100,40 125,20 150,40 C175,55 190,45 200,50" fill="none" stroke="#2d6a4f" stroke-width="1.4"/>
+              </svg>
+              <div class="dot-label">octave 1<br>f=1, a=1（骨架）</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <path d="M0,45 C12,35 24,58 36,42 C48,28 60,55 72,38 C84,22 96,52 108,40 C120,30 132,55 144,42 C156,30 168,48 180,40 C190,35 196,45 200,42" fill="none" stroke="#2d6a4f" stroke-width="1.2"/>
+              </svg>
+              <div class="dot-label">octave 2<br>f=2, a=0.5</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <polyline points="0,42 6,38 12,46 18,40 24,44 30,38 36,46 42,40 48,44 54,38 60,46 66,40 72,44 78,38 84,46 90,40 96,44 102,38 108,46 114,40 120,44 126,38 132,46 138,40 144,44 150,38 156,46 162,40 168,44 174,38 180,46 186,40 192,44 200,40" fill="none" stroke="#2d6a4f" stroke-width="1"/>
+              </svg>
+              <div class="dot-label">octave 4<br>f=4, a=0.25</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <path d="M0,50 C8,42 14,58 22,48 C28,38 36,62 44,52 C52,42 60,68 68,55 C76,42 84,32 92,38 C100,46 108,28 116,32 C124,40 132,18 140,28 C148,42 156,52 164,42 C172,32 180,50 188,44 C194,40 198,48 200,46" fill="none" stroke="#2d6a4f" stroke-width="1.2"/>
+              </svg>
+              <div class="dot-label">疊 4 層<br>有骨架也有皺褶</div>
+            </div>
+          </div>
+
+          <div class="code-mini">let v = 0, f = 1, a = 1;
+for (let i = 0; i &lt; 4; i++) {
+  v += noise(x * f) * a;     <span class="cm">// 把這層加進去</span>
+  f *= 2;                    <span class="cm">// 下一層波密兩倍</span>
+  a *= 0.5;                  <span class="cm">// 下一層擾動弱一半</span>
+}</div>
+
+          <p>a 衰減的速度有個名字叫 persistence。0.5 是標準，給出溫和的山。把它調高，例如 0.7，小尺度的擾動會留得更多，紋理變粗糙。調低成 0.3，小尺度幾乎消失，剩下一條乾淨的山稜。生成藝術裡常用這條旋鈕在「自然」跟「乾淨」之間切換。</p>
+          <p>fBm 背後的分形數學是 <a href="https://en.wikipedia.org/wiki/Benoit_Mandelbrot" target="_blank" rel="noopener noreferrer">Benoit Mandelbrot</a> 一系列研究發展出來的。他 1975 年從拉丁文 <i>fractus</i> 造了「fractal」這個字，寫進《Les Objets Fractals》。多尺度疊加之所以能解釋海岸線、山脈、雲為什麼放大、縮小、再放大都長得差不多，就靠這套幾何。</p>
+          <p>1980 年 SIGGRAPH，<a href="https://en.wikipedia.org/wiki/Loren_Carpenter" target="_blank" rel="noopener noreferrer">Loren Carpenter</a> 發表了兩分鐘短片 <a href="https://archive.org/details/vollibre1980_202002" target="_blank" rel="noopener noreferrer">Vol Libre</a>，全片地形都是用分形即時生成。他當場被 Lucasfilm 招攬，1982 年《星艦迷航記 II》裡那段從岩石長出植物的 Genesis 特效，就是他在 Lucasfilm Computer Division 做的，電影史上第一次完全程式生成的鏡頭。這個部門 1986 年被 Steve Jobs 買下，分拆成 Pixar，Carpenter 成為共同創辦人。</p>
+          <p>地形、雲、火焰、水面光斑、procedural texture，這條疊加的招路幾乎到處都在用。章節四 4.3 會把它跟頻譜接起來：每多疊一層 octave，等於在頻譜上加一段高頻。</p>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">fBm</span>
+          <span class="tag">octave</span>
+          <span class="tag">frequency amplitude</span>
+          <span class="tag">persistence</span>
+        </div>
+      </div>
+    </article>
+
   </div>
 
   <h2 id="chapter-4">章節四 — 二維 Perlin Noise──雲海／大理石</h2>
@@ -1313,80 +2011,260 @@ function draw() {
           <span class="tag">cloud / marble</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2624103#page-8" target="_blank" rel="noopener noreferrer">↗ OpenProcessing page-8</a>
+          <a href="algo/perlin-2d/page-1.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-1</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-1 sketch.js</summary>
+          <pre><code>let seed;
+let scale = 0.012;
+let marbleStrength = 7.5;
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  seed = int(random(99999));
+  drawScene();
+}
+
+function drawScene() {
+  noiseSeed(seed);
+  noiseDetail(5, 0.5);
+  loadPixels();
+
+  for (let y = 0; y &lt; height; y++) {
+    for (let x = 0; x &lt; width; x++) {
+      let n = fbm(x * scale, y * scale);
+      let marble = sin(x * 0.035 + n * marbleStrength);
+      let cloud = map(n, 0.2, 0.85, 0, 1, true);
+      let vein = map(marble, -1, 1, 0, 1);
+      let shade = cloud * 0.72 + vein * 0.28;
+
+      let idx = 4 * (x + y * width);
+      pixels[idx + 0] = lerp(18, 238, shade);
+      pixels[idx + 1] = lerp(30, 232, shade);
+      pixels[idx + 2] = lerp(45, 218, shade);
+      pixels[idx + 3] = 255;
+    }
+  }
+
+  updatePixels();
+  drawOverlay();
+}
+
+function fbm(x, y) {
+  let value = 0;
+  let amp = 0.5;
+  let freq = 1;
+
+  for (let i = 0; i &lt; 5; i++) {
+    value += noise(x * freq, y * freq) * amp;
+    freq *= 2;
+    amp *= 0.5;
+  }
+
+  return value;
+}
+
+function drawOverlay() {
+  noStroke();
+  fill(0, 90);
+  rect(0, 0, width, 42);
+  rect(0, height - 34, width, 34);
+
+  fill(235);
+  textSize(11);
+  text('noise(x * scale, y * scale)', 16, 24);
+  fill(180);
+  text(`seed ${seed}   click: re-seed`, 16, height - 14);
+}
+
+function mousePressed() {
+  seed = int(random(99999));
+  drawScene();
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · PAGE 8</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="二維 Perlin Noise，雲海／大理石 page-8" src="about:blank" data-src="https://openprocessing.org/sketch/2624103/embed/#page-8" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · PAGE 1</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。同一片 2D noise 生成雲狀底紋與大理石條紋；點擊重新 seed。</div>
+        <iframe class="lazy-embed" title="二維 Perlin Noise，雲海／大理石 page-1" src="about:blank" data-src="algo/perlin-2d/page-1.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
-    <div class="todo-block" id="todo-4-2">
-      <div class="todo-tag">TODO-4.2</div>
-      <div class="todo-title">Noise 家族 — Simplex、Worley、Curl</div>
-      <div class="todo-brief">頁面只談 Perlin。一個 generative artist 工具箱裡至少還會有另外三種。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>介紹三種藝術家常用的非 Perlin noise，講清楚各自的視覺特徵與適用情境。</dd>
-        <dt>內容大綱</dt>
-        <dd>
-          <ul>
-            <li><b>Simplex noise</b>（Ken Perlin 2001）：Perlin 的優化版。高維更快、方向偏差更小、視覺更自然。</li>
-            <li><b>Worley noise</b>（cellular noise / Voronoi noise）：把點撒在空間，每個位置回傳「到最近點的距離」。看起來像細胞、龜裂、石頭、皮膚。</li>
-            <li><b>Curl noise</b>：把 Perlin 的梯度旋轉 90 度，做出無散度（無源無匯）的向量場。粒子跟著流動會像煙、流體。</li>
-            <li>什麼時候用哪個：紋理 → Perlin/Simplex；細胞感 → Worley；流動感 → Curl</li>
-          </ul>
-        </dd>
-        <dt>視覺輔助</dt>
-        <dd>三格並列：Perlin（雲）、Worley（石紋/細胞）、Curl（粒子流線）。CSS 用 <code>.density-row</code>。</dd>
-        <dt>程式碼</dt>
-        <dd>不需完整實作，給每種一行 sketch（例如 <code>distanceToNearestPoint(x, y)</code> for Worley）。</dd>
-        <dt>對照</dt>
-        <dd>章節四 4.1 是 Perlin 基本款，4.2 把家族擴開。</dd>
-        <dt>風格</dt>
-        <dd>視覺優先，文字精簡。每種 noise 都用「看起來像什麼」開頭。</dd>
-        <dt>長度</dt>
-        <dd>350–500 字 + 三格 SVG。</dd>
-      </dl>
-    </div>
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 4.2</div>
+        <div class="example-title">Noise 家族，雲、石頭、流</div>
+        <div class="example-desc">Perlin 只是 noise 家族的入口。換一條規則，畫面就從雲變成龜裂的石頭，或變成繞著漩渦的粒子。每種 noise 都帶著一種看起來的樣子。</div>
 
-    <div class="todo-block" id="todo-4-3">
-      <div class="todo-tag">TODO-4.3</div>
-      <div class="todo-title">噪聲的美學光譜 — White / Pink / Brown / Blue Noise</div>
-      <div class="todo-brief">這是 algo 美學的要害。Perlin 像自然，是因為它的頻譜剛好落在「中段」。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>從頻譜角度解釋為什麼不同的噪聲「看起來/聽起來」不同。把它連回藝術家的選擇。</dd>
-        <dt>內容大綱</dt>
-        <dd>
+        <div class="explainer">
+          <div class="explainer-title">同樣叫 noise，為什麼看起來差這麼多？</div>
+          <p>Perlin 在格子上放梯度向量再插值，給出的是雲那種柔軟的紋理。把「怎麼放、怎麼算」改掉，畫面性格就跟著換。藝術家工具箱裡常用的另外三種：</p>
           <ul>
-            <li><b>White noise</b>：全頻段能量均等。視覺太吵、聽覺太刺。等於純 <code>random()</code>。</li>
-            <li><b>Pink noise (1/f)</b>：能量隨頻率衰減 1/f。中段為主，「自然」。Perlin / fBm 接近此區。</li>
-            <li><b>Brown noise (1/f²)</b>：低頻為主。視覺平滑、聽覺溫暖。隨機漫步軌跡屬此類。</li>
-            <li><b>Blue noise</b>：高頻為主。視覺均勻無結團。Poisson disk（1.6）就是 blue noise 的空間版。</li>
-            <li>為何重要：藝術家選 noise 就是在選頻譜。Perlin 之所以「像雲」，是它落在 pink 區。</li>
-            <li>1/f 與自然界的審美關係：許多自然訊號（心跳、河流、樂句）都是 1/f</li>
+            <li><b>Simplex noise</b>（Ken Perlin 2001）。Perlin 的優化版。看起來像 Perlin，但方向偏差更小，在 3D、4D 計算更快。多數的 fragment shader 跑的其實是這個。</li>
+            <li><b>Worley noise</b>（cellular noise / Voronoi noise）。先在空間撒一些種子點，每個位置回傳「到最近種子的距離」。近的暗、遠的亮，或反過來。看起來像細胞、龜裂、石頭、皮膚的鱗。</li>
+            <li><b>Curl noise</b>。把 Perlin 的梯度旋轉 90 度，得到一個無散度的向量場。粒子跟著流動會繞圈、會繞過障礙、不會聚成一點。煙、流體、墨水都靠它。</li>
           </ul>
-        </dd>
-        <dt>視覺輔助</dt>
-        <dd>四格頻譜對照（time-domain 折線 + frequency-domain 直方圖）。或四格 2D 紋理對照。</dd>
-        <dt>程式碼</dt>
-        <dd>不需完整實作。可以給 white → brown 用累加產生的範例。</dd>
-        <dt>對照</dt>
-        <dd>1.6 Poisson disk = 空間 blue noise；3.3 fBm 接近 pink noise；章節九感知偏差會再用到。</dd>
-        <dt>風格</dt>
-        <dd>頻譜這個概念對國中生有點難。要用「視覺/聽覺」感受先建直覺，再帶數學。</dd>
-        <dt>長度</dt>
-        <dd>400–600 字 + 四格視覺。</dd>
-      </dl>
-    </div>
+
+          <div class="density-row" aria-hidden="true">
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <defs>
+                  <radialGradient id="ng1" cx="35%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#2d6a4f" stop-opacity="0.85"/>
+                    <stop offset="60%" stop-color="#2d6a4f" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#2d6a4f" stop-opacity="0.05"/>
+                  </radialGradient>
+                  <radialGradient id="ng2" cx="75%" cy="70%" r="50%">
+                    <stop offset="0%" stop-color="#2d6a4f" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#2d6a4f" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect width="100" height="100" fill="#f0ede4"/>
+                <rect width="100" height="100" fill="url(#ng1)"/>
+                <rect width="100" height="100" fill="url(#ng2)"/>
+                <ellipse cx="20" cy="80" rx="22" ry="14" fill="#2d6a4f" fill-opacity="0.25"/>
+                <ellipse cx="78" cy="22" rx="18" ry="12" fill="#2d6a4f" fill-opacity="0.3"/>
+              </svg>
+              <div class="dot-label">Perlin / Simplex<br>雲、紋理</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <rect width="100" height="100" fill="#f0ede4"/>
+                <g fill="none" stroke="#2d6a4f" stroke-width="0.6" stroke-opacity="0.7">
+                  <path d="M0,20 L25,28 L42,12 L62,22 L80,8 L100,18"/>
+                  <path d="M0,45 L18,52 L32,38 L48,55 L68,42 L85,58 L100,48"/>
+                  <path d="M0,72 L20,68 L38,82 L55,70 L72,85 L90,75 L100,82"/>
+                  <path d="M25,28 L18,52 L20,68"/>
+                  <path d="M42,12 L32,38 L38,82"/>
+                  <path d="M62,22 L48,55 L55,70"/>
+                  <path d="M80,8 L68,42 L72,85"/>
+                </g>
+                <g fill="#2d6a4f" fill-opacity="0.4">
+                  <circle cx="22" cy="40" r="1.5"/>
+                  <circle cx="48" cy="32" r="1.5"/>
+                  <circle cx="72" cy="28" r="1.5"/>
+                  <circle cx="32" cy="65" r="1.5"/>
+                  <circle cx="58" cy="60" r="1.5"/>
+                  <circle cx="80" cy="62" r="1.5"/>
+                </g>
+              </svg>
+              <div class="dot-label">Worley<br>細胞、龜裂</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 100 100">
+                <rect width="100" height="100" fill="#f0ede4"/>
+                <g fill="none" stroke="#2d6a4f" stroke-width="0.7" stroke-opacity="0.75">
+                  <path d="M5,80 C20,70 30,55 25,40 C20,28 35,22 50,28 C65,34 70,48 60,60 C50,72 60,82 75,78 C88,75 92,62 88,50"/>
+                  <path d="M10,30 C25,25 38,32 42,45 C46,58 35,68 22,65"/>
+                  <path d="M55,15 C72,18 82,30 78,42 C74,55 60,55 50,48"/>
+                  <path d="M30,88 C40,80 55,82 65,90"/>
+                </g>
+                <g fill="#2d6a4f">
+                  <circle cx="5" cy="80" r="1"/>
+                  <circle cx="10" cy="30" r="1"/>
+                  <circle cx="55" cy="15" r="1"/>
+                  <circle cx="30" cy="88" r="1"/>
+                </g>
+              </svg>
+              <div class="dot-label">Curl<br>流線、漩渦</div>
+            </div>
+          </div>
+
+          <div class="code-mini"><span class="cm">// Perlin / Simplex：紋理</span>
+let v = noise(x, y);
+
+<span class="cm">// Worley：到最近種子的距離</span>
+let d = distanceToNearestPoint(x, y);
+
+<span class="cm">// Curl：旋轉梯度成向量場</span>
+let g = gradient(noise, x, y);
+let flow = createVector(g.y, -g.x);</div>
+
+          <p>挑哪一種，多半看畫面要的感覺。要連續柔軟，選 Perlin 或 Simplex。要分割成塊、有邊界感，選 Worley。要看起來在流，選 Curl。它們可以混。把 Perlin 拿去當 Worley 種子的位移、把 Curl 餵給粒子位置、再用 Perlin 染色，畫面就有多層次的自然感。</p>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">simplex</span>
+          <span class="tag">worley</span>
+          <span class="tag">curl noise</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 4.3</div>
+        <div class="example-title">噪聲的美學光譜，從吵到柔的頻譜</div>
+        <div class="example-desc">把噪聲拆成頻率，看每個頻率有多少能量，就能解釋為什麼有些噪聲刺眼、有些溫暖。藝術家在選噪聲，其實是在選頻譜。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼有些噪聲看起來「自然」，有些不？</div>
+          <p>把一段訊號拆成不同頻率的疊加，就是頻譜。低頻是慢慢起伏的大區塊，高頻是密集的細抖。每種噪聲就是把能量分到不同頻段的不同配方。</p>
+          <ul>
+            <li><b>White noise</b>。每個頻段能量都一樣。看起來、聽起來都太吵。等於每點獨立的 <code>random()</code>。</li>
+            <li><b>Pink noise (1/f)</b>。能量隨頻率降一倍。中段為主，低頻有骨架、高頻有細節。Perlin、fBm、許多自然訊號（心跳、河流、樂句的旋律線）都在這附近。看起來「像自然」就是它。</li>
+            <li><b>Brown noise (1/f²)</b>。能量衰減更快，低頻佔大宗。視覺平滑、聽覺溫暖，像隨機漫步走出來的軌跡，章節五 5.5 的 PRNG 序列累加就是這個。</li>
+            <li><b>Blue noise</b>。反過來，高頻多、低頻少。沒有大區塊的不均，視覺乾淨均勻。Poisson disk（1.6）就是空間版的 blue noise。</li>
+          </ul>
+
+          <div class="hist-pair" aria-hidden="true" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <polyline points="0,30 5,68 10,18 15,72 20,25 25,60 30,10 35,75 40,20 45,55 50,38 55,12 60,70 65,22 70,58 75,8 80,68 85,32 90,72 95,15 100,62 105,28 110,75 115,18 120,55 125,12 130,68 135,30 140,15 145,72 150,22 155,58 160,8 165,70 170,32 175,62 180,12 185,68 190,28 195,72 200,40" fill="none" stroke="#2d6a4f" stroke-width="0.9"/>
+              </svg>
+              <div class="dot-label">White<br>各頻段一樣吵</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <path d="M0,40 C8,35 14,48 22,42 C30,38 36,55 44,48 C52,42 58,30 66,38 C74,45 80,52 88,45 C96,38 102,28 110,35 C118,42 124,58 132,50 C140,42 146,35 154,42 C162,48 168,55 176,48 C184,42 190,38 200,40" fill="none" stroke="#2d6a4f" stroke-width="1.1"/>
+              </svg>
+              <div class="dot-label">Pink (1/f)<br>自然，Perlin 在這</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <path d="M0,50 C20,48 35,42 50,40 C65,38 75,42 90,46 C105,50 115,55 130,52 C145,48 160,40 175,32 C185,28 195,32 200,35" fill="none" stroke="#2d6a4f" stroke-width="1.3"/>
+              </svg>
+              <div class="dot-label">Brown (1/f²)<br>柔，隨機漫步</div>
+            </div>
+            <div class="dot-panel">
+              <svg viewBox="0 0 200 80">
+                <polyline points="0,42 4,38 8,44 12,40 16,42 20,38 24,44 28,40 32,42 36,38 40,44 44,40 48,42 52,38 56,44 60,40 64,42 68,38 72,44 76,40 80,42 84,38 88,44 92,40 96,42 100,38 104,44 108,40 112,42 116,38 120,44 124,40 128,42 132,38 136,44 140,40 144,42 148,38 152,44 156,40 160,42 164,38 168,44 172,40 176,42 180,38 184,44 188,40 192,42 196,38 200,42" fill="none" stroke="#2d6a4f" stroke-width="0.8"/>
+              </svg>
+              <div class="dot-label">Blue<br>高頻多，視覺均勻</div>
+            </div>
+          </div>
+
+          <p>把 white noise 累加起來會變 brown，因為累加是一個低通濾波，把高頻壓掉。把 white noise 微分會變 blue，因為微分是高通。Perlin 介於兩者，靠近 pink。</p>
+          <p>1/f 在自然界到處都看得到。河流的流量、樂曲的音高變化、心跳間隔、城市的噪音、海岸線的彎曲。為什麼這個頻譜會被當成「審美的中段」？一個說法是：低頻太多會無聊（變成 brown 的平滑漸層），高頻太多會刺（變成 white 的鋸齒）。1/f 剛好兩邊都有，所以看起來有結構、又不會單調。</p>
+          <p>1975 年 Richard Voss 跟 John Clarke 在《Nature》上發了一篇短論文 <a href="https://www.nature.com/articles/258317a0" target="_blank" rel="noopener noreferrer">「1/f noise in music and speech」</a>，量了巴哈、披頭四、藍調、爵士，發現它們的音高與音量起伏幾乎都落在 1/f 頻譜。同一年 Brian Eno 也開始用幾段彼此不同步的 loop 做 ambient 音樂，這條思路他後來在 1996 一場演講裡命名為 <a href="https://en.wikipedia.org/wiki/Generative_music" target="_blank" rel="noopener noreferrer">generative music</a>。Voss/Clarke 是把 1/f 頻譜從生物物理移到藝術觀察裡的第一篇實證論文，比 Perlin 早十年。</p>
+
+          <div class="code-mini"><span class="cm">// 從 white 出發，疊出近似 pink</span>
+let v = 0, f = 1, a = 1;
+for (let i = 0; i &lt; 6; i++) {
+  v += noise(x * f) * a;
+  f *= 2;
+  a *= 0.5;          <span class="cm">// 0.5 ≈ pink；0.7 偏 brown</span>
+}                    <span class="cm">// 章節三 3.3 的 fBm 就是這條配方</span></div>
+
+          <p>1.6 的 Poisson disk 是空間版的 blue noise，3.3 的 fBm 落在 pink 附近，5.5 的 PRNG 累加做出的軌跡是 brown。挑噪聲就是挑頻譜，挑頻譜就是挑畫面的性格。</p>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">white / pink / brown / blue</span>
+          <span class="tag">1/f noise</span>
+          <span class="tag">spectrum</span>
+        </div>
+      </div>
+    </article>
+
   </div>
 
-  <h2 id="chapter-5">章節五 — 亂數模式──三種分布</h2>
+  <h2 id="chapter-5">章節五 — 分布的形狀</h2>
   <div class="chapter-note">
-    同一個畫面放進三種亂數。中心、外溢、連續的雜訊，各自長出不同的密度。
+    同一個畫面放進三種分布。中心、長尾、連續流動，各自長出不同的密度。
   </div>
 
   <div class="example-grid">
@@ -1394,68 +2272,619 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 5.1</div>
         <div class="example-title">亂數模式</div>
-        <div class="example-desc">程式並列 Gaussian、Exponential、Perlin noise：一個往中心聚，一個在近處密集、遠處偶發，一個把時間放進噪聲裡。分布一換，畫面性格就換。</div>
+        <div class="example-desc">程式並列 Gaussian、Exponential、Perlin noise：一個往中心聚，一個在近處密集、遠處偶發，一個把時間放進噪聲裡。黑白三欄只看密度、大小與流動。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">三種分布，並排看就懂了</div>
+          <p>左邊那團是 <code>randomGaussian()</code>。多數點聚在中心，越往邊越稀，沒有點會跑很遠。看起來像一團安定的光暈。</p>
+          <p>中間那團是 <code>-log(random())</code>，幾何上是 Exponential 分布的半徑。中心爆滿，邊緣有少數零星點，那是長尾。多數值靠近起點，少數值被推到很遠。</p>
+          <p>右邊那群一直在動的是 <code>noise(x, y, t)</code> 推動的粒子。每一格的方向不是抽籤，是查表。前一刻的方向決定下一刻往哪走，所以粒子畫出來是流線而不是亂飛。時間維度被放進來了。</p>
+          <p>同一個畫面，三個面板，三種性格。這一章先用黑白看它們長什麼樣。</p>
+        </div>
+
         <div class="example-tags">
           <span class="tag">gaussian</span>
           <span class="tag">exponential</span>
           <span class="tag">perlin noise</span>
+          <span class="tag">side-by-side</span>
         </div>
         <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2631109" target="_blank" rel="noopener noreferrer">↗ OpenProcessing sketch 2631109</a>
+          <a href="algo/random-patterns/page-1.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-1</a>
         </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-1 sketch.js</summary>
+          <pre><code>const CW = 500;
+const CH = 500;
+const PANEL_W = 140;
+const PANEL_H = 320;
+const PANEL_GAP = 20;
+const STATIC_COUNT = 700;
+const PARTICLE_COUNT = 240;
+
+let gaussianPts = [];
+let exponentialPts = [];
+let particles = [];
+let t = 0;
+let showGuides = true;
+
+function setup() {
+  createCanvas(CW, CH);
+  pixelDensity(1);
+  colorMode(HSB, 360, 100, 100, 100);
+  textFont('monospace');
+  resampleAll();
+}
+
+function resampleAll() {
+  generateGaussian();
+  generateExponential();
+  generateParticles();
+}
+
+function generateGaussian() {
+  gaussianPts = [];
+  for (let i = 0; i &lt; STATIC_COUNT; i++) {
+    gaussianPts.push({
+      x: randomGaussian(0, 30),
+      y: randomGaussian(0, 76)
+    });
+  }
+}
+
+function generateExponential() {
+  exponentialPts = [];
+  for (let i = 0; i &lt; STATIC_COUNT; i++) {
+    let r = -log(max(random(), 1e-6)) * 26;
+    let theta = random(TWO_PI);
+    exponentialPts.push({
+      x: cos(theta) * r,
+      y: sin(theta) * r * 1.45
+    });
+  }
+}
+
+function generateParticles() {
+  particles = [];
+  for (let i = 0; i &lt; PARTICLE_COUNT; i++) {
+    let x = random(-PANEL_W / 2, PANEL_W / 2);
+    let y = random(-PANEL_H / 2, PANEL_H / 2);
+    particles.push({x, y, px: x, py: y});
+  }
+}
+
+function draw() {
+  background(0, 0, 5);
+
+  let panels = getPanels();
+  drawPanelGaussian(panels[0]);
+  drawPanelExponential(panels[1]);
+  drawPanelPerlin(panels[2]);
+  drawTitles(panels);
+  drawHud();
+
+  t += 0.008;
+}
+
+function getPanels() {
+  let totalWidth = PANEL_W * 3 + PANEL_GAP * 2;
+  let startX = (CW - totalWidth) / 2;
+  let topY = 74;
+  let cy = topY + PANEL_H / 2;
+
+  return [
+    {label: 'Gaussian', sub: 'center weight', fn: 'randomGaussian()', cx: startX + PANEL_W / 2, cy, topY},
+    {label: 'Exponential', sub: 'long tail', fn: '-log(random())', cx: startX + PANEL_W + PANEL_GAP + PANEL_W / 2, cy, topY},
+    {label: 'Perlin', sub: 'continuous flow', fn: 'noise(x, y, t)', cx: startX + (PANEL_W + PANEL_GAP) * 2 + PANEL_W / 2, cy, topY}
+  ];
+}
+
+function drawPanelGaussian(panel) {
+  drawFrame(panel);
+  push();
+  translate(panel.cx, panel.cy);
+  noStroke();
+  for (let p of gaussianPts) {
+    fill(0, 0, 100, 48);
+    circle(p.x, p.y, 1.7);
+  }
+  pop();
+}
+
+function drawPanelExponential(panel) {
+  drawFrame(panel);
+  push();
+  translate(panel.cx, panel.cy);
+  noStroke();
+  for (let p of exponentialPts) {
+    if (abs(p.x) &gt; PANEL_W / 2 || abs(p.y) &gt; PANEL_H / 2) continue;
+    fill(0, 0, 70, 46);
+    circle(p.x, p.y, 2.1);
+  }
+  pop();
+}
+
+function drawPanelPerlin(panel) {
+  drawFrame(panel);
+  push();
+  translate(panel.cx, panel.cy);
+
+  for (let p of particles) {
+    p.px = p.x;
+    p.py = p.y;
+
+    let n = noise(
+      (p.x + PANEL_W / 2) * 0.014,
+      (p.y + PANEL_H / 2) * 0.014,
+      t
+    );
+    let angle = n * TWO_PI * 2;
+    p.x += cos(angle) * 0.9;
+    p.y += sin(angle) * 0.9;
+
+    if (p.x &gt; PANEL_W / 2) { p.x = -PANEL_W / 2; p.px = p.x; }
+    if (p.x &lt; -PANEL_W / 2) { p.x = PANEL_W / 2; p.px = p.x; }
+    if (p.y &gt; PANEL_H / 2) { p.y = -PANEL_H / 2; p.py = p.y; }
+    if (p.y &lt; -PANEL_H / 2) { p.y = PANEL_H / 2; p.py = p.y; }
+
+    stroke(0, 0, 45, 72);
+    strokeWeight(0.9);
+    line(p.px, p.py, p.x, p.y);
+  }
+  pop();
+}
+
+function drawFrame(panel) {
+  push();
+  noFill();
+  stroke(0, 0, 36, 80);
+  strokeWeight(1);
+  rect(panel.cx - PANEL_W / 2, panel.cy - PANEL_H / 2, PANEL_W, PANEL_H);
+
+  if (showGuides) {
+    stroke(0, 0, 55, 30);
+    line(panel.cx, panel.cy - PANEL_H / 2, panel.cx, panel.cy + PANEL_H / 2);
+    line(panel.cx - PANEL_W / 2, panel.cy, panel.cx + PANEL_W / 2, panel.cy);
+    ellipse(panel.cx, panel.cy, 52, 52);
+    ellipse(panel.cx, panel.cy, 104, 104);
+  }
+  pop();
+}
+
+function drawTitles(panels) {
+  noStroke();
+  textAlign(CENTER);
+
+  for (let panel of panels) {
+    fill(0, 0, 90, 95);
+    textSize(12);
+    text(panel.label, panel.cx, panel.topY - 24);
+
+    fill(0, 0, 58, 90);
+    textSize(10);
+    text(panel.sub, panel.cx, panel.topY - 10);
+
+    fill(0, 0, 45, 90);
+    textSize(9);
+    text(panel.fn, panel.cx, panel.topY + PANEL_H + 15);
+  }
+
+  textAlign(LEFT);
+}
+
+function drawHud() {
+  noStroke();
+  fill(0, 0, 82, 95);
+  textSize(10);
+  text('Random Showcase', 16, 24);
+
+  fill(0, 0, 52, 90);
+  text(`click: resample   D: guides ${showGuides ? 'on' : 'off'}`, 16, CH - 14);
+}
+
+function mousePressed() {
+  resampleAll();
+}
+
+function keyPressed() {
+  if (key === 'd' || key === 'D') {
+    showGuides = !showGuides;
+  }
+}</code></pre>
+        </details>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · 亂數模式</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="亂數模式" src="about:blank" data-src="https://openprocessing.org/sketch/2631109/embed/" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">LOCAL · 亂數模式</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。黑白三欄：左 Gaussian 聚中心，中 Exponential 拖長尾，右 Perlin 是會流動的粒子；點擊重新抽樣，D 切換輔助線。</div>
+        <iframe class="lazy-embed" title="亂數模式 page-1" src="about:blank" data-src="algo/random-patterns/page-1.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </article>
 
-    <div class="problem-cluster" aria-label="三種分布的用途對照">
+    <div class="problem-cluster" aria-label="三種分布的性格對照">
       <div class="problem-note">
         <b>三種分布，三種性格</b>
-        Gaussian 把多數值留在中心，適合做重心、尺寸、顏色的微偏移。Exponential 有長尾，多數事件很近、很小、很常見，少數事件被推到遠處，rarity 就藏在尾巴裡。Perlin 不急著抽下一個值，它保留連續性，讓時間與表面慢慢變形。
+        Gaussian 把多數值留在中心。Exponential 有長尾，多數點靠近起點，少數點被推到遠處。Perlin 不急著抽下一個值，它保留連續性，讓時間與表面慢慢變形。
       </div>
     </div>
 
-    <div class="todo-block" id="todo-5-2">
-      <div class="todo-tag">TODO-5.2</div>
-      <div class="todo-title">其他分布家族 — Exponential、Power Law、Pareto、Poisson</div>
-      <div class="todo-brief">章節五只並列 Gaussian / Exponential / Perlin，但 Exponential 沒解釋，其他常用分布（power law、Pareto、Poisson）完全沒提。</div>
-      <dl>
-        <dt>目標</dt>
-        <dd>把藝術家會用到的「非高斯非均勻」分布攤開：稀缺、長尾、事件計數各自需要什麼。</dd>
-        <dt>內容大綱</dt>
-        <dd>
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 5.2</div>
+        <div class="example-title">Noise family：Perlin / Worley / Curl</div>
+        <div class="example-desc">同樣是 noise，換一條規則，質地就換。Perlin 像柔順地形，Worley 像細胞或石紋，Curl 像旋轉流場。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">三種 noise，並排看質地</div>
+          <p>左邊沿用 5.1 的 Perlin 粒子。方向從 <code>noise(x, y, t)</code> 來，粒子會慢慢接著上一刻走，看起來像柔順的地形在流動。</p>
+          <p>中間是 Worley noise。畫面先撒一些種子點，每個位置看自己離最近的種子有多遠。距離一鋪開，就會長出細胞、石紋、龜裂那種邊界感。</p>
+          <p>右邊是簡化的 Curl noise。先取 Perlin 場的梯度，再把方向旋轉 90 度。粒子不是往高低處衝，而是繞著場流動，所以會出現漩渦和回旋。</p>
+
+          <div class="code-mini"><span class="cm">// Perlin：直接把 noise 變方向</span>
+let angle = noise(x, y, t) * TWO_PI * 2;
+
+<span class="cm">// Worley：看每個點離最近種子多遠</span>
+let d = nearestSeedDistance(x, y);
+
+<span class="cm">// Curl：把 noise 梯度轉 90 度</span>
+let gradient = createVector(dx, dy);
+let flow = createVector(gradient.y, -gradient.x);</div>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">perlin noise</span>
+          <span class="tag">worley noise</span>
+          <span class="tag">curl noise</span>
+          <span class="tag">vector field</span>
+        </div>
+        <div class="example-links">
+          <a href="algo/random-patterns/page-2.html" target="_blank" rel="noopener noreferrer">↗ 本地開啟 page-2</a>
+        </div>
+        <details class="sketch-code" open>
+          <summary>查看程式碼 · page-2 sketch.js</summary>
+          <pre><code>let panelW = 140;
+let panelH = 320;
+let panelGap = 20;
+let topY = 74;
+let t = 0;
+
+let perlinParticles = [];
+let curlParticles = [];
+let worleySeeds = [];
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  resetSketch();
+}
+
+function resetSketch() {
+  noiseSeed(floor(random(100000)));
+  randomSeed(floor(random(100000)));
+  makeParticles();
+  makeWorleySeeds();
+}
+
+function makeParticles() {
+  perlinParticles = [];
+  curlParticles = [];
+  for (let i = 0; i &lt; 170; i++) {
+    perlinParticles.push(makeParticle());
+    curlParticles.push(makeParticle());
+  }
+}
+
+function makeParticle() {
+  return {
+    x: random(-panelW / 2, panelW / 2),
+    y: random(-panelH / 2, panelH / 2),
+    px: 0,
+    py: 0
+  };
+}
+
+function makeWorleySeeds() {
+  worleySeeds = [];
+  for (let i = 0; i &lt; 14; i++) {
+    worleySeeds.push({
+      x: random(-panelW / 2, panelW / 2),
+      y: random(-panelH / 2, panelH / 2),
+      ox: random(1000),
+      oy: random(1000)
+    });
+  }
+}
+
+function draw() {
+  background(5, 7, 12);
+
+  let totalW = panelW * 3 + panelGap * 2;
+  let startX = (width - totalW) / 2;
+  let cy = topY + panelH / 2;
+  let cx1 = startX + panelW / 2;
+  let cx2 = startX + panelW + panelGap + panelW / 2;
+  let cx3 = startX + panelW * 2 + panelGap * 2 + panelW / 2;
+
+  drawPerlinPanel(cx1, cy);
+  drawWorleyPanel(cx2, cy);
+  drawCurlPanel(cx3, cy);
+  drawLabels(cx1, cx2, cx3);
+
+  t += 0.008;
+}
+
+function drawPerlinPanel(cx, cy) {
+  drawFrame(cx, cy);
+  push();
+  translate(cx, cy);
+  for (let p of perlinParticles) {
+    p.px = p.x;
+    p.py = p.y;
+
+    let n = noise(
+      (p.x + panelW / 2) * 0.014,
+      (p.y + panelH / 2) * 0.014,
+      t
+    );
+    let angle = n * TWO_PI * 2;
+    moveParticle(p, cos(angle) * 0.85, sin(angle) * 0.85);
+
+    stroke(165, 210, 235, 145);
+    strokeWeight(0.9);
+    line(p.px, p.py, p.x, p.y);
+  }
+  pop();
+}
+
+function drawWorleyPanel(cx, cy) {
+  drawFrame(cx, cy);
+  push();
+  translate(cx, cy);
+  noStroke();
+
+  let step = 5;
+  for (let x = -panelW / 2; x &lt; panelW / 2; x += step) {
+    for (let y = -panelH / 2; y &lt; panelH / 2; y += step) {
+      let d1 = 999;
+      let d2 = 999;
+      for (let s of worleySeeds) {
+        let sx = s.x + (noise(s.ox, t * 0.55) - 0.5) * 34;
+        let sy = s.y + (noise(s.oy, t * 0.55) - 0.5) * 34;
+        let d = dist(x, y, sx, sy);
+        if (d &lt; d1) {
+          d2 = d1;
+          d1 = d;
+        } else if (d &lt; d2) {
+          d2 = d;
+        }
+      }
+
+      let cell = constrain(d1 / 50, 0, 1);
+      let edge = constrain((d2 - d1) / 22, 0, 1);
+      let shade = 35 + (1 - cell) * 105 + (1 - edge) * 70;
+      fill(65, shade, 120 + shade * 0.45, 210);
+      rect(x, y, step + 1, step + 1);
+    }
+  }
+
+  fill(245, 210, 150, 210);
+  for (let s of worleySeeds) {
+    let sx = s.x + (noise(s.ox, t * 0.55) - 0.5) * 34;
+    let sy = s.y + (noise(s.oy, t * 0.55) - 0.5) * 34;
+    circle(sx, sy, 2.8);
+  }
+  pop();
+}
+
+function drawCurlPanel(cx, cy) {
+  drawFrame(cx, cy);
+  push();
+  translate(cx, cy);
+  for (let p of curlParticles) {
+    p.px = p.x;
+    p.py = p.y;
+
+    let v = curlVector(p.x, p.y);
+    moveParticle(p, v.x * 1.25, v.y * 1.25);
+
+    stroke(210, 180, 245, 145);
+    strokeWeight(0.9);
+    line(p.px, p.py, p.x, p.y);
+  }
+
+  stroke(140, 110, 220, 70);
+  strokeWeight(0.7);
+  for (let x = -50; x &lt;= 50; x += 25) {
+    for (let y = -125; y &lt;= 125; y += 25) {
+      let v = curlVector(x, y);
+      line(x, y, x + v.x * 10, y + v.y * 10);
+    }
+  }
+  pop();
+}
+
+function curlVector(x, y) {
+  let e = 0.8;
+  let scale = 0.012;
+  let n1 = noise((x + e) * scale + 20, y * scale, t);
+  let n2 = noise((x - e) * scale + 20, y * scale, t);
+  let n3 = noise(x * scale + 20, (y + e) * scale, t);
+  let n4 = noise(x * scale + 20, (y - e) * scale, t);
+
+  let dx = (n1 - n2) / (2 * e);
+  let dy = (n3 - n4) / (2 * e);
+  let v = createVector(dy, -dx);
+  v.mult(160);
+  if (v.mag() &gt; 0.001) v.normalize();
+  return v;
+}
+
+function moveParticle(p, vx, vy) {
+  p.x += vx;
+  p.y += vy;
+  if (p.x &gt; panelW / 2) { p.x = -panelW / 2; p.px = p.x; }
+  if (p.x &lt; -panelW / 2) { p.x = panelW / 2; p.px = p.x; }
+  if (p.y &gt; panelH / 2) { p.y = -panelH / 2; p.py = p.y; }
+  if (p.y &lt; -panelH / 2) { p.y = panelH / 2; p.py = p.y; }
+}
+
+function drawFrame(cx, cy) {
+  push();
+  noFill();
+  stroke(60, 70, 75);
+  strokeWeight(1);
+  rect(cx - panelW / 2, cy - panelH / 2, panelW, panelH);
+  pop();
+}
+
+function drawLabels(cx1, cx2, cx3) {
+  noStroke();
+  textAlign(CENTER);
+  fill(225);
+  textSize(12);
+  text('Perlin', cx1, topY - 22);
+  text('Worley', cx2, topY - 22);
+  text('Curl', cx3, topY - 22);
+
+  fill(145);
+  textSize(10);
+  text('柔順地形', cx1, topY - 8);
+  text('細胞 / 石紋', cx2, topY - 8);
+  text('旋轉流場', cx3, topY - 8);
+
+  fill(120);
+  textSize(9);
+  text('noise(x, y, t)', cx1, topY + panelH + 14);
+  text('nearest seed distance', cx2, topY + panelH + 14);
+  text('rotate gradient', cx3, topY + panelH + 14);
+
+  textAlign(LEFT);
+  fill(155);
+  textSize(10);
+  text('noise family   click: reseed', 16, 24);
+  fill(120);
+  text(`t ${t.toFixed(2)}`, 16, height - 12);
+}
+
+function mousePressed() {
+  resetSketch();
+}</code></pre>
+        </details>
+      </div>
+      <div class="example-embed">
+        <div class="embed-label">LOCAL · NOISE FAMILY</div>
+        <div class="embed-hint">滑到此處載入本地 sketch。左 Perlin 柔順流動，中 Worley 細胞石紋，右 Curl 旋轉流場；點擊重新 seed。</div>
+        <iframe class="lazy-embed" title="Noise family，Perlin Worley Curl page-2" src="about:blank" data-src="algo/random-patterns/page-2.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="example-card">
+      <div class="example-body">
+        <div class="example-kicker">example 5.3</div>
+        <div class="example-title">分布家族，從中心到長尾</div>
+        <div class="example-desc">Gaussian 把點推到中心。Exponential、Power law 把尾巴拉長。Poisson 讓事件變成一格一格的脈衝。每種分布都是一種形狀。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">先看形狀，不急著談用途</div>
+          <p>分布描述的是密度怎麼落下。有的平均鋪開，有的往中心聚，有的拖出長尾，有的把事件切成一段一段。</p>
           <ul>
-            <li><b>Exponential</b>：等待時間、衰減。近處密集、遠處稀疏。<code>-log(random()) / rate</code></li>
-            <li><b>Power law / Pareto</b>：長尾。多數小、極少數巨大。城市人口、財富分配、藝術品稀有度。</li>
-            <li><b>Poisson</b>：固定時間內事件發生次數。粒子噴發數量、稀有特徵在 mint 過程的出現次數。</li>
-            <li>每個分布配一個「藝術用途」：粒子大小 → exponential；trait 稀缺 → power law；爆炸事件數 → Poisson</li>
-            <li>從採樣方式收：所有這些都可以用 inverse CDF 從 uniform 造出來（鋪墊章節六 6.7）</li>
+            <li><b>Uniform</b>。每個值機會一樣，柱子接近同高。1.1 的 <code>random()</code> 就是這個。</li>
+            <li><b>Gaussian</b>。多數靠中心，少數在邊。尾巴退得很快。</li>
+            <li><b>Exponential</b>。多數靠近起點，少數延伸到遠處。長尾從這裡出現。</li>
+            <li><b>Power law / Pareto</b>。尾巴更長，最大值和中位數可能差很多。「長尾」這個詞在這裡最清楚。</li>
+            <li><b>Poisson</b>。事件以整數出現，像一格一格的脈衝。</li>
           </ul>
-        </dd>
-        <dt>視覺輔助</dt>
-        <dd>四格 histogram：uniform、gaussian、exponential、power law。並列看出尾巴的差別。</dd>
-        <dt>程式碼</dt>
-        <dd>每種分布給一行 inverse CDF 範例。</dd>
-        <dt>對照</dt>
-        <dd>章節六 6.7（inverse CDF）會把這條線收齊；章節六 6.8 rarity 用 power law。</dd>
-        <dt>風格</dt>
-        <dd>把「分布形狀 ↔ 藝術用途」這個對應關係擺出來。</dd>
-        <dt>長度</dt>
-        <dd>400–600 字 + 四格 histogram。</dd>
-      </dl>
-    </div>
+
+          <div class="hist-pair" aria-hidden="true" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+            <div class="hist">
+              <div class="hist-label">Uniform</div>
+              <div class="hist-bars">
+                <div class="bar" style="height:78%"></div>
+                <div class="bar" style="height:82%"></div>
+                <div class="bar" style="height:79%"></div>
+                <div class="bar" style="height:81%"></div>
+                <div class="bar" style="height:78%"></div>
+                <div class="bar" style="height:80%"></div>
+                <div class="bar" style="height:82%"></div>
+                <div class="bar" style="height:79%"></div>
+              </div>
+              <div class="hist-axis"><span>0</span><span>1</span></div>
+            </div>
+            <div class="hist">
+              <div class="hist-label">Gaussian</div>
+              <div class="hist-bars">
+                <div class="bar" style="height:8%"></div>
+                <div class="bar" style="height:25%"></div>
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:92%"></div>
+                <div class="bar" style="height:92%"></div>
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:25%"></div>
+                <div class="bar" style="height:8%"></div>
+              </div>
+              <div class="hist-axis"><span>-3 spread</span><span>+3 spread</span></div>
+            </div>
+            <div class="hist">
+              <div class="hist-label">Exponential</div>
+              <div class="hist-bars">
+                <div class="bar" style="height:95%"></div>
+                <div class="bar" style="height:60%"></div>
+                <div class="bar" style="height:38%"></div>
+                <div class="bar" style="height:24%"></div>
+                <div class="bar" style="height:15%"></div>
+                <div class="bar" style="height:9%"></div>
+                <div class="bar" style="height:5%"></div>
+                <div class="bar" style="height:3%"></div>
+              </div>
+              <div class="hist-axis"><span>0</span><span>∞</span></div>
+            </div>
+            <div class="hist">
+              <div class="hist-label">Power law</div>
+              <div class="hist-bars">
+                <div class="bar" style="height:95%"></div>
+                <div class="bar" style="height:35%"></div>
+                <div class="bar" style="height:18%"></div>
+                <div class="bar" style="height:11%"></div>
+                <div class="bar" style="height:7%"></div>
+                <div class="bar" style="height:5%"></div>
+                <div class="bar" style="height:3%"></div>
+                <div class="bar" style="height:2%"></div>
+              </div>
+              <div class="hist-axis"><span>1</span><span>長尾</span></div>
+            </div>
+          </div>
+
+          <p>差別在尾巴。Gaussian 的尾巴退得很快，超出三倍擴散範圍後幾乎沒有點。Exponential 的尾巴慢一些。Power law 的尾巴幾乎不退，最大值可以是中位數的幾百倍幾千倍。</p>
+
+          <div class="code-mini"><span class="cm">// 把 uniform 變成不同形狀的捷徑（inverse CDF）</span>
+let u = random();
+
+let expo = -log(u) / rate;          <span class="cm">// Exponential：長尾</span>
+let pow  = pow(1 - u, -1 / alpha);  <span class="cm">// Power law：長尾</span>
+let pois = poissonSample(lambda);   <span class="cm">// Poisson：脈衝數</span>
+
+<span class="cm">// 先看形狀，下一章再翻成創作參數</span></div>
+
+          <p>它們的共通點是，都可以從一個 uniform 經過一條公式換過來。這條換的方式叫 inverse CDF。這裡先記住形狀：中心、尾巴、脈衝。</p>
+        </div>
+
+        <div class="example-tags">
+          <span class="tag">exponential</span>
+          <span class="tag">power law / pareto</span>
+          <span class="tag">poisson</span>
+          <span class="tag">inverse cdf</span>
+        </div>
+      </div>
+    </article>
+
   </div>
 
-  <h2 id="chapter-5-seed">章節五點五 — 可重播的偶然</h2>
+  <h2 id="chapter-5-seed">轉接 — Seed</h2>
   <div class="chapter-note">
-    分布決定性格。seed 決定這一次從哪裡開始。
+    同一個 seed 讓同一次偶然可以回來。這裡從分布轉向 Good Vibrations。
   </div>
 
   <div class="highlight-box">
-    電腦裡的 random 多半不是從宇宙抽籤。它是一台會照規則走的機器，只是看起來像亂數。
+    分布決定形狀。seed 決定這一次從哪裡開始，也決定它能不能被重播。
   </div>
 
   <div class="flow" aria-label="seed 到可重播作品的流程">
@@ -1473,7 +2902,7 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">seed bridge 5.5.1</div>
         <div class="example-title">PRNG</div>
-        <div class="example-desc">我把它當成一台小型亂數機。給它一個起點，它會吐出一長串看似無法預測的數字。起點換了，整串就換。</div>
+        <div class="example-desc">我把它當成一台小型亂數機。給它一個起點，它會吐出一長串數字。起點換了，整串就換。</div>
         <div class="example-tags">
           <span class="tag">pseudo-random</span>
           <span class="tag">sequence</span>
@@ -1497,26 +2926,34 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">seed bridge 5.5.3</div>
         <div class="example-title">Hash</div>
-        <div class="example-desc">在 Good Vibrations 裡，tokenData.hash 被讀成 seed。token 留下的不只是最後的影像，也是一條可以重播的生成路徑。</div>
+        <div class="example-desc">在 Good Vibrations 裡，tokenData.hash 被讀成 seed。同一個 token，會回到同一張圖、同一組音、同一份 metadata。</div>
+
+        <div class="explainer">
+          <div class="explainer-title">為什麼是 hash？這個契約從哪裡來？</div>
+          <p>2020 年 11 月 27 日 <a href="https://www.artblocks.io/artists/snowfro" target="_blank" rel="noopener noreferrer">Erick "Snowfro" Calderon</a> 在以太坊上啟動 <a href="https://www.artblocks.io/" target="_blank" rel="noopener noreferrer">Art Blocks</a>，首作 <a href="https://www.artblocks.io/collection/chromie-squiggle-by-snowfro" target="_blank" rel="noopener noreferrer">Chromie Squiggle</a> 是 Project #0。他做了一件很簡單卻顛覆規則的事：藝術家把演算法上鏈，鑄造的人付錢時拿到一串 hex hash，這串 hash 直接餵進 PRNG 當 seed，演算法立刻長出對應的圖。藝術家不能挑、收藏家不能挑，鏈決定。</p>
+          <p>這個契約解決了生成藝術一直以來的麻煩：哪一張作品才算「正版」？以前藝術家可以挑幾百張裡最漂亮的展出。Snowfro 把這個權利交還給算法。Tyler Hobbs 的 Fidenza、Dmitri Cherniak 的 Ringers、我自己的 Good Vibrations，都長在這條契約上。fxhash 2021 年用同樣的模式擴張到 Tezos，把這套設計變成這個世代的標準。</p>
+        </div>
+
         <div class="example-tags">
           <span class="tag">tokenData.hash</span>
           <span class="tag">Good Vibrations</span>
+          <span class="tag">Art Blocks 2020</span>
         </div>
       </div>
     </article>
   </div>
 
   <div class="highlight-box">
-    偶然保留在抽出的那一刻，版本固定在 seed 之後。
+    Seed 把一次抽樣固定下來。下一章開始，這串數字會變成位置、尺寸、顏色與稀缺。
   </div>
 
-  <h2 id="chapter-6">章節六 — 常態、稀有、連續</h2>
+  <h2 id="chapter-6">章節六 — 轉成創作參數</h2>
   <div class="chapter-note">
-    亂數不是把控制權交出去。亂數是一種分配方式。
+    前面看分布的形狀，這裡把它們翻成操作問題：位置、尺寸、顏色、稀缺。
   </div>
 
   <div class="highlight-box">
-    我不是只問：「要不要隨機？」我會問：「什麼東西應該常出現？什麼東西只偶爾出現？什麼東西需要前後連續？」
+    要調的不是「要不要隨機」，而是哪個參數要集中、哪個參數要拉長尾、哪個參數要保持連續。
   </div>
 
   <div class="example-grid">
@@ -1524,7 +2961,7 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 6.1</div>
         <div class="example-title">位置</div>
-        <div class="example-desc">均勻分布像星塵。Gaussian 形成重心。Perlin noise 讓位置有流動的方向。</div>
+        <div class="example-desc">位置可以平均散開，也可以靠近重心。需要流動感時，讓 Perlin noise 接手方向。</div>
         <div class="example-tags">
           <span class="tag">position</span>
           <span class="tag">gaussian</span>
@@ -1537,7 +2974,7 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 6.2</div>
         <div class="example-title">尺寸</div>
-        <div class="example-desc">平均的變化讓畫面穩定。長尾的變化讓少數物件突然變大。</div>
+        <div class="example-desc">尺寸可以集中在一個穩定範圍，也可以拉出長尾，讓少數物件突然變大。</div>
         <div class="example-tags">
           <span class="tag">scale</span>
           <span class="tag">exponential</span>
@@ -1550,7 +2987,7 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 6.3</div>
         <div class="example-title">顏色</div>
-        <div class="example-desc">顏色可以在主色附近震盪，也可以偶爾抽到完全不同的色相。</div>
+        <div class="example-desc">顏色可以在主色附近震盪，也可以用門檻切出少數不同色相。</div>
         <div class="example-tags">
           <span class="tag">color</span>
           <span class="tag">palette</span>
@@ -1563,7 +3000,7 @@ function draw() {
       <div class="example-body">
         <div class="example-kicker">example 6.4</div>
         <div class="example-title">稀缺</div>
-        <div class="example-desc">Rarity 不是事後貼上的標籤。它先在程式裡被安排成機率。</div>
+        <div class="example-desc">稀缺在這裡正式進來：把少數 trait 放在尾巴或門檻後面，讓它真的會發生，但不常發生。</div>
         <div class="example-tags">
           <span class="tag">rarity</span>
           <span class="tag">probability</span>
@@ -1574,346 +3011,16 @@ function draw() {
   </div>
 
   <div class="highlight-box">
-    一個系列的性格，常常不是來自單一圖形，而是來自機率怎麼被安排。
+    章節六是一張參數表：位置怎麼散、尺寸怎麼變、顏色怎麼選、稀缺怎麼被安排。
   </div>
 
   <div class="highlight-box">
-    隨機是一條可以被保存的分岔。
+    這些參數接到同一個 seed，就能在每次重播時回到同一個版本。
   </div>
 
-  <div class="todo-block" id="todo-6-5">
-    <div class="todo-tag">TODO-6.5</div>
-    <div class="todo-title">Weighted Random Pick — 按機率從清單裡抽一個</div>
-    <div class="todo-brief">章節六上半只給觀念，沒給機制。weighted pick 是 trait/rarity/palette 抽選的底層，最該補的工具。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>講清楚「給每個選項一個權重，按權重抽一個」這個動作怎麼實作，為什麼是 trait system 的核心。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>場景：你有 5 種色盤，想讓 Ocean 60%、Sunset 20%、Forest 15%、Cosmic 4%、Mono 1%</li>
-          <li>方法 A：累積機率區間 + 抽 random，看落在哪個區間</li>
-          <li>方法 B：roulette wheel — 同方法 A 的視覺說法</li>
-          <li>方法 C：alias method — 大量採樣時更快（O(1) 抽取）</li>
-          <li>實作要點：權重不必加總到 1，先 normalize 即可</li>
-          <li>實際應用：fxhash trait 分配、loot table、敵人類型抽取</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>一條橫向 bar 切成 5 段，按權重比例。配合一個 random() 指針示意。</dd>
-      <dt>程式碼</dt>
-      <dd>10–15 行 JS 完整 weightedPick 函數。</dd>
-      <dt>對照</dt>
-      <dd>章節八 8.3 GV 的 <code>rc &gt; 0.92</code> 就是 weighted pick 的 threshold 版本。</dd>
-      <dt>風格</dt>
-      <dd>把藝術應用講具體，不要只是抽象演算法。</dd>
-      <dt>長度</dt>
-      <dd>350–500 字 + 視覺 + 程式碼。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-6-6">
-    <div class="todo-tag">TODO-6.6</div>
-    <div class="todo-title">Mapping Function — 把 [0,1] 變成你要的形狀</div>
-    <div class="todo-brief">從 random() 拿到 [0,1]，怎麼變成顏色 / 角度 / 圖層編號 / easing 曲線。中介層是藝術家真正在設計的地方。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>解釋 [0,1] 不是終點，是材料。藝術家透過 mapping 函數決定材料變成什麼形狀。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>linear map：<code>lerp(a, b, t)</code> — 從 [0,1] 等比到 [a,b]</li>
-          <li>非線性 map：<code>pow(t, k)</code> — k>1 偏小、k&lt;1 偏大（跟 1.2 巢狀 random 同效果）</li>
-          <li>easing：smoothstep、cubic、sine — 軟化端點</li>
-          <li>discrete map：分段對到 enum（顏色、形狀、樂器）</li>
-          <li>wrap / clamp / fract — 處理超出 [0,1] 的回邊行為</li>
-          <li>多層 mapping：random → easing → palette → 視覺結果</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>四格函數曲線（linear / pow / smoothstep / discrete steps）。橫軸 [0,1] 輸入，縱軸對應輸出。</dd>
-      <dt>程式碼</dt>
-      <dd>每種 map 一行範例。</dd>
-      <dt>對照</dt>
-      <dd>1.2 巢狀 random 等同 <code>pow(random(), 2)</code>；1.5 sqrt 等同 <code>pow(random(), 0.5)</code>。把這個對應點出來。</dd>
-      <dt>風格</dt>
-      <dd>「mapping 是藝術家的設計空間」這個觀點要明確。</dd>
-      <dt>長度</dt>
-      <dd>350–500 字 + 四格函數曲線。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-6-7">
-    <div class="todo-tag">TODO-6.7</div>
-    <div class="todo-title">Rejection Sampling 與 Inverse CDF — 通用的分布造法</div>
-    <div class="todo-brief">把 1.5 sqrt、1.7 rejection、2.4 Box-Muller 收齊：所有分布抽樣都可以用這兩條路。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>把前面零散的採樣技巧收成一個通用框架：給任意 PDF 都能抽樣的兩種方法。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li><b>Inverse CDF 方法</b>：(1) 寫出目標分布的 CDF；(2) 求反函數；(3) <code>x = F⁻¹(random())</code>。精確不浪費。</li>
-          <li>例：1.5 sqrt 就是面積 CDF F(r) = r² 的反函數 r = sqrt(u)</li>
-          <li>例：exponential 是 r = -log(u) / λ</li>
-          <li><b>Rejection 方法</b>：(1) 在好抽的區域均勻撒；(2) 用 PDF 的高度當接受機率；(3) 沒過就丟。直觀但浪費。</li>
-          <li>選用準則：CDF 可解析 → inverse；不可解析 → rejection。複雜分布 → MCMC（提一句即可）。</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>兩格示意：左 inverse CDF 的 U → X 對映曲線；右 rejection 的「方框內均勻撒、PDF 下方留下」。</dd>
-      <dt>程式碼</dt>
-      <dd>兩種方法的 minimal example，分別針對某個簡單分布。</dd>
-      <dt>對照</dt>
-      <dd>1.5、1.7、2.4、5.2 都是這條線的特例。在這裡明確收齊。</dd>
-      <dt>風格</dt>
-      <dd>這是技術節點，數學可以略多但白話翻譯不能省。</dd>
-      <dt>長度</dt>
-      <dd>400–600 字 + 兩格示意 + 兩段 code。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-6-8">
-    <div class="todo-tag">TODO-6.8</div>
-    <div class="todo-title">Rarity 的程式實作 — 從機率到 trait 系統</div>
-    <div class="todo-brief">6.4「稀缺」只給觀念。怎麼從機率分配到完整的 trait/feature 系統，需要展開。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>把 fxhash / Art Blocks 文化裡的 rarity 從概念落到具體實作：怎麼設權重、怎麼避免「死爆款」、怎麼讓 metadata 反映稀有度。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>單 trait rarity：weighted pick（6.5）</li>
-          <li>多 trait 組合 rarity：每個 trait 獨立抽 → 整體稀有度 = ∏ 個別機率</li>
-          <li>陷阱：完全獨立抽會出現「沒人想要的醜組合」。Tyler Hobbs 在 Fidenza 用 constraint 過濾</li>
-          <li>稀缺寫進 metadata：<code>features = { palette: "Cosmic", isRare: true }</code></li>
-          <li>展示種子 vs mint 種子：藝術家挑展示用作品 vs 公平隨機 mint，是兩個不同的機率世界</li>
-          <li>「保證至少一個」：有時藝術家會 reserve mint，確保稀有 trait 一定出現</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>選一：(a) trait 機率矩陣（橫向 traits、縱向 variants、格子裡是權重）；(b) 一個 token 的 features JSON 範例。</dd>
-      <dt>程式碼</dt>
-      <dd>展示一個簡化的 trait pick 流程 + metadata 寫法。</dd>
-      <dt>對照</dt>
-      <dd>章節零 0.3 的「責任轉移到設計」在這裡落地；章節八 8.3 GV 的 Cosmological/Monochromical 是實例。</dd>
-      <dt>風格</dt>
-      <dd>有藝術家視角，不只是工程文件。可以提一句「展示作品 vs 公平 mint 的張力」。</dd>
-      <dt>長度</dt>
-      <dd>450–650 字 + 視覺 + code。</dd>
-    </dl>
-  </div>
-
-  <h2 id="chapter-7">章節七 — 演算法家族（不只 random）</h2>
-  <div class="chapter-note">
-    Random 與 Perlin 之外，還有一整排可以「自己長出形狀」的演算法。
-  </div>
-
-  <div class="todo-block" id="todo-7-1">
-    <div class="todo-tag">TODO-7.1</div>
-    <div class="todo-title">Cellular Automata — 從規則生成複雜</div>
-    <div class="todo-brief">最小規則、最複雜輸出的代表。Wolfram、Conway 都在這條線上。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>解釋 CA 的核心：格子 + 鄰居 + 規則 → 自湧現複雜性。為什麼這是「演算法美學」的起點。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>Rule 30 / Rule 110 / Rule 90 — Wolfram 的 1D 簡單規則</li>
-          <li>Game of Life — Conway 的 2D 經典</li>
-          <li>規則簡單、結果不可預測（Rule 110 是 Turing-complete）</li>
-          <li>藝術應用：紋理生成、植物模擬、Wolfram 圖案、Pixel art 紋路</li>
-          <li>與 random 的差別：CA 是 deterministic，初始狀態決定一切</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>建議：一張 Rule 30 的 time-evolution 三角形（橫軸 cell，縱軸 time）。SVG 可手繪幾十格。</dd>
-      <dt>程式碼</dt>
-      <dd>1D CA 的最小實作（一個 step 函數，10 行內）。</dd>
-      <dt>對照</dt>
-      <dd>「規則 = 作品」呼應章節零 LeWitt。「初始 + 規則」呼應章節八 GV 的 hash → seed。</dd>
-      <dt>風格</dt>
-      <dd>強調「最小規則生最大複雜」這個美學張力。</dd>
-      <dt>長度</dt>
-      <dd>350–500 字 + 1 個 SVG 示意。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-7-2">
-    <div class="todo-tag">TODO-7.2</div>
-    <div class="todo-title">L-System — 文法生成的植物與分形</div>
-    <div class="todo-brief">把符號重寫規則用在繪圖上，做出樹、蕨類、雪花。Aristid Lindenmayer 1968。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>介紹 L-System 作為「字串重寫 → 視覺結構」的生成方式。藝術家為什麼喜歡這個。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>核心：axiom（起始字串）+ rules（每個符號的替換規則）+ iterations</li>
-          <li>例：F → F+F-F-F+F 重複 4 次，得到 Koch 雪花</li>
-          <li>例：F → FF, X → F-[[X]+X]+F[+FX]-X 得到植物分支</li>
-          <li>隨機 L-System：規則裡加機率，每次生成不同分支</li>
-          <li>藝術應用：Karl Sims、Jared Tarbell、algorithmic botany</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>三格遞迴對照（n=1, n=3, n=5）的同一個 L-System。或一個範例樹的 SVG。</dd>
-      <dt>程式碼</dt>
-      <dd>字串替換 + turtle graphics 兩階段虛擬碼。</dd>
-      <dt>對照</dt>
-      <dd>跟 CA 都是「規則重複 → 複雜」家族，但 L-System 帶幾何方向。</dd>
-      <dt>風格</dt>
-      <dd>用「文法」這個比喻接植物：藝術家在寫植物的句子。</dd>
-      <dt>長度</dt>
-      <dd>350–500 字 + 視覺。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-7-3">
-    <div class="todo-tag">TODO-7.3</div>
-    <div class="todo-title">Reaction-Diffusion — Turing 的斑紋</div>
-    <div class="todo-brief">Turing 1952 用兩個化學物質的反應與擴散，解釋斑馬、豹、貝殼的紋路。現在 generative artist 拿來做紋理。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>介紹 RD 系統作為「兩個量互相追逐」的動態，怎麼從均勻初始長出斑紋。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>Gray-Scott model：兩個物質 A、B，A 補充、B 消耗，互相反應</li>
-          <li>不同參數 → 條紋、斑點、漩渦、迷宮</li>
-          <li>從幾乎均勻的初始 + 微小擾動 → 自湧現出穩定紋路</li>
-          <li>藝術應用：Casey Reas、Andy Lomas、紋理工具</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>三格參數對照：條紋、斑點、迷宮。可以用 CSS gradient / SVG pattern 模擬。</dd>
-      <dt>程式碼</dt>
-      <dd>Gray-Scott 的更新規則（dA/dt, dB/dt）一段。</dd>
-      <dt>對照</dt>
-      <dd>跟 CA / L-System 一樣是「規則生成」家族，但 RD 是連續、漸進、模擬物理。</dd>
-      <dt>風格</dt>
-      <dd>用「自然界紋路」鋪。Turing 那段歷史可以簡短帶。</dd>
-      <dt>長度</dt>
-      <dd>350–500 字。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-7-4">
-    <div class="todo-tag">TODO-7.4</div>
-    <div class="todo-title">Flow Field — 向量場引導粒子</div>
-    <div class="todo-brief">最受歡迎的當代 generative tech：用 noise 造向量場，粒子跟著流，畫出流體感線條。Tyler Hobbs Fidenza 就是這條線。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>解釋 flow field 的 pipeline：noise → angle → vector → particle path → 視覺。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>每個格子有一個方向（用 Perlin noise 算 angle）</li>
-          <li>粒子放進去，每步沿著當下格子的方向走</li>
-          <li>軌跡描出來就是流線</li>
-          <li>調整 noise scale、step size、粒子數 → 從緊密到鬆散</li>
-          <li>Curl noise（章節四 4.2）是 flow field 的精緻版</li>
-          <li>藝術應用：Tyler Hobbs Fidenza、Joshua Davis、現代 generative line art</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>選一：(a) 一張箭頭向量場示意；(b) 一張被流動線條描出來的構圖。</dd>
-      <dt>程式碼</dt>
-      <dd>粒子更新迴圈：<code>angle = noise(x*s, y*s) * TWO_PI; x += cos(angle); y += sin(angle);</code></dd>
-      <dt>對照</dt>
-      <dd>章節三 Perlin 是材料，flow field 是「Perlin 怎麼變視覺」的代表性用法。</dd>
-      <dt>風格</dt>
-      <dd>強調這是「Perlin 之後的下一個門檻」。</dd>
-      <dt>長度</dt>
-      <dd>400–550 字 + 視覺。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-7-5">
-    <div class="todo-tag">TODO-7.5</div>
-    <div class="todo-title">Strange Attractors — 混沌系統的軌跡美學</div>
-    <div class="todo-brief">Lorenz、Aizawa、Clifford。簡單方程解出來的軌跡，密度不均、形狀詭異、有獨特氣質。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>介紹 strange attractor 作為「決定性混沌」的視覺呈現：完全 deterministic 的方程式，卻產生隨機似的圖案。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>Lorenz attractor：氣象學 1963，蝴蝶翅膀形狀</li>
-          <li>Aizawa、Clifford、De Jong、Pickover — 二維/三維變體</li>
-          <li>初值敏感性：差一點點，軌跡完全不同（蝴蝶效應）</li>
-          <li>美學特徵：密度不均、紋理連續、跟 Perlin 完全不同的 chaos 感</li>
-          <li>跟 random 對比：完全 deterministic，但結果不可預測</li>
-          <li>藝術應用：Paul Bourke、Aluan 自己的 Chaos 三部曲（呼應主投影片）</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>三格 attractor 視覺對照：Lorenz / Aizawa / Clifford。可用簡化 SVG 路徑示意。</dd>
-      <dt>程式碼</dt>
-      <dd>Clifford attractor 迭代公式（4 行）。</dd>
-      <dt>對照</dt>
-      <dd>呼應主投影片的 Chaos 三部曲；章節九感知偏差會再用「deterministic 但看起來隨機」這個概念。</dd>
-      <dt>風格</dt>
-      <dd>「決定性混沌」是個很有美學含義的詞，可以細品。</dd>
-      <dt>長度</dt>
-      <dd>400–550 字 + 三格示意。</dd>
-    </dl>
-  </div>
-
-  <h2 id="chapter-8">章節八 — Good Vibrations：把機率變成樂器</h2>
+  <h2 id="chapter-7">章節七 — Good Vibrations：把機率變成樂器</h2>
   <div class="chapter-note">
     位置、尺寸、顏色、稀缺，在這裡變成一組可重播的視覺與聲音系統。
-  </div>
-
-  <div class="todo-block" id="todo-8-0">
-    <div class="todo-tag">TODO-8.0</div>
-    <div class="todo-title">Pipeline 視覺化 — hash → seed → xorshift → 作品</div>
-    <div class="todo-brief">GV 章節原本直接跳進 7.1–7.4，沒有給「整條 pipeline 怎麼流」的圖。讀者要自己拼。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>在章首畫出 token hash 從輸入到變成作品的完整資料流，讓後面 8.1–8.4 都掛在這張圖上。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>節點：<code>tokenData.hash</code> → seed 切片 → xorshift PRNG → Random / RND → defult() / colorSetting() / etc → 視覺 + metadata</li>
-          <li>每個節點旁標 8.x 對應卡片</li>
-          <li>xorshift 用一兩句講：state-based PRNG，給同樣初值永遠同樣序列</li>
-          <li>提一句為什麼是 xorshift 而不是 JS 原生 Math.random：後者沒法 seed</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>用 <code>.flow</code> 元件做橫向 pipeline，或一個垂直 graph SVG。</dd>
-      <dt>程式碼</dt>
-      <dd>xorshift32 6 行範例。</dd>
-      <dt>對照</dt>
-      <dd>章節零 0.3 講「hash 作為輸入」的契約，這裡落地。</dd>
-      <dt>風格</dt>
-      <dd>圖優先，文字輔助。</dd>
-      <dt>長度</dt>
-      <dd>250–400 字 + pipeline 視覺。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-8-map">
-    <div class="todo-tag">TODO-8.MAP</div>
-    <div class="todo-title">概念回扣 — 在每張 8.x 卡片上加 map-back 標籤</div>
-    <div class="todo-brief">寫作 agent 接到時：請進入下面每張 example-card（8.1 Seed / 8.2 位置 / 8.3 稀缺 / 8.4 聲音 / code summary），在 example-desc 之後加上 <code>&lt;div class="map-back"&gt;↑ 對應章節 X.Y&lt;/div&gt;</code>。</div>
-    <dl>
-      <dt>對應指引</dt>
-      <dd>
-        <ul>
-          <li>8.1 Seed → 對應章節零 0.3（hash 契約）+ 章節三 3.2（deterministic）</li>
-          <li>8.2 位置 → 對應章節一 1.2（巢狀偏中心）+ 章節六 6.6（mapping）</li>
-          <li>8.3 稀缺 → 對應章節六 6.5 weighted pick + 6.8 rarity 實作</li>
-          <li>8.4 聲音 → 對應章節六 6.6 mapping function（線段相交 → note）</li>
-          <li>code summary → 對應章節七 7.4 flow field 的 pipeline 思路</li>
-        </ul>
-      </dd>
-      <dt>風格</dt>
-      <dd>標籤短，<code>↑ 對應 6.5</code> 這種程度即可。CSS 已備好 <code>.map-back</code> 類別。</dd>
-      <dt>長度</dt>
-      <dd>每張卡 1 行。</dd>
-    </dl>
   </div>
 
   <div class="highlight-box">
@@ -2008,177 +3115,18 @@ features[] -&gt; Surface / GeoPos / Osc* / Ring  <span class="cm">// metadata</s
           <span class="tag">metadata</span>
           <span class="tag">score</span>
         </div>
-        <div class="example-links">
-          <a href="https://openprocessing.org/@aluan/2048187" target="_blank" rel="noopener noreferrer">↗ OpenProcessing sketch 2048187</a>
-        </div>
       </div>
       <div class="example-embed">
-        <div class="embed-label">OPENPROCESSING · GOOD VIBRATIONS</div>
-        <div class="embed-hint">滑到此處載入，按 Play 啟動。</div>
-        <iframe class="lazy-embed" title="Good Vibrations" src="about:blank" data-src="https://openprocessing.org/sketch/2048187/embed/" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="embed-label">作品案例 · GOOD VIBRATIONS</div>
+        <div class="embed-hint">滑到此處載入本地 GV 子頁。500 × 500 視窗保留作品入口與互動脈絡。</div>
+        <iframe class="lazy-embed" title="Good Vibrations 本地子頁" src="about:blank" data-src="gv.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="example-links">
+          <a href="gv.html" target="_blank" rel="noopener noreferrer">↗ 開啟 GV 子頁</a>
+        </div>
       </div>
     </article>
   </div>
 
-  <h2 id="chapter-9">章節九 — 感知偏差：真隨機 ≠ 看起來隨機</h2>
-  <div class="chapter-note">
-    機率的數學是一回事，人眼看到的是另一回事。
-  </div>
-
-  <div class="todo-block" id="todo-9-1">
-    <div class="todo-tag">TODO-9.1</div>
-    <div class="todo-title">Clumping — 真隨機的「結團錯覺」</div>
-    <div class="todo-brief">純 random() 撒點會結團是事實，不是 bug。人眼以為「真隨機應該很均勻」是錯的。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>讓讀者親眼看到「真隨機」的結團現象，理解這是統計事實不是程式錯誤。為章節一 1.6 blue noise 的存在動機收尾。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>實驗：在方格內均勻撒 100 點，看到「有些區域擠、有些區域空」</li>
-          <li>數學解釋：每個點獨立，沒有「排斥」機制，所以局部聚集是正常的</li>
-          <li>人眼為何覺得「不夠隨機」：我們對「規律破壞」很敏感，但對「真正獨立」反而陌生</li>
-          <li>反例：完美均勻網格反而看起來「不像隨機」（太規律）</li>
-          <li>啟示：藝術家要選擇「視覺均勻」還是「機率均勻」</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>三格對照：純 random（看到結團）、blue noise（視覺均勻）、規則網格（太規律）。複用 <code>.density-row</code>。</dd>
-      <dt>程式碼</dt>
-      <dd>不需要。</dd>
-      <dt>對照</dt>
-      <dd>呼應 1.6 Poisson disk、4.3 blue noise。</dd>
-      <dt>風格</dt>
-      <dd>用實驗式語氣：「你看，這真的是 random，但看起來像有意設計。」</dd>
-      <dt>長度</dt>
-      <dd>300–450 字 + 三格視覺。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-9-2">
-    <div class="todo-tag">TODO-9.2</div>
-    <div class="todo-title">iPhone Shuffle — 為什麼商業 shuffle 不是真隨機</div>
-    <div class="todo-brief">經典案例：Apple 早期 iPod shuffle 是真隨機，但用戶投訴「一直連續播同一個歌手」。後來改成「擬隨機」以符合直覺。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>用一個用戶都熟悉的案例，把「真隨機 vs 感知隨機」的張力具體化。引出「藝術家設計分布也要考慮感知」。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>2005 iPod shuffle 用戶抱怨「同個歌手連播 3 次」</li>
-          <li>Steve Jobs：「We made it less random to feel more random」</li>
-          <li>新算法：禁止剛播過的歌手 / 專輯連續出現</li>
-          <li>類似案例：俄羅斯方塊的方塊抽取 bag system、撲克牌洗牌偽隨機</li>
-          <li>啟示：商業產品優先「感受」，藝術品要決定優先什麼</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>可選：時間軸示意一行真隨機 vs 一行「避免重複」的播放序列。</dd>
-      <dt>程式碼</dt>
-      <dd>不需要，可給 bag shuffle 虛擬碼 3 行。</dd>
-      <dt>對照</dt>
-      <dd>章節十收尾的「surprise budget」會延伸這個觀念。</dd>
-      <dt>風格</dt>
-      <dd>敘事為主。可以引用 Jobs 那句。</dd>
-      <dt>長度</dt>
-      <dd>250–400 字。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-9-3">
-    <div class="todo-tag">TODO-9.3</div>
-    <div class="todo-title">視覺均勻 ≠ 機率均勻 — 章節一 1.3-1.5 的真正主題</div>
-    <div class="todo-brief">章節一花了三個 example 講 polar coords 的面積偏差，但沒明說「這就是視覺 vs 機率的差別」這個更大的主題。在這裡收齊。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>把章節一的數學技術上升到感知美學的層級。讀者讀到這裡會意識到「藝術家在兩個均勻之間做選擇」是普遍課題。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>機率均勻：每個座標值機會一樣（隨機數的數學定義）</li>
-          <li>視覺均勻：每塊面積的點密度一樣（人眼覺得均勻的定義）</li>
-          <li>兩者衝突：1.3-1.5 是極座標的版本；2D random 也有類似問題</li>
-          <li>解法不只一個：sqrt 修正、rejection sampling、blue noise，都在這條光譜上</li>
-          <li>沒有「正確」答案，只有「藝術家想要哪種均勻」</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>可選：兩格並列，左「機率均勻」、右「視覺均勻」，標註各自的特徵。</dd>
-      <dt>程式碼</dt>
-      <dd>不需要。</dd>
-      <dt>對照</dt>
-      <dd>1.3-1.5、1.6、4.3、9.1。這是收尾節點。</dd>
-      <dt>風格</dt>
-      <dd>哲學式收尾，把技術細節抬到立場。</dd>
-      <dt>長度</dt>
-      <dd>300–450 字。</dd>
-    </dl>
-  </div>
-
-  <h2 id="chapter-10">章節十 — 機率作為決策：收尾</h2>
-  <div class="chapter-note">
-    回到頁首那句「亂數是一個入口」。
-  </div>
-
-  <div class="todo-block" id="todo-10-1">
-    <div class="todo-tag">TODO-10.1</div>
-    <div class="todo-title">機率分配是藝術家的決策面</div>
-    <div class="todo-brief">把章節零 0.2「機率作為材料」的承諾兌現：機率不是放棄控制，是把控制移到分布層級。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>讓讀者意識到：整頁讀完，會看見藝術家的「決策面」從「畫什麼線」上升到「分配什麼機率」。這才是 algo art 的核心。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>傳統繪畫：藝術家決定每一筆。100% 控制，1 件作品。</li>
-          <li>規則繪畫（LeWitt）：藝術家決定規則。0% 筆觸控制，N 件作品。</li>
-          <li>機率繪畫（algo art）：藝術家決定機率分布。決策面在「什麼常出現、什麼偶爾出現」。</li>
-          <li>分布的形狀就是作者的簽名</li>
-          <li>讀者面對 generative art 時的閱讀方式：不要看單張，看分布的偏好</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>章節零 0.2 用過的 spectrum bar 可以這裡再出現，把整頁的章節節點都標在上面。</dd>
-      <dt>程式碼</dt>
-      <dd>不需要。</dd>
-      <dt>對照</dt>
-      <dd>章節零 0.2 開頭埋的伏筆在這裡收。</dd>
-      <dt>風格</dt>
-      <dd>第一人稱藝術家立場。可以直接、肯定。不要學術。</dd>
-      <dt>長度</dt>
-      <dd>350–500 字。</dd>
-    </dl>
-  </div>
-
-  <div class="todo-block" id="todo-10-2">
-    <div class="todo-tag">TODO-10.2</div>
-    <div class="todo-title">Surprise Budget — 在期待與意外之間配置</div>
-    <div class="todo-brief">引入一個能描述藝術家機率分配工作的概念：surprise budget。</div>
-    <dl>
-      <dt>目標</dt>
-      <dd>給讀者一個可以帶走的詞，描述藝術家在做什麼：分配「期待 vs 意外」的預算。</dd>
-      <dt>內容大綱</dt>
-      <dd>
-        <ul>
-          <li>每件 generative 作品都有一個「驚喜預算」：太多驚喜會混亂，太少驚喜會無聊</li>
-          <li>怎麼分配：常態（章節六 6.1-6.4）+ 偶爾（rare palette）+ 連續（noise 漸變）</li>
-          <li>iPhone shuffle 的「避免重複」就是用掉一些 budget 來換感知舒適</li>
-          <li>Fidenza 等系列的 trait 機率配置是 budget 的具體實踐</li>
-          <li>不同藝術家的 budget 配置 = 不同的作品氣質</li>
-        </ul>
-      </dd>
-      <dt>視覺輔助</dt>
-      <dd>可選：一個 budget 餅圖／橫條，分成「常態 / 偶爾 / 罕見」。</dd>
-      <dt>程式碼</dt>
-      <dd>不需要。</dd>
-      <dt>對照</dt>
-      <dd>章節九 9.2 iPhone shuffle、章節六 6.5/6.8 weighted pick & rarity。</dd>
-      <dt>風格</dt>
-      <dd>把這個詞當成讀者的「帶走」。</dd>
-      <dt>長度</dt>
-      <dd>300–450 字。</dd>
-    </dl>
-  </div>
 
   <h2 id="coda">Coda — 機率是材料</h2>
   <div class="chapter-note">
@@ -2216,31 +3164,19 @@ features[] -&gt; Surface / GeoPos / Osc* / Ring  <span class="cm">// metadata</s
       <span class="timeline-dot"></span>
     </a>
     <a class="timeline-item" href="#chapter-5">
-      <span class="timeline-label">章節五</span>
+      <span class="timeline-label">章節五：分布</span>
       <span class="timeline-dot"></span>
     </a>
     <a class="timeline-item" href="#chapter-5-seed">
-      <span class="timeline-label">Seed</span>
+      <span class="timeline-label">轉接 — Seed</span>
       <span class="timeline-dot"></span>
     </a>
     <a class="timeline-item" href="#chapter-6">
-      <span class="timeline-label">章節六</span>
+      <span class="timeline-label">章節六：參數</span>
       <span class="timeline-dot"></span>
     </a>
     <a class="timeline-item" href="#chapter-7">
       <span class="timeline-label">章節七</span>
-      <span class="timeline-dot"></span>
-    </a>
-    <a class="timeline-item" href="#chapter-8">
-      <span class="timeline-label">章節八</span>
-      <span class="timeline-dot"></span>
-    </a>
-    <a class="timeline-item" href="#chapter-9">
-      <span class="timeline-label">章節九</span>
-      <span class="timeline-dot"></span>
-    </a>
-    <a class="timeline-item" href="#chapter-10">
-      <span class="timeline-label">章節十</span>
       <span class="timeline-dot"></span>
     </a>
     <a class="timeline-item" href="#coda">
@@ -2264,6 +3200,262 @@ features[] -&gt; Surface / GeoPos / Osc* / Ring  <span class="cm">// metadata</s
     }, { root: null, threshold: 0, rootMargin: '300px' });
     io.observe(iframe);
   });
+
+  // 從 example-kicker 抽出編號（如 1.1、5.5.1），加到 title 前綴成可見次標
+  (function prefixTitleNumbers() {
+    document.querySelectorAll('.example-card').forEach((card) => {
+      const kicker = card.querySelector('.example-kicker');
+      const title = card.querySelector('.example-title');
+      if (!kicker || !title) return;
+      if (title.querySelector('.title-num')) return;
+
+      const match = kicker.textContent.match(/(\d+(?:\.\d+)+)\s*$/);
+      if (!match) return;
+
+      const num = match[1];
+      const span = document.createElement('span');
+      span.className = 'title-num';
+      span.textContent = num;
+      title.insertBefore(span, title.firstChild);
+    });
+  })();
+
+  // 自動為 timeline-nav 注入子項目（example 1.1 / 1.2 ...）
+  (function injectSubNav() {
+    const nav = document.querySelector('.timeline-nav .timeline-inner');
+    if (!nav) return;
+
+    const chapterHeadings = document.querySelectorAll('h2[id]');
+
+    chapterHeadings.forEach((h2) => {
+      const chapterId = h2.id;
+      const chapterNavItem = nav.querySelector(`a.timeline-item[href="#${chapterId}"]`);
+      if (!chapterNavItem) return;
+
+      // 收集這個章節下的所有 example-card（到下一個 h2 為止）
+      const cards = [];
+      let node = h2.nextElementSibling;
+      while (node && node.tagName !== 'H2') {
+        if (node.classList && node.classList.contains('example-card')) {
+          cards.push(node);
+        } else if (node.querySelectorAll) {
+          node.querySelectorAll('.example-card').forEach((c) => cards.push(c));
+        }
+        node = node.nextElementSibling;
+      }
+
+      // 為每張 card 產生 sub-nav 項
+      const subItems = [];
+      cards.forEach((card, idx) => {
+        const kickerEl = card.querySelector('.example-kicker');
+        if (!kickerEl) return;
+        const kickerText = kickerEl.textContent.trim();
+
+        // 從 kicker 抽出標籤：「example 1.1」→ 1.1、「chapter 0.1」→ 0.1、「seed bridge 5.5.1」→ 5.5.1、「code summary」→ summary
+        let label;
+        const numMatch = kickerText.match(/(\d+(?:\.\d+)+)\s*$/);
+        if (numMatch) {
+          label = numMatch[1];
+        } else {
+          const words = kickerText.split(/\s+/);
+          label = words[words.length - 1];
+        }
+
+        // 為 card 加上 id 以便 anchor 跳轉
+        if (!card.id) {
+          card.id = label.match(/^[\d.]+$/) ? `ex-${label.replace(/\./g, '-')}` : `ex-${chapterId}-${idx + 1}`;
+        }
+
+        const a = document.createElement('a');
+        a.className = 'timeline-item sub';
+        a.href = `#${card.id}`;
+        a.innerHTML = `<span class="timeline-label">${label}</span><span class="timeline-dot"></span>`;
+        subItems.push(a);
+      });
+
+      // 插到主章節項目後方
+      let anchor = chapterNavItem;
+      subItems.forEach((a) => {
+        anchor.insertAdjacentElement('afterend', a);
+        anchor = a;
+      });
+    });
+  })();
+
+  // ── Speaker notes loader（從 speaker-notes.md 撈 ## algo-X 區塊）──
+  (function () {
+    window.ALGO_NOTES = window.ALGO_NOTES || {};
+
+    function parseNotes(text) {
+      const notes = {};
+      const parts = text.split(/^##\s+(algo-[\w-]+)\s*$/m);
+      for (let i = 1; i < parts.length; i += 2) {
+        const id = parts[i];
+        let body = (parts[i + 1] || '');
+        body = body.replace(/\n*---\s*$/, '').trim();
+        const zhMatch = body.match(/###[ \t]+zh[ \t]*\n([\s\S]*?)(?=\n###[ \t]+en|\n---|$)/);
+        const enMatch = body.match(/###[ \t]+en[ \t]*\n([\s\S]*?)(?=\n---|$)/);
+        notes[id] = {
+          zh: zhMatch ? zhMatch[1].trim() : '',
+          en: enMatch ? enMatch[1].trim() : ''
+        };
+      }
+      return notes;
+    }
+
+    fetch('algo-notes.md', { cache: 'no-cache' })
+      .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then((text) => {
+        Object.assign(window.ALGO_NOTES, parseNotes(text));
+        window.dispatchEvent(new Event('algo-notes-loaded'));
+      })
+      .catch((err) => {
+        console.warn('[algo-notes] failed to load algo-notes.md:', err);
+        window.dispatchEvent(new Event('algo-notes-loaded'));
+      });
+  })();
+
+  // ── Speaker notes UI ──
+  (function () {
+    const btn = document.getElementById('notesBtn');
+    const panel = document.getElementById('notesPanel');
+    const closeBtn = document.getElementById('notesClose');
+    const slideIdEl = document.getElementById('notesSlideId');
+    const bodyEl = document.getElementById('notesBody');
+    if (!btn) return;
+
+    let currentNoteId = 'algo-0';
+    let isOpen = false;
+    let notesLoaded = false;
+
+    function getLang() {
+      return document.documentElement.lang === 'en' ? 'en' : 'zh';
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function renderInline(text) {
+      return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function lookupNotes(id) {
+      const map = window.ALGO_NOTES || {};
+      const lang = getLang();
+      const entry = map[id];
+      const text = entry ? (entry[lang] || '').trim() : '';
+      return text ? { id, text } : null;
+    }
+
+    function resolveNotes(id) {
+      // 先試精確 id（algo-1-1）。找不到就一層一層退回父章節（algo-1），再退回最頂層的 algo-0。
+      let hit = lookupNotes(id);
+      if (hit) return hit;
+      const parts = id.split('-');
+      while (parts.length > 2) {
+        parts.pop();
+        hit = lookupNotes(parts.join('-'));
+        if (hit) return hit;
+      }
+      return null;
+    }
+
+    function renderNotes() {
+      if (!notesLoaded) {
+        slideIdEl.textContent = currentNoteId.toUpperCase().replace(/-/g, ' ');
+        bodyEl.className = 'notes-empty';
+        bodyEl.textContent = '載入中…';
+        return;
+      }
+      const hit = resolveNotes(currentNoteId);
+      const displayId = hit ? hit.id : currentNoteId;
+      slideIdEl.textContent = displayId.toUpperCase().replace(/-/g, ' ');
+      if (hit) {
+        bodyEl.className = 'notes-body';
+        bodyEl.innerHTML = renderInline(hit.text);
+      } else {
+        bodyEl.className = 'notes-empty';
+        bodyEl.textContent = '（此段尚無講者筆記）';
+      }
+    }
+
+    window.addEventListener('algo-notes-loaded', function () {
+      notesLoaded = true;
+      if (isOpen) renderNotes();
+    });
+
+    btn.addEventListener('click', function () {
+      isOpen = !isOpen;
+      panel.classList.toggle('open', isOpen);
+      btn.classList.toggle('active', isOpen);
+      if (isOpen) renderNotes();
+    });
+
+    closeBtn.addEventListener('click', function () {
+      isOpen = false;
+      panel.classList.remove('open');
+      btn.classList.remove('active');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (isOpen && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+        isOpen = false;
+        panel.classList.remove('open');
+        btn.classList.remove('active');
+      }
+    });
+
+    // 把目前可見的章節 / 卡片映射到 note id
+    function elementToNoteId(el) {
+      if (!el) return null;
+      if (el.tagName === 'H2' && el.id) {
+        if (el.id.startsWith('chapter-')) return 'algo-' + el.id.slice('chapter-'.length);
+        return 'algo-' + el.id;
+      }
+      if (el.classList && el.classList.contains('example-card') && el.id) {
+        if (el.id.startsWith('ex-')) return 'algo-' + el.id.slice('ex-'.length);
+      }
+      return null;
+    }
+
+    const sectionEls = [
+      ...document.querySelectorAll('h2[id]'),
+      ...document.querySelectorAll('.example-card[id]')
+    ];
+
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const id = elementToNoteId(entry.target);
+          if (id) {
+            currentNoteId = id;
+            if (isOpen) renderNotes();
+          }
+        }
+      });
+    }, { threshold: 0.4, rootMargin: '-20% 0px -50% 0px' });
+
+    sectionEls.forEach((el) => obs.observe(el));
+
+    // 點 timeline 章節 / 子項目時，立刻把目前 note id 切過去，不等 observer。
+    const timelineNav = document.querySelector('.timeline-nav');
+    if (timelineNav) {
+      timelineNav.addEventListener('click', function (e) {
+        const item = e.target.closest('a.timeline-item');
+        if (!item) return;
+        const href = item.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const targetEl = document.getElementById(href.slice(1));
+        if (!targetEl) return;
+        const noteId = elementToNoteId(targetEl);
+        if (noteId) {
+          currentNoteId = noteId;
+          if (isOpen) renderNotes();
+        }
+      });
+    }
+  })();
 </script>
 
 </body>

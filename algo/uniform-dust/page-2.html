@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巢狀亂數 page-2</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+function setup() {
+  createCanvas(500, 500);
+  noStroke();
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < 8000; i++) {
+    fill(random(255));
+    circle(random(random())*width, random(random())*height, 2);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noise family，Perlin / Worley / Curl page-2</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let panelW = 140;
+let panelH = 320;
+let panelGap = 20;
+let topY = 74;
+let t = 0;
+
+let perlinParticles = [];
+let curlParticles = [];
+let worleySeeds = [];
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  resetSketch();
+}
+
+function resetSketch() {
+  noiseSeed(floor(random(100000)));
+  randomSeed(floor(random(100000)));
+  makeParticles();
+  makeWorleySeeds();
+}
+
+function makeParticles() {
+  perlinParticles = [];
+  curlParticles = [];
+  for (let i = 0; i < 170; i++) {
+    perlinParticles.push(makeParticle());
+    curlParticles.push(makeParticle());
+  }
+}
+
+function makeParticle() {
+  return {
+    x: random(-panelW / 2, panelW / 2),
+    y: random(-panelH / 2, panelH / 2),
+    px: 0,
+    py: 0
+  };
+}
+
+function makeWorleySeeds() {
+  worleySeeds = [];
+  for (let i = 0; i < 14; i++) {
+    worleySeeds.push({
+      x: random(-panelW / 2, panelW / 2),
+      y: random(-panelH / 2, panelH / 2),
+      ox: random(1000),
+      oy: random(1000)
+    });
+  }
+}
+
+function draw() {
+  background(5, 7, 12);
+
+  let totalW = panelW * 3 + panelGap * 2;
+  let startX = (width - totalW) / 2;
+  let cy = topY + panelH / 2;
+  let cx1 = startX + panelW / 2;
+  let cx2 = startX + panelW + panelGap + panelW / 2;
+  let cx3 = startX + panelW * 2 + panelGap * 2 + panelW / 2;
+
+  drawPerlinPanel(cx1, cy);
+  drawWorleyPanel(cx2, cy);
+  drawCurlPanel(cx3, cy);
+  drawLabels(cx1, cx2, cx3);
+
+  t += 0.008;
+}
+
+function drawPerlinPanel(cx, cy) {
+  drawFrame(cx, cy);
+  push();
+  translate(cx, cy);
+  for (let p of perlinParticles) {
+    p.px = p.x;
+    p.py = p.y;
+
+    let n = noise(
+      (p.x + panelW / 2) * 0.014,
+      (p.y + panelH / 2) * 0.014,
+      t
+    );
+    let angle = n * TWO_PI * 2;
+    moveParticle(p, cos(angle) * 0.85, sin(angle) * 0.85);
+
+    stroke(165, 210, 235, 145);
+    strokeWeight(0.9);
+    line(p.px, p.py, p.x, p.y);
+  }
+  pop();
+}
+
+function drawWorleyPanel(cx, cy) {
+  drawFrame(cx, cy);
+  push();
+  translate(cx, cy);
+  noStroke();
+
+  let step = 5;
+  for (let x = -panelW / 2; x < panelW / 2; x += step) {
+    for (let y = -panelH / 2; y < panelH / 2; y += step) {
+      let d1 = 999;
+      let d2 = 999;
+      for (let s of worleySeeds) {
+        let sx = s.x + (noise(s.ox, t * 0.55) - 0.5) * 34;
+        let sy = s.y + (noise(s.oy, t * 0.55) - 0.5) * 34;
+        let d = dist(x, y, sx, sy);
+        if (d < d1) {
+          d2 = d1;
+          d1 = d;
+        } else if (d < d2) {
+          d2 = d;
+        }
+      }
+
+      let cell = constrain(d1 / 50, 0, 1);
+      let edge = constrain((d2 - d1) / 22, 0, 1);
+      let shade = 35 + (1 - cell) * 105 + (1 - edge) * 70;
+      fill(65, shade, 120 + shade * 0.45, 210);
+      rect(x, y, step + 1, step + 1);
+    }
+  }
+
+  fill(245, 210, 150, 210);
+  for (let s of worleySeeds) {
+    let sx = s.x + (noise(s.ox, t * 0.55) - 0.5) * 34;
+    let sy = s.y + (noise(s.oy, t * 0.55) - 0.5) * 34;
+    circle(sx, sy, 2.8);
+  }
+  pop();
+}
+
+function drawCurlPanel(cx, cy) {
+  drawFrame(cx, cy);
+  push();
+  translate(cx, cy);
+  for (let p of curlParticles) {
+    p.px = p.x;
+    p.py = p.y;
+
+    let v = curlVector(p.x, p.y);
+    moveParticle(p, v.x * 1.25, v.y * 1.25);
+
+    stroke(210, 180, 245, 145);
+    strokeWeight(0.9);
+    line(p.px, p.py, p.x, p.y);
+  }
+
+  stroke(140, 110, 220, 70);
+  strokeWeight(0.7);
+  for (let x = -50; x <= 50; x += 25) {
+    for (let y = -125; y <= 125; y += 25) {
+      let v = curlVector(x, y);
+      line(x, y, x + v.x * 10, y + v.y * 10);
+    }
+  }
+  pop();
+}
+
+function curlVector(x, y) {
+  let e = 0.8;
+  let scale = 0.012;
+  let n1 = noise((x + e) * scale + 20, y * scale, t);
+  let n2 = noise((x - e) * scale + 20, y * scale, t);
+  let n3 = noise(x * scale + 20, (y + e) * scale, t);
+  let n4 = noise(x * scale + 20, (y - e) * scale, t);
+
+  let dx = (n1 - n2) / (2 * e);
+  let dy = (n3 - n4) / (2 * e);
+  let v = createVector(dy, -dx);
+  v.mult(160);
+  if (v.mag() > 0.001) v.normalize();
+  return v;
+}
+
+function moveParticle(p, vx, vy) {
+  p.x += vx;
+  p.y += vy;
+  if (p.x > panelW / 2) { p.x = -panelW / 2; p.px = p.x; }
+  if (p.x < -panelW / 2) { p.x = panelW / 2; p.px = p.x; }
+  if (p.y > panelH / 2) { p.y = -panelH / 2; p.py = p.y; }
+  if (p.y < -panelH / 2) { p.y = panelH / 2; p.py = p.y; }
+}
+
+function drawFrame(cx, cy) {
+  push();
+  noFill();
+  stroke(60, 70, 75);
+  strokeWeight(1);
+  rect(cx - panelW / 2, cy - panelH / 2, panelW, panelH);
+  pop();
+}
+
+function drawLabels(cx1, cx2, cx3) {
+  noStroke();
+  textAlign(CENTER);
+  fill(225);
+  textSize(12);
+  text('Perlin', cx1, topY - 22);
+  text('Worley', cx2, topY - 22);
+  text('Curl', cx3, topY - 22);
+
+  fill(145);
+  textSize(10);
+  text('柔順地形', cx1, topY - 8);
+  text('細胞 / 石紋', cx2, topY - 8);
+  text('旋轉流場', cx3, topY - 8);
+
+  fill(120);
+  textSize(9);
+  text('noise(x, y, t)', cx1, topY + panelH + 14);
+  text('nearest seed distance', cx2, topY + panelH + 14);
+  text('rotate gradient', cx3, topY + panelH + 14);
+
+  textAlign(LEFT);
+  fill(155);
+  textSize(10);
+  text('noise family   click: reseed', 16, 24);
+  fill(120);
+  text(`t ${t.toFixed(2)}`, 16, height - 12);
+}
+
+function mousePressed() {
+  resetSketch();
+}
+</script>
+</body>
+</html>

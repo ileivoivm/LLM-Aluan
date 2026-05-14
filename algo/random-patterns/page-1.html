@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亂數模式，三種分布 page-1</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+const CW = 500;
+const CH = 500;
+const PANEL_W = 140;
+const PANEL_H = 320;
+const PANEL_GAP = 20;
+const STATIC_COUNT = 700;
+const PARTICLE_COUNT = 240;
+
+let gaussianPts = [];
+let exponentialPts = [];
+let particles = [];
+let t = 0;
+let showGuides = true;
+
+function setup() {
+  createCanvas(CW, CH);
+  pixelDensity(1);
+  colorMode(HSB, 360, 100, 100, 100);
+  textFont('monospace');
+  resampleAll();
+}
+
+function resampleAll() {
+  generateGaussian();
+  generateExponential();
+  generateParticles();
+}
+
+function generateGaussian() {
+  gaussianPts = [];
+  for (let i = 0; i < STATIC_COUNT; i++) {
+    gaussianPts.push({
+      x: randomGaussian(0, 30),
+      y: randomGaussian(0, 76)
+    });
+  }
+}
+
+function generateExponential() {
+  exponentialPts = [];
+  for (let i = 0; i < STATIC_COUNT; i++) {
+    let r = -log(max(random(), 1e-6)) * 26;
+    let theta = random(TWO_PI);
+    exponentialPts.push({
+      x: cos(theta) * r,
+      y: sin(theta) * r * 1.45
+    });
+  }
+}
+
+function generateParticles() {
+  particles = [];
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    let x = random(-PANEL_W / 2, PANEL_W / 2);
+    let y = random(-PANEL_H / 2, PANEL_H / 2);
+    particles.push({x, y, px: x, py: y});
+  }
+}
+
+function draw() {
+  background(0, 0, 5);
+
+  let panels = getPanels();
+  drawPanelGaussian(panels[0]);
+  drawPanelExponential(panels[1]);
+  drawPanelPerlin(panels[2]);
+  drawTitles(panels);
+  drawHud();
+
+  t += 0.008;
+}
+
+function getPanels() {
+  let totalWidth = PANEL_W * 3 + PANEL_GAP * 2;
+  let startX = (CW - totalWidth) / 2;
+  let topY = 74;
+  let cy = topY + PANEL_H / 2;
+
+  return [
+    {label: 'Gaussian', sub: 'center weight', fn: 'randomGaussian()', cx: startX + PANEL_W / 2, cy, topY},
+    {label: 'Exponential', sub: 'long tail', fn: '-log(random())', cx: startX + PANEL_W + PANEL_GAP + PANEL_W / 2, cy, topY},
+    {label: 'Perlin', sub: 'continuous flow', fn: 'noise(x, y, t)', cx: startX + (PANEL_W + PANEL_GAP) * 2 + PANEL_W / 2, cy, topY}
+  ];
+}
+
+function drawPanelGaussian(panel) {
+  drawFrame(panel);
+  push();
+  translate(panel.cx, panel.cy);
+  noStroke();
+  for (let p of gaussianPts) {
+    fill(0, 0, 100, 48);
+    circle(p.x, p.y, 1.7);
+  }
+  pop();
+}
+
+function drawPanelExponential(panel) {
+  drawFrame(panel);
+  push();
+  translate(panel.cx, panel.cy);
+  noStroke();
+  for (let p of exponentialPts) {
+    if (abs(p.x) > PANEL_W / 2 || abs(p.y) > PANEL_H / 2) continue;
+    fill(0, 0, 70, 46);
+    circle(p.x, p.y, 2.1);
+  }
+  pop();
+}
+
+function drawPanelPerlin(panel) {
+  drawFrame(panel);
+  push();
+  translate(panel.cx, panel.cy);
+
+  for (let p of particles) {
+    p.px = p.x;
+    p.py = p.y;
+
+    let n = noise(
+      (p.x + PANEL_W / 2) * 0.014,
+      (p.y + PANEL_H / 2) * 0.014,
+      t
+    );
+    let angle = n * TWO_PI * 2;
+    p.x += cos(angle) * 0.9;
+    p.y += sin(angle) * 0.9;
+
+    if (p.x > PANEL_W / 2) { p.x = -PANEL_W / 2; p.px = p.x; }
+    if (p.x < -PANEL_W / 2) { p.x = PANEL_W / 2; p.px = p.x; }
+    if (p.y > PANEL_H / 2) { p.y = -PANEL_H / 2; p.py = p.y; }
+    if (p.y < -PANEL_H / 2) { p.y = PANEL_H / 2; p.py = p.y; }
+
+    stroke(0, 0, 45, 72);
+    strokeWeight(0.9);
+    line(p.px, p.py, p.x, p.y);
+  }
+  pop();
+}
+
+function drawFrame(panel) {
+  push();
+  noFill();
+  stroke(0, 0, 36, 80);
+  strokeWeight(1);
+  rect(panel.cx - PANEL_W / 2, panel.cy - PANEL_H / 2, PANEL_W, PANEL_H);
+
+  if (showGuides) {
+    stroke(0, 0, 55, 30);
+    line(panel.cx, panel.cy - PANEL_H / 2, panel.cx, panel.cy + PANEL_H / 2);
+    line(panel.cx - PANEL_W / 2, panel.cy, panel.cx + PANEL_W / 2, panel.cy);
+    ellipse(panel.cx, panel.cy, 52, 52);
+    ellipse(panel.cx, panel.cy, 104, 104);
+  }
+  pop();
+}
+
+function drawTitles(panels) {
+  noStroke();
+  textAlign(CENTER);
+
+  for (let panel of panels) {
+    fill(0, 0, 90, 95);
+    textSize(12);
+    text(panel.label, panel.cx, panel.topY - 24);
+
+    fill(0, 0, 58, 90);
+    textSize(10);
+    text(panel.sub, panel.cx, panel.topY - 10);
+
+    fill(0, 0, 45, 90);
+    textSize(9);
+    text(panel.fn, panel.cx, panel.topY + PANEL_H + 15);
+  }
+
+  textAlign(LEFT);
+}
+
+function drawHud() {
+  noStroke();
+  fill(0, 0, 82, 95);
+  textSize(10);
+  text('Random Showcase', 16, 24);
+
+  fill(0, 0, 52, 90);
+  text(`click: resample   D: guides ${showGuides ? 'on' : 'off'}`, 16, CH - 14);
+}
+
+function mousePressed() {
+  resampleAll();
+}
+
+function keyPressed() {
+  if (key === 'd' || key === 'D') {
+    showGuides = !showGuides;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Noise / Poisson Disk page-6</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+  body {
+    display: grid;
+    place-items: center;
+  }
+  canvas {
+    display: block;
+    width: 500px !important;
+    height: 500px !important;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<script>
+let targetCount = 260;
+let minDistance = 14;
+let randomPoints = [];
+let poissonPoints = [];
+
+function setup() {
+  createCanvas(500, 500);
+  pixelDensity(1);
+  textFont('monospace');
+  noLoop();
+  generatePoints();
+}
+
+function draw() {
+  background(0);
+  drawPanel(0, randomPoints, 'pure random');
+  drawPanel(width / 2, poissonPoints, 'poisson disk');
+  drawDivider();
+}
+
+function generatePoints() {
+  randomPoints = makeRandomPoints(targetCount, 0, width / 2);
+  poissonPoints = makePoissonPoints(targetCount, width / 2, width, minDistance);
+  redraw();
+}
+
+function makeRandomPoints(count, minX, maxX) {
+  let pts = [];
+  for (let i = 0; i < count; i++) {
+    pts.push(createVector(random(minX + 12, maxX - 12), random(36, height - 14)));
+  }
+  return pts;
+}
+
+function makePoissonPoints(count, minX, maxX, radius) {
+  let pts = [];
+  let attempts = 0;
+  let maxAttempts = count * 280;
+
+  while (pts.length < count && attempts < maxAttempts) {
+    let p = createVector(random(minX + 12, maxX - 12), random(36, height - 14));
+    if (isFarEnough(p, pts, radius)) {
+      pts.push(p);
+    }
+    attempts++;
+  }
+
+  return pts;
+}
+
+function isFarEnough(p, pts, radius) {
+  let r2 = radius * radius;
+  for (let q of pts) {
+    let dx = p.x - q.x;
+    let dy = p.y - q.y;
+    if (dx * dx + dy * dy < r2) return false;
+  }
+  return true;
+}
+
+function drawPanel(offsetX, pts, label) {
+  noFill();
+  stroke(38);
+  rect(offsetX + 8, 28, width / 2 - 16, height - 36);
+
+  noStroke();
+  fill(235);
+  for (let p of pts) {
+    circle(p.x, p.y, 3);
+  }
+
+  fill(150);
+  textSize(10);
+  text(label, offsetX + 12, 18);
+  text(`${pts.length} pts`, offsetX + width / 2 - 64, 18);
+}
+
+function drawDivider() {
+  stroke(70);
+  line(width / 2, 0, width / 2, height);
+
+  noStroke();
+  fill(120);
+  textSize(9);
+  text(`click: regenerate  [ / ] distance: ${minDistance}  - / + count: ${targetCount}`, 12, height - 8);
+}
+
+function mousePressed() {
+  generatePoints();
+}
+
+function keyPressed() {
+  if (key === '[') minDistance = max(6, minDistance - 1);
+  if (key === ']') minDistance = min(32, minDistance + 1);
+  if (key === '-' || key === '_') targetCount = max(60, targetCount - 20);
+  if (key === '=' || key === '+') targetCount = min(520, targetCount + 20);
+  generatePoints();
+}
+</script>
+</body>
+</html>

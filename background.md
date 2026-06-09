@@ -16,6 +16,7 @@
 
 ## 重要聯展
 
+- 2026 COMPUTEX × ART TAIPEI 跨界合作「Art Connected：藝術連線」，《植徑集—共生之鍊》進駐南港展覽館一館精神堡壘
 - 2025 美國消費電子展（CES 2025），受友達（AUO）邀請展出生成藝術作品
 - 2025 C-LAB 聲響藝術節，台韓共演
 - 2024 台北國際藝術博覽會（Art Taipei），《春分》與 Mercedes-Maybach 聯名特展

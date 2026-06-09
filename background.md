@@ -33,7 +33,7 @@
 
 ## 代表作品
 
-《墨域》（InkField，2025至今）、《植徑集》（Polypaths）、《春分》（Equinox）、《Chaos》混沌三部曲（Chaos Research, Chaos Memory, Chaos Culture）、《透納光》（Turner Light）、《Good Vibrations》
+[《墨域》（InkField，2025至今）](https://github.com/ileivoivm/inkField)、[《植徑集》（Polypaths）](https://verse.works/series/polypaths-by-aluan-wang)、[《春分》（Equinox）](https://verse.works/series/equinox-by-aluan-wang)、[《Chaos》混沌三部曲（Chaos Research, Chaos Memory, Chaos Culture）](https://www.fxhash.xyz/u/ileivoivm)、[《透納光》（Turner Light）](https://www.fxhash.xyz/project/turner-light)、[《Good Vibrations》](https://www.artblocks.io/collection/good-vibrations-by-aluan-wang)
 
 ## 經歷
 

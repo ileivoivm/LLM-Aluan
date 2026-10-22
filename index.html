@@ -131,6 +131,11 @@
     display: flex; flex-direction: column; justify-content: center;
     padding: 2rem 3rem 2rem 2rem; max-width: 1000px; margin: 0 auto;
   }
+  .slide.is-hidden {
+    display: none !important;
+    min-height: 0;
+    scroll-snap-align: none;
+  }
 
   /* ── Title Slide ── */
   .slide-title { text-align: center; align-items: center; position: relative; }
@@ -1154,19 +1159,19 @@
 
     <div class="chaos-live-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin:1.5rem 0;">
       <div class="iframe-wrap" style="margin:0;">
-        <div class="iframe-label">Chaos Research · LIVE</div>
-        <iframe class="lazy-embed" title="Chaos Research" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz/?cid=QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz&fxhash=onuLCEvez82KSGwx8YSqNKHyAaFs6hPjPTssYUNfRtYcN2PFUKZ&fxminter=tz1LeF4MnbPgy3VTjfhtjjbjKtW9CQKgJtqi&fxiteration=204&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
-        <a class="iframe-link" href="https://www.fxhash.xyz/project/chaos-research" target="_blank" rel="noopener noreferrer">↗ chaosResearch</a>
+        <div class="iframe-label">Chaos Research · #6</div>
+        <img src="https://assets.objkt.media/file/assets-003/QmNXTy4Z7R9QEGDw57Qts3MJewsANYkL5g76MKUMe7u7Le/artifact" alt="Chaos Research #6" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+        <a class="iframe-link" href="https://objkt.com/collections/fxhash/projects/5101" target="_blank" rel="noopener noreferrer">↗ chaosResearch</a>
       </div>
       <div class="iframe-wrap" style="margin:0;">
-        <div class="iframe-label">Chaos Memory · LIVE</div>
-        <iframe class="lazy-embed" title="Chaos Memory" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT/?cid=QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT&fxhash=ooDG93qCTyNLHyg7GAaMnWp8o8mbb8vfYtdpxKXJiaujh4eJWPj&fxminter=tz1b4sbpCVGQEcgQLVUFWiXgdcwYv1gKXhWu&fxiteration=245&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
-        <a class="iframe-link" href="https://www.fxhash.xyz/project/chaos-memory" target="_blank" rel="noopener noreferrer">↗ chaosMemory</a>
+        <div class="iframe-label">Chaos Memory · #106</div>
+        <img src="https://assets.objkt.media/file/assets-003/QmR7Tb9M48mRW6KANesRrXYqSgNMJkkWSj5vCL2Yt3ijVu/artifact" alt="Chaos Memory #106" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+        <a class="iframe-link" href="https://objkt.com/collections/fxhash/projects/11068" target="_blank" rel="noopener noreferrer">↗ chaosMemory</a>
       </div>
       <div class="iframe-wrap" style="margin:0;">
-        <div class="iframe-label">Chaos Culture · LIVE</div>
-        <iframe class="lazy-embed" title="Chaos Culture" src="about:blank" data-src="https://gateway.fxhash2.xyz/ipfs/QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj/?cid=QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj&fxhash=op5RasCtsN4QaR5aGQLfGBpUsDcy78PALcBcm9khnpQgB4nvw3D&fxminter=tz1PQRJ8wVtFgkZWGfJ6JajjjtJDYUNuKqKc&fxiteration=1000&fxcontext=standalone&fxchain=TEZOS&legacy=false" style="aspect-ratio:1/1;"></iframe>
-        <a class="iframe-link" href="https://www.fxhash.xyz/project/chaos-culture" target="_blank" rel="noopener noreferrer">↗ chaosCulture</a>
+        <div class="iframe-label">Chaos Culture · #1</div>
+        <img src="https://assets.objkt.media/file/assets-003/QmdPrSmuw4vNjDH86gSM2h9Hg5CxJsbKPgQkFQf9Da7kwq/artifact" alt="Chaos Culture #1" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+        <a class="iframe-link" href="https://objkt.com/collections/fxhash/projects/13447" target="_blank" rel="noopener noreferrer">↗ chaosCulture</a>
       </div>
     </div>
     <div class="chaos-mobile-notice" style="display:none; text-align:center; padding:2rem; background:var(--surface); border-radius:8px; margin:1.5rem 0; color:var(--text-dim); font-size:0.9rem;">
@@ -1476,8 +1481,8 @@
     <div class="highlight-box"><span class="zh">隨機是一條可以被保存的分岔。</span><span class="en">Randomness is a branch that can be preserved.</span></div>
   </section>
 
-  <!-- ═══ 5: JSON 深入 ═══ -->
-  <section class="slide" id="slide-8">
+  <!-- ═══ 5: JSON 深入 · 《修仙-七玄關》先藏起來，內容保留 ═══ -->
+  <section class="slide is-hidden" id="slide-8" hidden>
     <div class="section-label"><span class="zh">08 — Deep Dive · 小說</span><span class="en">08 — Deep Dive · Novel</span></div>
     <h2><span class="zh">《修仙-七玄關》：故事的外部記憶</span><span class="en">Seven Gates: External Memory for a Novel</span></h2>
 
@@ -2428,7 +2433,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
 
 <script>
 (function() {
-  const slides = document.querySelectorAll('.slide');
+  const slides = document.querySelectorAll('.slide:not(.is-hidden)');
   const slidesRoot = document.getElementById('slides');
   const timelineInner = document.getElementById('timelineInner');
   const kbUp = document.getElementById('kbUp');
@@ -2461,7 +2466,8 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
     if (!clean) return null;
     const fullId = clean.indexOf('slide-') === 0 ? clean : 'slide-' + clean;
     const el = document.getElementById(fullId);
-    return el && el.classList && el.classList.contains('slide') ? el : null;
+    if (!el || !el.classList || !el.classList.contains('slide') || el.classList.contains('is-hidden')) return null;
+    return el;
   }
   function syncUrlHash(slide) {
     if (!allowHashSync || !slide) return;
@@ -2906,7 +2912,7 @@ Coffee → Cookie → Prompt → Loop()</pre></div>
       }
     });
   }, { threshold: 0.5 });
-  document.querySelectorAll('.slide').forEach(function (s) { obs.observe(s); });
+  document.querySelectorAll('.slide:not(.is-hidden)').forEach(function (s) { obs.observe(s); });
 
   // Re-render when language changes
   new MutationObserver(function () { if (isOpen) renderNotes(); })

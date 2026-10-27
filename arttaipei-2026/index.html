@@ -437,117 +437,105 @@
 
 <script>
 (function(){
-  var C='#F3EFE6', A='#D9705F', BG='#17150F';
+  var C='#F3EFE6', A='#D9705F', BG='#17150F', DIM='rgba(243,239,230,.18)';
   function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; var t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
-  function P(d,o){ o=o||{}; return '<path d="'+d+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||C)+'" stroke-width="'+(o.w||3.4)+'"'+(o.dash?' stroke-dasharray="'+o.dash+'"':'')+(o.op?' opacity="'+o.op+'"':'')+'/>'; }
-  function Ci(x,y,r,o){ o=o||{}; return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||C)+'" stroke-width="'+(o.w||3.4)+'"/>'; }
-  function R(x,y,w,h,r,o){ o=o||{}; return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+r+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||C)+'" stroke-width="'+(o.w||3.4)+'"'+(o.tr?' transform="'+o.tr+'"':'')+'/>'; }
   function f(n){ return Math.round(n*10)/10; }
-
-  /* 半身人物：線條臉、髮型、可選眼鏡與色塊 */
-  function head(cx,cy,s,o){
-    o=o||{}; var g=[];
-    function X(v){return f(cx+v*s)} function Y(v){return f(cy+v*s)}
-    if(o.hair==='long') g.push(P('M'+X(-35)+' '+Y(46)+' C'+X(-52)+' '+Y(-8)+' '+X(-34)+' '+Y(-52)+' '+X(0)+' '+Y(-50)+' C'+X(34)+' '+Y(-52)+' '+X(52)+' '+Y(-8)+' '+X(35)+' '+Y(46)+' Z',{fill:o.hairFill||A}));
-    g.push(P('M'+X(-66)+' '+Y(122)+' C'+X(-62)+' '+Y(74)+' '+X(-32)+' '+Y(60)+' '+X(0)+' '+Y(60)+' C'+X(32)+' '+Y(60)+' '+X(62)+' '+Y(74)+' '+X(66)+' '+Y(122),{fill:o.shirt?A:BG}));
-    g.push(P('M'+X(-13)+' '+Y(34)+' L'+X(-13)+' '+Y(60)+' M'+X(13)+' '+Y(34)+' L'+X(13)+' '+Y(60)));
-    g.push(P('M'+X(-15)+' '+Y(60)+' L'+X(0)+' '+Y(74)+' L'+X(15)+' '+Y(60),{fill:BG}));
-    g.push(P('M'+X(-31)+' '+Y(4)+' q'+f(-9*s)+' '+f(2*s)+' '+f(-7*s)+' '+f(11*s)+' q'+f(2*s)+' '+f(6*s)+' '+f(8*s)+' '+f(4*s)+' M'+X(31)+' '+Y(4)+' q'+f(9*s)+' '+f(2*s)+' '+f(7*s)+' '+f(11*s)+' q'+f(-2*s)+' '+f(6*s)+' '+f(-8*s)+' '+f(4*s),{fill:BG}));
-    g.push('<ellipse cx="'+X(0)+'" cy="'+Y(2)+'" rx="'+f(32*s)+'" ry="'+f(39*s)+'" fill="'+BG+'" stroke="'+C+'" stroke-width="3.4"/>');
-    var hf=o.hairFill||C;
-    if(o.hair==='short') g.push(P('M'+X(-33)+' '+Y(-2)+' C'+X(-38)+' '+Y(-46)+' '+X(30)+' '+Y(-56)+' '+X(34)+' '+Y(-6)+' C'+X(18)+' '+Y(-24)+' '+X(-8)+' '+Y(-30)+' '+X(-33)+' '+Y(-2)+' Z',{fill:hf}));
-    if(o.hair==='long') g.push(P('M'+X(-32)+' '+Y(-6)+' C'+X(-26)+' '+Y(-46)+' '+X(28)+' '+Y(-50)+' '+X(32)+' '+Y(-8)+' C'+X(10)+' '+Y(-22)+' '+X(-14)+' '+Y(-18)+' '+X(-32)+' '+Y(-6)+' Z',{fill:hf}));
-    if(o.hair==='bun'){ g.push(Ci(X(6),Y(-48),f(13*s),{fill:hf})); g.push(P('M'+X(-33)+' '+Y(-2)+' C'+X(-36)+' '+Y(-42)+' '+X(30)+' '+Y(-48)+' '+X(34)+' '+Y(-4)+' C'+X(10)+' '+Y(-28)+' '+X(-14)+' '+Y(-24)+' '+X(-33)+' '+Y(-2)+' Z',{fill:hf})); }
-    if(o.hair==='curly'){ [[-28,-14],[-20,-32],[-4,-40],[14,-38],[28,-24],[32,-8]].forEach(function(p){ g.push(Ci(X(p[0]),Y(p[1]),f(12*s),{fill:hf})); }); }
-    if(o.hair==='cap'){ g.push(P('M'+X(-34)+' '+Y(-4)+' C'+X(-36)+' '+Y(-50)+' '+X(30)+' '+Y(-58)+' '+X(36)+' '+Y(-10)+' Z',{fill:hf})); g.push(P('M'+X(18)+' '+Y(-8)+' C'+X(34)+' '+Y(-12)+' '+X(50)+' '+Y(-8)+' '+X(56)+' '+Y(-2)+' L'+X(30)+' '+Y(-2)+' Z',{fill:hf})); }
-    g.push(Ci(X(-11),Y(4),f(2.8*s),{fill:C,w:0}),Ci(X(11),Y(4),f(2.8*s),{fill:C,w:0}));
-    if(o.glasses){ g.push(Ci(X(-11),Y(4),f(9*s)),Ci(X(11),Y(4),f(9*s)),P('M'+X(-2)+' '+Y(4)+' L'+X(2)+' '+Y(4))); }
-    g.push(P('M'+X(0)+' '+Y(9)+' q'+f(-4*s)+' '+f(8*s)+' '+f(2*s)+' '+f(9*s)));
-    g.push(P('M'+X(-9)+' '+Y(22)+' Q'+X(0)+' '+Y(30)+' '+X(9)+' '+Y(22)));
-    if(o.cheek) g.push(Ci(X(-18),Y(17),f(4*s),{fill:A,w:0}),Ci(X(18),Y(17),f(4*s),{fill:A,w:0}));
-    return g.join('');
+  function L(x0,y0,x1,y1,w,col,dash,op){ return '<path d="M'+f(x0)+' '+f(y0)+' L'+f(x1)+' '+f(y1)+'" stroke="'+(col||C)+'" stroke-width="'+(w||2)+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+(op?' opacity="'+op+'"':'')+'/>'; }
+  function PL(pts,w,col,dash){ return '<path d="M'+pts.map(function(p){return f(p[0])+' '+f(p[1])}).join(' L')+'" fill="none" stroke="'+(col||C)+'" stroke-width="'+(w||2)+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>'; }
+  function N(x,y,r,mode){ // node: 'f' filled paper, 'o' outlined, 'a' accent
+    if(mode==='a') return '<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(r)+'" fill="'+A+'"/>';
+    if(mode==='o') return '<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(r)+'" fill="'+BG+'" stroke="'+C+'" stroke-width="2"/>';
+    return '<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(r)+'" fill="'+C+'"/>'; }
+  function ring(x,y,r,op,dash){ return '<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(r)+'" fill="none" stroke="'+C+'" stroke-width="1.4" opacity="'+(op||.3)+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>'; }
+  /* 幾何樹：直線分枝、節點大小隨層級遞減 */
+  function gtree(x,y,len,ang,depth,seed,o){
+    o=o||{}; var r=rng(seed), s='', tips=[], spread=o.spread||.46;
+    (function br(px,py,Ln,a,d,lvl){
+      var ex=px+Math.cos(a)*Ln, ey=py+Math.sin(a)*Ln;
+      s+=L(px,py,ex,ey,Math.max(1.2,(o.w||4)*Math.pow(.74,lvl)),o.hot&&o.hot(lvl,ex,ey)?A:C);
+      if(d<=0){ tips.push([ex,ey,a]); s+=N(ex,ey,Math.max(2.2,5-lvl*.3),r()<(o.acc||.12)?'a':'f'); return; }
+      s+=N(ex,ey,Math.max(3,9*Math.pow(.78,lvl)),lvl<2?'o':'f');
+      var n=r()<.25?3:2;
+      for(var k=0;k<n;k++){ var na=a+(k-(n-1)/2)*(spread*2/(n))+(r()-.5)*.18; br(ex,ey,Ln*(.76+r()*.1),na,d-1,lvl+1); }
+    })(x,y,len,ang,depth,0);
+    return {svg:s,tips:tips};
   }
-
-  /* 生成植物：遞迴分枝＋葉片 */
-  function plant(x,y,len,ang,depth,seed,o){
-    o=o||{}; var r=rng(seed), out=[];
-    function leaf(px,py,a,sz,fill){ var dx=Math.cos(a),dy=Math.sin(a),nx=-dy,ny=dx, tx=px+dx*sz, ty=py+dy*sz, w=sz*0.38;
-      out.push(P('M'+f(px)+' '+f(py)+' Q'+f(px+dx*sz*.5+nx*w)+' '+f(py+dy*sz*.5+ny*w)+' '+f(tx)+' '+f(ty)+' Q'+f(px+dx*sz*.5-nx*w)+' '+f(py+dy*sz*.5-ny*w)+' '+f(px)+' '+f(py)+' Z',{fill:fill||BG,w:3}));
-      out.push(P('M'+f(px)+' '+f(py)+' L'+f(px+dx*sz*.75)+' '+f(py+dy*sz*.75),{w:1.8})); }
-    function br(px,py,L,a,d){
-      var bend=(r()-.5)*.5, ex=px+Math.cos(a)*L, ey=py+Math.sin(a)*L, mx=px+Math.cos(a+bend)*L*.55, my=py+Math.sin(a+bend)*L*.55;
-      out.push(P('M'+f(px)+' '+f(py)+' Q'+f(mx)+' '+f(my)+' '+f(ex)+' '+f(ey),{w:d>2?3.6:2.8}));
-      if(d<=0){ leaf(ex,ey,a+(r()-.5)*.6,L*.9*(o.leaf||1), r()<(o.accent||.25)?A:BG); return; }
-      var n=r()<.35?3:2;
-      for(var k=0;k<n;k++){ var na=a+(k-(n-1)/2)*(.55+r()*.25)+(r()-.5)*.2; br(ex,ey,L*(.7+r()*.12),na,d-1); }
-      if(r()<.6) leaf(mx,my,a+(r()<.5?-1:1)*1.0,L*.55*(o.leaf||1), r()<(o.accent||.25)?A:BG);
-    }
-    br(x,y,len,ang,depth); return out.join('');
-  }
-  function spark(x,y,s){ return P('M'+x+' '+(y-s)+' Q'+x+' '+y+' '+(x+s)+' '+y+' Q'+x+' '+y+' '+x+' '+(y+s)+' Q'+x+' '+y+' '+(x-s)+' '+y+' Q'+x+' '+y+' '+x+' '+(y-s)+' Z',{fill:C,w:2}); }
+  function ticks(x0,x1,y,step,col){ var s=L(x0,y,x1,y,1.4,col||C,null,.5); for(var x=x0,i=0;x<=x1+.1;x+=step,i++){ s+=L(x,y,x,y+(i%5?8:16),1.2,col||C,null,.5); } return s; }
+  function grid(x,y,w,h,step){ var s=''; for(var i=x;i<=x+w;i+=step) s+=L(i,y,i,y+h,1,C,null,.06); for(var j=y;j<=y+h;j+=step) s+=L(x,j,x+w,j,1,C,null,.06); return s; }
   var UP=-Math.PI/2;
-  function robot(cx,cy,s,o){ o=o||{}; var g=[]; function X(v){return f(cx+v*s)} function Y(v){return f(cy+v*s)}
-    g.push(P('M'+X(-66)+' '+Y(122)+' C'+X(-62)+' '+Y(74)+' '+X(-32)+' '+Y(60)+' '+X(0)+' '+Y(60)+' C'+X(32)+' '+Y(60)+' '+X(62)+' '+Y(74)+' '+X(66)+' '+Y(122),{fill:o.shirt?A:BG}));
-    g.push(P('M'+X(-10)+' '+Y(36)+' L'+X(-10)+' '+Y(60)+' M'+X(10)+' '+Y(36)+' L'+X(10)+' '+Y(60)));
-    g.push(P('M'+X(0)+' '+Y(-40)+' L'+X(0)+' '+Y(-62))+Ci(X(0),Y(-68),f(7*s),{fill:A}));
-    g.push(R(X(-46),Y(-40),f(92*s),f(78*s),f(20*s),{fill:BG}));
-    g.push(R(X(-34),Y(-26),f(68*s),f(44*s),f(12*s),{fill:BG,w:2.6}));
-    g.push(Ci(X(-14),Y(-6),f(5*s),{fill:C,w:0}),Ci(X(14),Y(-6),f(5*s),{fill:C,w:0}));
-    g.push(P('M'+X(-8)+' '+Y(8)+' Q'+X(0)+' '+Y(14)+' '+X(8)+' '+Y(8)));
-    g.push(P('M'+X(-46)+' '+Y(-6)+' l'+f(-8*s)+' 0 M'+X(46)+' '+Y(-6)+' l'+f(8*s)+' 0',{w:4}));
-    return g.join(''); }
 
   var ILLO={
-    cover: function(){ return plant(440,560,150,UP+.06,4,7,{accent:.3,leaf:.8})
-      + P('M318 470 C360 520 380 560 430 560',{dash:'2 10',w:3.4})
-      + head(200,360,1.75,{hair:'cap',glasses:true})
-      + R(250,420,96,128,12,{fill:BG,tr:'rotate(-18 298 484)'})
-      + P('M268 470 C285 455 300 500 318 470',{w:3,stroke:A})
-      + P('M300 520 L330 456',{w:4}) + Ci(300,528,14,{fill:BG}); },
-    collective: function(){ var s=plant(300,330,92,UP,5,21,{accent:.35,leaf:1.1}), xs=[80,190,300,410,520], hs=['short','long','curly','bun','cap'];
-      xs.forEach(function(x,k){ s+=P('M'+x+' '+(k%2?440:470)+' C'+x+' 380 300 400 300 330',{dash:'2 10',w:3,stroke:k===2?A:C}); });
-      xs.forEach(function(x,k){ s+=head(x,(k%2?480:510),.82,{hair:hs[k],glasses:k===4,shirt:k===1||k===3}); }); return s; },
-    system: function(){ var s=R(80,360,250,180,14,{fill:BG})+P('M80 392 L330 392')+Ci(100,376,4,{fill:C,w:0})+Ci(116,376,4,{fill:C,w:0})+Ci(132,376,4,{fill:A,w:0});
-      [[104,420,90],[124,446,120],[124,472,70],[104,498,40],[150,498,60]].forEach(function(l,k){ s+=P('M'+l[0]+' '+l[1]+' L'+(l[0]+l[2])+' '+l[1],{w:4,stroke:k===2?A:C}); });
-      s+=plant(390,540,70,UP,4,3)+plant(470,540,82,UP-.1,4,11,{accent:.4})+plant(545,540,60,UP+.15,4,29);
-      s+=P('M370 540 L585 540')+P('M332 450 C350 450 360 500 380 520',{dash:'2 9'}); return s; },
-    participate: function(){ var s=R(330,70,180,470,6,{fill:BG})+'<clipPath id="pc"><rect x="334" y="74" width="172" height="462"/></clipPath><g clip-path="url(#pc)">'+plant(420,540,95,UP,6,5,{accent:.45})+'</g>';
-      s+=R(476,488,26,26,2,{fill:BG})+P('M482 494 h6 v6 h-6z M492 504 h4 v4 h-4z',{w:2})+P('M330 540 L510 540 M300 540 L540 540',{w:3});
-      s+=head(150,380,1.4,{hair:'bun',shirt:true});
-      s+=R(195,410,62,104,10,{fill:BG,tr:'rotate(12 226 462)'})+P('M210 440 C222 430 214 470 232 462 S238 488 240 480',{stroke:A,w:3});
-      s+=P('M258 440 C300 380 340 360 380 300',{dash:'2 10',stroke:A}); return s; },
-    relation: function(){ var s=plant(300,520,100,UP,5,41,{accent:.12}); 
-      s+=P('M300 520 C330 420 360 380 410 300',{stroke:A,w:4.5})+plant(410,300,40,UP+.6,2,4,{accent:1});
-      s+=P('M120 520 L480 520');
-      s+=head(110,450,1.0,{hair:'long',hairFill:C})+head(500,440,1.05,{hair:'curly',shirt:true,cheek:true});
-      s+=P('M530 520 C540 470 520 420 470 330',{dash:'2 9',stroke:A});
-      s+=P('M458 300 c-8 -12 -26 -6 -20 8 c4 10 20 18 20 18 c0 0 16 -8 20 -18 c6 -14 -12 -20 -20 -8 z',{fill:A,w:2.6}); return s; },
-    action: function(){ var s='';
-      s+=P('M80 330 C150 250 190 410 260 320 S380 230 440 330 S520 390 540 300',{w:16,stroke:C})+P('M80 330 C150 250 190 410 260 320 S380 230 440 330 S520 390 540 300',{w:5,stroke:BG,dash:'1 26'});
-      [[80,330],[190,340],[300,284],[420,306],[540,300]].forEach(function(p,k){ s+=Ci(p[0],p[1],9,{fill:k===2?A:BG}); });
-      s+=P('M540 300 L590 160',{w:6})+P('M532 302 C520 280 545 262 548 300 Z',{fill:C,w:2.6})+P('M560 228 L578 234',{w:3});
-      s+=P('M80 470 L540 470');for(var t=0;t<=10;t++){ s+=P('M'+(80+t*46)+' 470 L'+(80+t*46)+' '+(t%5?482:494),{w:2.6}); }
-      s+=Ci(150,160,44,{fill:BG})+P('M138 138 L172 160 L138 182 Z',{fill:A,w:2.6}); return s; },
-    collect: function(){ var s='';
-      [[-26,'#'],[0,''],[26,'']].forEach(function(c,k){ s+=R(250,90,120,170,12,{fill:k===1?A:BG,tr:'rotate('+c[0]+' 310 330)'}); });
-      s+='<g transform="rotate(0 310 330)">'+plant(310,240,30,UP,3,8,{accent:0,leaf:1.2})+'</g>';
-      s+=spark(170,140,18)+spark(470,110,14)+spark(500,250,22)+spark(140,280,12);
-      s+=head(310,430,1.35,{hair:'curly',shirt:true,cheek:true});
-      s+=P('M236 540 C200 470 214 360 258 292',{w:3.4})+P('M384 540 C420 470 406 360 362 292',{w:3.4})+Ci(260,286,14,{fill:BG})+Ci(360,286,14,{fill:BG}); return s; },
-    pulse: function(){ var s='';
-      [70,120,170].forEach(function(r,k){ s+='<circle cx="310" cy="420" r="'+(r+120)+'" fill="none" stroke="'+C+'" stroke-width="2" opacity="'+(0.35-k*0.1)+'"/>'; });
-      s+=head(180,330,1.5,{hair:'cap',glasses:true});
-      s+=robot(450,330,1.5,{shirt:true});
-      s+=P('M40 470 L150 470 L170 440 L188 500 L206 410 L224 470 L380 470 L400 440 L418 500 L436 410 L454 470 L590 470',{stroke:A,w:4.5});
-      s+=spark(310,190,16)+spark(560,200,10)+spark(70,230,10); return s; },
-    thanks: function(){ var s=head(230,360,1.7,{hair:'cap',glasses:true,cheek:true});
-      s+=P('M338 548 C370 490 372 400 360 320',{w:3.4})+P('M346 300 c-6 -22 4 -40 14 -36 c4 -18 22 -14 22 0 c10 -10 24 0 18 14 c10 4 8 22 -6 26 c-10 16 -40 14 -48 -4 z',{fill:BG});
-      s+=R(440,470,110,70,6,{fill:A})+plant(495,470,62,UP,4,17,{accent:.2});
-      s+=spark(400,200,14)+spark(560,330,10); return s; }
+    /* 封面：一個紅色起點 → 一條折線 → 長成一座分枝結構 */
+    cover: function(){
+      var s=grid(0,0,620,620,31);
+      var path=[[40,560],[150,560],[200,510],[300,510],[350,560],[430,560]];
+      s+=PL(path,3); path.forEach(function(p,i){ if(i>0&&i<path.length-1) s+=N(p[0],p[1],4,'f'); });
+      s+=ticks(40,430,590,15.6);
+      s+=N(40,560,11,'a')+ring(40,560,24,.5)+ring(40,560,40,.25);
+      s+=L(430,560,430,470,4);
+      var t=gtree(430,470,92,UP,5,7,{acc:.16,spread:.62}); s+=ring(430,250,210,.22,'3 9')+t.svg;
+      return s; },
+    /* 集體意志：一排點各自拉線 → 匯聚成一個節點 → 往上長 */
+    collective: function(){
+      var s='', cx=310, cy=360, xs=[60,122,184,246,310,374,436,498,560];
+      s+=ring(cx,cy,60,.35)+ring(cx,cy,110,.22)+ring(cx,cy,170,.12,'3 9');
+      xs.forEach(function(x,i){ var y=560; s+=PL([[x,y],[x,y-60],[cx+(x-cx)*.25,cy+50],[cx,cy]],1.8,i===4?A:C,i%2?'2 7':null); s+=N(x,y,i===4?9:7,i===4?'a':'o'); });
+      var t=gtree(cx,cy,74,UP,4,21,{acc:.2,spread:.7}); s+=t.svg+N(cx,cy,14,'a');
+      s+=ticks(40,580,600,13.5); return s; },
+    /* 從觀看到參與：方格柱體＋手機方塊把線送進去 */
+    participate: function(){
+      var s='', px=360, py=50, pw=170, ph=520;
+      s+='<rect x="'+px+'" y="'+py+'" width="'+pw+'" height="'+ph+'" fill="'+BG+'" stroke="'+C+'" stroke-width="2.4"/>';
+      for(var i=1;i<6;i++) s+=L(px+pw*i/6,py,px+pw*i/6,py+ph,1,C,null,.12); for(var j=1;j<16;j++) s+=L(px,py+ph*j/16,px+pw,py+ph*j/16,1,C,null,.12);
+      s+='<clipPath id="gpc"><rect x="'+px+'" y="'+py+'" width="'+pw+'" height="'+ph+'"/></clipPath><g clip-path="url(#gpc)">'+gtree(px+pw/2,py+ph,110,UP,5,5,{acc:.3,spread:.5,w:3.4}).svg+'</g>';
+      [[90,180],[150,330],[70,450],[210,520]].forEach(function(p,i){
+        s+='<rect x="'+(p[0]-22)+'" y="'+(p[1]-36)+'" width="44" height="72" rx="7" fill="'+BG+'" stroke="'+C+'" stroke-width="2.2"/>';
+        s+=PL([[p[0]-10,p[1]+12],[p[0]-2,p[1]-6],[p[0]+6,p[1]+4],[p[0]+12,p[1]-14]],2,i===1?A:C);
+        var ey=py+120+i*110; s+=PL([[p[0]+22,p[1]],[p[0]+60,p[1]],[px-30,ey],[px,ey]],1.8,i===1?A:C,'2 7')+N(px,ey,6,i===1?'a':'f');
+      });
+      s+=ticks(40,600,600,14); return s; },
+    /* 作品跟他們有關係：外部一點＋漣漪，紅線連到屬於它的那一枝 */
+    relation: function(){
+      var s=grid(0,0,620,620,31);
+      var t=gtree(280,560,100,UP,5,41,{acc:0,spread:.6}); s+=t.svg;
+      var tip=t.tips.reduce(function(b,p){ return (p[0]>b[0]&&p[1]<300)?p:b; },[0,0]);
+      var ox=560, oy=470;
+      s+=ring(ox,oy,22,.6)+ring(ox,oy,40,.35)+ring(ox,oy,62,.18)+N(ox,oy,10,'a');
+      s+=PL([[ox,oy],[ox,tip[1]+40],[tip[0]+30,tip[1]+10],[tip[0],tip[1]]],3,A)+N(tip[0],tip[1],8,'a')+ring(tip[0],tip[1],18,.6);
+      s+=ticks(40,600,600,14); return s; },
+    /* 系統：規則方格 → 三種不同的結構 */
+    system: function(){
+      var s='', gx=50, gy=220, r=rng(4);
+      for(var i=0;i<6;i++) for(var j=0;j<6;j++){ var on=r()<.4; s+='<rect x="'+(gx+i*26)+'" y="'+(gy+j*26)+'" width="20" height="20" fill="'+(on?(r()<.2?A:C):'none')+'" stroke="'+C+'" stroke-width="1.4" opacity="'+(on?1:.4)+'"/>'; }
+      s+=PL([[gx+156,gy+78],[300,gy+78]],2,C,'2 7');
+      [[340,4],[450,11],[560,29]].forEach(function(p){ s+=gtree(p[0],520,62,UP,5,p[1],{acc:.15,spread:.5,w:3}).svg; });
+      s+=L(300,520,610,520,2)+ticks(300,610,550,10.3); return s; },
+    /* 從圖像到行動：一筆的軌跡＋時間刻度＋播放 */
+    action: function(){
+      var s='', pts=[[40,330],[120,250],[190,380],[270,290],[350,240],[430,330],[510,380],[590,280]];
+      s+=PL(pts,12,C)+PL(pts,3,BG,'1 22');
+      pts.forEach(function(p,i){ s+=N(p[0],p[1],i===3?10:6,i===3?'a':'o'); s+=L(p[0],p[1]+16,p[0],470,1.2,C,'2 6',.5); });
+      s+=ticks(40,590,470,13.75);
+      s+=ring(120,110,44,.8)+'<path d="M108 88 L142 110 L108 132Z" fill="'+A+'"/>'; return s; },
+    /* 收藏：三張卡 */
+    collect: function(){
+      var s='';
+      [[-16,BG],[0,BG],[16,BG]].forEach(function(c,k){ s+='<rect x="250" y="160" width="140" height="200" rx="10" fill="'+(k===1?A:c[1])+'" stroke="'+C+'" stroke-width="2.4" transform="rotate('+c[0]+' 320 460)"/>'; });
+      s+='<g>'+gtree(320,330,34,UP,4,8,{acc:0,spread:.5,w:2.4}).svg+'</g>';
+      [[150,140,12],[480,110,9],[500,300,14],[130,330,8]].forEach(function(p){ s+='<path d="M'+p[0]+' '+(p[1]-p[2])+' L'+(p[0]+p[2]*.6)+' '+p[1]+' L'+p[0]+' '+(p[1]+p[2])+' L'+(p[0]-p[2]*.6)+' '+p[1]+'Z" fill="'+C+'"/>'; });
+      s+=ticks(60,580,560,13); return s; },
+    /* 同頻：圓與方，一條共同的脈衝 */
+    pulse: function(){
+      var s='';
+      s+=ring(310,330,200,.12,'3 9')+ring(310,330,250,.08);
+      s+='<circle cx="190" cy="300" r="80" fill="'+BG+'" stroke="'+C+'" stroke-width="2.6"/><rect x="350" y="220" width="160" height="160" rx="18" fill="'+BG+'" stroke="'+C+'" stroke-width="2.6"/>';
+      s+=PL([[20,300],[150,300],[168,250],[186,350],[204,270],[222,300],[380,300],[398,250],[416,350],[434,270],[452,300],[600,300]],3.6,A);
+      s+=N(190,300,6,'f')+N(430,300,6,'f')+ticks(40,580,470,13.5); return s; },
+    thanks: function(){ return ILLO.cover(); }
   };
   [].forEach.call(document.querySelectorAll('.illo[data-illo]'),function(el){
     var k=el.getAttribute('data-illo'); if(!ILLO[k]) return;
-    el.innerHTML='<svg viewBox="0 0 620 620" role="img" aria-label="插畫" stroke-linecap="round" stroke-linejoin="round">'+ILLO[k]()+'</svg>';
+    el.innerHTML='<svg viewBox="0 0 620 620" role="img" aria-label="幾何插畫" stroke-linecap="round" stroke-linejoin="round">'+ILLO[k]()+'</svg>';
   });
 })();
 </script>

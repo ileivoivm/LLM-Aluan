@@ -2,7 +2,7 @@
 ## How I Use LLMs: A Working Methodology from Structure to Creation
 
 王新仁（Aluan Wang）｜2026
-**Live deck →** [中文版](https://ileivoivm.github.io/LLM-Aluan/) · [English](https://ileivoivm.github.io/LLM-Aluan/?lang=en) · [演算法／亂數與機率教學](https://ileivoivm.github.io/LLM-Aluan/algo.html)
+**Live deck →** [中文版](https://ileivoivm.github.io/LLM-Aluan/) · [English](https://ileivoivm.github.io/LLM-Aluan/?lang=en) · [演算法／亂數與機率教學](https://ileivoivm.github.io/LLM-Aluan/algo.html) · [ART TAIPEI 2026 講座：一條路徑，長成一座森林](https://ileivoivm.github.io/LLM-Aluan/arttaipei-2026/)
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -165,6 +165,8 @@ You may share, adapt, and use this material for any purpose, including commercia
 
 ## 修訂歷史 · Revisions
 
+- **延伸單元** — ART TAIPEI 2026 第五場藝術講座 · [arttaipei-2026/](./arttaipei-2026/)
+  一條路徑，長成一座森林：集體意志的藝術（19 頁投影片、口說稿、PDF）
 - **v1.1** — 2026.04.30 · 在地實驗 (Etat Lab) · 心智政治系列 NO.7
   新增：13b 你正在決定五年後的常識 / 13c 留給後來的人 / 15 Coda / 兩句核心引言 / 開放授權聲明
 - **v1.0** — 2026.04.16 · 國立臺灣藝術大學 (NTUA)
@@ -197,6 +199,7 @@ This is the talk's thesis in practice: structure makes collaboration with LLMs �
 ├── paths.html                      # Paths 系列子頁面
 ├── gv.html                         # Good Vibrations 系列子頁面
 ├── background.html                 # 藝術家背景與展覽案例
+├── arttaipei-2026/                 # 延伸單元：ART TAIPEI 2026 講座（投影片＋口說稿＋PDF）
 ├── speaker-notes.md                # 講者筆記內容源（中英雙語，artist OS 彈窗）
 ├── 我如何使用LLM…論.md              # 演講原稿（內容唯一來源）
 ├── background.md                   # background.html 內容來源

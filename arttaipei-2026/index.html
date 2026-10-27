@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一條路徑，長成一座森林｜阿亂 ART TAIPEI 2026</title>
+<meta name="description" content="王新仁（阿亂）ART TAIPEI 2026 藝術講座投影片：集體意志的藝術。CC BY-SA 4.0。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<style>
+  :root{
+    --paper:#F3EFE6; --paper-2:#E9E3D6; --ink:#17150F; --ink-2:#3A362E;
+    --mute:#7A7468; --line:#CFC7B6; --seal:#A8382B;
+    --serif:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif;
+    --sans:"Noto Sans TC","Noto Sans CJK TC","PingFang TC",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2b2924}
+  body{font-family:var(--sans);color:var(--ink)}
+
+  /* ---------- slide frame (1920×1080) ---------- */
+  .slide{width:1920px;height:1080px;position:relative;overflow:hidden;
+    background:var(--paper);padding:120px 150px 110px;display:flex;flex-direction:column}
+  .slide.dark{background:var(--ink);color:var(--paper)}
+  .foot{position:absolute;left:150px;right:150px;bottom:52px;display:flex;justify-content:space-between;
+    font-size:22px;letter-spacing:.08em;color:var(--mute)}
+  .dark .foot{color:#8C8576}
+  .kicker{font-size:28px;letter-spacing:.3em;color:var(--seal);margin-bottom:36px;font-weight:500}
+  .dark .kicker{color:#D9705F}
+  h1{font-family:var(--serif);font-weight:700;font-size:112px;line-height:1.18;letter-spacing:.02em}
+  h2{font-family:var(--serif);font-weight:700;font-size:76px;line-height:1.25;margin-bottom:48px}
+  p,li{font-size:38px;line-height:1.7;color:var(--ink-2)}
+  .dark p,.dark li{color:#D8D2C4}
+  ul{list-style:none}
+  li{padding-left:44px;position:relative;margin-bottom:18px}
+  li::before{content:"";position:absolute;left:0;top:.82em;width:22px;height:2px;background:var(--seal)}
+  .small{font-size:30px;color:var(--mute);line-height:1.6}
+  .en{font-family:var(--serif);font-style:italic;color:var(--mute)}
+  b{color:var(--ink);font-weight:700}
+  .dark b{color:var(--paper)}
+  .seal{display:inline-block;border:3px solid var(--seal);color:var(--seal);font-family:var(--serif);
+    font-weight:700;font-size:30px;padding:6px 12px;letter-spacing:.1em}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:90px;flex:1;align-items:center}
+  .cols.w{grid-template-columns:1.15fr .85fr}
+  .quote{font-family:var(--serif);font-size:62px;line-height:1.5;font-weight:600}
+  .quote small{display:block;font-family:var(--sans);font-size:28px;color:var(--mute);margin-top:36px;font-weight:400;letter-spacing:.05em}
+  .dark .quote small{color:#8C8576}
+
+  /* media slots */
+  .media{border:3px dashed var(--line);background:var(--paper-2);display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--mute);font-size:28px;line-height:1.6;padding:40px;width:100%;height:100%;min-height:420px}
+  .dark .media{border-color:#4A463D;background:#211F19;color:#8C8576}
+  .media b{display:block;font-size:34px;color:var(--ink-2);margin-bottom:8px}
+  .dark .media b{color:#C9C2B3}
+  /* 配圖一律完整顯示、不裁切：圖依比例縮到框內，圖說貼齊圖的左緣 */
+  .photo{display:block;width:auto;height:auto;max-width:100%;max-height:var(--h,700px);object-fit:contain}
+  video.photo{background:var(--ink)}
+  .print-only{display:none}
+  figure{display:flex;flex-direction:column;gap:18px;width:fit-content;max-width:100%;justify-self:end;align-self:center}
+  figcaption{font-size:24px;color:var(--mute);letter-spacing:.04em}
+
+  /* timeline */
+  .timeline{display:flex;align-items:flex-start;margin-top:30px;position:relative}
+  .timeline::before{content:"";position:absolute;left:0;right:0;top:27px;height:3px;background:var(--ink)}
+  .tl{flex:1;position:relative;padding-top:78px;padding-right:30px}
+  .tl::before{content:"";position:absolute;left:0;top:14px;width:30px;height:30px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+  .tl.now::before{background:var(--seal);border-color:var(--seal)}
+  .tl .y{font-family:var(--serif);font-size:34px;font-weight:700;color:var(--ink)}
+  .tl .t{font-size:34px;font-weight:700;margin:10px 0 8px;color:var(--ink)}
+  .tl .d{font-size:26px;line-height:1.55;color:var(--mute)}
+
+  /* flow (COMPUTEX 30s) */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:20px}
+  .step{border-top:6px solid var(--ink);padding-top:26px}
+  .step .n{font-family:var(--serif);font-size:64px;font-weight:700;color:var(--seal);line-height:1}
+  .step .h{font-size:36px;font-weight:700;margin:18px 0 12px}
+  .step .d{font-size:27px;line-height:1.6;color:var(--ink-2)}
+
+  /* facts row */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin-top:10px}
+  .fact .v{font-family:var(--serif);font-size:84px;font-weight:700;line-height:1.1}
+  .fact .l{font-size:25px;color:var(--mute);margin-top:12px;line-height:1.5}
+
+  /* three shifts */
+  .shifts{display:grid;grid-template-columns:repeat(4,1fr);gap:50px;flex:1;align-items:center}
+  .shift .from{font-size:34px;color:var(--mute)}
+  .shift .arrow{font-family:var(--serif);font-size:48px;color:var(--seal);margin:10px 0}
+  .shift .to{font-family:var(--serif);font-size:72px;font-weight:700;line-height:1.1}
+  .shift .d{font-size:28px;color:var(--ink-2);line-height:1.6;margin-top:26px}
+
+  .center{justify-content:center}
+  .note{position:absolute;right:150px;top:56px;font-size:20px;color:var(--seal);letter-spacing:.06em}
+
+  /* opening thesis: three-step progression */
+  .prog{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;flex:1;align-content:center}
+  .pstep{border-top:6px solid var(--line);padding-top:30px}
+  .pstep.now{border-top-color:var(--seal)}
+  .pstep .tag{font-size:26px;letter-spacing:.2em;color:var(--mute)}
+  .pstep.now .tag{color:var(--seal)}
+  .pstep .big{font-family:var(--serif);font-size:58px;font-weight:700;line-height:1.3;margin:18px 0 22px}
+  .pstep .d{font-size:30px;line-height:1.7;color:var(--ink-2)}
+  /* 白線插畫：只放在深色大標題頁的空白處 */
+  .illo{position:absolute;right:130px;top:170px;width:740px;height:740px;pointer-events:none}
+  .illo svg{width:100%;height:100%;display:block;overflow:visible}
+  .slide.has-illo h1,.slide.has-illo .quote,.slide.has-illo p{max-width:960px}
+  /* ---------- screen viewer ---------- */
+  @media screen{
+    body{height:100%;overflow:hidden;background:#2b2924}
+    html{height:100%}
+    #stage{position:fixed;top:0;left:0;bottom:0;right:0;display:flex;align-items:center;justify-content:center}
+    .slide{position:absolute;transform-origin:center center;display:none;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+    .slide.on{display:flex}
+    #hint{position:fixed;bottom:14px;left:0;right:0;text-align:center;color:#8C8576;font-size:13px;letter-spacing:.08em}
+  }
+  #bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;align-items:center;justify-content:center;
+    padding:10px max(16px,env(safe-area-inset-left,0px)) calc(10px + env(safe-area-inset-bottom,0px));font:14px var(--sans);color:#C9C2B3;z-index:5}
+  #bar button{font:inherit;color:#F3EFE6;background:#3A362E;border:1px solid #5A554A;border-radius:6px;padding:6px 14px;cursor:pointer}
+  #bar button:focus-visible{outline:2px solid #D9705F;outline-offset:2px}
+  #count{min-width:64px;text-align:center;font-variant-numeric:tabular-nums}
+  body.grid{overflow:auto!important;height:auto!important}
+  body.grid #stage{position:static;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;
+    padding:16px max(16px,env(safe-area-inset-left,0px)) 80px max(16px,env(safe-area-inset-right,0px))}
+  body.grid .slide{display:flex!important;position:absolute;left:0;top:0;transform-origin:top left;cursor:pointer;margin:0!important}
+  body.grid .cell{position:relative;overflow:hidden;aspect-ratio:16/9;max-width:100%}
+  body.grid .cell span{position:absolute;left:8px;top:6px;z-index:2;font:12px var(--sans);color:#A8382B;background:#F3EFE6;padding:1px 6px}
+
+  /* 講稿（OS）面板：只在螢幕上，列印不出現 */
+  #notes{position:fixed;top:0;right:0;bottom:0;width:min(34vw,560px);background:#F3EFE6;color:#17150F;z-index:6;
+    display:flex;flex-direction:column;font-family:var(--sans);box-shadow:-20px 0 50px rgba(0,0,0,.35);
+    padding:calc(18px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) 80px 22px}
+  #notes[hidden]{display:none}
+  #notes .nh{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #CFC7B6;padding-bottom:12px}
+  #notes .nn{font-family:var(--serif);font-size:30px;font-weight:700;color:#A8382B;font-variant-numeric:tabular-nums}
+  #notes .nt{font-size:17px;font-weight:700;flex:1;min-width:0}
+  #notes .ntime{font-size:14px;color:#7A7468;white-space:nowrap}
+  #notes .nb{flex:1;overflow-y:auto;padding-top:14px}
+  #notes .nb p{font-size:18px;line-height:1.8;color:#3A362E;margin:0 0 14px}
+  #notes .nb p.cue{color:#7A7468;font-size:15px}
+  #notes .nb b{color:#A8382B}
+  #notes .nb p.bridge{background:#E9E3D6;border-left:4px solid #A8382B;padding:10px 14px;color:#17150F}
+  #notes .nnext{font-size:13px;color:#7A7468;border-top:1px solid #CFC7B6;padding-top:10px}
+  #timer{font-variant-numeric:tabular-nums;min-width:70px;text-align:center}
+  @media (max-width:700px){ #notes{width:100%;top:auto;height:55vh} }
+  /* ---------- print / PDF ---------- */
+  @page{size:1920px 1080px;margin:0}
+  @media print{
+    html,body{background:none}
+    #bar{display:none}
+    #notes{display:none!important}
+    .slide{page-break-after:always;break-after:page;display:flex!important;transform:none!important}
+    .note{display:none}
+    video{display:none!important}
+    .print-only{display:block}
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide has-illo dark">
+  <div class="illo" data-illo="cover" aria-hidden="true"></div>
+  <div class="kicker">ART TAIPEI 2026 · 第五場藝術講座　科技與藝術之間：創作、感知與新經驗</div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+    <h1>一條路徑，<br>長成一座森林</h1>
+    <p style="margin-top:56px;font-size:40px">阿亂 王新仁 <span class="en">Aluan Wang</span></p>
+    <p class="small" style="color:#8C8576">生成藝術家　｜　akaSwap 共同創辦人暨藝術總監</p>
+  </div>
+  <div class="foot"><span>aluanwang.com　·　@IOivm</span><span class="seal" style="font-size:22px;padding:4px 10px;border-color:#D9705F;color:#D9705F">阿亂</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">關於我</div>
+  <div class="cols" style="grid-template-columns:1fr auto;gap:80px">
+    <div>
+      <h2>寫規則的人，<br>讓作品自己長出來</h2>
+      <ul>
+        <li>新媒體藝術出身，十五年以上的程式創作</li>
+        <li>2021 在 Art Blocks 發表第一件長篇生成作品</li>
+        <li>《植徑集》2025 年由<b>國立臺灣博物館</b>典藏</li>
+        <li>2025 柏林 Galerie Met 個展，海外首展</li>
+        <li>台北數位藝術節首獎（2012、2015）</li>
+      </ul>
+    </div>
+    <figure><img class="photo" style="--h:700px" src="assets/studio.jpg" alt="阿亂在工作室創作"><figcaption>工作室</figcaption></figure>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>02</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">AI 與藝術</div>
+  <h2>AI 的出現無法避免，<br>藝術家能選擇的，是面對它的方式</h2>
+  <div class="prog">
+    <div class="pstep"><div class="tag">守住稀缺</div><div class="big">像精品一樣</div><div class="d">專注在 AI 做不到的那一塊，物以稀為貴，守住人類共同的價值。</div></div>
+    <div class="pstep"><div class="tag">與它共處</div><div class="big">成為伴侶</div><div class="d">思考怎麼和 AI 成為一個好的創作夥伴。</div></div>
+    <div class="pstep now"><div class="tag">我的選擇</div><div class="big">同頻共振</div><div class="d">身心靈都處在跟它同樣的頻率，一起脈動。</div></div>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>03</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">AI 時代之後</div>
+  <h2>當畫面變得容易，藝術在討論什麼？</h2>
+  <div class="prog">
+    <div class="pstep"><div class="tag">已經被解決</div><div class="big">畫面與美感</div><div class="d">輸出一張漂亮的畫面，變得很簡單。</div></div>
+    <div class="pstep"><div class="tag">被重新重視</div><div class="big">意圖與行為</div><div class="d">人們回頭看藝術家想做什麼、做了什麼。</div></div>
+    <div class="pstep now"><div class="tag">生成藝術正在做的</div><div class="big">系統與共同參與</div><div class="d">建立系統，邀請人群進入；不同的思考匯入，作品因此長大。</div></div>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>04</span></div>
+</section>
+
+<section class="slide has-illo dark center">
+  <div class="illo" data-illo="collective" aria-hidden="true"></div>
+  <div class="quote">讓作品超越一個藝術家的意志，<br>成為<span style="color:#D9705F">集體意志</span>的藝術。<small>這正成為這個世界上，藝術新的方向。</small></div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>05</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">一條貫穿的線</div>
+  <h2>我所有的作品，都在畫同一條「路徑」</h2>
+  <div class="timeline">
+    <div class="tl"><div class="y">2020 前</div><div class="t">音像作品</div><div class="d">向量、點、力的碰撞<br>聲音與影像同源</div></div>
+    <div class="tl"><div class="y">2021</div><div class="t">Good Vibrations</div><div class="d">區塊鏈上的第一件作品<br>路徑的交叉與碰撞</div></div>
+    <div class="tl"><div class="y">2023–25</div><div class="t">植徑集 Polypaths</div><div class="d">路徑長成植物<br>觀眾一起種</div></div>
+    <div class="tl"><div class="y">2025–</div><div class="t">墨域 inkField</div><div class="d">路徑有了速度與呼吸<br>保存畫的過程</div></div>
+    <div class="tl now"><div class="y">2026–</div><div class="t">前往美術館的路上</div><div class="d">路徑變成旅行<br>空想的風景</div></div>
+  </div>
+  <p class="en" style="margin-top:auto;font-size:32px">“the paths and vectors inside it kept growing. Polypaths came from that. inkField came from Polypaths.”</p>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>06</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">植徑集 Polypaths　2023–2025</div>
+  <div class="cols" style="grid-template-columns:1fr auto;gap:90px">
+    <div>
+      <h2>自然，是最早的<br>生成藝術家</h2>
+      <p>每一株植物，都像一組正在運動的參數：葉序、節間、葉緣、分枝的角度。</p>
+      <p style="margin-top:30px"><b>不是模仿植物，而是理解植物</b>——它們怎麼分枝、怎麼跟限制協商、怎麼在秩序與混沌之間生長。</p>
+    </div>
+    <figure><img class="photo" style="--h:720px" src="assets/polypaths-1.jpg" alt="《植徑集》作品"><figcaption>《植徑集 Polypaths》</figcaption></figure>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>07</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">打破單向輸出</div>
+  <div class="cols w">
+    <div>
+      <h2>藝術家是系統建構者，<br>觀眾是園藝師</h2>
+      <ul>
+        <li>觀眾<b>親手畫一條路徑</b>，系統把它讀成種子和枝幹</li>
+        <li>畫面的結果有時像天堂，有時一塌糊塗——<b>大好大壞都值得一看</b></li>
+        <li>參與式版本被玩家叫作「<b>全民種菜</b>」</li>
+      </ul>
+    </div>
+    <div class="quote" style="font-size:52px">「假日最快樂的事，<br>就是一杯咖啡，<br>還有刷《植徑集》。」<small>一位藏家</small></div>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>08</span></div>
+</section>
+
+<section class="slide has-illo dark center">
+  <div class="illo" data-illo="participate" aria-hidden="true"></div>
+  <div class="kicker">感知</div>
+  <h1>從觀看，到參與</h1>
+  <p style="margin-top:48px">當作品走進商展、走進人潮，<br>觀眾不只是看，而是在作品裡留下自己的一筆。</p>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>09</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">COMPUTEX × ART TAIPEI 2026　Art Connected</div>
+  <div class="cols" style="grid-template-columns:1fr auto;gap:90px">
+    <div>
+      <h2 style="font-size:64px;white-space:nowrap">《植徑集——共生之鍊》</h2>
+      <div class="facts" style="gap:28px">
+        <div class="fact"><div class="v">500<span style="font-size:40px"> cm</span></div><div class="l">四面 LED 數位柱體</div></div>
+        <div class="fact"><div class="v">30<span style="font-size:40px"> 秒</span></div><div class="l">每位觀眾的互動時間</div></div>
+        <div class="fact"><div class="v">1</div><div class="l">片陌生人的森林</div></div>
+      </div>
+      <p style="margin-top:56px">立在南港展覽館一館的精神堡壘。觀眾掃 QR Code，化身「<b>數位園丁</b>」，畫下的軌跡即時演算成生長的藤蔓。</p>
+    </div>
+    <figure><img class="photo" style="--h:720px" src="assets/computex-2.jpg" alt="COMPUTEX 2026 南港展覽館一館《植徑集——共生之鍊》"><figcaption>COMPUTEX 2026，南港展覽館一館</figcaption></figure>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>10</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">設計一段 30 秒的參與</div>
+  <h2>每個人，都在前一個人停下的地方生根</h2>
+  <div class="flow">
+    <div class="step"><div class="n">01</div><div class="h">掃 QR</div><div class="d">柱體四面都有 QR Code，從哪一面走近都能加入</div></div>
+    <div class="step"><div class="n">02</div><div class="h">先看見前人</div><div class="d">手機上先出現上一位留下的植物，再開始畫</div></div>
+    <div class="step"><div class="n">03</div><div class="h">畫一條路徑</div><div class="d">30 秒內用手指畫下，系統讀成分枝與藤蔓</div></div>
+    <div class="step"><div class="n">04</div><div class="h">留給自己</div><div class="d">結束後可以存下自己的畫面當紀念</div></div>
+    <div class="step"><div class="n">05</div><div class="h">長上大柱</div><div class="d">選擇分享的人領號碼排隊，長進公共的森林</div></div>
+  </div>
+  <p class="small" style="margin-top:auto">手機是私密的輸入，大螢幕是集體的輸出，系統在背後把每一筆縫進下一位的畫面。</p>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>11</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">從商展現場學到的事</div>
+  <h2>同一套系統，換一個場域，<br>就是另一件作品</h2>
+  <ul>
+    <li><b>節奏是設計出來的。</b>美術館裡可以慢慢端詳；商展的人潮只給你 30 秒。</li>
+    <li><b>看見前人，陌生人才會連起來。</b>先看到上一位的植物，畫的人會考慮延伸、交錯，還是留白。</li>
+    <li><b>藝術與合作方的協商。</b>柱體的金、桃紅、綠三種色調，由現場人員觸發，回應贊助方的色彩——作品要能容納這種對話。</li>
+    <li>同一個系統，也在柏林個展、新北市美術館以不同的配置展出。</li>
+  </ul>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>12</span></div>
+</section>
+
+<section class="slide has-illo dark center">
+  <div class="illo" data-illo="relation" aria-hidden="true"></div>
+  <div class="quote">讓觀眾一直回來的，<br>不是畫面多好看，<br>而是知道——<span style="color:#D9705F">作品跟他們有關係</span>。<small>參與式的共感：看得見自己留下的那一筆</small></div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>13</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">墨域 inkField　2025–</div>
+  <div class="cols" style="grid-template-columns:1fr auto;gap:90px">
+    <div>
+      <h2>保存的不是畫，<br>是畫的過程</h2>
+      <ul>
+        <li>每一筆都被記錄：座標、時間、速度、壓力，連<b>手的猶豫</b>也記下</li>
+        <li>按下播放，不是放影片，而是<b>把整幅畫重新執行一次</b></li>
+        <li>墨的擴散、滲透、飛白，每一次都重新計算</li>
+      </ul>
+    </div>
+    <figure><video class="photo" style="--h:700px" src="assets/inkfield.mp4" poster="assets/inkfield-poster.jpg" muted loop autoplay playsinline preload="metadata"></video><img class="photo print-only" style="--h:700px" src="assets/inkfield-poster.jpg" alt="inkField 播放畫面"><figcaption>inkField 播放：整幅畫被重新執行一次</figcaption></figure>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>14</span></div>
+</section>
+
+<section class="slide">
+  <div class="cols" style="grid-template-columns:.8fr 1.2fr;gap:70px">
+    <div class="quote">「算力可以造假，<br>但消耗掉的真實時間<br>無法造假。」<small>謝赫六法第一法：氣韻生動——留在系統裡的那口「氣」</small></div>
+    <figure><img class="photo" src="assets/inkfield-1.jpg" alt="inkField 作品"><figcaption>inkField《聚散》</figcaption></figure>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>15</span></div>
+</section>
+
+<section class="slide dark">
+  <div class="kicker">正在進行　前往美術館的路上 On the Way to the Museum</div>
+  <div class="cols" style="grid-template-columns:.8fr 1.2fr;gap:70px">
+    <div>
+      <h2>空想的風景，<br>長在我走過的路上</h2>
+      <p>寫生，東方西方都一樣：不是把眼前全部畫下來，而是篩選、剔除、重新擺放。</p>
+      <p style="margin-top:28px">一套生成系統，只畫我生命中真正走過的地方。</p>
+      <p class="en" style="margin-top:40px;font-size:30px">“imagined landscapes, built from the paths my life has crossed.”</p>
+    </div>
+    <figure><video class="photo" style="--h:620px" src="assets/monetland.mp4" poster="assets/monetland-poster.jpg" muted loop autoplay playsinline></video><img class="photo print-only" style="--h:620px" src="assets/monetland-poster.jpg" alt="前往美術館的路上 生成畫面"><figcaption>前往美術館的路上：即時生成的街景</figcaption></figure>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>16</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">集體意志，也發生在收藏端</div>
+  <h2>Kento：數位藝術版的寶可夢卡</h2>
+  <div class="cols" style="grid-template-columns:1.35fr .65fr;gap:80px;align-items:start">
+    <div>
+      <ul style="--fs:34px">
+        <li style="font-size:34px">objkt 推出的<b>實體藝術卡包</b>，用一般貨幣購買，不需要加密錢包</li>
+        <li style="font-size:34px">一包 5 張、抽稀有度；高稀有卡用特殊油墨、燙金、全像卡紙</li>
+        <li style="font-size:34px">卡背刮開銀漆，有兌換碼，可以換到這件作品的<b>數位原作</b></li>
+        <li style="font-size:34px">不刮，兌換權就跟著實體卡走，可以交換、送人</li>
+      </ul>
+      <p class="small" style="margin-top:20px">在 NFT 市場急速緊縮時反而賣得很好：收藏不只是擁有，也可以是參與。這是下一代藏家的入口。</p>
+    </div>
+    <div class="facts" style="grid-template-columns:1fr;gap:34px;margin-top:0">
+      <div class="fact"><div class="v">40</div><div class="l">位數位藝術家<br>第一季共 117 張卡</div></div>
+      <div class="fact"><div class="v">951</div><div class="l">位 Kickstarter 支持者<br>首刷版售罄</div></div>
+      <div class="fact"><div class="v">約 €19<span style="font-size:48px">萬</span></div><div class="l">募資金額，原本目標只有 €4,680</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>17</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">科技與藝術之間</div>
+  <h2>四個正在發生的轉變</h2>
+  <div class="shifts">
+    <div class="shift"><div class="from">從觀看</div><div class="arrow">↓</div><div class="to">到參與</div><div class="d">觀眾在作品裡留下自己的一筆，作品因此跟他有關。</div></div>
+    <div class="shift"><div class="from">從圖像</div><div class="arrow">↓</div><div class="to">到行動</div><div class="d">保存畫的過程與時間，而不只是一張結果。</div></div>
+    <div class="shift"><div class="from">從擁有</div><div class="arrow">↓</div><div class="to">到遊玩</div><div class="d">收藏本身成為一種體驗，吸引新一代的藏家。</div></div>
+    <div class="shift"><div class="from">從作者</div><div class="arrow">↓</div><div class="to">到園丁</div><div class="d">藝術家設定世界的語法，讓別人——甚至 AI——接著長。</div></div>
+  </div>
+  <div class="foot"><span>阿亂 Aluan Wang · ART TAIPEI 2026</span><span>18</span></div>
+</section>
+
+<section class="slide dark has-illo">
+  <div class="illo" data-illo="collective" aria-hidden="true"></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+    <div class="quote">讓作品超越一個藝術家的意志，<br>成為<span style="color:#D9705F">集體意志</span>的藝術。</div>
+    <h1 style="margin-top:70px;font-size:96px">謝謝</h1>
+    <p style="margin-top:24px;font-size:36px">阿亂 王新仁 <span class="en">Aluan Wang</span></p>
+    <p class="small" style="color:#8C8576">aluanwang.com · X @IOivm</p>
+  </div>
+  <div class="foot"><span>ART TAIPEI 2026 · 科技與藝術之間：創作、感知與新經驗</span><span class="seal" style="font-size:22px;padding:4px 10px;border-color:#D9705F;color:#D9705F">阿亂</span></div>
+</section>
+</div>
+<div id="bar"><a id="home" href="../" style="color:#C9C2B3;text-decoration:none;margin-right:6px">← LLM-Aluan</a><button id="prev" type="button">← 上一頁</button><span id="count"></span><button id="next" type="button">下一頁 →</button><button id="gridbtn" type="button">總覽</button><button id="notesbtn" type="button" aria-pressed="false">講稿</button><button id="timerbtn" type="button">計時</button><span id="timer">00:00</span></div>
+<aside id="notes" hidden aria-label="講稿"><div class="nh"><span class="nn" id="nnum"></span><span class="nt" id="ntitle"></span><span class="ntime" id="ntime"></span></div><div class="nb" id="nbody"></div><div class="nnext" id="nnext"></div></aside>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')), i=0, grid=false, stage=document.getElementById('stage');
+  var h=parseInt((location.hash||'').replace(/\D/g,''),10); if(h>0&&h<=slides.length) i=h-1;
+  function fit(){
+    if(grid){ slides.forEach(function(el){ var w=el.parentNode.clientWidth; el.style.transform='scale('+(w/1920)+')'; }); return; }
+    var st=document.getElementById('stage'), W=st.clientWidth||innerWidth, H=st.clientHeight||innerHeight; var s=Math.min(W/1920,(H-60)/1080)*0.97;
+    slides.forEach(function(el){ el.style.transform='scale('+s+')'; el.style.marginTop='-50px'; });
+  }
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(el,k){ el.classList.toggle('on',k===i); });
+    document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+    try{ history.replaceState(null,'','#p'+(i+1)); }catch(e){} }
+  function setGrid(on){ grid=on; document.body.classList.toggle('grid',on);
+    document.getElementById('gridbtn').textContent=on?'單頁':'總覽';
+    slides.forEach(function(el,k){
+      if(on){ var c=document.createElement('div'); c.className='cell'; var t=document.createElement('span'); t.textContent=k+1;
+        el.parentNode.insertBefore(c,el); c.appendChild(t); c.appendChild(el);
+        el.onclick=function(){ setGrid(false); show(k); }; }
+      else if(el.parentNode.className==='cell'){ var c2=el.parentNode; c2.parentNode.insertBefore(el,c2); c2.remove(); el.onclick=null; }
+    }); fit(); if(!on) window.scrollTo(0,0); }
+  document.getElementById('prev').onclick=function(){show(i-1)};
+  document.getElementById('next').onclick=function(){show(i+1)};
+  document.getElementById('gridbtn').onclick=function(){setGrid(!grid)};
+  addEventListener('keydown',function(e){ if(grid) return;
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>=0){show(i+1);e.preventDefault();}
+    if(['ArrowLeft','PageUp'].indexOf(e.key)>=0){show(i-1);e.preventDefault();} });
+  stage.addEventListener('click',function(e){ if(grid) return; var st=document.getElementById('stage'); if(e.clientX>st.clientWidth/2) show(i+1); else show(i-1); });
+  addEventListener('resize',fit);
+  addEventListener('beforeprint',function(){ if(grid) setGrid(false); slides.forEach(function(el){el.style.transform='none';el.style.marginTop='0';}); });
+  addEventListener('afterprint',fit);
+  fit(); show(i);
+})();
+</script>
+
+<script>
+(function(){
+  var C='#F3EFE6', A='#D9705F', BG='#17150F';
+  function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; var t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+  function P(d,o){ o=o||{}; return '<path d="'+d+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||C)+'" stroke-width="'+(o.w||3.4)+'"'+(o.dash?' stroke-dasharray="'+o.dash+'"':'')+(o.op?' opacity="'+o.op+'"':'')+'/>'; }
+  function Ci(x,y,r,o){ o=o||{}; return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||C)+'" stroke-width="'+(o.w||3.4)+'"/>'; }
+  function R(x,y,w,h,r,o){ o=o||{}; return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+r+'" fill="'+(o.fill||'none')+'" stroke="'+(o.stroke||C)+'" stroke-width="'+(o.w||3.4)+'"'+(o.tr?' transform="'+o.tr+'"':'')+'/>'; }
+  function f(n){ return Math.round(n*10)/10; }
+
+  /* 半身人物：線條臉、髮型、可選眼鏡與色塊 */
+  function head(cx,cy,s,o){
+    o=o||{}; var g=[];
+    function X(v){return f(cx+v*s)} function Y(v){return f(cy+v*s)}
+    if(o.hair==='long') g.push(P('M'+X(-35)+' '+Y(46)+' C'+X(-52)+' '+Y(-8)+' '+X(-34)+' '+Y(-52)+' '+X(0)+' '+Y(-50)+' C'+X(34)+' '+Y(-52)+' '+X(52)+' '+Y(-8)+' '+X(35)+' '+Y(46)+' Z',{fill:o.hairFill||A}));
+    g.push(P('M'+X(-66)+' '+Y(122)+' C'+X(-62)+' '+Y(74)+' '+X(-32)+' '+Y(60)+' '+X(0)+' '+Y(60)+' C'+X(32)+' '+Y(60)+' '+X(62)+' '+Y(74)+' '+X(66)+' '+Y(122),{fill:o.shirt?A:BG}));
+    g.push(P('M'+X(-13)+' '+Y(34)+' L'+X(-13)+' '+Y(60)+' M'+X(13)+' '+Y(34)+' L'+X(13)+' '+Y(60)));
+    g.push(P('M'+X(-15)+' '+Y(60)+' L'+X(0)+' '+Y(74)+' L'+X(15)+' '+Y(60),{fill:BG}));
+    g.push(P('M'+X(-31)+' '+Y(4)+' q'+f(-9*s)+' '+f(2*s)+' '+f(-7*s)+' '+f(11*s)+' q'+f(2*s)+' '+f(6*s)+' '+f(8*s)+' '+f(4*s)+' M'+X(31)+' '+Y(4)+' q'+f(9*s)+' '+f(2*s)+' '+f(7*s)+' '+f(11*s)+' q'+f(-2*s)+' '+f(6*s)+' '+f(-8*s)+' '+f(4*s),{fill:BG}));
+    g.push('<ellipse cx="'+X(0)+'" cy="'+Y(2)+'" rx="'+f(32*s)+'" ry="'+f(39*s)+'" fill="'+BG+'" stroke="'+C+'" stroke-width="3.4"/>');
+    var hf=o.hairFill||C;
+    if(o.hair==='short') g.push(P('M'+X(-33)+' '+Y(-2)+' C'+X(-38)+' '+Y(-46)+' '+X(30)+' '+Y(-56)+' '+X(34)+' '+Y(-6)+' C'+X(18)+' '+Y(-24)+' '+X(-8)+' '+Y(-30)+' '+X(-33)+' '+Y(-2)+' Z',{fill:hf}));
+    if(o.hair==='long') g.push(P('M'+X(-32)+' '+Y(-6)+' C'+X(-26)+' '+Y(-46)+' '+X(28)+' '+Y(-50)+' '+X(32)+' '+Y(-8)+' C'+X(10)+' '+Y(-22)+' '+X(-14)+' '+Y(-18)+' '+X(-32)+' '+Y(-6)+' Z',{fill:hf}));
+    if(o.hair==='bun'){ g.push(Ci(X(6),Y(-48),f(13*s),{fill:hf})); g.push(P('M'+X(-33)+' '+Y(-2)+' C'+X(-36)+' '+Y(-42)+' '+X(30)+' '+Y(-48)+' '+X(34)+' '+Y(-4)+' C'+X(10)+' '+Y(-28)+' '+X(-14)+' '+Y(-24)+' '+X(-33)+' '+Y(-2)+' Z',{fill:hf})); }
+    if(o.hair==='curly'){ [[-28,-14],[-20,-32],[-4,-40],[14,-38],[28,-24],[32,-8]].forEach(function(p){ g.push(Ci(X(p[0]),Y(p[1]),f(12*s),{fill:hf})); }); }
+    if(o.hair==='cap'){ g.push(P('M'+X(-34)+' '+Y(-4)+' C'+X(-36)+' '+Y(-50)+' '+X(30)+' '+Y(-58)+' '+X(36)+' '+Y(-10)+' Z',{fill:hf})); g.push(P('M'+X(18)+' '+Y(-8)+' C'+X(34)+' '+Y(-12)+' '+X(50)+' '+Y(-8)+' '+X(56)+' '+Y(-2)+' L'+X(30)+' '+Y(-2)+' Z',{fill:hf})); }
+    g.push(Ci(X(-11),Y(4),f(2.8*s),{fill:C,w:0}),Ci(X(11),Y(4),f(2.8*s),{fill:C,w:0}));
+    if(o.glasses){ g.push(Ci(X(-11),Y(4),f(9*s)),Ci(X(11),Y(4),f(9*s)),P('M'+X(-2)+' '+Y(4)+' L'+X(2)+' '+Y(4))); }
+    g.push(P('M'+X(0)+' '+Y(9)+' q'+f(-4*s)+' '+f(8*s)+' '+f(2*s)+' '+f(9*s)));
+    g.push(P('M'+X(-9)+' '+Y(22)+' Q'+X(0)+' '+Y(30)+' '+X(9)+' '+Y(22)));
+    if(o.cheek) g.push(Ci(X(-18),Y(17),f(4*s),{fill:A,w:0}),Ci(X(18),Y(17),f(4*s),{fill:A,w:0}));
+    return g.join('');
+  }
+
+  /* 生成植物：遞迴分枝＋葉片 */
+  function plant(x,y,len,ang,depth,seed,o){
+    o=o||{}; var r=rng(seed), out=[];
+    function leaf(px,py,a,sz,fill){ var dx=Math.cos(a),dy=Math.sin(a),nx=-dy,ny=dx, tx=px+dx*sz, ty=py+dy*sz, w=sz*0.38;
+      out.push(P('M'+f(px)+' '+f(py)+' Q'+f(px+dx*sz*.5+nx*w)+' '+f(py+dy*sz*.5+ny*w)+' '+f(tx)+' '+f(ty)+' Q'+f(px+dx*sz*.5-nx*w)+' '+f(py+dy*sz*.5-ny*w)+' '+f(px)+' '+f(py)+' Z',{fill:fill||BG,w:3}));
+      out.push(P('M'+f(px)+' '+f(py)+' L'+f(px+dx*sz*.75)+' '+f(py+dy*sz*.75),{w:1.8})); }
+    function br(px,py,L,a,d){
+      var bend=(r()-.5)*.5, ex=px+Math.cos(a)*L, ey=py+Math.sin(a)*L, mx=px+Math.cos(a+bend)*L*.55, my=py+Math.sin(a+bend)*L*.55;
+      out.push(P('M'+f(px)+' '+f(py)+' Q'+f(mx)+' '+f(my)+' '+f(ex)+' '+f(ey),{w:d>2?3.6:2.8}));
+      if(d<=0){ leaf(ex,ey,a+(r()-.5)*.6,L*.9*(o.leaf||1), r()<(o.accent||.25)?A:BG); return; }
+      var n=r()<.35?3:2;
+      for(var k=0;k<n;k++){ var na=a+(k-(n-1)/2)*(.55+r()*.25)+(r()-.5)*.2; br(ex,ey,L*(.7+r()*.12),na,d-1); }
+      if(r()<.6) leaf(mx,my,a+(r()<.5?-1:1)*1.0,L*.55*(o.leaf||1), r()<(o.accent||.25)?A:BG);
+    }
+    br(x,y,len,ang,depth); return out.join('');
+  }
+  function spark(x,y,s){ return P('M'+x+' '+(y-s)+' Q'+x+' '+y+' '+(x+s)+' '+y+' Q'+x+' '+y+' '+x+' '+(y+s)+' Q'+x+' '+y+' '+(x-s)+' '+y+' Q'+x+' '+y+' '+x+' '+(y-s)+' Z',{fill:C,w:2}); }
+  var UP=-Math.PI/2;
+  function robot(cx,cy,s,o){ o=o||{}; var g=[]; function X(v){return f(cx+v*s)} function Y(v){return f(cy+v*s)}
+    g.push(P('M'+X(-66)+' '+Y(122)+' C'+X(-62)+' '+Y(74)+' '+X(-32)+' '+Y(60)+' '+X(0)+' '+Y(60)+' C'+X(32)+' '+Y(60)+' '+X(62)+' '+Y(74)+' '+X(66)+' '+Y(122),{fill:o.shirt?A:BG}));
+    g.push(P('M'+X(-10)+' '+Y(36)+' L'+X(-10)+' '+Y(60)+' M'+X(10)+' '+Y(36)+' L'+X(10)+' '+Y(60)));
+    g.push(P('M'+X(0)+' '+Y(-40)+' L'+X(0)+' '+Y(-62))+Ci(X(0),Y(-68),f(7*s),{fill:A}));
+    g.push(R(X(-46),Y(-40),f(92*s),f(78*s),f(20*s),{fill:BG}));
+    g.push(R(X(-34),Y(-26),f(68*s),f(44*s),f(12*s),{fill:BG,w:2.6}));
+    g.push(Ci(X(-14),Y(-6),f(5*s),{fill:C,w:0}),Ci(X(14),Y(-6),f(5*s),{fill:C,w:0}));
+    g.push(P('M'+X(-8)+' '+Y(8)+' Q'+X(0)+' '+Y(14)+' '+X(8)+' '+Y(8)));
+    g.push(P('M'+X(-46)+' '+Y(-6)+' l'+f(-8*s)+' 0 M'+X(46)+' '+Y(-6)+' l'+f(8*s)+' 0',{w:4}));
+    return g.join(''); }
+
+  var ILLO={
+    cover: function(){ return plant(440,560,150,UP+.06,4,7,{accent:.3,leaf:.8})
+      + P('M318 470 C360 520 380 560 430 560',{dash:'2 10',w:3.4})
+      + head(200,360,1.75,{hair:'cap',glasses:true})
+      + R(250,420,96,128,12,{fill:BG,tr:'rotate(-18 298 484)'})
+      + P('M268 470 C285 455 300 500 318 470',{w:3,stroke:A})
+      + P('M300 520 L330 456',{w:4}) + Ci(300,528,14,{fill:BG}); },
+    collective: function(){ var s=plant(300,330,92,UP,5,21,{accent:.35,leaf:1.1}), xs=[80,190,300,410,520], hs=['short','long','curly','bun','cap'];
+      xs.forEach(function(x,k){ s+=P('M'+x+' '+(k%2?440:470)+' C'+x+' 380 300 400 300 330',{dash:'2 10',w:3,stroke:k===2?A:C}); });
+      xs.forEach(function(x,k){ s+=head(x,(k%2?480:510),.82,{hair:hs[k],glasses:k===4,shirt:k===1||k===3}); }); return s; },
+    system: function(){ var s=R(80,360,250,180,14,{fill:BG})+P('M80 392 L330 392')+Ci(100,376,4,{fill:C,w:0})+Ci(116,376,4,{fill:C,w:0})+Ci(132,376,4,{fill:A,w:0});
+      [[104,420,90],[124,446,120],[124,472,70],[104,498,40],[150,498,60]].forEach(function(l,k){ s+=P('M'+l[0]+' '+l[1]+' L'+(l[0]+l[2])+' '+l[1],{w:4,stroke:k===2?A:C}); });
+      s+=plant(390,540,70,UP,4,3)+plant(470,540,82,UP-.1,4,11,{accent:.4})+plant(545,540,60,UP+.15,4,29);
+      s+=P('M370 540 L585 540')+P('M332 450 C350 450 360 500 380 520',{dash:'2 9'}); return s; },
+    participate: function(){ var s=R(330,70,180,470,6,{fill:BG})+'<clipPath id="pc"><rect x="334" y="74" width="172" height="462"/></clipPath><g clip-path="url(#pc)">'+plant(420,540,95,UP,6,5,{accent:.45})+'</g>';
+      s+=R(476,488,26,26,2,{fill:BG})+P('M482 494 h6 v6 h-6z M492 504 h4 v4 h-4z',{w:2})+P('M330 540 L510 540 M300 540 L540 540',{w:3});
+      s+=head(150,380,1.4,{hair:'bun',shirt:true});
+      s+=R(195,410,62,104,10,{fill:BG,tr:'rotate(12 226 462)'})+P('M210 440 C222 430 214 470 232 462 S238 488 240 480',{stroke:A,w:3});
+      s+=P('M258 440 C300 380 340 360 380 300',{dash:'2 10',stroke:A}); return s; },
+    relation: function(){ var s=plant(300,520,100,UP,5,41,{accent:.12}); 
+      s+=P('M300 520 C330 420 360 380 410 300',{stroke:A,w:4.5})+plant(410,300,40,UP+.6,2,4,{accent:1});
+      s+=P('M120 520 L480 520');
+      s+=head(110,450,1.0,{hair:'long',hairFill:C})+head(500,440,1.05,{hair:'curly',shirt:true,cheek:true});
+      s+=P('M530 520 C540 470 520 420 470 330',{dash:'2 9',stroke:A});
+      s+=P('M458 300 c-8 -12 -26 -6 -20 8 c4 10 20 18 20 18 c0 0 16 -8 20 -18 c6 -14 -12 -20 -20 -8 z',{fill:A,w:2.6}); return s; },
+    action: function(){ var s='';
+      s+=P('M80 330 C150 250 190 410 260 320 S380 230 440 330 S520 390 540 300',{w:16,stroke:C})+P('M80 330 C150 250 190 410 260 320 S380 230 440 330 S520 390 540 300',{w:5,stroke:BG,dash:'1 26'});
+      [[80,330],[190,340],[300,284],[420,306],[540,300]].forEach(function(p,k){ s+=Ci(p[0],p[1],9,{fill:k===2?A:BG}); });
+      s+=P('M540 300 L590 160',{w:6})+P('M532 302 C520 280 545 262 548 300 Z',{fill:C,w:2.6})+P('M560 228 L578 234',{w:3});
+      s+=P('M80 470 L540 470');for(var t=0;t<=10;t++){ s+=P('M'+(80+t*46)+' 470 L'+(80+t*46)+' '+(t%5?482:494),{w:2.6}); }
+      s+=Ci(150,160,44,{fill:BG})+P('M138 138 L172 160 L138 182 Z',{fill:A,w:2.6}); return s; },
+    collect: function(){ var s='';
+      [[-26,'#'],[0,''],[26,'']].forEach(function(c,k){ s+=R(250,90,120,170,12,{fill:k===1?A:BG,tr:'rotate('+c[0]+' 310 330)'}); });
+      s+='<g transform="rotate(0 310 330)">'+plant(310,240,30,UP,3,8,{accent:0,leaf:1.2})+'</g>';
+      s+=spark(170,140,18)+spark(470,110,14)+spark(500,250,22)+spark(140,280,12);
+      s+=head(310,430,1.35,{hair:'curly',shirt:true,cheek:true});
+      s+=P('M236 540 C200 470 214 360 258 292',{w:3.4})+P('M384 540 C420 470 406 360 362 292',{w:3.4})+Ci(260,286,14,{fill:BG})+Ci(360,286,14,{fill:BG}); return s; },
+    pulse: function(){ var s='';
+      [70,120,170].forEach(function(r,k){ s+='<circle cx="310" cy="420" r="'+(r+120)+'" fill="none" stroke="'+C+'" stroke-width="2" opacity="'+(0.35-k*0.1)+'"/>'; });
+      s+=head(180,330,1.5,{hair:'cap',glasses:true});
+      s+=robot(450,330,1.5,{shirt:true});
+      s+=P('M40 470 L150 470 L170 440 L188 500 L206 410 L224 470 L380 470 L400 440 L418 500 L436 410 L454 470 L590 470',{stroke:A,w:4.5});
+      s+=spark(310,190,16)+spark(560,200,10)+spark(70,230,10); return s; },
+    thanks: function(){ var s=head(230,360,1.7,{hair:'cap',glasses:true,cheek:true});
+      s+=P('M338 548 C370 490 372 400 360 320',{w:3.4})+P('M346 300 c-6 -22 4 -40 14 -36 c4 -18 22 -14 22 0 c10 -10 24 0 18 14 c10 4 8 22 -6 26 c-10 16 -40 14 -48 -4 z',{fill:BG});
+      s+=R(440,470,110,70,6,{fill:A})+plant(495,470,62,UP,4,17,{accent:.2});
+      s+=spark(400,200,14)+spark(560,330,10); return s; }
+  };
+  [].forEach.call(document.querySelectorAll('.illo[data-illo]'),function(el){
+    var k=el.getAttribute('data-illo'); if(!ILLO[k]) return;
+    el.innerHTML='<svg viewBox="0 0 620 620" role="img" aria-label="插畫" stroke-linecap="round" stroke-linejoin="round">'+ILLO[k]()+'</svg>';
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var NOTES=[{"n": 1, "title": "封面", "time": "0:40", "html": "<p>大家好，我是阿亂，王新仁，數位藝術家、akaswap 藝術總監。</p><p>今天的題目叫「一條路徑，長成一座森林」。</p><p>開始之前，想先認識一下大家。🙋 有收藏過數位作品，或者 NFT 的朋友，可以舉個手嗎？……好，謝謝。那在畫廊工作的呢？……自己在創作的藝術家呢？……</p><p>太好了，今天這場，剛好跟你們三種人都有關係。</p><p class=\"bridge\"><b>↪ 轉場：</b>在講作品之前，先簡單介紹一下我自己。</p>"}, {"n": 2, "title": "關於我", "time": "1:10", "html": "<p>我是新媒體藝術出身，用程式寫作品，已經十五年以上了。</p><p>但說實話，我最早愛上的是水彩寫生。小時候拿著畫板到外面畫風景，那種坐下來、看一個地方、決定畫什麼不畫什麼的感覺，到現在都還在我身上。後來我改用程式畫畫，可是我一直覺得，自己還是在寫生，只是換成用規則在畫。</p><p>這張照片是我的工作室。你們看到我拿著筆在平板上畫，這是真的，現在我反而很少自己一行一行打程式碼了。</p><p>2021 年，我在 Art Blocks 發表第一件長篇生成作品。去年，《植徑集》被國立臺灣博物館典藏，同一年在柏林辦了海外的第一個個展。</p><p>我在台灣這座海島上，沒有經紀、沒有代理畫廊，靠作品和網路，一步一步走到國際。</p><p class=\"bridge\"><b>↪ 轉場：</b>我剛剛說，我現在很少自己打程式了。這背後，就是今天沒辦法不先談的一件事：AI。</p>"}, {"n": 3, "title": "AI 的出現無法避免", "time": "1:50", "html": "<p>我知道，在座很多人一聽到 AI，心情都很複雜。我自己也是。</p><p>我的看法很簡單：AI 的出現，是無法避免的。藝術家能選擇的，是面對它的方式。</p><p>第一種方式，是守住稀缺。專注在 AI 做不到的那一塊，讓作品像精品一樣，物以稀為貴。我非常尊敬這個選擇，這是人類共同的價值。在座很多畫家、很多畫廊，守的就是這個。</p><p>第二種，是跟 AI 成為夥伴，想辦法一起工作。</p><p>第三種，是我自己的選擇：同頻共振。讓自己的身心靈，跟它處在同一個頻率，一起脈動，也跟世界一起脈動。</p><p>為什麼我會這樣選？講一件比較私人的事。我的視力這幾年越來越差，照原本的狀況，我可能兩年前就寫不動程式了。是 AI 讓我不用再一直盯著螢幕打字，還能繼續做生成藝術。所以對我來說，AI 不是對手，它延長了我的創作生涯。我常開玩笑說，我現在像鋼彈的駕駛員，機器人也是我的身體。</p><p>沒有哪一種態度是標準答案。符合你自己的那一種，才是最重要的。</p><p class=\"bridge\"><b>↪ 轉場：</b>不過，不管你選哪一種態度，AI 都已經改變了一件事：我們看待「藝術在做什麼」的方式。</p>"}, {"n": 4, "title": "當畫面變得容易", "time": "1:40", "html": "<p>第一，畫面和美感，已經被解決了。輸出一張漂亮的圖，現在幾秒鐘的事。</p><p>所以大家開始回頭重視第二件事：意圖和行為。這個藝術家想做什麼？他做了什麼？</p><p>🙋 我想問在座的藏家：你們最近買作品，買的是那張畫面，還是那個人、那個人做的事？……我猜，越來越多人會說是後者。</p><p>但我認為，生成藝術還多走了一步。我們討論的不只是畫面，也不只是意圖，而是<b>系統</b>：藝術家建立一套系統，然後邀請一群人走進來，一起參與。每個人帶著不同的想法進來，作品就因此長大。</p><p class=\"bridge\"><b>↪ 轉場：</b>如果把這件事說成一句話，就是這樣。</p>"}, {"n": 5, "title": "集體意志的藝術", "time": "0:50", "html": "<p>這是今天我最想讓大家帶回去的一句話：</p><p>讓作品，超越一個藝術家的意志，成為集體意志的藝術。</p><p class=\"cue\">（停兩秒）</p><p>我相信，這正在成為這個世界上，藝術新的方向。這句話不是我坐在書房裡想出來的，是我的作品一件一件長出來的。</p><p class=\"bridge\"><b>↪ 轉場：</b>而這件事，要從一條線說起。</p>"}, {"n": 6, "title": "一條貫穿的線", "time": "1:00", "html": "<p>回頭看，我這些年所有的作品，其實都在畫同一條「路徑」。</p><p>早期的音像作品，是向量、點、力的碰撞。2021 年的 Good Vibrations，是路徑的交叉。然後路徑長成植物，就是《植徑集》；路徑有了速度和呼吸，就是《墨域》；現在，路徑變成我人生走過的旅行。</p><p>這可能是家族遺傳。我爸、我叔叔、我哥，都喜歡走鄉間小路，不走大路。我也是。我不太靠地圖，我靠方向。也許這個習慣，就這樣跑進了我的作品裡。</p><p class=\"bridge\"><b>↪ 轉場：</b>這條路徑，第一次真正長成一座森林，是在《植徑集》。</p>"}, {"n": 7, "title": "植徑集：自然，是最早的生成藝術家", "time": "1:20", "html": "<p>《植徑集》是從一個想法開始的：自然，是最早的生成藝術家。</p><p>每一株植物，都像一組正在運動的參數：葉子怎麼排列、節和節之間多長、葉緣是平的還是鋸齒、分枝的角度。看起來很隨機，其實背後都有規則。</p><p>所以《植徑集》不是要模仿植物，而是要理解植物：它們怎麼分枝，怎麼跟限制協商，怎麼在秩序和混沌之間長出來。</p><p>這件作品我做了兩年，以臺灣的原生植物，甚至已經消失的植物為靈感。</p><p class=\"bridge\"><b>↪ 轉場：</b>不過，規則寫好之後，真正讓它長大的，不是我。</p>"}, {"n": 8, "title": "藝術家是系統建構者，觀眾是園藝師", "time": "1:40", "html": "<p>《植徑集》真正特別的，不是植物，是「誰在種」。</p><p>在這件作品裡，我只是系統的建構者，負責定下這個世界的規則。真正種植物的，是觀眾和藏家。他們用手指畫一條路徑，系統就把這條路徑讀成種子和枝幹，長出一株只屬於他的植物。</p><p>老實說，剛開賣的時候反應很冷。我兩個晚上睡不著，一個一個私訊以前的藏家，在 Discord 上，別人問十個字，我回兩百字。</p><p>轉機是有一位藏家，分享了他種出來的一朵很特別的花。然後越來越多人跑進來，每天花好幾個小時畫路徑、種花。大家叫它「全民種菜」。有位藏家跟我說：「假日最快樂的事，就是一杯咖啡，還有刷《植徑集》。」</p><p>最讓我震撼的，是有些人種出來的東西，完全超出我自己的想像。那一刻我知道，這件作品已經不只是我的了。</p><p>🙋 給畫廊的朋友：這其實是一種新的策展，我叫它分散式策展。多樣性不是我一個人能做到的，是一群人一起做出來的。</p><p class=\"bridge\"><b>↪ 轉場：</b>不過，這些都還發生在螢幕裡、在網路上。</p>"}, {"n": 9, "title": "從觀看，到參與", "time": "0:20", "html": "<p>那如果把這件作品，從網路上搬到一個人潮洶湧的真實空間，會發生什麼事？</p><p class=\"bridge\"><b>↪ 轉場：</b>今年，我真的做了這件事。</p>"}, {"n": 10, "title": "COMPUTEX：《植徑集——共生之鍊》", "time": "1:30", "html": "<p>今年，ART TAIPEI 和 COMPUTEX 合作「Art Connected」，邀請我在南港展覽館一館的主入口，做了這根 500 公分高、四面都是 LED 的數位柱體。</p><p>這是全世界科技人最多的地方。大家是來看晶片、看 AI 伺服器的，不是來看藝術的。</p><p>但他們只要拿起手機，掃描柱子上的 QR Code，就變成一位「數位園丁」：手指畫下的軌跡，會即時演算成藤蔓，長在這根柱子上。</p><p>對我來說，能在這個場合，用共玩、傳接球的方式，呼應台灣半導體上下游的關係，是我最想講的事。</p><p>台灣的半導體，是一條上下游的鏈：每一家把手上的東西做好，再傳給下一家。這根柱子也一樣，每個人接住前一個人的植物，畫完，再傳給下一個人。</p><p class=\"bridge\"><b>↪ 轉場：</b>在商展，每個人能給你的時間很少。所以我花最多心思的，是怎麼設計那 30 秒。</p>"}, {"n": 11, "title": "設計一段 30 秒的參與", "time": "1:20", "html": "<p>一，柱子四面都有 QR Code，你從哪個方向走過來，都可以加入。</p><p>二，這是我最在意的一步：你打開手機，第一眼看到的，不是空白的畫布，而是<b>上一個人留下的植物</b>。你是接著前人畫的。</p><p>三，用 30 秒畫一條路徑。</p><p>四，畫完可以把自己的畫面存下來，當紀念。</p><p>五，想分享的人，領一個號碼排隊，你的植物就會長上大柱子，成為這座公共森林的一部分。</p><p>手機是私密的，大螢幕是集體的。系統在背後，把每個人的一筆，縫進下一個人的畫面裡。</p><p class=\"bridge\"><b>↪ 轉場：</b>這樣的設計，放在美術館和放在商展，結果完全不一樣。</p>"}, {"n": 12, "title": "同一套系統，換一個場域，就是另一件作品", "time": "1:20", "html": "<p>做完這次，我學到幾件事。</p><p>第一，節奏是設計出來的。在美術館，觀眾可以慢慢端詳；在商展，人潮只給你 30 秒。</p><p>第二，看見前人，陌生人才會連起來。當你先看到上一個人的植物，你會開始想：我要接著他長、跟他交錯，還是留一點白？</p><p>第三，藝術要能跟場域、跟合作方對話。在商展做作品，不能假裝自己在美術館。我覺得一件好的系統作品，要能容納這種對話，而不是被它破壞。</p><p>同一套系統，也在柏林的個展、在新北市美術館用不同的方式展出。場域一換，就是另一件作品。</p><p class=\"bridge\"><b>↪ 轉場：</b>做完這些，我一直在想一個問題。</p>"}, {"n": 13, "title": "作品跟他們有關係", "time": "0:50", "html": "<p>去年八月，這件作品在 X 上很轟動，幾百位藝術家和藏家 @ 我、跟我一起玩。我後來一直問自己：為什麼？</p><p>不是因為畫面有多好看。而是因為，他們知道，<b>作品跟他們有關係</b>。他們在裡面看得到自己留下的那一筆。</p><p>🙋 我想這對在座每一位都是一個提醒。不管你是畫廊、藝術家，還是藏家：今天的觀眾，想要的不只是被展示，而是被邀請。</p><p class=\"bridge\"><b>↪ 轉場：</b>參與，讓作品跟人有關。但我後來發現，還有另一種關係，是作品跟「時間」的關係。</p>"}, {"n": 14, "title": "墨域 inkField：保存的不是畫，是畫的過程", "time": "1:30", "html": "<p class=\"cue\">（影片播放中）</p><p>接下來這件，叫《墨域》，inkField。</p><p>大家現在看到的，不是一段錄好的影片。是電腦把我畫的這幅畫，從第一筆開始，重新畫一次。</p><p>因為我保存的，不是最後那張圖，而是畫的過程：每一筆的位置、時間、速度、力道，甚至我手停下來猶豫的那一下，全部都記下來。按下播放，就是把整幅畫重新執行一遍。墨怎麼暈開、怎麼滲進紙、怎麼留下飛白，每一次都重新計算，所以每一次都有一點不一樣。</p><p>謝赫六法第一條是「氣韻生動」。我想保存的，就是畫畫時那口「氣」。</p><p class=\"bridge\"><b>↪ 轉場：</b>為什麼我這麼在意過程？</p>"}, {"n": 15, "title": "算力可以造假", "time": "0:50", "html": "<p>這件作品，其實反映了我，也許也是在場很多藝術家的焦慮：AI 能產生結果，可是我們真正在乎的是過程，而過程以前從來沒有被記錄下來。</p><p>所以在 AI 時代，我常講一句話：</p><p>算力可以造假，但消耗掉的真實時間，無法造假。</p><p>AI 可以模仿任何一張畫的結果，但它模仿不了，一個人坐在那裡、一筆一筆畫下去的那段時間。</p><p>🙋 給藏家：也許未來我們收藏的，不只是一張圖，而是一段真實的時間。</p><p class=\"bridge\"><b>↪ 轉場：</b>如果《墨域》保存的是一筆一畫的時間，那我最新的作品，想保存的是更長的時間：一段人生走過的路。</p>"}, {"n": 16, "title": "前往美術館的路上", "time": "1:30", "html": "<p>這件新作品，叫《前往美術館的路上》。</p><p>它其實又回到了我小時候的水彩寫生。</p><p>寫生這件事，東方和西方有一個共同點：你從來不會把眼前的全部畫下來。你會篩選、剔除，然後重新擺放。美，是從取捨裡來的。</p><p>所以這件作品，是一套「空想寫生」的系統。它畫的是空想的風景，但每一個地方，都來自我生命中真正走過的路：歐洲的山城、東南亞的市集、日本的櫻花道。</p><p>技術上，我現在想畫中東、想畫埃及，都做得出來。但我沒有去過。沒去過的地方，畫出來只會是圖鑑，不會是寫生。所以我選擇不做。在什麼都做得出來的時代，<b>知道什麼不要做</b>，反而變成藝術家最重要的能力。</p><p>這件作品現在已經超過二十萬行程式。這不是我以前一個人辦得到的規模。我學到的是：在 AI 的時代，最該有的能力，是勇敢做夢。最怕的，是不敢提出需求、不敢做夢的自己。</p><p class=\"bridge\"><b>↪ 轉場：</b>說完創作的人怎麼取捨，最後我想換個位置，站到收藏的人那一邊。</p>"}, {"n": 17, "title": "集體意志，也發生在收藏端", "time": "1:30", "html": "<p>因為收藏的形態，也在改變。</p><p>🙋 先問一下，在座小時候有收集過卡片的，舉個手？……寶可夢、遊戲王都算。……好，很多人。</p><p>最近，國際上最大的 Tezos 數位藝術平台 objkt，做了一件很有趣的事，叫 Kento：把 40 位數位藝術家的作品，做成實體卡包，就像數位藝術版的寶可夢卡。你用一般的錢買一包，抽稀有度，卡背刮開，可以換到這件作品的數位原作。</p><p>他們在 Kickstarter 募資，原本目標只有四千多歐元，最後有 951 個人支持，募到大約十九萬歐元。而這是在 NFT 市場急速緊縮的時候。</p><p>我不是說藝術要變成抽卡。我想說的是：它找到了一個新的入口，讓收藏不只是擁有，也可以是參與。這可能就是下一代藏家走進來的那扇門。</p><p>🙋 給畫廊和藝術家的問題：我們除了創作作品，有沒有想過，也去設計作品「被收藏的方式」？</p><p class=\"bridge\"><b>↪ 轉場：</b>從創作到收藏，我們繞了一圈。最後，用四句話把今天整理起來。</p>"}, {"n": 18, "title": "四個正在發生的轉變", "time": "1:10", "html": "<p>從觀看，到參與：觀眾在作品裡留下自己的一筆，作品因此跟他有關。</p><p>從圖像，到行動：保存畫的過程和時間，而不只是一張結果。</p><p>從擁有，到參與：收藏本身，可以成為一種體驗。</p><p>從作者，到園丁：藝術家設定世界的規則，讓別人、甚至 AI，接著長下去。</p><p class=\"bridge\"><b>↪ 轉場：</b>這四個轉變，其實都指向同一件事。</p>"}, {"n": 19, "title": "集體意志的藝術・謝謝", "time": "0:50", "html": "<p>回到一開始那句話：</p><p>讓作品超越一個藝術家的意志，成為集體意志的藝術。</p><p>🙋 如果你是藏家，下次收藏時，可以問問自己：我能不能參與這件作品？如果你在畫廊，可以想想：你的展覽，能不能邀請觀眾留下一筆？如果你是藝術家，也許可以試試看，把畫筆的一部分，交給別人。</p><p>一條路徑，一個人畫，是一條線。很多人一起畫，就會長成一座森林。</p><p>謝謝大家。</p>"}];
+  var slides=[].slice.call(document.querySelectorAll('.slide')), panel=document.getElementById('notes'), btn=document.getElementById('notesbtn');
+  function cur(){ for(var k=0;k<slides.length;k++){ if(slides[k].classList.contains('on')) return k; } return 0; }
+  function render(){ var k=cur(), n=NOTES[k]||{title:'',time:'',html:''}, nx=NOTES[k+1];
+    document.getElementById('nnum').textContent=String(k+1).padStart(2,'0');
+    document.getElementById('ntitle').textContent=n.title;
+    document.getElementById('ntime').textContent=n.time?('建議 '+n.time):'';
+    document.getElementById('nbody').innerHTML=n.html; document.getElementById('nbody').scrollTop=0;
+    document.getElementById('nnext').textContent=nx?('下一頁：'+nx.title):'最後一頁'; }
+  function relayout(){ var stage=document.getElementById('stage');
+    var bar=document.getElementById('bar'); if(!panel.hidden && innerWidth>700){ stage.style.right=panel.offsetWidth+'px'; bar.style.right=panel.offsetWidth+'px'; } else { stage.style.right='0'; bar.style.right='0'; }
+    window.dispatchEvent(new Event('resize')); }
+  function setNotes(on){ panel.hidden=!on; btn.setAttribute('aria-pressed',on?'true':'false'); btn.textContent=on?'關閉講稿':'講稿';
+    try{ localStorage.setItem('aluan-notes',on?'1':'0'); }catch(e){}
+    if(on) render(); relayout(); }
+  btn.onclick=function(){ setNotes(panel.hidden); };
+  new MutationObserver(function(){ if(!panel.hidden) render(); }).observe(document.getElementById('stage'),{subtree:true,attributes:true,attributeFilter:['class']});
+  addEventListener('keydown',function(e){ if(e.key==='n'||e.key==='N'){ setNotes(panel.hidden); } });
+  var t0=0, acc=0, run=false, iv=null, tb=document.getElementById('timerbtn'), te=document.getElementById('timer');
+  function fmt(ms){ var s=Math.floor(ms/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+  function tick(){ te.textContent=fmt(acc+(run?Date.now()-t0:0)); }
+  tb.onclick=function(){ if(run){ acc+=Date.now()-t0; run=false; clearInterval(iv); tb.textContent='繼續'; }
+    else { t0=Date.now(); run=true; iv=setInterval(tick,500); tb.textContent='暫停'; } tick(); };
+  te.ondblclick=function(){ acc=0; t0=Date.now(); tick(); };
+  var saved=null; try{ saved=localStorage.getItem('aluan-notes'); }catch(e){}
+  if(saved==='1') setNotes(true);
+})();
+</script>
+</body>
+</html>

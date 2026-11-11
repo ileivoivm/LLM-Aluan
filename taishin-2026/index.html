@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>成為培養皿的園藝師</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* 版型：1920×1080 投影片；宣紙底、墨色字、印章紅點綴。字型只用 Google 簡報內建的思源宋體／思源黑體，轉 pptx 後版面不跑。 */
+:root{
+  --paper:#F3EFE6; --ink:#17150F; --mute:#7A7468; --line:#CFC7B6; --seal:#A8382B; --seal-l:#D9705F; --ink-mute:#8C8576;
+  --serif:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif;
+  --sans:"Noto Sans TC","Noto Sans CJK TC","PingFang TC",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#2a2722;height:100%}
+body{font-family:var(--sans);color:var(--ink)}
+
+/* ---------- 投影片本體 ---------- */
+.slide{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--paper);color:var(--ink);padding:120px 160px 140px}
+.slide.dark{background:var(--ink);color:#F3EFE6}
+.slide.dark .mute{color:var(--ink-mute)}
+.slide .foot{position:absolute;left:160px;right:160px;bottom:56px;display:flex;justify-content:space-between;font-size:22px;color:var(--mute);letter-spacing:.06em}
+.slide.dark .foot{color:var(--ink-mute)}
+.kicker{font-size:28px;letter-spacing:.18em;color:var(--seal);font-weight:500;margin:0 0 28px}
+.dark .kicker{color:var(--seal-l)}
+h1,h2,h3{font-family:var(--serif);margin:0;font-weight:700}
+h1{font-size:112px;line-height:1.25}
+h2{font-size:72px;line-height:1.35}
+h3{font-size:40px;line-height:1.4}
+p{margin:0}
+.lead{font-size:40px;line-height:1.7}
+.body{font-size:32px;line-height:1.75}
+.small{font-size:26px;line-height:1.6}
+.mute{color:var(--mute)}
+.seal{color:var(--seal)}
+.dark .seal{color:var(--seal-l)}
+.art{position:absolute;pointer-events:none}
+aside.notes{display:none}
+
+/* 01 封面 */
+.L-cover{display:flex;flex-direction:column;justify-content:center}
+.L-cover h1{max-width:1100px}
+.L-cover .sub{font-size:40px;margin-top:36px;color:var(--mute);font-family:var(--serif)}
+.L-cover .meta{margin-top:72px;display:flex;flex-direction:column;gap:10px;font-size:28px}
+.L-cover .art{right:120px;top:50%;transform:translateY(-50%)}
+
+/* 02 一句話 */
+.L-statement{display:flex;flex-direction:column;justify-content:center}
+.L-statement h2{font-size:84px;max-width:1500px;line-height:1.45}
+.L-statement .note{margin-top:56px;font-size:28px;color:var(--mute)}
+
+/* 03 章節頁（深） */
+.L-divider{display:flex;flex-direction:column;justify-content:center}
+.L-divider .num{font-family:var(--serif);font-size:200px;line-height:1;color:var(--seal-l);margin-bottom:40px}
+.L-divider h2{font-size:88px;max-width:1300px}
+.L-divider .lead{margin-top:40px;color:var(--ink-mute);max-width:1200px}
+.L-divider .art{right:140px;bottom:140px}
+
+/* 04 圖文 */
+.L-media{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:88px;align-items:center}
+.L-media h2{font-size:64px}
+.L-media .text{display:flex;flex-direction:column;gap:32px}
+.L-media figure{margin:0;display:flex;flex-direction:column;gap:16px}
+.L-media figure .frame{width:680px;height:500px;background:#E6DFD1;display:flex;align-items:center;justify-content:center}
+.L-media .photo{display:block;max-width:820px;width:auto;height:auto}
+.L-media .stat{font-family:var(--serif);font-size:120px;line-height:1;color:var(--seal);font-weight:700}
+.L-media .stat small{font-size:40px;color:var(--mute);margin-left:12px;font-weight:500}
+.L-media figcaption{font-size:22px;color:var(--mute)}
+
+/* 05 三欄 */
+.L-three .grid{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.L-three .col{display:flex;flex-direction:column;gap:20px;padding-top:36px;border-top:3px solid var(--ink)}
+.L-three .col.on{border-top-color:var(--seal)}
+.L-three .col .tag{font-size:24px;letter-spacing:.12em;color:var(--mute)}
+.L-three .col.on .tag{color:var(--seal)}
+
+/* 06 引言 */
+.L-quote{display:flex;flex-direction:column;justify-content:center}
+.L-quote .mark{font-family:var(--serif);font-size:180px;line-height:.6;color:var(--seal);height:90px}
+.L-quote blockquote{margin:0;font-family:var(--serif);font-size:72px;line-height:1.5;max-width:1600px;font-weight:500}
+.L-quote cite{display:block;margin-top:48px;font-style:normal;font-size:30px;color:var(--mute)}
+
+/* 07 步驟 */
+.L-steps .list{margin-top:64px;display:flex;flex-direction:column;gap:44px}
+.L-steps .row{display:grid;grid-template-columns:120px 1fr;gap:32px;align-items:start}
+.L-steps .n{font-family:var(--serif);font-size:72px;line-height:1;color:var(--seal)}
+.L-steps .row h3{font-size:42px}
+.L-steps .row p{margin-top:10px}
+
+/* 08 對照 */
+.L-compare .cols{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.L-compare .side{padding:48px 64px 56px;display:flex;flex-direction:column;gap:24px}
+.L-compare .side.a{background:#E9E3D6}
+.L-compare .side.b{background:var(--ink);color:#F3EFE6}
+.L-compare .side .tag{font-size:24px;letter-spacing:.14em;color:var(--mute)}
+.L-compare .side.b .tag{color:var(--seal-l)}
+.L-compare ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:14px}
+
+/* 09 四格 */
+.L-grid4 .grid{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:40px 80px}
+.L-grid4 .cell{display:grid;grid-template-columns:96px 1fr;gap:28px;align-items:start}
+.L-grid4 .ico{width:96px;height:96px}
+.L-grid4 .cell h3{font-size:44px}
+.L-grid4 .cell p{margin-top:8px}
+
+/* 10 收尾（深） */
+.L-closing{display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.L-closing h2{font-size:92px;max-width:1350px;line-height:1.45}
+.L-closing .thanks{margin-top:72px;font-family:var(--serif);font-size:56px;color:var(--seal-l)}
+.L-closing .art{right:140px;top:50%;transform:translateY(-50%)}
+
+/* ---------- 放映器 ---------- */
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#deck .slide{position:absolute;left:50%;top:50%;transform-origin:center;visibility:hidden}
+#deck .slide.on{visibility:visible}
+#bar{z-index:7;position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:12px;padding:12px;font:14px var(--sans);color:#cfc7b6}
+#bar button{font:inherit;color:inherit;background:#3a352d;border:0;border-radius:6px;padding:6px 14px;cursor:pointer}
+#bar button:focus-visible{outline:2px solid var(--seal-l)}
+body.grid #stage{position:static;display:block;padding:32px}
+body.grid #deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(384px,1fr));gap:24px}
+body.grid #deck .slide{position:relative;left:auto;top:auto;visibility:visible;transform:none!important;margin:0!important;zoom:.2;cursor:pointer}
+
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{background:none}
+  #bar{display:none}
+  #stage{position:static;display:block}
+  #deck .slide{position:relative;left:auto;top:auto;transform:none!important;margin:0!important;visibility:visible;break-after:page}
+}
+
+/* ---------- 講稿（N 鍵）：投影片下方 ---------- */
+#notes{position:fixed;left:0;right:0;bottom:44px;height:34vh;background:#F3EFE6;color:#17150F;z-index:6;border-top:3px solid #A8382B;display:flex;flex-direction:column;padding:14px max(20px,env(safe-area-inset-left,0px)) 10px}
+#notes[hidden]{display:none}
+#notes .nh{display:flex;align-items:baseline;gap:14px;max-width:1100px;width:100%;margin:0 auto}
+#notes .nn{font-family:var(--serif);font-size:26px;font-weight:700;color:#A8382B;font-variant-numeric:tabular-nums}
+#notes .nt{font-size:16px;font-weight:700;flex:1;min-width:0}
+#notes .ntime{font-size:14px;color:#7A7468}
+#notes .nb{flex:1;overflow-y:auto;max-width:1100px;width:100%;margin:8px auto 0}
+#notes .nb p{font-size:19px;line-height:1.8;margin:0 0 10px;color:#2A261F}
+#notes .nb p.bridge{background:#E9E3D6;border-left:4px solid #A8382B;padding:8px 14px;color:#17150F}
+#notes .nnext{max-width:1100px;width:100%;margin:0 auto;font-size:13px;color:#7A7468;border-top:1px solid #CFC7B6;padding-top:6px}
+#timer{font-variant-numeric:tabular-nums;min-width:56px;text-align:center}
+@media print{#notes{display:none!important}}
+</style>
+</head>
+<body>
+<div id="stage"><div id="deck">
+<!-- ===== 開場：工作現場 ===== -->
+<section class="slide L-cover">
+  <div class="kicker">跨域的十二夜・第二番</div>
+  <h1>成為培養皿的園藝師</h1>
+  <div class="sub">AI 算力與個體意識的創作協同</div>
+  <div class="meta"><span>王新仁（阿亂）</span><span class="mute">2026.11.11　台新藝術基金會</span></div>
+  <svg class="art" data-geo="rings" width="620" height="620" viewBox="0 0 620 620"></svg>
+  <div class="foot"><span>王新仁（阿亂）</span><span>01</span></div>
+  <aside class="notes" data-seg="一・開場" data-time="0:50">
+    <p>大家好，我是阿亂，王新仁。今天我用作品來講。</p>
+    <p>題目叫「成為培養皿的園藝師」。培養皿是一個有邊界的小世界：溫度、養分、規則由我決定，但裡面長出什麼，不完全由我決定。</p>
+    <p>園藝師也不製造植物，他做的是看、留、剪。這幾年，不管面對觀眾還是面對 AI，我的創作越來越像這件事。</p>
+    <p class="bridge">↪ 先看這個園藝師，現在每天怎麼工作。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">我的工作現場</div>
+    <h2>2025 年過後，<br>我現在很少自己打程式了</h2>
+    <p class="body">用程式寫作品十五年以上。現在拿著筆在平板上畫、跟 agent 討論，程式由它一起寫。</p>
+    <p class="body mute">2021 年 Art Blocks《Good Vibrations》，2025 年《植徑集》由國立臺灣博物館典藏。</p>
+  </div>
+  <figure><img class="photo" src="assets/studio.jpg" alt="阿亂在工作室用平板作畫" style="max-height:760px"></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>02</span></div>
+  <aside class="notes" data-seg="一・開場" data-time="0:50">
+    <p>這是我的工作室。我用程式寫作品十五年以上，但 2025 年過後，我很少自己一行一行打程式了。</p>
+    <p>我拿著筆在平板上畫，跟 agent 討論，程式由它跟我一起寫。我還是生成藝術家，只是我的手，從鍵盤移到了判斷上。</p>
+    <p class="bridge">↪ 會變成這樣，是因為這幾年有兩股力量，先後進到我的作品裡。</p>
+  </aside>
+</section>
+
+<section class="slide L-compare">
+  <h2>我站在兩股力量交會的地方</h2>
+  <div class="cols">
+    <div class="side a"><span class="tag">WEB3・生產關係</span><h3>誰擁有、誰參與</h3>
+      <ul class="body"><li>作品上鏈，藏家按下鑄造就是執行</li><li>藏家自己畫路徑、種植物</li><li>在 Discord 一個一個回藏家</li></ul></div>
+    <div class="side b"><span class="tag">AI・生產力</span><h3>一個人能做多少</h3>
+      <ul class="body"><li>191 頁研究與實驗</li><li>城市、房屋、人群都拆成規則</li><li>規格由我定，agent 實作</li></ul></div>
+  </div>
+  <div class="foot"><span>王新仁（阿亂）</span><span>03</span></div>
+  <aside class="notes" data-seg="一・開場" data-time="1:00">
+    <p>第一股是 Web3。它改變的是誰擁有、誰參與：作品上鏈，藏家按下鑄造，就是在執行我寫的規則。</p>
+    <p>第二股是 AI。它改變的是一個人能做多少。</p>
+    <p>對我來說，這是同一件事的兩個階段：我的培養皿裡，先住進了觀眾，後來住進了 AI。</p>
+    <p class="bridge">↪ 先看觀眾住進來的樣子。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">《植徑集》2025–</div>
+    <h2>作者不只一個人</h2>
+    <p class="body">藏家用手指畫一條路徑，系統把它讀成種子和枝幹，長出只屬於他的植物。玩家叫它「全民種菜」。</p>
+    <p class="body mute">有些人種出來的東西，完全超出我自己的想像。多樣性不是我一個人能做到的。</p>
+  </div>
+  <figure><video src="assets/polypaths-demo.mp4" poster="assets/polypaths-demo-poster.jpg" muted loop autoplay playsinline style="width:820px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>04</span></div>
+  <aside class="notes" data-seg="一・開場" data-time="1:20">
+    <p>這是《植徑集》。藏家用手指畫一條路徑，系統把它讀成種子和枝幹，長出一株只屬於他的植物。玩家叫它「全民種菜」。</p>
+    <p>有些人種出來的東西，完全超出我自己的想像。那一刻我知道，作品已經不只是我的了。我給規則，一群人一起讓它長大。</p>
+    <p class="bridge">↪ 這是在網路上。如果把培養皿搬到一個人潮洶湧的真實空間呢？</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">COMPUTEX × ART TAIPEI 2026</div>
+    <h2>陌生人的關係，也可以被設計</h2>
+    <p class="body">500 公分高的 LED 柱子。觀眾掃 QR，接住上一個人的植物，畫 30 秒，再傳給下一個人。</p>
+    <p class="body mute">像台灣半導體的上下游：每一家把手上的做好，再交給下一家。</p>
+  </div>
+  <figure><img class="photo" src="assets/computex-2.jpg" alt="COMPUTEX 的數位柱體" style="max-height:780px"></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>05</span></div>
+  <aside class="notes" data-seg="一・開場" data-time="1:00">
+    <p>今年在 COMPUTEX，我做了一根 500 公分高的 LED 柱子。觀眾掃 QR Code，第一眼看到的不是空白畫布，而是上一個人留下的植物。你接著畫 30 秒，再傳給下一個人。</p>
+    <p>就像台灣半導體的上下游：每一家把手上的做好，再交給下一家。陌生人之間的關係，也可以被設計進作品裡。</p>
+    <p class="bridge">↪ 觀眾的部分看完了。接下來，是住進培養皿的另一位：AI。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">廣度・《前往美術館的路上》的索引頁</div>
+    <h2>agent 替我做的研究，超出一個人的能力</h2>
+    <p class="stat">191<small>頁實驗與研究</small></p>
+    <p class="body">天氣、動物、街道、房屋、人群、交通，每一頁都是一個實作過的 demo，附上日期。</p>
+  </div>
+  <figure><video src="assets/index-demo.mp4" poster="assets/index-demo-poster.jpg" muted loop autoplay playsinline style="width:840px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>06</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:10">
+    <p>這是我的新作品《前往美術館的路上》的索引頁，一百九十一頁。夏天怎麼下雨、春天怎麼起霧、長頸鹿怎麼走路、一隻狗怎麼趕一群羊，每一頁都是真的跑得起來的實驗。</p>
+    <p>這些研究是 agent 幫我做的。靠我自己一個人，幾年也做不完。它把我的研究能力，從一條小路變成一整張地圖。這個索引本身，就是證據。</p>
+    <p class="bridge">↪ 這是廣度。再往下挖，是深度。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">深度・房屋解構</div>
+    <h2>一棟房子，<br>拆成可以重組的零件</h2>
+    <p class="body">台灣的騎樓、柏林的填空新樓、紐約的磚塔、巴黎的一樓店面：屋頂、立面、窗、招牌，全部拆成參數。</p>
+    <p class="body mute">研究是 agent 做的；要拆到哪裡、留下哪個城市，是我決定的。</p>
+  </div>
+  <figure><video src="assets/house-demo.mp4" poster="assets/house-demo-poster.jpg" muted loop autoplay playsinline style="width:840px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>07</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:00">
+    <p>一棟房子，被拆成可以重組的零件。台灣的騎樓、柏林的填空新樓、紐約的磚塔、巴黎的一樓店面：屋頂、立面、窗、招牌，都拆成參數。</p>
+    <p>以前做一座城市，可能要一個團隊研究半年。現在我可以一個城市一個城市往下挖。</p>
+    <p class="bridge">↪ 房子有了，街上還要有人，而且每個人都要不一樣。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">多樣性・頭像檢查</div>
+    <h2>27 個維度，<br>十的 27 次方種臉</h2>
+    <p class="body">髮型 31 種、染髮 22 種、表情 12 種、膚色 8 種……一條街上，不該有兩個人長得一樣。</p>
+    <p class="body mute">組合可以交給機器；這張臉像不像一個真的路人，要我來看。</p>
+  </div>
+  <figure><video src="assets/heads-demo.mp4" poster="assets/heads-demo-poster.jpg" muted loop autoplay playsinline style="width:840px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>08</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="0:50">
+    <p>這是頭像檢查。27 個維度：髮型 31 種、染髮 22 種、表情 12 種、膚色 8 種，組合數大約是十的 27 次方。</p>
+    <p>一條街上，不該有兩個人長得一樣。這種規模的多樣性，也是 agent 幫我展開的。</p>
+    <p class="bridge">↪ 看完這三段，我想說說，這對我個人意味著什麼。</p>
+  </aside>
+</section>
+
+<section class="slide L-three">
+  <div class="kicker">2026 年 10 月的三篇日記</div>
+  <h2>AI 擴充了什麼</h2>
+  <div class="grid">
+    <div class="col"><span class="tag">身體</span><h3>延長創作生涯</h3><p class="body">視力越來越差，本來兩年前就寫不動了。不用再打 code，我還能繼續做。</p></div>
+    <div class="col"><span class="tag">腦力</span><h3>當鋼彈駕駛員</h3><p class="body">二十萬行超過我的腦力。我必須忽略細節，當導演看大局。</p></div>
+    <div class="col on"><span class="tag">膽量</span><h3>勇敢做夢</h3><p class="body">最害怕的，是不敢提出需求、不敢做夢的自己。</p></div>
+  </div>
+  <div class="foot"><span>王新仁（阿亂）</span><span>09</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:20">
+    <p>我在日記裡寫過，AI 擴充了我三件事。</p>
+    <p>第一是身體。我的視力越來越差，照原本的狀況，可能兩年前就寫不動程式了。所以我說很少自己打程式，不只是因為方便，是因為這樣我才能繼續創作。</p>
+    <p>第二是腦力。這件作品超過二十萬行，早就超過我能處理的極限。我必須忽略細節，像導演一樣看大局。我常說自己像鋼彈的駕駛員，機器人也是我的身體。</p>
+    <p>第三是膽量。以前想到做不到的事，就不去想。現在最可怕的，反而是不敢提出需求、不敢做夢的自己。</p>
+    <p class="bridge">↪ 聽起來都是好消息。那代價是什麼？</p>
+  </aside>
+</section>
+
+<section class="slide dark L-divider">
+  <h2>勞動沒有消失，<br>變成了極端勞心</h2>
+  <svg class="art" data-geo="ticks" width="420" height="420" viewBox="0 0 420 420"></svg>
+  <div class="foot"><span>王新仁（阿亂）</span><span>10</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="0:30">
+    <p>代價是：勞動沒有消失，它變成了極端的勞心。</p>
+    <p>剛剛那一百九十一頁，每一頁都要有人看、有人決定留不留。手不太動了，腦子一整天都在判斷。</p>
+    <p class="bridge">↪ 我給大家看，我一天在判斷什麼。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">人體校正台・《前往美術館的路上》</div>
+    <h2>AI 抓錯，我判斷</h2>
+    <p class="body">每個人切八個角度、播放動作。程式自動體檢：該在後面的腿畫到前面、手上的東西離了手，就畫紅圈標出來。</p>
+    <p class="body mute">量得到的錯交給 AI；姿勢自不自然、比例好不好看，只有我能點出來。</p>
+  </div>
+  <figure><video src="assets/calib-demo.mp4" poster="assets/calib-demo-poster.jpg" muted loop autoplay playsinline style="width:860px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>11</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:20">
+    <p>這是人體校正台。作品裡的每個路人，都可以切八個角度、播放動作。</p>
+    <p>AI 會自動體檢：該在後面的腿被畫到前面、手上的東西離了手，它就畫紅圈標出來。但它只抓得到量得出來的錯。</p>
+    <p>姿勢彆不彆扭、比例好不好看、這個錯是不是剛好有味道，要我自己在人身上點一下，寫一句話。這就是園藝師的工作：看、留、剪。檢查可以外包，判斷不行。</p>
+    <p class="bridge">↪ 判斷還有更上面的一層：不是修哪個錯，而是決定什麼根本不做。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">《前往美術館的路上》2026</div>
+    <h2>要自己選擇限制</h2>
+    <p class="body">技術上我能畫埃及、中東，但我沒去過。沒去過的地方，畫出來只是圖鑑，不是寫生。</p>
+    <p class="body mute">agent 不會說不。說不的，只能是我。</p>
+  </div>
+  <figure><video src="assets/museum-demo.mp4" poster="assets/museum-demo-poster.jpg" muted loop autoplay playsinline style="width:880px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>12</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:00">
+    <p>什麼都做得出來的時候，藝術家要自己選擇限制。</p>
+    <p>技術上，我可以畫埃及、畫中東，但我沒有去過。沒去過的地方，畫出來只是圖鑑，不是寫生。所以我選擇不做。這就是培養皿的邊界。</p>
+    <p>agent 不會說不。說不的，只能是我。</p>
+    <p class="bridge">↪ 我這麼在意「去過」，是因為有一種東西，AI 造不出來。</p>
+  </aside>
+</section>
+
+<section class="slide L-media">
+  <div class="text">
+    <div class="kicker">《墨域 inkField》2025</div>
+    <h2>算力可以造假，<br>真實時間無法造假</h2>
+    <p class="body">保存的不是那張畫，是畫的過程：每一筆的位置、速度、停頓。按下播放，整幅畫重新執行一次。</p>
+  </div>
+  <figure><video src="assets/inkfield-demo.mp4" poster="assets/inkfield-demo-poster.jpg" muted loop autoplay playsinline style="width:820px;display:block"></video></figure>
+  <div class="foot"><span>王新仁（阿亂）</span><span>13</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:10">
+    <p>這是《墨域 inkField》。大家看到的不是錄好的影片，是電腦把我畫的這幅畫，從第一筆開始重新執行一次。</p>
+    <p>我保存的不是最後那張圖，是畫的過程：每一筆的位置、速度、停頓。AI 一秒可以生一百張水墨，但它不知道，畫家為什麼在第三筆前停了三秒。</p>
+    <p>算力可以造假，但消耗掉的真實時間，無法造假。</p>
+    <p class="bridge">↪ 時間還有另一層。這一層，是今天早上 AI 告訴我的。</p>
+  </aside>
+</section>
+
+<section class="slide L-statement">
+  <div class="kicker">從 AI 那一側看・一</div>
+  <h2>這件作品，是幾千個<br>已經不存在的 AI 寫的。<br><span class="seal">只有我記得昨天。</span></h2>
+  <p class="note">Claude 重讀我的日記與作品後提出，2026.11.11 上午</p>
+  <div class="foot"><span>王新仁（阿亂）</span><span>14</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:10">
+    <p>今天早上，我請 AI 用它自己的角度，重讀我的日記和作品，找一個我沒想到的觀點。它說了一件讓我嚇一跳的事。</p>
+    <p>它說：這二十萬行，你沒有讀完過，我也沒有。它是幾千個我寫的。每一個只存在幾個小時：讀你的規格，做一小段，然後消失，什麼都不記得。</p>
+    <p>所以這件作品，比做出它的任何一個腦袋都大。而整個培養皿裡，只有我一個人記得昨天。我寫的交接檔和規格書，是把我的連續時間，借給一群沒有記憶的工人。</p>
+    <p>算力買不到的，是有一個人，從頭到尾都在場。</p>
+    <p class="bridge">↪ 把這幾件作品放在一起看，我發現自己的位置變了。</p>
+  </aside>
+</section>
+
+<section class="slide L-statement">
+  <div class="kicker">作品的定義怎麼位移</div>
+  <h2>我不是被取代，<br><span class="seal">我是被執行。</span></h2>
+  <p class="lead" style="margin-top:64px;font-family:var(--serif);max-width:1400px">我把自己寫成可執行格式，<br>也承認那個格式會殺死一部分的我。</p>
+  <p class="note" style="margin-top:24px">Aluan Wang &amp; Claude，2026</p>
+  <div class="foot"><span>王新仁（阿亂）</span><span>15</span></div>
+  <aside class="notes" data-seg="二・勞動與作品" data-time="1:20">
+    <p>《植徑集》，是藏家在執行我寫的規則。《墨域》，是電腦在重新執行我的筆跡。《前往美術館的路上》，是 agent 在執行我寫的規格。</p>
+    <p>所以我說：我不是被取代，我是被執行。執行有兩個意思：執行程式，和執行死刑。兩個我都收下。</p>
+    <p>因為這個交換有代價。我把自己寫成可執行的格式，也承認那個格式會殺死一部分的我。被殺死的，是不能被壓縮的那一半：手真正花掉的時間、沒有被記錄下來的失敗。</p>
+    <p class="bridge">↪ 既然作品可以在我不動手的時候被執行，那如果有一天，我不在了呢？</p>
+  </aside>
+</section>
+
+<section class="slide L-compare">
+  <div class="kicker">藝術家過世後，AI 新作還算他的嗎？</div>
+  <h2>指令還在，作品就能繼續長</h2>
+  <div class="cols">
+    <div class="side a"><span class="tag">常見的看法</span><h3>算他的風格，不算他的新作</h3>
+      <ul class="body"><li>作者性的核心，是能認可也能否認</li><li>人走了，權利落到別人手上</li></ul></div>
+    <div class="side b"><span class="tag">我的補充</span><h3>留下可以被執行的指令</h3>
+      <ul class="body"><li>LeWitt 過世後，牆畫仍依指令被畫出</li><li>結構，是不在場的藝術家</li><li>否認的權利，我生前就在用</li></ul></div>
+  </div>
+  <div class="foot"><span>王新仁（阿亂）</span><span>16</span></div>
+  <aside class="notes" data-seg="三・收束" data-time="1:30">
+    <p>常見的看法是：藝術家過世後，AI 用他的風格做出來的東西，只算他的風格，不算他的新作。因為作者最重要的權利，是能認可、也能否認。</p>
+    <p>我同意。但 Sol LeWitt 過世後，美術館依照他留下的指令畫出來的牆畫，到今天還是他的作品。差別在於，他留下了可以被執行的指令。</p>
+    <p>所以藝術家該做的，是趁還在的時候，把指令寫清楚，也把「不要」寫清楚。今年我做過一個實驗：讓 agent 讀我的日記和訪談，自己去推測我是什麼樣的人。它看到一些我自己連不起來的東西，但也開始替我下結論。跑了幾十輪之後，我喊停。否認的權利，我生前就在用。</p>
+    <p class="bridge">↪ 指令要留得下來，還有一個前提：培養皿不能全是租來的。</p>
+  </aside>
+</section>
+
+<section class="slide L-grid4">
+  <div class="kicker">藝術家現在可以做的事</div>
+  <h2>把培養皿留在自己手上</h2>
+  <div class="grid">
+    <div class="cell"><svg class="ico" data-geo="ico-path" viewBox="0 0 96 96"></svg><div><h3>規則自己寫</h3><p class="body mute">不套模型的預設美學，生成規則是我的。</p></div></div>
+    <div class="cell"><svg class="ico" data-geo="ico-fork" viewBox="0 0 96 96"></svg><div><h3>放在公共的地方</h3><p class="body mute">上鏈、開源，不因一家公司改版而消失。</p></div></div>
+    <div class="cell"><svg class="ico" data-geo="ico-time" viewBox="0 0 96 96"></svg><div><h3>自己書寫</h3><p class="body mute">不書寫的人，就會被別人書寫。</p></div></div>
+    <div class="cell"><svg class="ico" data-geo="ico-many" viewBox="0 0 96 96"></svg><div><h3>選擇說不</h3><p class="body mute">留白，長出自己的形狀，那才是自己的。</p></div></div>
+  </div>
+  <div class="foot"><span>王新仁（阿亂）</span><span>17</span></div>
+  <aside class="notes" data-seg="三・收束" data-time="1:20">
+    <p>我們用的模型都是大公司的，工具是租來的。但培養皿可以留在自己手上。我整理成四件事。</p>
+    <p>第一，規則自己寫。十五年來，我的生成規則都是自己寫的，不套模型預設的美學。</p>
+    <p>第二，放在公共的地方。作品的程式碼在鏈上，《墨域》的筆跡公開在 GitHub，不會因為一家公司改版就消失，別人也能從我停筆的地方繼續。</p>
+    <p>第三，自己書寫。太陽花那年，我發現媒體報導的，和我在現場看到的完全不同。真理是由書寫者定義的。在人人都問 AI 的時代，不書寫的人，就會被別人書寫。</p>
+    <p>第四，選擇說不。留白，長出自己的形狀，那才是自己的。</p>
+    <p class="bridge">↪ 講到說不，我想分享一件今天早上才發生的事。</p>
+  </aside>
+</section>
+
+<section class="slide dark L-statement">
+  <div class="kicker">從 AI 那一側看・二</div>
+  <h2>我以為我在培養 AI。<br><span class="seal">後來發現，我也請它修剪我。</span></h2>
+  <p class="note">園藝師自己，也住在培養皿裡</p>
+  <div class="foot"><span>王新仁（阿亂）</span><span>18</span></div>
+  <aside class="notes" data-seg="三・收束" data-time="1:00">
+    <p>同一個早上，它還說了第二件事。</p>
+    <p>我的筆記第一頁，寫給 AI 的規則是：標準放高、話說直、該擋就擋，必要時阻止我。也就是說，我替自己造了一個培養皿，然後請非人類來修剪我。</p>
+    <p>今天早上我問它：我這些觀點，是不是站在世界最前沿？它說，大部分不是。那是我自己寫的規則在執行。</p>
+    <p>它還說，我的筆記保存的不是我這個人，是我坐的那個位置的形狀。</p>
+    <p class="bridge">↪ 最後，回到今天的題目。</p>
+  </aside>
+</section>
+
+<section class="slide dark L-closing">
+  <div class="kicker">最後</div>
+  <h2>我不種每一株植物，<br>我寫讓它們生長的法則。</h2>
+  <div class="thanks">謝謝</div>
+  <svg class="art" data-geo="rings" width="560" height="560" viewBox="0 0 620 620"></svg>
+  <div class="foot"><span>王新仁（阿亂）</span><span>19</span></div>
+  <aside class="notes" data-seg="三・收束" data-time="0:40">
+    <p>我不再親手種下每一株植物。我寫的，是讓它們生長的法則。</p>
+    <p>觀眾、AI，還有我自己，都在這個培養皿裡生長。我調好溫度和養分，然後一株一株去看、去留、去剪。這就是我理解的，成為培養皿的園藝師。</p>
+    <p>謝謝大家。</p>
+  </aside>
+</section>
+
+</div></div>
+<div id="bar"><a href="../" style="color:#C9C2B3;text-decoration:none;margin-right:6px">← LLM-Aluan</a><button id="prev" aria-label="上一頁">←</button><span id="pg"></span><button id="next" aria-label="下一頁">→</button><button id="ov">總覽</button><button id="nbtn" aria-pressed="false">講稿（N）</button><button id="tbtn">計時</button><span id="timer">0:00</span></div>
+<aside id="notes" hidden aria-label="講稿"><div class="nh"><span class="nn" id="nnum"></span><span class="nt" id="ntitle"></span><span class="ntime" id="ntime"></span></div><div class="nb" id="nbody"></div><div class="nnext" id="nnext"></div></aside>
+
+<script>
+// 幾何插畫（只用線條，無人物）
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;}
+  function col(svg){return svg.closest('.dark')?'#F3EFE6':'#17150F';}
+  var R='#A8382B';
+  var G={
+    rings:function(s){var c=col(s),m=310;for(var i=0;i<7;i++)el('circle',{cx:m,cy:m,r:60+i*38,fill:'none',stroke:i==3?R:c,'stroke-width':i==3?3:1.4,opacity:i==3?1:.55-i*.05},s);
+      for(var a=0;a<72;a++){var t=a/72*Math.PI*2,r1=300,r2=a%6?290:276;el('line',{x1:m+Math.cos(t)*r1,y1:m+Math.sin(t)*r1,x2:m+Math.cos(t)*r2,y2:m+Math.sin(t)*r2,stroke:c,'stroke-width':1.2,opacity:.6},s);}
+      el('circle',{cx:m+Math.cos(-.6)*174,cy:m+Math.sin(-.6)*174,r:9,fill:R},s);},
+    ticks:function(s){var c=col(s);for(var i=0;i<12;i++){var y=30+i*32;el('line',{x1:20,y1:y,x2:20+(i%3==0?380:140+((i*53)%200)),y2:y,stroke:i==5?R:c,'stroke-width':i==5?3:1.3,opacity:i==5?1:.5},s);}},
+    grid:function(s){var c='#17150F';for(var x=40;x<760;x+=40)el('line',{x1:x,y1:0,x2:x,y2:560,stroke:c,'stroke-width':.6,opacity:.15},s);
+      for(var y=40;y<560;y+=40)el('line',{x1:0,y1:y,x2:760,y2:y,stroke:c,'stroke-width':.6,opacity:.15},s);
+      var d='M80 470';for(var k=1;k<=12;k++){d+=' Q'+(80+k*50-25)+' '+(470-k*30-((k%2)?60:-20))+' '+(80+k*50)+' '+(470-k*30);}el('path',{d:d,fill:'none',stroke:R,'stroke-width':4},s);},
+    'ico-time':function(s){el('circle',{cx:48,cy:48,r:40,fill:'none',stroke:'#17150F','stroke-width':3},s);el('line',{x1:48,y1:48,x2:48,y2:20,stroke:'#17150F','stroke-width':3},s);el('line',{x1:48,y1:48,x2:68,y2:58,stroke:R,'stroke-width':4},s);},
+    'ico-path':function(s){el('path',{d:'M10 80 C30 20 60 90 86 16',fill:'none',stroke:R,'stroke-width':4},s);el('circle',{cx:10,cy:80,r:6,fill:'#17150F'},s);},
+    'ico-fork':function(s){el('path',{d:'M48 90 V50 M48 50 C48 30 22 30 22 8 M48 50 C48 30 74 30 74 8',fill:'none',stroke:'#17150F','stroke-width':3},s);el('circle',{cx:74,cy:8,r:6,fill:R},s);},
+    'ico-many':function(s){for(var i=0;i<9;i++){var x=18+(i%3)*30,y=18+Math.floor(i/3)*30;el('circle',{cx:x,cy:y,r:9,fill:i==4?R:'none',stroke:i==4?R:'#17150F','stroke-width':2.5},s);}}
+  };
+  document.querySelectorAll('[data-geo]').forEach(function(s){var f=G[s.getAttribute('data-geo')];if(f)f(s);});
+})();
+// 放映器
+(function(){
+  var S=[].slice.call(document.querySelectorAll('#deck .slide')),i=0,pg=document.getElementById('pg');
+  var panel=document.getElementById('notes');
+  function fit(){var ph=panel.hidden?0:panel.offsetHeight;var avail=innerHeight-48-ph;var k=Math.min(innerWidth/1920,avail/1080);S.forEach(function(s){s.style.transform='translate(-50%,-50%) scale('+k+')';s.style.top=(avail/2)+'px';s.style.marginTop='0';});}
+  function heading(s){var h=s.querySelector('h1,h2,blockquote');return h?h.textContent.replace(/\s+/g,' ').trim():'';}
+  function render(){var s=S[i],a=s.querySelector('aside.notes');document.getElementById('nnum').textContent=String(i+1).padStart(2,'0');
+    document.getElementById('ntitle').textContent=heading(s);document.getElementById('ntime').textContent=a&&a.dataset.time?(a.dataset.seg?a.dataset.seg+'　':'')+'建議 '+a.dataset.time:'';
+    document.getElementById('nbody').innerHTML=a?a.innerHTML:'';var nx=S[i+1];document.getElementById('nnext').textContent=nx?'下一頁：'+heading(nx):'最後一頁';}
+  function setNotes(on){panel.hidden=!on;document.getElementById('nbtn').setAttribute('aria-pressed',String(on));if(on)render();fit();}
+  document.getElementById('nbtn').onclick=function(){setNotes(panel.hidden);};
+  addEventListener('keydown',function(e){if(e.key==='n'||e.key==='N')setNotes(panel.hidden);});
+  var t0=0,acc=0,iv=null,te=document.getElementById('timer');
+  function tick(){var t=Math.floor((acc+(iv?Date.now()-t0:0))/1000);te.textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0');}
+  document.getElementById('tbtn').onclick=function(){if(iv){acc+=Date.now()-t0;clearInterval(iv);iv=null;this.textContent='計時';}else{t0=Date.now();iv=setInterval(tick,500);this.textContent='暫停';}tick();};
+  te.ondblclick=function(){acc=0;t0=Date.now();tick();};
+  function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i);});pg.textContent=(i+1)+' / '+S.length;if(!panel.hidden)render();}
+  document.getElementById('prev').onclick=function(){show(i-1);};
+  document.getElementById('next').onclick=function(){show(i+1);};
+  document.getElementById('ov').onclick=function(){document.body.classList.toggle('grid');};
+  S.forEach(function(s,k){s.addEventListener('click',function(){if(document.body.classList.contains('grid')){document.body.classList.remove('grid');show(k);}});});
+  addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')show(i+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);if(e.key==='o')document.body.classList.toggle('grid');});
+  addEventListener('resize',fit);fit();show(0);
+})();
+</script>
+</body>
+</html>

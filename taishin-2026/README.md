@@ -3,7 +3,7 @@
 
 王新仁（阿亂 / Aluan Wang）｜台新藝術基金會「跨域的十二夜」第二番：AI 算力與個體意識的創作協同｜2026.11.11
 
-**Live →** [投影片](https://ileivoivm.github.io/LLM-Aluan/taishin-2026/) · [口說稿](./speaker-notes.md)
+**Live →** [投影片](https://ileivoivm.github.io/LLM-Aluan/taishin-2026/) · [PDF](./aluan-taishin-2026-slides.pdf) · [口說稿](./speaker-notes.md)
 
 ---
 
@@ -33,6 +33,7 @@
 taishin-2026/
 ├── index.html          # 投影片（含下方講稿面板；逐字稿寫在每頁的 <aside class="notes">）
 ├── speaker-notes.md    # 口說稿（由 index.html 匯出）
+├── aluan-taishin-2026-slides.pdf   # PDF 版（影片頁為靜態畫面）
 └── assets/             # 照片與操作錄影
 ```
 
